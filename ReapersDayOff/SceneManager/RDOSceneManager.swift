@@ -41,29 +41,29 @@ final class RDOSceneManager {
     }
     
     func transitionToScene(identifier sceneIdentifier: RDOSceneIdentifier) {
-        var scene: SKScene?
+        var scene: RDOBaseScene?
         // Block to initial file
         switch sceneIdentifier {
         case .start:
-            scene = SKScene.init(fileNamed: "GameScene")
+            scene = SKScene.init(fileNamed: "RDOStartScene") as! RDOStartScene
 //            scene = SKScene.init(fileNamed: "Start")
         case .main:
-            scene = SKScene.init(fileNamed: "GameScene")
+            scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
 //            scene = SKScene.init(fileNamed: "Main")
         case .settings:
-            scene = SKScene.init(fileNamed: "GameScene")
+            scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
 //            scene = SKScene.init(fileNamed: "Settings")
         case .about:
-            scene = SKScene.init(fileNamed: "GameScene")
+            scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
 //            scene = SKScene.init(fileNamed: "About")
         case .preparation:
-            scene = SKScene.init(fileNamed: "GameScene")
+            scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
 //            scene = SKScene.init(fileNamed: "Preparation")
         case .stageOne:
-            scene = SKScene.init(fileNamed: "GameScene")
+            scene = SKScene.init(fileNamed: "RDOStageOneScene") as! RDOStageOneScene
 //            scene = SKScene.init(fileNamed: "StageOne")
         case .results:
-            scene = SKScene.init(fileNamed: "GameScene")
+            scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
 //            scene = SKScene.init(fileNamed: "Results")
         }
         
@@ -73,9 +73,9 @@ final class RDOSceneManager {
         
     }
     
-    func presentScene(_ scene: SKScene){
+    func presentScene(_ scene: RDOBaseScene){
         
-        //scene.sceneManager = self
+        scene.sceneManager = self
         
         let transition = SKTransition.fade(withDuration: 2.0)
         self.presentingView.presentScene(scene, transition: transition)
