@@ -9,36 +9,34 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, SceneManagerDelegate {
+    
+    
+    var sceneManager: RDOSceneManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
-        // including entities and graphs.
-        if let scene = GKScene(fileNamed: "GameScene") {
+        let viewSize = view.bounds.size
+        
+        /// Controller
+//        let controlLength = min(GameplayConfiguration.TouchControl.minimumControlSize, viewSize.width * GameplayConfiguration.TouchControl.idealRelativeControlSize)
+//        let controlSize = CGSize(width: controlLength, height: controlLength)
+//
+//        let touchControlInputNode = TouchControlInputNode(frame: view.bounds, thumbStickNodeSize: controlSize)
+//        let gameInput = RDOGameInput(nativeControlInputSource: touchControlInputNode)
+        
+        // Present the scene
+        if let view = self.view as! SKView? {
+            sceneManager = RDOSceneManager(presentingView: view /* , gameInput: gameInput */)
+            sceneManager.delegate = self
+            sceneManager.transitionToScene(identifier: .start)
             
-            // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! BaseScene? {
-                
-                // Copy gameplay related content over to the scene
-                sceneNode.entities = scene.entities
-                sceneNode.graphs = scene.graphs
-                
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
-                
-                // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-                    view.showsFPS = true
-                    view.showsNodeCount = true
-                }
-            }
+            view.showsFPS = true
+            view.showsNodeCount = true
         }
+        
+        
     }
 
     override var shouldAutorotate: Bool {
@@ -55,5 +53,9 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func sceneManager(_ sceneManager: RDOSceneManager, didTransitionTo scene: SKScene) {
+        
     }
 }

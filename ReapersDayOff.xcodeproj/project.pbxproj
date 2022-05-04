@@ -15,6 +15,7 @@
 		517F5C0028210F8600C39D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517F5BFE28210F8600C39D21 /* Main.storyboard */; };
 		517F5C0228210F8900C39D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517F5C0128210F8900C39D21 /* Assets.xcassets */; };
 		517F5C0528210F8900C39D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517F5C0328210F8900C39D21 /* LaunchScreen.storyboard */; };
+		517F5C102821749300C39D21 /* RDOSceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C0F2821749300C39D21 /* RDOSceneManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		517F5BFF28210F8600C39D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		517F5C0128210F8900C39D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		517F5C0428210F8900C39D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		517F5C0F2821749300C39D21 /* RDOSceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOSceneManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,8 @@
 		517F5BF328210F8600C39D21 /* ReapersDayOff */ = {
 			isa = PBXGroup;
 			children = (
+				517F5C112821B34300C39D21 /* Player Control */,
+				517F5C0E2821747200C39D21 /* SceneManager */,
 				517F5C0C2821115800C39D21 /* SKS */,
 				517F5C0B28210FFC00C39D21 /* Storyboard */,
 				517F5BFA28210F8600C39D21 /* BaseScene.swift */,
@@ -93,6 +97,21 @@
 				517F5BFC28210F8600C39D21 /* GameViewController.swift */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		517F5C0E2821747200C39D21 /* SceneManager */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C0F2821749300C39D21 /* RDOSceneManager.swift */,
+			);
+			path = SceneManager;
+			sourceTree = "<group>";
+		};
+		517F5C112821B34300C39D21 /* Player Control */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Player Control";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +189,7 @@
 			files = (
 				517F5BFB28210F8600C39D21 /* BaseScene.swift in Sources */,
 				517F5BFD28210F8600C39D21 /* GameViewController.swift in Sources */,
+				517F5C102821749300C39D21 /* RDOSceneManager.swift in Sources */,
 				517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
