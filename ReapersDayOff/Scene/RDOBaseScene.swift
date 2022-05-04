@@ -81,12 +81,12 @@ class RDOBaseScene: SKScene, GameInputDelegate, ControlInputSourceGameStateDeleg
         overlay?.updateScale()
         
         // Listen for updates to the player's controls.
-//        sceneManager.gameInput.delegate = self
+        sceneManager.gameInput.delegate = self
         
         // Find all the buttons and set the initial focus.
         buttons = findAllButtonsInScene()
         print(buttons)
-//        resetFocus()
+        resetFocus()
     }
      
     
@@ -152,7 +152,7 @@ class RDOBaseScene: SKScene, GameInputDelegate, ControlInputSourceGameStateDeleg
             game controllers are connected or disconnected.
         */
         touchControlInputNode.hideThumbStickNodes = sceneManager.gameInput.isGameControllerConnected
-        //resetFocus()
+        resetFocus()
         #endif
     }
     
