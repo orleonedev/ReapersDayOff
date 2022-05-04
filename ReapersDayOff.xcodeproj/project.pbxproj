@@ -10,11 +10,25 @@
 		517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5BF428210F8600C39D21 /* AppDelegate.swift */; };
 		517F5BF728210F8600C39D21 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5BF628210F8600C39D21 /* GameScene.sks */; };
 		517F5BF928210F8600C39D21 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5BF828210F8600C39D21 /* Actions.sks */; };
-		517F5BFB28210F8600C39D21 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5BFA28210F8600C39D21 /* BaseScene.swift */; };
 		517F5BFD28210F8600C39D21 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5BFC28210F8600C39D21 /* GameViewController.swift */; };
 		517F5C0028210F8600C39D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517F5BFE28210F8600C39D21 /* Main.storyboard */; };
 		517F5C0228210F8900C39D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517F5C0128210F8900C39D21 /* Assets.xcassets */; };
 		517F5C0528210F8900C39D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517F5C0328210F8900C39D21 /* LaunchScreen.storyboard */; };
+		517F5C102821749300C39D21 /* RDOSceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C0F2821749300C39D21 /* RDOSceneManager.swift */; };
+		517F5C19282284D800C39D21 /* RDOGameInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C18282284D800C39D21 /* RDOGameInput.swift */; };
+		517F5C2328228DF900C39D21 /* ControlInputSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C2228228DF900C39D21 /* ControlInputSource.swift */; };
+		517F5C2528228F0900C39D21 /* GameControllerInputSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C2428228F0900C39D21 /* GameControllerInputSource.swift */; };
+		517F5C27282293CD00C39D21 /* TouchControlInputNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C26282293CD00C39D21 /* TouchControlInputNode.swift */; };
+		517F5C292822942C00C39D21 /* ThumbStickNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C282822942C00C39D21 /* ThumbStickNode.swift */; };
+		517F5C542822BBFD00C39D21 /* RDOStageOneScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5C522822BBFD00C39D21 /* RDOStageOneScene.sks */; };
+		517F5C552822BBFD00C39D21 /* RDOStartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5C532822BBFD00C39D21 /* RDOStartScene.sks */; };
+		517F5C5C2822BC8A00C39D21 /* RDOStartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C562822BC8A00C39D21 /* RDOStartScene.swift */; };
+		517F5C5D2822BC8A00C39D21 /* RDOBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C572822BC8A00C39D21 /* RDOBaseScene.swift */; };
+		517F5C5E2822BC8A00C39D21 /* RDOBaseScene+Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C582822BC8A00C39D21 /* RDOBaseScene+Buttons.swift */; };
+		517F5C5F2822BC8A00C39D21 /* RDOBaseScene+Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C592822BC8A00C39D21 /* RDOBaseScene+Focus.swift */; };
+		517F5C602822BC8A00C39D21 /* RDOSceneOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C5A2822BC8A00C39D21 /* RDOSceneOverlay.swift */; };
+		517F5C612822BC8A00C39D21 /* RDOStageOneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C5B2822BC8A00C39D21 /* RDOStageOneScene.swift */; };
+		517F5C632822BCC400C39D21 /* RDOButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C622822BCC300C39D21 /* RDOButtonNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,11 +36,25 @@
 		517F5BF428210F8600C39D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		517F5BF628210F8600C39D21 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		517F5BF828210F8600C39D21 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		517F5BFA28210F8600C39D21 /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		517F5BFC28210F8600C39D21 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		517F5BFF28210F8600C39D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		517F5C0128210F8900C39D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		517F5C0428210F8900C39D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		517F5C0F2821749300C39D21 /* RDOSceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOSceneManager.swift; sourceTree = "<group>"; };
+		517F5C18282284D800C39D21 /* RDOGameInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOGameInput.swift; sourceTree = "<group>"; };
+		517F5C2228228DF900C39D21 /* ControlInputSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlInputSource.swift; sourceTree = "<group>"; };
+		517F5C2428228F0900C39D21 /* GameControllerInputSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControllerInputSource.swift; sourceTree = "<group>"; };
+		517F5C26282293CD00C39D21 /* TouchControlInputNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchControlInputNode.swift; sourceTree = "<group>"; };
+		517F5C282822942C00C39D21 /* ThumbStickNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbStickNode.swift; sourceTree = "<group>"; };
+		517F5C522822BBFD00C39D21 /* RDOStageOneScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOStageOneScene.sks; sourceTree = "<group>"; };
+		517F5C532822BBFD00C39D21 /* RDOStartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOStartScene.sks; sourceTree = "<group>"; };
+		517F5C562822BC8A00C39D21 /* RDOStartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDOStartScene.swift; sourceTree = "<group>"; };
+		517F5C572822BC8A00C39D21 /* RDOBaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDOBaseScene.swift; sourceTree = "<group>"; };
+		517F5C582822BC8A00C39D21 /* RDOBaseScene+Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RDOBaseScene+Buttons.swift"; sourceTree = "<group>"; };
+		517F5C592822BC8A00C39D21 /* RDOBaseScene+Focus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RDOBaseScene+Focus.swift"; sourceTree = "<group>"; };
+		517F5C5A2822BC8A00C39D21 /* RDOSceneOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDOSceneOverlay.swift; sourceTree = "<group>"; };
+		517F5C5B2822BC8A00C39D21 /* RDOStageOneScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDOStageOneScene.swift; sourceTree = "<group>"; };
+		517F5C622822BCC300C39D21 /* RDOButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDOButtonNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +87,12 @@
 		517F5BF328210F8600C39D21 /* ReapersDayOff */ = {
 			isa = PBXGroup;
 			children = (
+				517F5C642822BDD000C39D21 /* Scene */,
+				517F5C652822BE0100C39D21 /* Nodes */,
+				517F5C112821B34300C39D21 /* Player Control */,
+				517F5C0E2821747200C39D21 /* SceneManager */,
 				517F5C0C2821115800C39D21 /* SKS */,
 				517F5C0B28210FFC00C39D21 /* Storyboard */,
-				517F5BFA28210F8600C39D21 /* BaseScene.swift */,
 				517F5C0128210F8900C39D21 /* Assets.xcassets */,
 				517F5C0D282111DD00C39D21 /* iOS */,
 			);
@@ -81,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				517F5BF628210F8600C39D21 /* GameScene.sks */,
+				517F5C522822BBFD00C39D21 /* RDOStageOneScene.sks */,
+				517F5C532822BBFD00C39D21 /* RDOStartScene.sks */,
 				517F5BF828210F8600C39D21 /* Actions.sks */,
 			);
 			path = SKS;
@@ -93,6 +126,47 @@
 				517F5BFC28210F8600C39D21 /* GameViewController.swift */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		517F5C0E2821747200C39D21 /* SceneManager */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C0F2821749300C39D21 /* RDOSceneManager.swift */,
+			);
+			path = SceneManager;
+			sourceTree = "<group>";
+		};
+		517F5C112821B34300C39D21 /* Player Control */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C18282284D800C39D21 /* RDOGameInput.swift */,
+				517F5C2228228DF900C39D21 /* ControlInputSource.swift */,
+				517F5C2428228F0900C39D21 /* GameControllerInputSource.swift */,
+				517F5C26282293CD00C39D21 /* TouchControlInputNode.swift */,
+			);
+			path = "Player Control";
+			sourceTree = "<group>";
+		};
+		517F5C642822BDD000C39D21 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C572822BC8A00C39D21 /* RDOBaseScene.swift */,
+				517F5C582822BC8A00C39D21 /* RDOBaseScene+Buttons.swift */,
+				517F5C592822BC8A00C39D21 /* RDOBaseScene+Focus.swift */,
+				517F5C5A2822BC8A00C39D21 /* RDOSceneOverlay.swift */,
+				517F5C5B2822BC8A00C39D21 /* RDOStageOneScene.swift */,
+				517F5C562822BC8A00C39D21 /* RDOStartScene.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		517F5C652822BE0100C39D21 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C622822BCC300C39D21 /* RDOButtonNode.swift */,
+				517F5C282822942C00C39D21 /* ThumbStickNode.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,8 +227,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517F5C552822BBFD00C39D21 /* RDOStartScene.sks in Resources */,
 				517F5C0028210F8600C39D21 /* Main.storyboard in Resources */,
 				517F5BF728210F8600C39D21 /* GameScene.sks in Resources */,
+				517F5C542822BBFD00C39D21 /* RDOStageOneScene.sks in Resources */,
 				517F5C0228210F8900C39D21 /* Assets.xcassets in Resources */,
 				517F5C0528210F8900C39D21 /* LaunchScreen.storyboard in Resources */,
 				517F5BF928210F8600C39D21 /* Actions.sks in Resources */,
@@ -168,9 +244,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				517F5BFB28210F8600C39D21 /* BaseScene.swift in Sources */,
+				517F5C292822942C00C39D21 /* ThumbStickNode.swift in Sources */,
+				517F5C612822BC8A00C39D21 /* RDOStageOneScene.swift in Sources */,
+				517F5C5C2822BC8A00C39D21 /* RDOStartScene.swift in Sources */,
+				517F5C27282293CD00C39D21 /* TouchControlInputNode.swift in Sources */,
+				517F5C632822BCC400C39D21 /* RDOButtonNode.swift in Sources */,
+				517F5C5D2822BC8A00C39D21 /* RDOBaseScene.swift in Sources */,
+				517F5C602822BC8A00C39D21 /* RDOSceneOverlay.swift in Sources */,
+				517F5C5F2822BC8A00C39D21 /* RDOBaseScene+Focus.swift in Sources */,
+				517F5C5E2822BC8A00C39D21 /* RDOBaseScene+Buttons.swift in Sources */,
 				517F5BFD28210F8600C39D21 /* GameViewController.swift in Sources */,
+				517F5C2528228F0900C39D21 /* GameControllerInputSource.swift in Sources */,
+				517F5C102821749300C39D21 /* RDOSceneManager.swift in Sources */,
 				517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */,
+				517F5C19282284D800C39D21 /* RDOGameInput.swift in Sources */,
+				517F5C2328228DF900C39D21 /* ControlInputSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
