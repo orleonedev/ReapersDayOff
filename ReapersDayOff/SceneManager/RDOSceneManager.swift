@@ -25,7 +25,7 @@ final class RDOSceneManager {
         The games input via connected control input sources. Used to
         provide control to scenes after presentation.
     */
-    // let gameInput: RDOGameInput
+    let gameInput: RDOGameInput
     
     /// The view used to choreograph scene transitions.
     let presentingView: SKView
@@ -33,9 +33,9 @@ final class RDOSceneManager {
     /// The `RDOSceneManager`'s delegate.
     weak var delegate: SceneManagerDelegate?
     
-    init(presentingView: SKView /*, gameInput: RDOGameInput*/){
+    init(presentingView: SKView , gameInput: RDOGameInput){
         self.presentingView = presentingView
-        // self.gameInput = gameInput
+        self.gameInput = gameInput
         
         
     }

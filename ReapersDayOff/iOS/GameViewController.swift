@@ -20,15 +20,15 @@ class GameViewController: UIViewController, SceneManagerDelegate {
         let viewSize = view.bounds.size
         
         /// Controller
-//        let controlLength = min(GameplayConfiguration.TouchControl.minimumControlSize, viewSize.width * GameplayConfiguration.TouchControl.idealRelativeControlSize)
-//        let controlSize = CGSize(width: controlLength, height: controlLength)
-//
-//        let touchControlInputNode = TouchControlInputNode(frame: view.bounds, thumbStickNodeSize: controlSize)
-//        let gameInput = RDOGameInput(nativeControlInputSource: touchControlInputNode)
+        let controlLength = min(140, viewSize.width * 0.15)
+        let controlSize = CGSize(width: controlLength, height: controlLength)
+
+        let touchControlInputNode = TouchControlInputNode(frame: view.bounds, thumbStickNodeSize: controlSize)
+        let gameInput = RDOGameInput(nativeControlInputSource: touchControlInputNode)
         
         // Present the scene
         if let view = self.view as! SKView? {
-            sceneManager = RDOSceneManager(presentingView: view /* , gameInput: gameInput */)
+            sceneManager = RDOSceneManager(presentingView: view, gameInput: gameInput )
             sceneManager.delegate = self
             sceneManager.transitionToScene(identifier: .start)
             

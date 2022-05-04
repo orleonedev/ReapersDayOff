@@ -8,7 +8,23 @@
 import SpriteKit
 import GameplayKit
 
-class BaseScene: SKScene {
+class BaseScene: SKScene, GameInputDelegate, ControlInputSourceGameStateDelegate {
+    func gameInputDidUpdateControlInputSources(gameInput: RDOGameInput) {
+        <#code#>
+    }
+    
+    func controlInputSourceDidSelect(_ controlInputSource: ControlInputSourceType) {
+        <#code#>
+    }
+    
+    func controlInputSource(_ controlInputSource: ControlInputSourceType, didSpecifyDirection: ControlInputDirection) {
+        <#code#>
+    }
+    
+    func controlInputSourceDidTogglePauseState(_ controlInputSource: ControlInputSourceType) {
+        <#code#>
+    }
+    
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
