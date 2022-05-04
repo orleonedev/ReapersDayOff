@@ -11,8 +11,6 @@
     with game controllers and the keyboard on OS X.
 */
 
-/*
-
 extension RDOBaseScene {
     // MARK: Properties
     
@@ -24,7 +22,6 @@ extension RDOBaseScene {
             }
             return nil
         }
-        
         set {
             focusedButton?.isFocused = false
             newValue?.isFocused = true
@@ -105,4 +102,4 @@ extension RDOBaseScene {
     }
 }
 
-*/
+

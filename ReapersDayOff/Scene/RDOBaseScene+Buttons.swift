@@ -28,7 +28,7 @@ extension RDOBaseScene: ButtonNodeResponderType {
                 sceneManager.transitionToScene(identifier: .stageOne)
 
             case .replay:
-//                sceneManager.transitionToScene(identifier: .currentLevel)
+            sceneManager.transitionToScene(identifier: .stageOne)
             print("replay")
             default:
                 fatalError("Unsupported ButtonNode type in Scene.")

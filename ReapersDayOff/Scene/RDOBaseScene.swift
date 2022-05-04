@@ -10,7 +10,9 @@ import SpriteKit
 /**
     A base class for all of the scenes in the app.
 */
-class RDOBaseScene: SKScene/*, GameInputDelegate, ControlInputSourceGameStateDelegate*/ {
+class RDOBaseScene: SKScene, GameInputDelegate, ControlInputSourceGameStateDelegate {
+    
+    
     // MARK: Properties
 
     /**
@@ -95,9 +97,50 @@ class RDOBaseScene: SKScene/*, GameInputDelegate, ControlInputSourceGameStateDel
         overlay?.updateScale()
     }
     
+    // MARK: Camera Actions
+    
+    /**
+        Creates a camera for the scene, and updates its scale.
+        This method should be called when initializing an instance of a `BaseScene` subclass.
+    */
+    func createCamera() {
+        if let backgroundNode = backgroundNode {
+            // If the scene has a background node, use its size as the native size of the scene.
+            nativeSize = backgroundNode.size
+        }
+        else {
+            // Otherwise, use the scene's own size as the native size of the scene.
+            nativeSize = size
+        }
+        
+        let camera = SKCameraNode()
+        self.camera = camera
+        addChild(camera)
+        
+        updateCameraScale()
+    }
+    
+    /// Centers the scene's camera on a given point.
+    func centerCameraOnPoint(point: CGPoint) {
+        if let camera = camera {
+            camera.position = point
+        }
+    }
+    
+    /// Scales the scene's camera.
+    func updateCameraScale() {
+        /*
+            Because the game is normally playing in landscape, use the scene's current and
+            original heights to calculate the camera scale.
+        */
+        if let camera = camera {
+            camera.setScale(nativeSize.height / size.height)
+        }
+    }
+    
     // MARK: GameInputDelegate
-    /*
-    func gameInputDidUpdateControlInputSources(gameInput: GameInput) {
+    
+    func gameInputDidUpdateControlInputSources(gameInput: RDOGameInput) {
         // Ensure all player controlInputSources delegate game actions to `BaseScene`.
         for controlInputSource in gameInput.controlInputSources {
             controlInputSource.gameStateDelegate = self
@@ -109,7 +152,7 @@ class RDOBaseScene: SKScene/*, GameInputDelegate, ControlInputSourceGameStateDel
             game controllers are connected or disconnected.
         */
         touchControlInputNode.hideThumbStickNodes = sceneManager.gameInput.isGameControllerConnected
-        resetFocus()
+        //resetFocus()
         #endif
     }
     
@@ -172,46 +215,5 @@ class RDOBaseScene: SKScene/*, GameInputDelegate, ControlInputSourceGameStateDel
     
     func controlInputSourceDidTogglePauseState(_ controlInputSource: ControlInputSourceType) {
         // Subclasses implement to toggle pause state.
-    }
-    */
-    // MARK: Camera Actions
-    
-    /**
-        Creates a camera for the scene, and updates its scale.
-        This method should be called when initializing an instance of a `BaseScene` subclass.
-    */
-    func createCamera() {
-        if let backgroundNode = backgroundNode {
-            // If the scene has a background node, use its size as the native size of the scene.
-            nativeSize = backgroundNode.size
-        }
-        else {
-            // Otherwise, use the scene's own size as the native size of the scene.
-            nativeSize = size
-        }
-        
-        let camera = SKCameraNode()
-        self.camera = camera
-        addChild(camera)
-        
-        updateCameraScale()
-    }
-    
-    /// Centers the scene's camera on a given point.
-    func centerCameraOnPoint(point: CGPoint) {
-        if let camera = camera {
-            camera.position = point
-        }
-    }
-    
-    /// Scales the scene's camera.
-    func updateCameraScale() {
-        /*
-            Because the game is normally playing in landscape, use the scene's current and
-            original heights to calculate the camera scale.
-        */
-        if let camera = camera {
-            camera.setScale(nativeSize.height / size.height)
-        }
     }
 }
