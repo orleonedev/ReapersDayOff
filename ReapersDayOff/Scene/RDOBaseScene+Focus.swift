@@ -44,13 +44,14 @@ extension RDOBaseScene {
     private var buttonIdentifiersOrderedByInitialFocusPriority: [ButtonIdentifier] {
         return [
             .resume,
-            .proceedToNextScene,
-            .replay,
             .retry,
+            .game,
             .home,
-            .cancel,
-            .viewRecordedContent,
-            .screenRecorderToggle
+            .start,
+            .collection,
+            .settings,
+            .about,
+            .back
         ]
     }
     

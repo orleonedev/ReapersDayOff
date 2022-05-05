@@ -22,23 +22,23 @@ import SpriteKit
 enum ButtonIdentifier: String {
     case resume = "Resume"
     case home = "Home"
-    case proceedToNextScene = "ProceedToNextScene"
-    case replay = "Replay"
+    case game = "Game"
     case retry = "Retry"
-    case cancel = "Cancel"
-    case screenRecorderToggle = "ScreenRecorderToggle"
-    case viewRecordedContent = "ViewRecordedContent"
+    case back = "Back"
+    case start = "Start"
+    case settings = "Settings"
+    case about = "About"
+    case collection = "Collection"
+    
     
     /// Convenience array of all available button identifiers.
     static let allButtonIdentifiers: [ButtonIdentifier] = [
-        .resume, .home, .proceedToNextScene, .replay, .retry, .cancel, .screenRecorderToggle, .viewRecordedContent
+        .resume, .home, .game, .retry, .back, .start, .settings, .about, .collection
     ]
     
     /// The name of the texture to use for a button when the button is selected.
     var selectedTextureName: String? {
         switch self {
-        case .screenRecorderToggle:
-            return "ButtonAutoRecordOn"
         default:
             return nil
         }
