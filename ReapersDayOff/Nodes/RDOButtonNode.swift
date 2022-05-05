@@ -124,6 +124,7 @@ class RDOButtonNode: SKSpriteNode {
                 focusRing.run(SKAction.fadeIn(withDuration: 0.2))
             }
             else {
+                
                 run(SKAction.scale(to: 1.0, duration: 0.20))
                 
                 focusRing.isHidden = true

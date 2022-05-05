@@ -87,6 +87,7 @@ class GameControllerInputSource: ControlInputSourceType {
         // `GCExtendedGamepad` left thumbstick.
         if let extendedGamepad = gameController.extendedGamepad {
             extendedGamepad.leftThumbstick.valueChangedHandler = movementHandler
+            extendedGamepad.dpad.valueChangedHandler = movementHandler
         }
     }
     
