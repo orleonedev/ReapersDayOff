@@ -58,7 +58,7 @@ class RDOBaseScene: SKScene, GameInputDelegate, ControlInputSourceGameStateDeleg
                 buttons = findAllButtonsInScene()
                 
                 // Reset the focus.
-                //resetFocus()
+                resetFocus()
             }
             
             // Animate the old overlay out.
@@ -204,7 +204,7 @@ class RDOBaseScene: SKScene, GameInputDelegate, ControlInputSourceGameStateDeleg
             }
             else {
                 // Indicate that a neighboring button does not exist for the requested direction.
-                currentFocusedButton.performInvalidFocusChangeAnimationForDirection(direction: direction)
+                //currentFocusedButton.performInvalidFocusChangeAnimationForDirection(direction: direction)
             }
         }
         else {

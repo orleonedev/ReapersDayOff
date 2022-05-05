@@ -21,7 +21,7 @@ class RDOStartScene: RDOBaseScene {
     
     /// The "NEW GAME" button which allows the player to proceed to the first level.
     var proceedButton: RDOButtonNode? {
-        return backgroundNode?.childNode(withName: ButtonIdentifier.proceedToNextScene.rawValue) as? RDOButtonNode
+        return backgroundNode?.childNode(withName: ButtonIdentifier.game.rawValue) as? RDOButtonNode
         
     }
 

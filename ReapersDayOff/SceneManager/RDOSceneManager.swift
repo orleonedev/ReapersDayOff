@@ -68,6 +68,7 @@ final class RDOSceneManager {
         }
         
         if scene != nil {
+            scene?.createCamera()
             presentScene(scene!)
         }
         
