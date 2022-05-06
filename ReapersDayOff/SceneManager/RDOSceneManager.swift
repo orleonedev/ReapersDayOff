@@ -17,7 +17,7 @@ final class RDOSceneManager {
     
     enum RDOSceneIdentifier {
         case start
-        case main, settings, about, preparation
+        case main, settings, about, collection
         case stageOne, results
     }
     
@@ -56,7 +56,7 @@ final class RDOSceneManager {
         case .about:
             scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
 //            scene = SKScene.init(fileNamed: "About")
-        case .preparation:
+        case .collection:
             scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
 //            scene = SKScene.init(fileNamed: "Preparation")
         case .stageOne:

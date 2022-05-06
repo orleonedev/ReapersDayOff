@@ -30,6 +30,7 @@
 		517F5C612822BC8A00C39D21 /* RDOStageOneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C5B2822BC8A00C39D21 /* RDOStageOneScene.swift */; };
 		517F5C632822BCC400C39D21 /* RDOButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C622822BCC300C39D21 /* RDOButtonNode.swift */; };
 		517F5C672822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C662822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift */; };
+		517F5C6928250DA700C39D21 /* RDOMainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C6828250DA700C39D21 /* RDOMainScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		517F5C5B2822BC8A00C39D21 /* RDOStageOneScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDOStageOneScene.swift; sourceTree = "<group>"; };
 		517F5C622822BCC300C39D21 /* RDOButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDOButtonNode.swift; sourceTree = "<group>"; };
 		517F5C662822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseScene+TouchEventForwarding.swift"; sourceTree = "<group>"; };
+		517F5C6828250DA700C39D21 /* RDOMainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOMainScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				517F5C5A2822BC8A00C39D21 /* RDOSceneOverlay.swift */,
 				517F5C5B2822BC8A00C39D21 /* RDOStageOneScene.swift */,
 				517F5C562822BC8A00C39D21 /* RDOStartScene.swift */,
+				517F5C6828250DA700C39D21 /* RDOMainScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				517F5C5E2822BC8A00C39D21 /* RDOBaseScene+Buttons.swift in Sources */,
 				517F5BFD28210F8600C39D21 /* GameViewController.swift in Sources */,
 				517F5C2528228F0900C39D21 /* GameControllerInputSource.swift in Sources */,
+				517F5C6928250DA700C39D21 /* RDOMainScene.swift in Sources */,
 				517F5C672822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift in Sources */,
 				517F5C102821749300C39D21 /* RDOSceneManager.swift in Sources */,
 				517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */,
