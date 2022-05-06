@@ -191,7 +191,7 @@ class RDOBaseScene: SKScene, GameInputDelegate, ControlInputSourceGameStateDeleg
                     constant input.
                 */
                 focusChangesEnabled = false
-                let deadline = DispatchTime.now() + DispatchTimeInterval.microseconds(200)
+                let deadline = DispatchTime.now() + DispatchTimeInterval.microseconds(500)
                 DispatchQueue.main.asyncAfter(deadline: deadline) {
                     self.focusChangesEnabled = true
 
@@ -199,7 +199,8 @@ class RDOBaseScene: SKScene, GameInputDelegate, ControlInputSourceGameStateDeleg
                         Resetting the control state will check the current values
                         and possibly call `controlInputSource(_: didSpecifyDirection:)` again.
                     */
-                    controlInputSource.resetControlState()
+                    // MARK: TODO CALLED TOO MANY TIMES IN MENU
+                    //controlInputSource.resetControlState()
                 }
             }
             else {

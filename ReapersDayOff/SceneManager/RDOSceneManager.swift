@@ -45,22 +45,22 @@ final class RDOSceneManager {
         // Block to initial file
         switch sceneIdentifier {
         case .start:
-            scene = SKScene.init(fileNamed: "RDOStartScene") as! RDOStartScene
+            scene = SKScene.init(fileNamed: "RDOStartScene") as? RDOStartScene
 //            scene = SKScene.init(fileNamed: "Start")
         case .main:
-            scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
+            scene = SKScene.init(fileNamed: "RDOMainScene") as? RDOMainScene
 //            scene = SKScene.init(fileNamed: "Main")
         case .settings:
-            scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
+            scene = SKScene.init(fileNamed: "RDOSettingsScene") as? RDOSettingsScene
 //            scene = SKScene.init(fileNamed: "Settings")
         case .about:
-            scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
+            scene = SKScene.init(fileNamed: "RDOAboutScene") as? RDOAboutScene
 //            scene = SKScene.init(fileNamed: "About")
         case .collection:
-            scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
+            scene = SKScene.init(fileNamed: "RDOCollectionScene") as? RDOCollectionScene
 //            scene = SKScene.init(fileNamed: "Preparation")
         case .stageOne:
-            scene = SKScene.init(fileNamed: "RDOStageOneScene") as! RDOStageOneScene
+            scene = SKScene.init(fileNamed: "RDOStageOneScene") as? RDOStageOneScene
 //            scene = SKScene.init(fileNamed: "StageOne")
         case .results:
             scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene

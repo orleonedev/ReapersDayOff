@@ -31,6 +31,9 @@
 		517F5C632822BCC400C39D21 /* RDOButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C622822BCC300C39D21 /* RDOButtonNode.swift */; };
 		517F5C672822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C662822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift */; };
 		517F5C6928250DA700C39D21 /* RDOMainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C6828250DA700C39D21 /* RDOMainScene.swift */; };
+		517F5C6B2825130A00C39D21 /* RDOSettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C6A2825130A00C39D21 /* RDOSettingsScene.swift */; };
+		517F5C6D2825137400C39D21 /* RDOAboutScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C6C2825137400C39D21 /* RDOAboutScene.swift */; };
+		517F5C6F2825139000C39D21 /* RDOCollectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C6E2825139000C39D21 /* RDOCollectionScene.swift */; };
 		66463147282506DB00311BE3 /* RDOMainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66463146282506DB00311BE3 /* RDOMainScene.sks */; };
 		6646314928250A9200311BE3 /* RDOSettingsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6646314828250A9200311BE3 /* RDOSettingsScene.sks */; };
 		667C2E7028250B6600A5D13E /* RDOAboutScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 667C2E6F28250B6600A5D13E /* RDOAboutScene.sks */; };
@@ -63,6 +66,9 @@
 		517F5C622822BCC300C39D21 /* RDOButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDOButtonNode.swift; sourceTree = "<group>"; };
 		517F5C662822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseScene+TouchEventForwarding.swift"; sourceTree = "<group>"; };
 		517F5C6828250DA700C39D21 /* RDOMainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOMainScene.swift; sourceTree = "<group>"; };
+		517F5C6A2825130A00C39D21 /* RDOSettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOSettingsScene.swift; sourceTree = "<group>"; };
+		517F5C6C2825137400C39D21 /* RDOAboutScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOAboutScene.swift; sourceTree = "<group>"; };
+		517F5C6E2825139000C39D21 /* RDOCollectionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCollectionScene.swift; sourceTree = "<group>"; };
 		66463146282506DB00311BE3 /* RDOMainScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOMainScene.sks; sourceTree = "<group>"; };
 		6646314828250A9200311BE3 /* RDOSettingsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOSettingsScene.sks; sourceTree = "<group>"; };
 		667C2E6F28250B6600A5D13E /* RDOAboutScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOAboutScene.sks; sourceTree = "<group>"; };
@@ -174,6 +180,9 @@
 				517F5C5B2822BC8A00C39D21 /* RDOStageOneScene.swift */,
 				517F5C562822BC8A00C39D21 /* RDOStartScene.swift */,
 				517F5C6828250DA700C39D21 /* RDOMainScene.swift */,
+				517F5C6A2825130A00C39D21 /* RDOSettingsScene.swift */,
+				517F5C6C2825137400C39D21 /* RDOAboutScene.swift */,
+				517F5C6E2825139000C39D21 /* RDOCollectionScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -268,9 +277,11 @@
 			files = (
 				517F5C292822942C00C39D21 /* ThumbStickNode.swift in Sources */,
 				517F5C612822BC8A00C39D21 /* RDOStageOneScene.swift in Sources */,
+				517F5C6F2825139000C39D21 /* RDOCollectionScene.swift in Sources */,
 				517F5C5C2822BC8A00C39D21 /* RDOStartScene.swift in Sources */,
 				517F5C27282293CD00C39D21 /* TouchControlInputNode.swift in Sources */,
 				517F5C632822BCC400C39D21 /* RDOButtonNode.swift in Sources */,
+				517F5C6D2825137400C39D21 /* RDOAboutScene.swift in Sources */,
 				517F5C5D2822BC8A00C39D21 /* RDOBaseScene.swift in Sources */,
 				517F5C602822BC8A00C39D21 /* RDOSceneOverlay.swift in Sources */,
 				517F5C5F2822BC8A00C39D21 /* RDOBaseScene+Focus.swift in Sources */,
@@ -281,6 +292,7 @@
 				517F5C672822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift in Sources */,
 				517F5C102821749300C39D21 /* RDOSceneManager.swift in Sources */,
 				517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */,
+				517F5C6B2825130A00C39D21 /* RDOSettingsScene.swift in Sources */,
 				517F5C19282284D800C39D21 /* RDOGameInput.swift in Sources */,
 				517F5C2328228DF900C39D21 /* ControlInputSource.swift in Sources */,
 			);

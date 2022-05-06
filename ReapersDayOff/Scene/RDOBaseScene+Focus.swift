@@ -77,7 +77,10 @@ extension RDOBaseScene {
             // Create a bidirectional connection between the nodes.
             node.focusableNeighbors[.down] = nextNode
             nextNode.focusableNeighbors[.up] = node
+            
+            print("\(node.name) -> DOWN: \(node.focusableNeighbors[.down]?.name) UP: \(node.focusableNeighbors[.up]?.name)")
         }
+        
     }
     
     /**
@@ -100,6 +103,7 @@ extension RDOBaseScene {
             
             return lhsPriority > rhsPriority
         }
+        
     }
 }
 

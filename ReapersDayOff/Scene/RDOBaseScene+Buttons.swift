@@ -23,7 +23,7 @@ extension RDOBaseScene: ButtonNodeResponderType {
     func buttonTriggered(button: RDOButtonNode) {
         switch button.buttonIdentifier! {
             case .home:
-                sceneManager.transitionToScene(identifier: .start)
+                sceneManager.transitionToScene(identifier: .main)
             case .game:
                 sceneManager.transitionToScene(identifier: .stageOne)
             case .collection:
