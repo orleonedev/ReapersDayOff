@@ -78,7 +78,6 @@ extension RDOBaseScene {
             node.focusableNeighbors[.down] = nextNode
             nextNode.focusableNeighbors[.up] = node
             
-            print("\(node.name) -> DOWN: \(node.focusableNeighbors[.down]?.name) UP: \(node.focusableNeighbors[.up]?.name)")
         }
         
     }

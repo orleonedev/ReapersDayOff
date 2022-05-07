@@ -10,6 +10,7 @@ Abstract:
 An `SKScene` used to represent and manage the Start scene of the game.
 */
 import SpriteKit
+import GameplayKit
 
 class RDOStageOneScene: RDOBaseScene {
     // MARK: Properties
@@ -23,6 +24,16 @@ class RDOStageOneScene: RDOBaseScene {
     var proceedButton: RDOButtonNode? {
         return backgroundNode?.childNode(withName: ButtonIdentifier.home.rawValue) as? RDOButtonNode
     }
+    
+    // MARK: Pathfinding
+    var graphs = [String : GKGraph]()
+    
+    lazy var obstacleSpriteNodes: [SKSpriteNode] = self["world/obstacles/*"] as! [SKSpriteNode]
+     
+    lazy var polygonObstacles: [GKPolygonObstacle] = SKNode.obstacles(fromNodePhysicsBodies: self.obstacleSpriteNodes)
+     
+    lazy var graph: GKObstacleGraph = GKObstacleGraph(obstacles: self.polygonObstacles, bufferRadius: GameplayConfiguration.Soul.pathfindingGraphBufferRadius)
+    
 
     /// An array of objects for `SceneLoader` notifications.
     private var sceneLoaderNotificationObservers = [Any]()

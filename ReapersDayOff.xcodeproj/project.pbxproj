@@ -34,6 +34,20 @@
 		517F5C6B2825130A00C39D21 /* RDOSettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C6A2825130A00C39D21 /* RDOSettingsScene.swift */; };
 		517F5C6D2825137400C39D21 /* RDOAboutScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C6C2825137400C39D21 /* RDOAboutScene.swift */; };
 		517F5C6F2825139000C39D21 /* RDOCollectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C6E2825139000C39D21 /* RDOCollectionScene.swift */; };
+		517F5C722826AC8E00C39D21 /* ColliderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C712826AC8E00C39D21 /* ColliderType.swift */; };
+		517F5C772826AFC000C39D21 /* Soul.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C762826AFC000C39D21 /* Soul.swift */; };
+		517F5C792826AFF700C39D21 /* RenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C782826AFF700C39D21 /* RenderComponent.swift */; };
+		517F5C7B2826B07B00C39D21 /* IntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C7A2826B07B00C39D21 /* IntelligenceComponent.swift */; };
+		517F5C7E2826B10E00C39D21 /* SoulAgentControlledState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C7D2826B10E00C39D21 /* SoulAgentControlledState.swift */; };
+		517F5C802826B16100C39D21 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C7F2826B16100C39D21 /* PhysicsComponent.swift */; };
+		517F5C822826B1E400C39D21 /* OrientationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C812826B1E400C39D21 /* OrientationComponent.swift */; };
+		517F5C842826B20800C39D21 /* CompassDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C832826B20800C39D21 /* CompassDirection.swift */; };
+		517F5C862826B28100C39D21 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C852826B28100C39D21 /* AnimationComponent.swift */; };
+		517F5C882826B2B700C39D21 /* GameplayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C872826B2B700C39D21 /* GameplayConfiguration.swift */; };
+		517F5C8A2826B2D000C39D21 /* SoulAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C892826B2D000C39D21 /* SoulAgent.swift */; };
+		517F5C8C2826B2F300C39D21 /* RedSoul.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C8B2826B2F300C39D21 /* RedSoul.swift */; };
+		517F5C8F2826B36D00C39D21 /* SoulBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C8E2826B36D00C39D21 /* SoulBehavior.swift */; };
+		517F5C912826B3B800C39D21 /* GeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C902826B3B800C39D21 /* GeometryExtension.swift */; };
 		66463147282506DB00311BE3 /* RDOMainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66463146282506DB00311BE3 /* RDOMainScene.sks */; };
 		6646314928250A9200311BE3 /* RDOSettingsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6646314828250A9200311BE3 /* RDOSettingsScene.sks */; };
 		667C2E7028250B6600A5D13E /* RDOAboutScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 667C2E6F28250B6600A5D13E /* RDOAboutScene.sks */; };
@@ -69,6 +83,20 @@
 		517F5C6A2825130A00C39D21 /* RDOSettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOSettingsScene.swift; sourceTree = "<group>"; };
 		517F5C6C2825137400C39D21 /* RDOAboutScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOAboutScene.swift; sourceTree = "<group>"; };
 		517F5C6E2825139000C39D21 /* RDOCollectionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCollectionScene.swift; sourceTree = "<group>"; };
+		517F5C712826AC8E00C39D21 /* ColliderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColliderType.swift; sourceTree = "<group>"; };
+		517F5C762826AFC000C39D21 /* Soul.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soul.swift; sourceTree = "<group>"; };
+		517F5C782826AFF700C39D21 /* RenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
+		517F5C7A2826B07B00C39D21 /* IntelligenceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligenceComponent.swift; sourceTree = "<group>"; };
+		517F5C7D2826B10E00C39D21 /* SoulAgentControlledState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulAgentControlledState.swift; sourceTree = "<group>"; };
+		517F5C7F2826B16100C39D21 /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
+		517F5C812826B1E400C39D21 /* OrientationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationComponent.swift; sourceTree = "<group>"; };
+		517F5C832826B20800C39D21 /* CompassDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassDirection.swift; sourceTree = "<group>"; };
+		517F5C852826B28100C39D21 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
+		517F5C872826B2B700C39D21 /* GameplayConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayConfiguration.swift; sourceTree = "<group>"; };
+		517F5C892826B2D000C39D21 /* SoulAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulAgent.swift; sourceTree = "<group>"; };
+		517F5C8B2826B2F300C39D21 /* RedSoul.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSoul.swift; sourceTree = "<group>"; };
+		517F5C8E2826B36D00C39D21 /* SoulBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulBehavior.swift; sourceTree = "<group>"; };
+		517F5C902826B3B800C39D21 /* GeometryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtension.swift; sourceTree = "<group>"; };
 		66463146282506DB00311BE3 /* RDOMainScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOMainScene.sks; sourceTree = "<group>"; };
 		6646314828250A9200311BE3 /* RDOSettingsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOSettingsScene.sks; sourceTree = "<group>"; };
 		667C2E6F28250B6600A5D13E /* RDOAboutScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOAboutScene.sks; sourceTree = "<group>"; };
@@ -105,6 +133,8 @@
 		517F5BF328210F8600C39D21 /* ReapersDayOff */ = {
 			isa = PBXGroup;
 			children = (
+				517F5C732826AF7B00C39D21 /* ECS */,
+				517F5C702826ABA200C39D21 /* Physics Contacts and Collisions */,
 				517F5C642822BDD000C39D21 /* Scene */,
 				517F5C652822BE0100C39D21 /* Nodes */,
 				517F5C112821B34300C39D21 /* Player Control */,
@@ -196,6 +226,66 @@
 			path = Nodes;
 			sourceTree = "<group>";
 		};
+		517F5C702826ABA200C39D21 /* Physics Contacts and Collisions */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C712826AC8E00C39D21 /* ColliderType.swift */,
+			);
+			path = "Physics Contacts and Collisions";
+			sourceTree = "<group>";
+		};
+		517F5C732826AF7B00C39D21 /* ECS */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C8D2826B31000C39D21 /* Behaviors */,
+				517F5C742826AF8C00C39D21 /* Entities */,
+				517F5C752826AF9400C39D21 /* Components */,
+			);
+			path = ECS;
+			sourceTree = "<group>";
+		};
+		517F5C742826AF8C00C39D21 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C762826AFC000C39D21 /* Soul.swift */,
+				517F5C872826B2B700C39D21 /* GameplayConfiguration.swift */,
+				517F5C892826B2D000C39D21 /* SoulAgent.swift */,
+				517F5C8B2826B2F300C39D21 /* RedSoul.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		517F5C752826AF9400C39D21 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C7C2826B0DF00C39D21 /* Soul Intelligence Component States */,
+				517F5C782826AFF700C39D21 /* RenderComponent.swift */,
+				517F5C7A2826B07B00C39D21 /* IntelligenceComponent.swift */,
+				517F5C7F2826B16100C39D21 /* PhysicsComponent.swift */,
+				517F5C812826B1E400C39D21 /* OrientationComponent.swift */,
+				517F5C832826B20800C39D21 /* CompassDirection.swift */,
+				517F5C852826B28100C39D21 /* AnimationComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		517F5C7C2826B0DF00C39D21 /* Soul Intelligence Component States */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C7D2826B10E00C39D21 /* SoulAgentControlledState.swift */,
+			);
+			path = "Soul Intelligence Component States";
+			sourceTree = "<group>";
+		};
+		517F5C8D2826B31000C39D21 /* Behaviors */ = {
+			isa = PBXGroup;
+			children = (
+				517F5C8E2826B36D00C39D21 /* SoulBehavior.swift */,
+				517F5C902826B3B800C39D21 /* GeometryExtension.swift */,
+			);
+			path = Behaviors;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -275,24 +365,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517F5C792826AFF700C39D21 /* RenderComponent.swift in Sources */,
+				517F5C772826AFC000C39D21 /* Soul.swift in Sources */,
 				517F5C292822942C00C39D21 /* ThumbStickNode.swift in Sources */,
 				517F5C612822BC8A00C39D21 /* RDOStageOneScene.swift in Sources */,
+				517F5C8F2826B36D00C39D21 /* SoulBehavior.swift in Sources */,
+				517F5C7B2826B07B00C39D21 /* IntelligenceComponent.swift in Sources */,
 				517F5C6F2825139000C39D21 /* RDOCollectionScene.swift in Sources */,
+				517F5C8C2826B2F300C39D21 /* RedSoul.swift in Sources */,
+				517F5C882826B2B700C39D21 /* GameplayConfiguration.swift in Sources */,
 				517F5C5C2822BC8A00C39D21 /* RDOStartScene.swift in Sources */,
 				517F5C27282293CD00C39D21 /* TouchControlInputNode.swift in Sources */,
+				517F5C7E2826B10E00C39D21 /* SoulAgentControlledState.swift in Sources */,
 				517F5C632822BCC400C39D21 /* RDOButtonNode.swift in Sources */,
 				517F5C6D2825137400C39D21 /* RDOAboutScene.swift in Sources */,
+				517F5C722826AC8E00C39D21 /* ColliderType.swift in Sources */,
 				517F5C5D2822BC8A00C39D21 /* RDOBaseScene.swift in Sources */,
+				517F5C802826B16100C39D21 /* PhysicsComponent.swift in Sources */,
 				517F5C602822BC8A00C39D21 /* RDOSceneOverlay.swift in Sources */,
 				517F5C5F2822BC8A00C39D21 /* RDOBaseScene+Focus.swift in Sources */,
+				517F5C912826B3B800C39D21 /* GeometryExtension.swift in Sources */,
+				517F5C842826B20800C39D21 /* CompassDirection.swift in Sources */,
 				517F5C5E2822BC8A00C39D21 /* RDOBaseScene+Buttons.swift in Sources */,
 				517F5BFD28210F8600C39D21 /* GameViewController.swift in Sources */,
 				517F5C2528228F0900C39D21 /* GameControllerInputSource.swift in Sources */,
 				517F5C6928250DA700C39D21 /* RDOMainScene.swift in Sources */,
+				517F5C862826B28100C39D21 /* AnimationComponent.swift in Sources */,
+				517F5C822826B1E400C39D21 /* OrientationComponent.swift in Sources */,
 				517F5C672822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift in Sources */,
 				517F5C102821749300C39D21 /* RDOSceneManager.swift in Sources */,
 				517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */,
 				517F5C6B2825130A00C39D21 /* RDOSettingsScene.swift in Sources */,
+				517F5C8A2826B2D000C39D21 /* SoulAgent.swift in Sources */,
 				517F5C19282284D800C39D21 /* RDOGameInput.swift in Sources */,
 				517F5C2328228DF900C39D21 /* ControlInputSource.swift in Sources */,
 			);
