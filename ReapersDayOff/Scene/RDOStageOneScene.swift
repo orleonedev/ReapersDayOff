@@ -56,12 +56,8 @@ class RDOStageOneScene: RDOBaseScene {
         
 //        registerForNotifications()
         centerCameraOnPoint(point: backgroundNode!.position)
+      
         
-        // Begin loading the first level as soon as the view appears.
-        //sceneManager.prepareScene(identifier: .level(1))
-        
-        //let levelLoader = sceneManager.sceneLoader(forSceneIdentifier: .level(1))
-            
         
     }
     /*

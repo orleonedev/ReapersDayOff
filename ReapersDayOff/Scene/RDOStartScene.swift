@@ -43,7 +43,7 @@ class RDOStartScene: RDOBaseScene {
         super.didMove(to: view)
         // Enable focus based navigation.
         focusChangesEnabled = true
-        
+        RedSoul.loadResources(){}
         
 //        registerForNotifications()
         centerCameraOnPoint(point: backgroundNode!.position)
