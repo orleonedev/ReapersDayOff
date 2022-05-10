@@ -84,8 +84,11 @@ class Soul: GKEntity,GKAgentDelegate {
         return agentBehavior
     }
     
-    /// The agent used when pathfinding to the `Soul`.
-    let agent: GKAgent2D
+    /// The `GKAgent` associated with this `TaskBot`.
+    var agent: SoulAgent {
+        guard let agent = component(ofType: SoulAgent.self) else { fatalError("A TaskBot entity must have a GKAgent2D component.") }
+        return agent
+    }
     
     var renderComponent: RenderComponent {
         guard let renderComponent = component(ofType: RenderComponent.self) else { fatalError("A Soul must have an RenderComponent.") }
@@ -95,18 +98,35 @@ class Soul: GKEntity,GKAgentDelegate {
     // MARK: Initializers
     
     override init() {
-        agent = GKAgent2D()
+//        agent = SoulAgent()
 //        agent.radius = GameplayConfiguration.PlayerBot.agentRadius
         self.pathPoints = [CGPoint()]
         self.mandate = SoulMandate.followPatrolPath
         super.init()
     }
     
-    init(pathPoints: [CGPoint], mandate: SoulMandate) {
-        agent = GKAgent2D()
+    required init(pathPoints: [CGPoint], mandate: SoulMandate) {
+//        agent = SoulAgent()
         self.pathPoints = pathPoints
         self.mandate = mandate
         super.init()
+        // Create a `TaskBotAgent` to represent this `TaskBot` in a steering physics simulation.
+        let agent = SoulAgent()
+        agent.delegate = self
+        
+        // Configure the agent's characteristics for the steering physics simulation.
+        agent.maxSpeed = GameplayConfiguration.Soul.maximumSpeed
+        agent.maxAcceleration = GameplayConfiguration.Soul.maximumAcceleration
+        agent.mass = GameplayConfiguration.Soul.agentMass
+        agent.radius = GameplayConfiguration.Soul.agentRadius
+        agent.behavior = GKBehavior()
+        
+        /*
+            `GKAgent2D` is a `GKComponent` subclass.
+            Add it to the `TaskBot` entity's list of components so that it will be updated
+            on each component update cycle.
+        */
+        addComponent(agent)
     }
     
     required init?(coder: NSCoder) {
