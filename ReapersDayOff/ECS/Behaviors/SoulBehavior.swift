@@ -13,7 +13,7 @@ class SoulBehavior: GKBehavior {
     // MARK: Behavior factory methods
     
     /// Constructs a behavior to hunt a `TaskBot` or `PlayerBot` via a computed path.
-    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, huntingAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOStageOneScene) -> (behavior: GKBehavior, pathPoints: [CGPoint]) {
+    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, huntingAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) -> (behavior: GKBehavior, pathPoints: [CGPoint]) {
         let behavior = SoulBehavior()
         
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
@@ -48,7 +48,7 @@ class SoulBehavior: GKBehavior {
         return (behavior, pathPoints)
     }
     
-    private func extrudedObstaclesContaining(point: SIMD2<Float>, inScene scene: RDOStageOneScene) -> [GKPolygonObstacle] {
+    private func extrudedObstaclesContaining(point: SIMD2<Float>, inScene scene: RDOLevelScene) -> [GKPolygonObstacle] {
         /*
             Add a small fudge factor (+5) to the extrusion radius to make sure
             we're including all obstacles.
@@ -79,7 +79,7 @@ class SoulBehavior: GKBehavior {
         }
     }
     
-    private func connectedNode(forPoint point: SIMD2<Float>, onObstacleGraphInScene scene: RDOStageOneScene) -> GKGraphNode2D? {
+    private func connectedNode(forPoint point: SIMD2<Float>, onObstacleGraphInScene scene: RDOLevelScene) -> GKGraphNode2D? {
         // Create a graph node for this point.
         let pointNode = GKGraphNode2D(point: point)
         
@@ -116,7 +116,7 @@ class SoulBehavior: GKBehavior {
         return pointNode
     }
     
-    private func addGoalsToFollowPath(from startPoint: SIMD2<Float>, to endPoint: SIMD2<Float>, pathRadius: Float, inScene scene: RDOStageOneScene) -> [CGPoint] {
+    private func addGoalsToFollowPath(from startPoint: SIMD2<Float>, to endPoint: SIMD2<Float>, pathRadius: Float, inScene scene: RDOLevelScene) -> [CGPoint] {
         
         // Convert the provided `CGPoint`s into nodes for the `GPGraph`.
         guard let startNode = connectedNode(forPoint: startPoint, onObstacleGraphInScene: scene),
