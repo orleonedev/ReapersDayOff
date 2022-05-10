@@ -10,6 +10,80 @@ import GameplayKit
 
 class Soul: GKEntity,GKAgentDelegate {
     
+    // MARK: Nested types
+    
+    /// Encapsulates a `Soul`'s current mandate, i.e. the aim that the `Soul` is setting out to achieve.
+    enum SoulMandate {
+        // Hunt another agent (either a `PlayerBot` or a "good" `TaskBot`).
+//        case huntAgent(GKAgent2D)
+
+        // Follow the `TaskBot`'s "good" patrol path.
+//        case followGoodPatrolPath
+
+        // Follow the `Soul`'s patrol path.
+        case followPatrolPath
+
+        // Return to a given position on a patrol path.
+        case returnToPositionOnPath(SIMD2<Float>)
+    }
+    
+    // MARK: Properties
+    
+    
+    func didSet() {
+    let closestPointOnBadPath = closestPointOnPath(path: pathPoints)
+    mandate = .returnToPositionOnPath(SIMD2<Float>(closestPointOnBadPath))
+    
+    }
+    var mandate: SoulMandate
+    
+    var pathPoints: [CGPoint]
+    
+    var behaviorForCurrentMandate: GKBehavior {
+        // Return an empty behavior if this `TaskBot` is not yet in a `LevelScene`.
+        guard let levelScene = component(ofType: RenderComponent.self)?.node.scene as? RDOLevelScene else {
+            return GKBehavior()
+        }
+
+        let agentBehavior: GKBehavior
+        let radius: Float
+            
+        // `debugPathPoints`, `debugPathShouldCycle`, and `debugColor` are only used when debug drawing is enabled.
+        let debugPathPoints: [CGPoint]
+        var debugPathShouldCycle = false
+        let debugColor: SKColor
+        
+        switch mandate {
+            case .followPatrolPath:
+                let pathPoints = pathPoints
+                radius = GameplayConfiguration.Soul.patrolPathRadius
+                agentBehavior = SoulBehavior.behavior(forAgent: agent, patrollingPathWithPoints: pathPoints, pathRadius: radius, inScene: levelScene)
+//                debugPathPoints = pathPoints
+//                // Patrol paths are always closed loops, so the debug drawing of the path should cycle back round to the start.
+//                debugPathShouldCycle = true
+//                debugColor = isGood ? SKColor.green : SKColor.purple
+            
+//            case let .huntAgent(targetAgent):
+//                radius = GameplayConfiguration.TaskBot.huntPathRadius
+//                (agentBehavior, debugPathPoints) = TaskBotBehavior.behaviorAndPathPoints(forAgent: agent, huntingAgent: targetAgent, pathRadius: radius, inScene: levelScene)
+//                debugColor = SKColor.red
+
+            case let .returnToPositionOnPath(position):
+                radius = GameplayConfiguration.Soul.returnToPatrolPathRadius
+                (agentBehavior, debugPathPoints) = SoulBehavior.behaviorAndPathPoints(forAgent: agent, returningToPoint: position, pathRadius: radius, inScene: levelScene)
+//                debugColor = SKColor.yellow
+        }
+
+//        if levelScene.debugDrawingEnabled {
+//            drawDebugPath(path: debugPathPoints, cycle: debugPathShouldCycle, color: debugColor, radius: radius)
+//        }
+//        else {
+//            debugNode.removeAllChildren()
+//        }
+
+        return agentBehavior
+    }
+    
     /// The agent used when pathfinding to the `Soul`.
     let agent: GKAgent2D
     
@@ -23,12 +97,15 @@ class Soul: GKEntity,GKAgentDelegate {
     override init() {
         agent = GKAgent2D()
 //        agent.radius = GameplayConfiguration.PlayerBot.agentRadius
-        
+        self.pathPoints = [CGPoint()]
+        self.mandate = SoulMandate.followPatrolPath
         super.init()
     }
     
-    init(pathPoints: [CGPoint]) {
+    init(pathPoints: [CGPoint], mandate: SoulMandate) {
         agent = GKAgent2D()
+        self.pathPoints = pathPoints
+        self.mandate = mandate
         super.init()
     }
     

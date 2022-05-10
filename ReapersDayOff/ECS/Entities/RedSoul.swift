@@ -19,8 +19,8 @@ class RedSoul: Soul {
         return RedSoul.soulAnimations!
     }
     
-    required override init(pathPoints: [CGPoint]) {
-        super.init(pathPoints: pathPoints)
+    required override init(pathPoints: [CGPoint], mandate: SoulMandate) {
+        super.init(pathPoints: pathPoints, mandate: mandate)
 
         // Create components that define how the entity looks and behaves.
         createRenderingComponents()

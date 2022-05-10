@@ -10,6 +10,80 @@ import GameplayKit
 
 class SoulBehavior: GKBehavior {
     
+    // MARK: Behavior factory methods
+    
+    /// Constructs a behavior to hunt a `TaskBot` or `PlayerBot` via a computed path.
+    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, huntingAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) -> (behavior: GKBehavior, pathPoints: [CGPoint]) {
+        let behavior = SoulBehavior()
+        
+        // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
+        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
+//        behavior.addAvoidObstaclesGoal(forScene: scene)
+
+        // Find any nearby "bad" TaskBots to flock with.
+        let agentsToFlockWith: [GKAgent2D] = scene.entities.compactMap { entity in
+            if let soul = entity as? Soul, soul.agent !== agent && soul.distanceToAgent(otherAgent: agent) <= GameplayConfiguration.Flocking.agentSearchDistanceForFlocking {
+                return soul.agent
+            }
+
+            return nil
+        }
+        
+        if !agentsToFlockWith.isEmpty {
+            // Add flocking goals for any nearby "bad" `TaskBot`s.
+            let separationGoal = GKGoal(toSeparateFrom: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.separationRadius, maxAngle: GameplayConfiguration.Flocking.separationAngle)
+            behavior.setWeight(GameplayConfiguration.Flocking.separationWeight, for: separationGoal)
+
+            let alignmentGoal = GKGoal(toAlignWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.alignmentRadius, maxAngle: GameplayConfiguration.Flocking.alignmentAngle)
+            behavior.setWeight(GameplayConfiguration.Flocking.alignmentWeight, for: alignmentGoal)
+
+            let cohesionGoal = GKGoal(toCohereWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.cohesionRadius, maxAngle: GameplayConfiguration.Flocking.cohesionAngle)
+            behavior.setWeight(GameplayConfiguration.Flocking.cohesionWeight, for: cohesionGoal)
+        }
+
+        // Add goals to follow a calculated path from the `TaskBot` to its target.
+        let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: target.position, pathRadius: pathRadius, inScene: scene )
+        
+        // Return a tuple containing the new behavior, and the found path points for debug drawing.
+        return (behavior, pathPoints)
+    }
+    
+    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, returningToPoint endPoint: SIMD2<Float>, pathRadius: Float, inScene scene: RDOLevelScene) -> (behavior: GKBehavior, pathPoints: [CGPoint]) {
+        let behavior = SoulBehavior()
+        
+        // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
+        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
+//        behavior.addAvoidObstaclesGoal(forScene: scene)
+        
+        // Add goals to follow a calculated path from the `TaskBot` to the start of its patrol path.
+        let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: endPoint, pathRadius: pathRadius, inScene: scene)
+
+        // Return a tuple containing the new behavior, and the found path points for debug drawing.
+        return (behavior, pathPoints)
+    }
+    
+    /// Constructs a behavior to patrol a path of points, avoiding obstacles along the way.
+    static func behavior(forAgent agent: GKAgent2D, patrollingPathWithPoints patrolPathPoints: [CGPoint], pathRadius: Float, inScene scene: RDOLevelScene) -> GKBehavior {
+        let behavior = SoulBehavior()
+        
+        // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
+        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
+//        behavior.addAvoidObstaclesGoal(forScene: scene)
+        
+        // Convert the patrol path to an array of `float2`s.
+        
+        let pathVectorPoints = patrolPathPoints.map { SIMD2<Float>($0) }
+        
+        // Create a cyclical (closed) `GKPath` from the provided path points with the requested path radius.
+        // GKPath(points: &pathVectorPoints, radius: <#T##Float#>, cyclical: <#T##Bool#>)
+        let path = GKPath(points: pathVectorPoints, radius: pathRadius, cyclical: true)
+
+        // Add "follow path" and "stay on path" goals for this path.
+        behavior.addFollowAndStayOnPathGoals(for: path)
+
+        return behavior
+    }
+    
     private func extrudedObstaclesContaining(point: SIMD2<Float>, inScene scene: RDOLevelScene) -> [GKPolygonObstacle] {
         /*
             Add a small fudge factor (+5) to the extrusion radius to make sure
@@ -102,6 +176,11 @@ class SoulBehavior: GKBehavior {
         // Convert the `GKGraphNode2D` nodes into `CGPoint`s for debug drawing.
         let pathPoints = pathNodes.map { CGPoint($0.position) }
         return pathPoints
+    }
+    
+    /// Adds a goal to attain a target speed.
+    private func addTargetSpeedGoal(speed: Float) {
+        setWeight(0.5, for: GKGoal(toReachTargetSpeed: speed))
     }
     
     /// Adds goals to follow and stay on a path.

@@ -45,6 +45,8 @@ enum WorldLayer: CGFloat {
 
 class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
+   
+    
 
     /// An array of objects for `SceneLoader` notifications.
     private var sceneLoaderNotificationObservers = [Any]()
@@ -117,11 +119,11 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let chargeSystem = GKComponentSystem(componentClass: ChargeComponent.self)
         let intelligenceSystem = GKComponentSystem(componentClass: IntelligenceComponent.self)
         let movementSystem = GKComponentSystem(componentClass: MovementComponent.self)
-        
+
 //        let rulesSystem = GKComponentSystem(componentClass: RulesComponent.self)
 
         // The systems will be updated in order. This order is explicitly defined to match assumptions made within components.
-        return [/*rulesSystem,*/ intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
+        return [intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
     }()
     
     // MARK: Initializers
@@ -178,35 +180,40 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         }
         
         // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
-//        for taskBotConfiguration in levelConfiguration.taskBotConfigurations {
-//            let taskBot: TaskBot
+        let pathPoints = [CGPoint(), CGPoint(x: 100, y: 100)]
+        
+        let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
+        
+//        for soulConfiguration in levelConfiguration.soulConfigurations {
+//            let soul: Soul
 //
 //            // Find the locations of the nodes that define the `TaskBot`'s "good" and "bad" patrol paths.
-//            let goodPathPoints = nodePointsFromNodeNames(nodeNames: taskBotConfiguration.goodPathNodeNames)
-//            let badPathPoints = nodePointsFromNodeNames(nodeNames: taskBotConfiguration.badPathNodeNames)
+////            let goodPathPoints = nodePointsFromNodeNames(nodeNames: taskBotConfiguration.goodPathNodeNames)
+//            let pathPoints = nodePointsFromNodeNames(nodeNames: soulConfiguration.pathNodeNames)
+//
 //
 //            // Create the appropriate type `TaskBot` (ground or flying).
-//            switch taskBotConfiguration.locomotion {
-//                case .flying:
-//                    taskBot = FlyingBot(isGood: !taskBotConfiguration.startsBad, goodPathPoints: goodPathPoints, badPathPoints: badPathPoints)
+//            switch soulConfiguration.locomotion {
+////                case .flying:
+////                    taskBot = FlyingBot(isGood: !taskBotConfiguration.startsBad, goodPathPoints: goodPathPoints, badPathPoints: badPathPoints)
 //
-//                case .ground:
-//                    taskBot = GroundBot(isGood: !taskBotConfiguration.startsBad, goodPathPoints: goodPathPoints, badPathPoints: badPathPoints)
+//                case .red:
+//                soul = RedSoul(pathPoints: pathPoints, mandate: .followPatrolPath)
 //            }
 //
 //            // Set the `TaskBot`'s initial orientation so that it is facing the correct way.
-//            guard let orientationComponent = taskBot.component(ofType: OrientationComponent.self) else {
-//                fatalError("A task bot must have an orientation component to be able to be added to a level")
-//            }
-//            orientationComponent.compassDirection = taskBotConfiguration.initialOrientation
+            guard let orientationComponent = redSoul.component(ofType: OrientationComponent.self) else {
+                fatalError("A task bot must have an orientation component to be able to be added to a level")
+            }
+        orientationComponent.compassDirection = .east
 //
 //            // Set the `TaskBot`'s initial position.
-//            let taskBotNode = taskBot.renderComponent.node
-//            taskBotNode.position = taskBot.isGood ? goodPathPoints.first! : badPathPoints.first!
-//            taskBot.updateAgentPositionToMatchNodePosition()
+            let soulNode = redSoul.renderComponent.node
+        soulNode.position = pathPoints.first!
+        redSoul.updateAgentPositionToMatchNodePosition()
 //
 //            // Add the `TaskBot` to the scene and the component systems.
-//            addEntity(entity: taskBot)
+            addEntity(entity: redSoul)
 //
 //            // Add the `TaskBot`'s debug drawing node beneath all characters.
 //            addNode(node: taskBot.debugNode, toWorldLayer: .debug)
@@ -466,7 +473,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     // MARK: Convenience
     
     /// Constrains the camera to follow the PlayerBot without approaching the scene edges.
-    private func setCameraConstraints() {
+     func setCameraConstraints() {
         // Don't try to set up camera constraints if we don't yet have a camera.
         guard let camera = camera else { return }
         
@@ -526,7 +533,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     }
     
     /// Scales and positions the timer node to fit the scene's current height.
-    private func scaleTimerNode() {
+     func scaleTimerNode() {
         // Update the font size of the timer node based on the height of the scene.
         timerNode.fontSize = size.height * GameplayConfiguration.Timer.fontSize
         
@@ -565,3 +572,4 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     }
   
 }
+
