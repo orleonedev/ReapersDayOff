@@ -107,8 +107,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 //            debugDrawingEnabledDidChange()
 //        }
 //    }
-    var graphLayer = SKNode()
-    var debugObstacleLayer = SKNode()
+//    var graphLayer = SKNode()
+//    var debugObstacleLayer = SKNode()
     
     // MARK: Rule State
     

@@ -17,7 +17,7 @@ class RDOLevelScenePauseState: RDOLevelSceneOverlayState {
     // MARK: Properties
 
     override var overlaySceneFileName: String {
-        return "PauseScene"
+        return "RDOPauseScene"
     }
     
     // MARK: GKState Life Cycle
