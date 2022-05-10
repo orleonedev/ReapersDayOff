@@ -108,4 +108,21 @@ struct GameplayConfiguration {
         static let paddingSize: CGFloat = 0.2
         #endif
     }
+    
+    struct Flocking {
+        /// Separation, alignment, and cohesion parameters for multiple `TaskBot`s.
+        static let separationRadius: Float = 25.3
+        static let separationAngle = Float (3 * (Float.pi / 4))
+        static let separationWeight: Float = 2.0
+        
+        static let alignmentRadius: Float = 43.333
+        static let alignmentAngle: Float = Float.pi / 2
+        static let alignmentWeight: Float = 1.667
+        
+        static let cohesionRadius: Float = 50.0
+        static let cohesionAngle: Float = Float.pi / 2
+        static let cohesionWeight: Float = 1.667
+        
+        static let agentSearchDistanceForFlocking: Float = 50.0
+    }
 }

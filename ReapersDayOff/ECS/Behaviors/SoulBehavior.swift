@@ -17,32 +17,32 @@ class SoulBehavior: GKBehavior {
         let behavior = SoulBehavior()
         
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
-//        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
+        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
 //        behavior.addAvoidObstaclesGoal(forScene: scene)
 
         // Find any nearby "bad" TaskBots to flock with.
-//        let agentsToFlockWith: [GKAgent2D] = scene.entities.compactMap { entity in
-//            if let taskBot = entity as? TaskBot, !taskBot.isGood && taskBot.agent !== agent && taskBot.distanceToAgent(otherAgent: agent) <= GameplayConfiguration.Flocking.agentSearchDistanceForFlocking {
-//                return taskBot.agent
-//            }
-//
-//            return nil
-//        }
+        let agentsToFlockWith: [GKAgent2D] = scene.entities.compactMap { entity in
+            if let soul = entity as? Soul, soul.agent !== agent && soul.distanceToAgent(otherAgent: agent) <= GameplayConfiguration.Flocking.agentSearchDistanceForFlocking {
+                return soul.agent
+            }
+
+            return nil
+        }
         
-//        if !agentsToFlockWith.isEmpty {
-//            // Add flocking goals for any nearby "bad" `TaskBot`s.
-//            let separationGoal = GKGoal(toSeparateFrom: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.separationRadius, maxAngle: GameplayConfiguration.Flocking.separationAngle)
-//            behavior.setWeight(GameplayConfiguration.Flocking.separationWeight, for: separationGoal)
-//
-//            let alignmentGoal = GKGoal(toAlignWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.alignmentRadius, maxAngle: GameplayConfiguration.Flocking.alignmentAngle)
-//            behavior.setWeight(GameplayConfiguration.Flocking.alignmentWeight, for: alignmentGoal)
-//
-//            let cohesionGoal = GKGoal(toCohereWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.cohesionRadius, maxAngle: GameplayConfiguration.Flocking.cohesionAngle)
-//            behavior.setWeight(GameplayConfiguration.Flocking.cohesionWeight, for: cohesionGoal)
-//        }
+        if !agentsToFlockWith.isEmpty {
+            // Add flocking goals for any nearby "bad" `TaskBot`s.
+            let separationGoal = GKGoal(toSeparateFrom: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.separationRadius, maxAngle: GameplayConfiguration.Flocking.separationAngle)
+            behavior.setWeight(GameplayConfiguration.Flocking.separationWeight, for: separationGoal)
+
+            let alignmentGoal = GKGoal(toAlignWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.alignmentRadius, maxAngle: GameplayConfiguration.Flocking.alignmentAngle)
+            behavior.setWeight(GameplayConfiguration.Flocking.alignmentWeight, for: alignmentGoal)
+
+            let cohesionGoal = GKGoal(toCohereWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.cohesionRadius, maxAngle: GameplayConfiguration.Flocking.cohesionAngle)
+            behavior.setWeight(GameplayConfiguration.Flocking.cohesionWeight, for: cohesionGoal)
+        }
 
         // Add goals to follow a calculated path from the `TaskBot` to its target.
-        let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: target.position, pathRadius: pathRadius, inScene: scene as! RDOStageOneScene)
+        let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: target.position, pathRadius: pathRadius, inScene: scene as! RDOLevelScene)
         
         // Return a tuple containing the new behavior, and the found path points for debug drawing.
         return (behavior, pathPoints)
@@ -140,6 +140,11 @@ class SoulBehavior: GKBehavior {
         // Convert the `GKGraphNode2D` nodes into `CGPoint`s for debug drawing.
         let pathPoints = pathNodes.map { CGPoint($0.position) }
         return pathPoints
+    }
+    
+    /// Adds a goal to attain a target speed.
+    private func addTargetSpeedGoal(speed: Float) {
+        setWeight(0.5, for: GKGoal(toReachTargetSpeed: speed))
     }
     
     /// Adds goals to follow and stay on a path.
