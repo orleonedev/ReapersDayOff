@@ -60,7 +60,7 @@ final class RDOSceneManager {
             scene = SKScene.init(fileNamed: "RDOCollectionScene") as? RDOCollectionScene
 //            scene = SKScene.init(fileNamed: "Preparation")
         case .stageOne:
-            scene = SKScene.init(fileNamed: "RDOStageOneScene") as? RDOStageOneScene
+            scene = SKScene.init(fileNamed: "RDOStageOneScene") as? RDOLevelScene
 //            scene = SKScene.init(fileNamed: "StageOne")
         case .results:
             scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene

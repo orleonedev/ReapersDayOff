@@ -129,8 +129,23 @@ struct GameplayConfiguration {
         
         /// The amount of charge that the `PlayerBot` gains per second when recharging.
         static let rechargeAmountPerSecond = 10.0
-        
+    
         /// The amount of time it takes the `PlayerBot` to appear in a level before becoming controllable by the player.
         static let appearDuration: TimeInterval = 0.50
+    }
+        struct Timer {
+        /// The name of the font to use for the timer.
+        static let fontName = "DINCondensed-Bold"
+        
+        /// The size of the timer node font as a proportion of the level scene's height.
+        static let fontSize: CGFloat = 0.05
+        
+        #if os(tvOS)
+        /// The size of padding between the top of the scene and the timer node.
+        static let paddingSize: CGFloat = 60.0
+        #else
+        /// The size of padding between the top of the scene and the timer node as a proportion of the timer node's font size.
+        static let paddingSize: CGFloat = 0.2
+        #endif
     }
 }
