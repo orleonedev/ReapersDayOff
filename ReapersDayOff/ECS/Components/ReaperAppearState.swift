@@ -1,0 +1,113 @@
+//
+//  ReaperAppearState.swift
+//  ReapersDayOff
+//
+//  Created by Oreste Leone on 09/05/22.
+//
+
+import SpriteKit
+import GameplayKit
+
+class ReaperAppearState: GKState {
+    // MARK: Properties
+    
+    unowned var entity: Reaper
+    
+    /// The amount of time the `PlayerBot` has been in the "appear" state.
+    var elapsedTime: TimeInterval = 0.0
+    
+    /// The `AnimationComponent` associated with the `entity`.
+    var animationComponent: AnimationComponent {
+        guard let animationComponent = entity.component(ofType: AnimationComponent.self) else { fatalError("A PlayerBotAppearState's entity must have an AnimationComponent.") }
+        return animationComponent
+    }
+    
+    /// The `RenderComponent` associated with the `entity`.
+    var renderComponent: RenderComponent {
+        guard let renderComponent = entity.component(ofType: RenderComponent.self) else { fatalError("A PlayerBotAppearState's entity must have an RenderComponent.") }
+        return renderComponent
+    }
+    
+    /// The `OrientationComponent` associated with the `entity`.
+    var orientationComponent: OrientationComponent {
+        guard let orientationComponent = entity.component(ofType: OrientationComponent.self) else { fatalError("A PlayerBotAppearState's entity must have an OrientationComponent.") }
+        return orientationComponent
+    }
+    
+    /// The `InputComponent` associated with the `entity`.
+    var inputComponent: InputComponent {
+        guard let inputComponent = entity.component(ofType: InputComponent.self) else { fatalError("A PlayerBotAppearState's entity must have an InputComponent.") }
+        return inputComponent
+    }
+    
+    /// The `SKSpriteNode` used to show the player animating into the scene.
+    var node = SKSpriteNode()
+    
+    // MARK: Initializers
+    
+    required init(entity: Reaper) {
+        self.entity = entity
+    }
+    
+    // MARK: GKState Life Cycle
+    
+    override func didEnter(from previousState: GKState?) {
+        super.didEnter(from: previousState)
+        
+        // Reset the elapsed time.
+        elapsedTime = 0.0
+        
+        /*
+            The `PlayerBot` is about to appear in the level. We use an `SKShader` to
+            provide a "teleport" effect to beam in the `PlayerBot`.
+        */
+        
+        // Retrieve and use an initial texture for the `PlayerBot`, taken from the appropriate idle animation.
+        guard let appearTextures = Reaper.appearTextures else {
+            fatalError("Attempt to access PlayerBot.appearTextures before they have been loaded.")
+        }
+        let texture = appearTextures[orientationComponent.compassDirection]!
+        node.texture = texture
+        node.size = Reaper.textureSize
+        
+        // Add the node to the `PlayerBot`'s render node.
+        renderComponent.node.addChild(node)
+        
+        // Hide the animation component node until the `PlayerBot` exits this state.
+        animationComponent.node.isHidden = true
+
+        // Disable the input component while the `PlayerBot` appears.
+        inputComponent.isEnabled = false
+    }
+    
+    override func update(deltaTime seconds: TimeInterval) {
+        super.update(deltaTime: seconds)
+        
+        // Update the amount of time that the `PlayerBot` has been teleporting in to the level.
+        elapsedTime += seconds
+
+        // Check if we have spent enough time
+        if elapsedTime > GameplayConfiguration.Reaper.appearDuration {
+            // Remove the node from the scene
+            node.removeFromParent()
+            
+            // Switch the `PlayerBot` over to a "player controlled" state.
+            stateMachine?.enter(ReaperPlayerControlledState.self)
+        }
+    }
+    
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass is ReaperPlayerControlledState.Type
+    }
+    
+    override func willExit(to nextState: GKState) {
+        super.willExit(to: nextState)
+        
+        // Un-hide the animation component node.
+        animationComponent.node.isHidden = false
+        
+        // Re-enable the input component
+        inputComponent.isEnabled = true
+    }
+}
+
