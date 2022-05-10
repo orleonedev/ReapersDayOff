@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51231D86282953E500D31CB3 /* Reaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D85282953E500D31CB3 /* Reaper.swift */; };
+		51231D882829561400D31CB3 /* InputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D872829561400D31CB3 /* InputComponent.swift */; };
+		51231D8A2829566F00D31CB3 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D892829566F00D31CB3 /* MovementComponent.swift */; };
+		51231D8C282957A800D31CB3 /* ChargeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D8B282957A800D31CB3 /* ChargeComponent.swift */; };
+		51231D8E28295A5000D31CB3 /* ChargeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D8D28295A5000D31CB3 /* ChargeBar.swift */; };
+		51231D9028295E1C00D31CB3 /* ReaperAppearState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D8F28295E1C00D31CB3 /* ReaperAppearState.swift */; };
+		51231D9228295E9500D31CB3 /* ReaperPlayerControlledState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9128295E9500D31CB3 /* ReaperPlayerControlledState.swift */; };
+		51231D9428295EEC00D31CB3 /* ReaperHitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9328295EEC00D31CB3 /* ReaperHitState.swift */; };
+		51231D9628295F6500D31CB3 /* ReaperRechargingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9528295F6400D31CB3 /* ReaperRechargingState.swift */; };
 		517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5BF428210F8600C39D21 /* AppDelegate.swift */; };
 		517F5BF728210F8600C39D21 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5BF628210F8600C39D21 /* GameScene.sks */; };
 		517F5BF928210F8600C39D21 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5BF828210F8600C39D21 /* Actions.sks */; };
@@ -56,6 +65,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51231D85282953E500D31CB3 /* Reaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaper.swift; sourceTree = "<group>"; };
+		51231D872829561400D31CB3 /* InputComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputComponent.swift; sourceTree = "<group>"; };
+		51231D892829566F00D31CB3 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
+		51231D8B282957A800D31CB3 /* ChargeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeComponent.swift; sourceTree = "<group>"; };
+		51231D8D28295A5000D31CB3 /* ChargeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeBar.swift; sourceTree = "<group>"; };
+		51231D8F28295E1C00D31CB3 /* ReaperAppearState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaperAppearState.swift; sourceTree = "<group>"; };
+		51231D9128295E9500D31CB3 /* ReaperPlayerControlledState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaperPlayerControlledState.swift; sourceTree = "<group>"; };
+		51231D9328295EEC00D31CB3 /* ReaperHitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaperHitState.swift; sourceTree = "<group>"; };
+		51231D9528295F6400D31CB3 /* ReaperRechargingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaperRechargingState.swift; sourceTree = "<group>"; };
 		517F5BF128210F8600C39D21 /* ReapersDayOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReapersDayOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517F5BF428210F8600C39D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		517F5BF628210F8600C39D21 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -225,6 +243,7 @@
 			children = (
 				517F5C622822BCC300C39D21 /* RDOButtonNode.swift */,
 				517F5C282822942C00C39D21 /* ThumbStickNode.swift */,
+				51231D8D28295A5000D31CB3 /* ChargeBar.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -254,6 +273,7 @@
 				517F5C872826B2B700C39D21 /* GameplayConfiguration.swift */,
 				517F5C892826B2D000C39D21 /* SoulAgent.swift */,
 				517F5C8B2826B2F300C39D21 /* RedSoul.swift */,
+				51231D85282953E500D31CB3 /* Reaper.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -268,6 +288,13 @@
 				517F5C812826B1E400C39D21 /* OrientationComponent.swift */,
 				517F5C832826B20800C39D21 /* CompassDirection.swift */,
 				517F5C852826B28100C39D21 /* AnimationComponent.swift */,
+				51231D872829561400D31CB3 /* InputComponent.swift */,
+				51231D892829566F00D31CB3 /* MovementComponent.swift */,
+				51231D8B282957A800D31CB3 /* ChargeComponent.swift */,
+				51231D8F28295E1C00D31CB3 /* ReaperAppearState.swift */,
+				51231D9128295E9500D31CB3 /* ReaperPlayerControlledState.swift */,
+				51231D9328295EEC00D31CB3 /* ReaperHitState.swift */,
+				51231D9528295F6400D31CB3 /* ReaperRechargingState.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -376,13 +403,17 @@
 				517F5C8F2826B36D00C39D21 /* SoulBehavior.swift in Sources */,
 				517F5C7B2826B07B00C39D21 /* IntelligenceComponent.swift in Sources */,
 				517F5C6F2825139000C39D21 /* RDOCollectionScene.swift in Sources */,
+				51231D8C282957A800D31CB3 /* ChargeComponent.swift in Sources */,
 				517F5C8C2826B2F300C39D21 /* RedSoul.swift in Sources */,
 				517F5C882826B2B700C39D21 /* GameplayConfiguration.swift in Sources */,
+				51231D9428295EEC00D31CB3 /* ReaperHitState.swift in Sources */,
 				517F5C5C2822BC8A00C39D21 /* RDOStartScene.swift in Sources */,
+				51231D9028295E1C00D31CB3 /* ReaperAppearState.swift in Sources */,
 				517F5C27282293CD00C39D21 /* TouchControlInputNode.swift in Sources */,
 				517F5C7E2826B10E00C39D21 /* SoulAgentControlledState.swift in Sources */,
 				517F5C632822BCC400C39D21 /* RDOButtonNode.swift in Sources */,
 				517F5C6D2825137400C39D21 /* RDOAboutScene.swift in Sources */,
+				51231D86282953E500D31CB3 /* Reaper.swift in Sources */,
 				517F5C722826AC8E00C39D21 /* ColliderType.swift in Sources */,
 				517F5C5D2822BC8A00C39D21 /* RDOBaseScene.swift in Sources */,
 				517F5C802826B16100C39D21 /* PhysicsComponent.swift in Sources */,
@@ -393,11 +424,16 @@
 				517F5C5E2822BC8A00C39D21 /* RDOBaseScene+Buttons.swift in Sources */,
 				517F5BFD28210F8600C39D21 /* GameViewController.swift in Sources */,
 				517F5C2528228F0900C39D21 /* GameControllerInputSource.swift in Sources */,
+				51231D9628295F6500D31CB3 /* ReaperRechargingState.swift in Sources */,
+				51231D9228295E9500D31CB3 /* ReaperPlayerControlledState.swift in Sources */,
+				51231D8A2829566F00D31CB3 /* MovementComponent.swift in Sources */,
 				517F5C6928250DA700C39D21 /* RDOMainScene.swift in Sources */,
 				517F5C862826B28100C39D21 /* AnimationComponent.swift in Sources */,
 				517F5C822826B1E400C39D21 /* OrientationComponent.swift in Sources */,
 				517F5C672822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift in Sources */,
 				517F5C102821749300C39D21 /* RDOSceneManager.swift in Sources */,
+				51231D882829561400D31CB3 /* InputComponent.swift in Sources */,
+				51231D8E28295A5000D31CB3 /* ChargeBar.swift in Sources */,
 				517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */,
 				517F5C6B2825130A00C39D21 /* RDOSettingsScene.swift in Sources */,
 				517F5C8A2826B2D000C39D21 /* SoulAgent.swift in Sources */,

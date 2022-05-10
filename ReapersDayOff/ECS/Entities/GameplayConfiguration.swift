@@ -92,4 +92,45 @@ struct GameplayConfiguration {
         /// The offset from the `FlyingBot`'s position that should be used for beam targeting.
         static let beamTargetOffset = CGPoint(x: 0.0, y: 65.0)
     }
+    
+    struct Reaper {
+        /// The movement speed (in points per second) for the `PlayerBot`.
+        static let movementSpeed: CGFloat = 210.0
+
+        /// The angular rotation speed (in radians per second) for the `PlayerBot`.
+        static let angularSpeed = CGFloat.pi * 1.4
+        
+        /// The radius of the `PlayerBot`'s physics body.
+        static var physicsBodyRadius: CGFloat = 30.0
+        
+        /// The offset of the `PlayerBot`'s physics body's center from the `PlayerBot`'s center.
+        static let physicsBodyOffset = CGPoint(x: 0.0, y: -25.0)
+        
+        /// The radius of the agent associated with this `PlayerBot` for pathfinding.
+        static let agentRadius = Float(physicsBodyRadius)
+        
+        /// The offset of the agent's center from the `PlayerBot`'s center.
+        static let agentOffset = physicsBodyOffset
+        
+        /// The offset of the `PlayerBot`'s charge bar from its position.
+        static let chargeBarOffset = CGPoint(x: 0.0, y: 65.0)
+        
+        /// The initial charge value for the `PlayerBot`'s health bar.
+        static let initialCharge = 100.0
+
+        /// The maximum charge value for the `PlayerBot`'s health bar.
+        static let maximumCharge = 100.0
+        
+        /// The length of time for which the `PlayerBot` remains in its "hit" state.
+        static let hitStateDuration: TimeInterval = 0.75
+        
+        /// The length of time that it takes the `PlayerBot` to recharge when deactivated.
+        static let rechargeDelayWhenInactive: TimeInterval = 2.0
+        
+        /// The amount of charge that the `PlayerBot` gains per second when recharging.
+        static let rechargeAmountPerSecond = 10.0
+        
+        /// The amount of time it takes the `PlayerBot` to appear in a level before becoming controllable by the player.
+        static let appearDuration: TimeInterval = 0.50
+    }
 }
