@@ -63,6 +63,8 @@
 		6641E45D2829504C00308AB3 /* RDOLevelSceneGameoverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45C2829504C00308AB3 /* RDOLevelSceneGameoverState.swift */; };
 		6641E45F2829570A00308AB3 /* RDOLevelScene+Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45E2829570A00308AB3 /* RDOLevelScene+Pause.swift */; };
 		6641E46128295BA600308AB3 /* RDOLevelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E46028295BA600308AB3 /* RDOLevelConfiguration.swift */; };
+		6641E463282A49B800308AB3 /* RDOPauseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6641E462282A49B800308AB3 /* RDOPauseScene.sks */; };
+		6641E465282A4A3B00308AB3 /* RDOGameoverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6641E464282A4A3B00308AB3 /* RDOGameoverScene.sks */; };
 		66463147282506DB00311BE3 /* RDOMainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66463146282506DB00311BE3 /* RDOMainScene.sks */; };
 		6646314928250A9200311BE3 /* RDOSettingsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6646314828250A9200311BE3 /* RDOSettingsScene.sks */; };
 		667C2E7028250B6600A5D13E /* RDOAboutScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 667C2E6F28250B6600A5D13E /* RDOAboutScene.sks */; };
@@ -129,6 +131,8 @@
 		6641E45C2829504C00308AB3 /* RDOLevelSceneGameoverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneGameoverState.swift; sourceTree = "<group>"; };
 		6641E45E2829570A00308AB3 /* RDOLevelScene+Pause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RDOLevelScene+Pause.swift"; sourceTree = "<group>"; };
 		6641E46028295BA600308AB3 /* RDOLevelConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelConfiguration.swift; sourceTree = "<group>"; };
+		6641E462282A49B800308AB3 /* RDOPauseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOPauseScene.sks; sourceTree = "<group>"; };
+		6641E464282A4A3B00308AB3 /* RDOGameoverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOGameoverScene.sks; sourceTree = "<group>"; };
 		66463146282506DB00311BE3 /* RDOMainScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOMainScene.sks; sourceTree = "<group>"; };
 		6646314828250A9200311BE3 /* RDOSettingsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOSettingsScene.sks; sourceTree = "<group>"; };
 		667C2E6F28250B6600A5D13E /* RDOAboutScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOAboutScene.sks; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				517F5BF628210F8600C39D21 /* GameScene.sks */,
 				517F5C522822BBFD00C39D21 /* RDOStageOneScene.sks */,
 				6646314828250A9200311BE3 /* RDOSettingsScene.sks */,
+				6641E462282A49B800308AB3 /* RDOPauseScene.sks */,
+				6641E464282A4A3B00308AB3 /* RDOGameoverScene.sks */,
 				667C2E6F28250B6600A5D13E /* RDOAboutScene.sks */,
 				667C2E7128250FAB00A5D13E /* RDOCollectionScene.sks */,
 				66463146282506DB00311BE3 /* RDOMainScene.sks */,
@@ -248,9 +254,9 @@
 				6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */,
 				6641E45C2829504C00308AB3 /* RDOLevelSceneGameoverState.swift */,
 				517F5C562822BC8A00C39D21 /* RDOStartScene.swift */,
+				517F5C6C2825137400C39D21 /* RDOAboutScene.swift */,
 				517F5C6828250DA700C39D21 /* RDOMainScene.swift */,
 				517F5C6A2825130A00C39D21 /* RDOSettingsScene.swift */,
-				517F5C6C2825137400C39D21 /* RDOAboutScene.swift */,
 				517F5C6E2825139000C39D21 /* RDOCollectionScene.swift */,
 			);
 			path = Scene;
@@ -401,8 +407,10 @@
 				667C2E7028250B6600A5D13E /* RDOAboutScene.sks in Resources */,
 				667C2E7228250FAC00A5D13E /* RDOCollectionScene.sks in Resources */,
 				517F5C93282817D900C39D21 /* Soul.xcassets in Resources */,
+				6641E463282A49B800308AB3 /* RDOPauseScene.sks in Resources */,
 				6646314928250A9200311BE3 /* RDOSettingsScene.sks in Resources */,
 				517F5BF928210F8600C39D21 /* Actions.sks in Resources */,
+				6641E465282A4A3B00308AB3 /* RDOGameoverScene.sks in Resources */,
 				66463147282506DB00311BE3 /* RDOMainScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
