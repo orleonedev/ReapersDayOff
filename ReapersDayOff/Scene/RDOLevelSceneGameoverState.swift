@@ -17,7 +17,7 @@ class RDOLevelSceneGameoverState: RDOLevelSceneOverlayState {
     // MARK: Properties
     
     override var overlaySceneFileName: String {
-        return "Gameover"
+        return "RDOGameoverScene"
     }
 
     // MARK: GKState Life Cycle

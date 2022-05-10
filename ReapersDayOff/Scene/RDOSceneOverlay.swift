@@ -25,6 +25,7 @@ let nativeContentSize: CGSize
 
 init(overlaySceneFileName fileName: String, zPosition: CGFloat) {
     // Load the scene and get the overlay node from it.
+    
     let overlayScene = SKScene(fileNamed: fileName)!
     let contentTemplateNode = overlayScene.childNode(withName: "Overlay") as! SKSpriteNode
     
