@@ -58,9 +58,9 @@ class SoulAgentControlledState: GKState {
 //        if timeSinceBehaviorUpdate >= GameplayConfiguration.Soul.behaviorUpdateWaitDuration {
 //
 //            // When a `TaskBot` is returning to its path patrol start, and gets near enough, it should start to patrol.
-//            if case let .returnToPositionOnPath(position) = entity.mandate, entity.distanceToPoint(otherPoint: position) <= GameplayConfiguration.TaskBot.thresholdProximityToPatrolPathStartPoint {
-//                entity.mandate = entity.isGood ? .followGoodPatrolPath : .followBadPatrolPath
-//            }
+            if case let .returnToPositionOnPath(position) = entity.mandate, entity.distanceToPoint(otherPoint: position) <= GameplayConfiguration.Soul.thresholdProximityToPatrolPathStartPoint {
+                entity.mandate = .followPatrolPath
+            }
 //
 //            // Ensure the agent's behavior is the appropriate behavior for its current mandate.
 //            entity.agent.behavior = entity.behaviorForCurrentMandate

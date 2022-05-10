@@ -10,6 +10,44 @@ import GameplayKit
 
 class SoulBehavior: GKBehavior {
     
+    // MARK: Behavior factory methods
+    
+    /// Constructs a behavior to hunt a `TaskBot` or `PlayerBot` via a computed path.
+    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, huntingAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOStageOneScene) -> (behavior: GKBehavior, pathPoints: [CGPoint]) {
+        let behavior = SoulBehavior()
+        
+        // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
+//        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
+//        behavior.addAvoidObstaclesGoal(forScene: scene)
+
+        // Find any nearby "bad" TaskBots to flock with.
+//        let agentsToFlockWith: [GKAgent2D] = scene.entities.compactMap { entity in
+//            if let taskBot = entity as? TaskBot, !taskBot.isGood && taskBot.agent !== agent && taskBot.distanceToAgent(otherAgent: agent) <= GameplayConfiguration.Flocking.agentSearchDistanceForFlocking {
+//                return taskBot.agent
+//            }
+//
+//            return nil
+//        }
+        
+//        if !agentsToFlockWith.isEmpty {
+//            // Add flocking goals for any nearby "bad" `TaskBot`s.
+//            let separationGoal = GKGoal(toSeparateFrom: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.separationRadius, maxAngle: GameplayConfiguration.Flocking.separationAngle)
+//            behavior.setWeight(GameplayConfiguration.Flocking.separationWeight, for: separationGoal)
+//
+//            let alignmentGoal = GKGoal(toAlignWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.alignmentRadius, maxAngle: GameplayConfiguration.Flocking.alignmentAngle)
+//            behavior.setWeight(GameplayConfiguration.Flocking.alignmentWeight, for: alignmentGoal)
+//
+//            let cohesionGoal = GKGoal(toCohereWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.cohesionRadius, maxAngle: GameplayConfiguration.Flocking.cohesionAngle)
+//            behavior.setWeight(GameplayConfiguration.Flocking.cohesionWeight, for: cohesionGoal)
+//        }
+
+        // Add goals to follow a calculated path from the `TaskBot` to its target.
+        let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: target.position, pathRadius: pathRadius, inScene: scene as! RDOStageOneScene)
+        
+        // Return a tuple containing the new behavior, and the found path points for debug drawing.
+        return (behavior, pathPoints)
+    }
+    
     private func extrudedObstaclesContaining(point: SIMD2<Float>, inScene scene: RDOStageOneScene) -> [GKPolygonObstacle] {
         /*
             Add a small fudge factor (+5) to the extrusion radius to make sure

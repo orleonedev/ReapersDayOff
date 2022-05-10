@@ -10,6 +10,35 @@ import GameplayKit
 
 class Soul: GKEntity,GKAgentDelegate {
     
+    // MARK: Nested types
+    
+    /// Encapsulates a `Soul`'s current mandate, i.e. the aim that the `Soul` is setting out to achieve.
+    enum SoulMandate {
+        // Hunt another agent (either a `PlayerBot` or a "good" `TaskBot`).
+//        case huntAgent(GKAgent2D)
+
+        // Follow the `TaskBot`'s "good" patrol path.
+//        case followGoodPatrolPath
+
+        // Follow the `Soul`'s patrol path.
+        case followPatrolPath
+
+        // Return to a given position on a patrol path.
+        case returnToPositionOnPath(SIMD2<Float>)
+    }
+    
+    // MARK: Properties
+    
+    
+    func didSet() {
+    let closestPointOnBadPath = closestPointOnPath(path: pathPoints)
+    mandate = .returnToPositionOnPath(SIMD2<Float>(closestPointOnBadPath))
+    
+    }
+    var mandate: SoulMandate
+    
+    var pathPoints: [CGPoint]
+    
     /// The agent used when pathfinding to the `Soul`.
     let agent: GKAgent2D
     
@@ -23,12 +52,15 @@ class Soul: GKEntity,GKAgentDelegate {
     override init() {
         agent = GKAgent2D()
 //        agent.radius = GameplayConfiguration.PlayerBot.agentRadius
-        
+        self.pathPoints = [CGPoint()]
+        self.mandate = SoulMandate.followPatrolPath
         super.init()
     }
     
-    init(pathPoints: [CGPoint]) {
+    init(pathPoints: [CGPoint], mandate: SoulMandate) {
         agent = GKAgent2D()
+        self.pathPoints = pathPoints
+        self.mandate = mandate
         super.init()
     }
     
