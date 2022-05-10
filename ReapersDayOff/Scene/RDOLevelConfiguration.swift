@@ -17,13 +17,13 @@ struct RDOLevelConfiguration {
     // MARK: Types
     
     /// Encapsulates the starting configuration of a single `GroundBot` or `FlyingBot`.
-    struct TaskBotConfiguration {
+    struct SoulConfiguration {
         // MARK: Properties
 
         /// The different types of `TaskBot` that can exist in a level.
         enum Locomotion {
-            case ground
-            case flying
+            case red
+//            case flying
         }
         
         let locomotion: Locomotion
@@ -32,32 +32,33 @@ struct RDOLevelConfiguration {
         let initialOrientation: CompassDirection
         
         /// The names of the nodes for this `TaskBot`'s patrol path when it is "good" and not hunting.
-        let goodPathNodeNames: [String]
+//        let goodPathNodeNames: [String]
 
         /// The names of the nodes for this `TaskBot`'s patrol path when it is "bad" and not hunting.
-        let badPathNodeNames: [String]
+        let pathNodeNames: [String]
         
         /// Whether the bot should be in its "bad" state when the level begins.
-        let startsBad: Bool
+//        let startsBad: Bool
         
         // MARK: Initialization
 
-        init(botConfigurationInfo: [String: AnyObject]) {
-            switch botConfigurationInfo["locomotion"] as! String {
-                case "ground":
-                    locomotion = .ground
+        init(soulsConfigurationInfo: [String: AnyObject]) {
+            
+            switch soulsConfigurationInfo["locomotion"] as! String {
+                case "red":
+                    locomotion = .red
                     
-                case "flying":
-                    locomotion = .flying
+//                case "flying":
+//                    locomotion = .flying
                     
                 default:
                     fatalError("Unknown locomotion found while parsing `taskBot` data")
             }
             
-            initialOrientation = CompassDirection(string: botConfigurationInfo["initialOrientation"] as! String)
-            goodPathNodeNames = botConfigurationInfo["goodPathNodeNames"] as! [String]
-            badPathNodeNames = botConfigurationInfo["badPathNodeNames"] as! [String]
-            startsBad = botConfigurationInfo["startsBad"] as! Bool
+            initialOrientation = CompassDirection(string: soulsConfigurationInfo["initialOrientation"] as! String)
+//            goodPathNodeNames = botConfigurationInfo["goodPathNodeNames"] as! [String]
+            pathNodeNames = soulsConfigurationInfo["pathNodeNames"] as! [String]
+//            startsBad = botConfigurationInfo["startsBad"] as! Bool
         }
 
     }
@@ -71,7 +72,7 @@ struct RDOLevelConfiguration {
     let initialPlayerBotOrientation: CompassDirection
 
     /// The configuration settings for `TaskBots` on this level.
-    let taskBotConfigurations: [TaskBotConfiguration]
+    let soulConfigurations: [SoulConfiguration]
     
     /// The file name identifier for this level. Used for loading files and assets.
     let fileName: String
@@ -104,10 +105,10 @@ struct RDOLevelConfiguration {
         configurationInfo = NSDictionary(contentsOf: url!) as! [String: AnyObject]
         
         // Extract the data for every `TaskBot` in this level as an array of `TaskBotConfiguration` values.
-        let botConfigurations = configurationInfo["taskBotConfigurations"] as! [[String: AnyObject]]
+        let soulsConfigurations = configurationInfo["soulConfigurations"] as! [[String: AnyObject]]
         
         // Map the array of `TaskBot` configuration dictionaries to an array of `TaskBotConfiguration` instances.
-        taskBotConfigurations = botConfigurations.map { TaskBotConfiguration(botConfigurationInfo: $0) }
+        soulConfigurations = soulsConfigurations.map { SoulConfiguration(soulsConfigurationInfo: $0) }
         
         initialPlayerBotOrientation = CompassDirection(string: configurationInfo["initialPlayerBotOrientation"] as! String)
     }

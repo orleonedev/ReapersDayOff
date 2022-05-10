@@ -42,10 +42,46 @@ class SoulBehavior: GKBehavior {
         }
 
         // Add goals to follow a calculated path from the `TaskBot` to its target.
-        let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: target.position, pathRadius: pathRadius, inScene: scene as! RDOLevelScene)
+        let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: target.position, pathRadius: pathRadius, inScene: scene )
         
         // Return a tuple containing the new behavior, and the found path points for debug drawing.
         return (behavior, pathPoints)
+    }
+    
+    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, returningToPoint endPoint: SIMD2<Float>, pathRadius: Float, inScene scene: RDOLevelScene) -> (behavior: GKBehavior, pathPoints: [CGPoint]) {
+        let behavior = SoulBehavior()
+        
+        // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
+        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
+//        behavior.addAvoidObstaclesGoal(forScene: scene)
+        
+        // Add goals to follow a calculated path from the `TaskBot` to the start of its patrol path.
+        let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: endPoint, pathRadius: pathRadius, inScene: scene)
+
+        // Return a tuple containing the new behavior, and the found path points for debug drawing.
+        return (behavior, pathPoints)
+    }
+    
+    /// Constructs a behavior to patrol a path of points, avoiding obstacles along the way.
+    static func behavior(forAgent agent: GKAgent2D, patrollingPathWithPoints patrolPathPoints: [CGPoint], pathRadius: Float, inScene scene: RDOLevelScene) -> GKBehavior {
+        let behavior = SoulBehavior()
+        
+        // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
+        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
+//        behavior.addAvoidObstaclesGoal(forScene: scene)
+        
+        // Convert the patrol path to an array of `float2`s.
+        
+        let pathVectorPoints = patrolPathPoints.map { SIMD2<Float>($0) }
+        
+        // Create a cyclical (closed) `GKPath` from the provided path points with the requested path radius.
+        // GKPath(points: &pathVectorPoints, radius: <#T##Float#>, cyclical: <#T##Bool#>)
+        let path = GKPath(points: pathVectorPoints, radius: pathRadius, cyclical: true)
+
+        // Add "follow path" and "stay on path" goals for this path.
+        behavior.addFollowAndStayOnPathGoals(for: path)
+
+        return behavior
     }
     
     private func extrudedObstaclesContaining(point: SIMD2<Float>, inScene scene: RDOLevelScene) -> [GKPolygonObstacle] {

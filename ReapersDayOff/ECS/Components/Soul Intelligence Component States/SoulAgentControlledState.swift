@@ -55,7 +55,7 @@ class SoulAgentControlledState: GKState {
         elapsedTime += seconds
         
         // Check if enough time has passed since the last behavior update, and update the behavior if so.
-//        if timeSinceBehaviorUpdate >= GameplayConfiguration.Soul.behaviorUpdateWaitDuration {
+        if timeSinceBehaviorUpdate >= GameplayConfiguration.Soul.behaviorUpdateWaitDuration {
 //
 //            // When a `TaskBot` is returning to its path patrol start, and gets near enough, it should start to patrol.
             if case let .returnToPositionOnPath(position) = entity.mandate, entity.distanceToPoint(otherPoint: position) <= GameplayConfiguration.Soul.thresholdProximityToPatrolPathStartPoint {
@@ -63,10 +63,10 @@ class SoulAgentControlledState: GKState {
             }
 //
 //            // Ensure the agent's behavior is the appropriate behavior for its current mandate.
-//            entity.agent.behavior = entity.behaviorForCurrentMandate
+            entity.agent.behavior = entity.behaviorForCurrentMandate
 //
 //            // Reset `timeSinceBehaviorUpdate`, to delay when the entity's behavior is next updated.
-//            timeSinceBehaviorUpdate = 0.0
+            timeSinceBehaviorUpdate = 0.0
 //        }
     }
     
@@ -78,7 +78,7 @@ class SoulAgentControlledState: GKState {
 //            default:
 //                return false
 //        }
-//    }
+    }
     
     override func willExit(to nextState: GKState) {
         super.willExit(to: nextState)
@@ -91,3 +91,4 @@ class SoulAgentControlledState: GKState {
         entity.agent.behavior = GKBehavior()
     }
 }
+
