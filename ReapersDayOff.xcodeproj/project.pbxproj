@@ -231,6 +231,7 @@
 		517F5C112821B34300C39D21 /* Player Control */ = {
 			isa = PBXGroup;
 			children = (
+				51231D8D28295A5000D31CB3 /* ChargeBar.swift */,
 				517F5C18282284D800C39D21 /* RDOGameInput.swift */,
 				517F5C2228228DF900C39D21 /* ControlInputSource.swift */,
 				517F5C2428228F0900C39D21 /* GameControllerInputSource.swift */,
@@ -267,7 +268,6 @@
 			children = (
 				517F5C622822BCC300C39D21 /* RDOButtonNode.swift */,
 				517F5C282822942C00C39D21 /* ThumbStickNode.swift */,
-				51231D8D28295A5000D31CB3 /* ChargeBar.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
