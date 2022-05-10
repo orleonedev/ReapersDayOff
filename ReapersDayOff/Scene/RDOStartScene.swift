@@ -44,6 +44,7 @@ class RDOStartScene: RDOBaseScene {
         // Enable focus based navigation.
         focusChangesEnabled = true
         RedSoul.loadResources(){}
+        Reaper.loadResources(){}
         
 //        registerForNotifications()
         centerCameraOnPoint(point: backgroundNode!.position)

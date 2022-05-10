@@ -147,14 +147,14 @@ class Reaper: GKEntity, ChargeComponentDelegate/*, ResourceLoadableType */{
             */
             appearTextures = [:]
             for orientation in CompassDirection.allDirections {
-                appearTextures![orientation] = AnimationComponent.firstTextureForOrientation(compassDirection: orientation, inAtlas: ReaperAtlases[0], withImageIdentifier: "ReaperIdle")
+                appearTextures![orientation] = AnimationComponent.firstTextureForOrientation(compassDirection: orientation, inAtlas: ReaperAtlases[0], withImageIdentifier: "reaperIdle")
             }
             
             // Set up all of the `PlayerBot`s animations.
             animations = [:]
-            animations![.idle] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[0], withImageIdentifier: "ReaperIdle", forAnimationState: .idle)
-            animations![.walkForward] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[1], withImageIdentifier: "ReaperWalk", forAnimationState: .walkForward)
-            animations![.walkBackward] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[1], withImageIdentifier: "ReaperWalk", forAnimationState: .walkBackward, playBackwards: true)
+            animations![.idle] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[0], withImageIdentifier: "reaperIdle", forAnimationState: .idle)
+            animations![.walkForward] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[1], withImageIdentifier: "reaperWalk", forAnimationState: .walkForward)
+            animations![.walkBackward] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[1], withImageIdentifier: "reaperWalk", forAnimationState: .walkBackward, playBackwards: true)
 //            animations![.inactive] = AnimationComponent.animationsFromAtlas(atlas: playerBotAtlases[2], withImageIdentifier: "PlayerBotInactive", forAnimationState: .inactive)
 //            animations![.hit] = AnimationComponent.animationsFromAtlas(atlas: playerBotAtlases[3], withImageIdentifier: "PlayerBotHit", forAnimationState: .hit, repeatTexturesForever: false)
             
