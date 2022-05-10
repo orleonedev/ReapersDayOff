@@ -124,18 +124,16 @@ class Reaper: GKEntity, ChargeComponentDelegate/*, ResourceLoadableType */{
     static func loadResources(withCompletionHandler completionHandler: @escaping () -> ()) {
         loadMiscellaneousAssets()
         
-        let playerBotAtlasNames = [
-            "PlayerBotIdle",
-            "PlayerBotWalk",
-            "PlayerBotInactive",
-            "PlayerBotHit"
+        let ReaperAtlasNames = [
+            "ReaperIdle",
+            "ReaperWalk"
         ]
         
         /*
             Preload all of the texture atlases for `PlayerBot`. This improves
             the overall loading speed of the animation cycles for this character.
         */
-        SKTextureAtlas.preloadTextureAtlasesNamed(playerBotAtlasNames) { error, playerBotAtlases in
+        SKTextureAtlas.preloadTextureAtlasesNamed(ReaperAtlasNames) { error, ReaperAtlases in
             if let error = error {
                 fatalError("One or more texture atlases could not be found: \(error)")
             }
@@ -149,15 +147,15 @@ class Reaper: GKEntity, ChargeComponentDelegate/*, ResourceLoadableType */{
             */
             appearTextures = [:]
             for orientation in CompassDirection.allDirections {
-                appearTextures![orientation] = AnimationComponent.firstTextureForOrientation(compassDirection: orientation, inAtlas: playerBotAtlases[0], withImageIdentifier: "PlayerBotIdle")
+                appearTextures![orientation] = AnimationComponent.firstTextureForOrientation(compassDirection: orientation, inAtlas: ReaperAtlases[0], withImageIdentifier: "ReaperIdle")
             }
             
             // Set up all of the `PlayerBot`s animations.
             animations = [:]
-            animations![.idle] = AnimationComponent.animationsFromAtlas(atlas: playerBotAtlases[0], withImageIdentifier: "PlayerBotIdle", forAnimationState: .idle)
-            animations![.walkForward] = AnimationComponent.animationsFromAtlas(atlas: playerBotAtlases[1], withImageIdentifier: "PlayerBotWalk", forAnimationState: .walkForward)
-            animations![.walkBackward] = AnimationComponent.animationsFromAtlas(atlas: playerBotAtlases[1], withImageIdentifier: "PlayerBotWalk", forAnimationState: .walkBackward, playBackwards: true)
-            animations![.inactive] = AnimationComponent.animationsFromAtlas(atlas: playerBotAtlases[2], withImageIdentifier: "PlayerBotInactive", forAnimationState: .inactive)
+            animations![.idle] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[0], withImageIdentifier: "ReaperIdle", forAnimationState: .idle)
+            animations![.walkForward] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[1], withImageIdentifier: "ReaperWalk", forAnimationState: .walkForward)
+            animations![.walkBackward] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[1], withImageIdentifier: "ReaperWalk", forAnimationState: .walkBackward, playBackwards: true)
+//            animations![.inactive] = AnimationComponent.animationsFromAtlas(atlas: playerBotAtlases[2], withImageIdentifier: "PlayerBotInactive", forAnimationState: .inactive)
 //            animations![.hit] = AnimationComponent.animationsFromAtlas(atlas: playerBotAtlases[3], withImageIdentifier: "PlayerBotHit", forAnimationState: .hit, repeatTexturesForever: false)
             
             // Invoke the passed `completionHandler` to indicate that loading has completed.
