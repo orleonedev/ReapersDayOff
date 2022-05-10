@@ -45,16 +45,6 @@ enum WorldLayer: CGFloat {
 
 class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
-    
-    
-    var graphs = [String : GKGraph]()
-    
-    lazy var obstacleSpriteNodes: [SKSpriteNode] = self["world/obstacles/*"] as! [SKSpriteNode]
-     
-    lazy var polygonObstacles: [GKPolygonObstacle] = SKNode.obstacles(fromNodePhysicsBodies: self.obstacleSpriteNodes)
-     
-    lazy var graph: GKObstacleGraph = GKObstacleGraph(obstacles: self.polygonObstacles, bufferRadius: GameplayConfiguration.Soul.pathfindingGraphBufferRadius)
-    
    
     
 
@@ -63,6 +53,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
     
     // MARK: Properties
+    
+    let reaper = Reaper()
     
     /// Stores a reference to the root nodes for each world layer in the scene.
     var worldLayerNodes = [WorldLayer: SKNode]()
@@ -96,21 +88,14 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
   
     // MARK: Pathfinding
     
-//    let graph = GKObstacleGraph(obstacles: [], bufferRadius: GameplayConfiguration.Soul.pathfindingGraphBufferRadius)
-//
-//    lazy var obstacleSpriteNodes: [SKSpriteNode] = self["world/obstacles/*"] as! [SKSpriteNode]
-//
-//    lazy var polygonObstacles: [GKPolygonObstacle] = SKNode.obstacles(fromNodePhysicsBodies: self.obstacleSpriteNodes)
-  
-    // MARK: Pathfinding Debug
+    var graphs = [String : GKGraph]()
     
-//    var debugDrawingEnabled = false {
-//        didSet {
-//            debugDrawingEnabledDidChange()
-//        }
-//    }
-//    var graphLayer = SKNode()
-//    var debugObstacleLayer = SKNode()
+    lazy var obstacleSpriteNodes: [SKSpriteNode] = self["world/obstacles/*"] as! [SKSpriteNode]
+     
+    lazy var polygonObstacles: [GKPolygonObstacle] = SKNode.obstacles(fromNodePhysicsBodies: self.obstacleSpriteNodes)
+     
+    lazy var graph: GKObstacleGraph = GKObstacleGraph(obstacles: self.polygonObstacles, bufferRadius: GameplayConfiguration.Soul.pathfindingGraphBufferRadius)
+
     
     // MARK: Rule State
     
@@ -156,7 +141,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 //        levelConfiguration = RDOLevelConfiguration(fileName: sceneManager.currentSceneMetadata!.fileName)
 
         // Set up the path finding graph with all polygon obstacles.
-//        graph.addObstacles(polygonObstacles)
+        graph.addObstacles(polygonObstacles)
         
         // Register for notifications about the app becoming inactive.
 //        registerForPauseNotifications()
@@ -165,7 +150,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         loadWorldLayers()
 
         // Add a `PlayerBot` for the player.
-//        beamInPlayerBot()
+        beamInPlayerBot()
         
         // Gravity will be in the negative z direction; there is no x or y component.
         physicsWorld.gravity = CGVector.zero
@@ -294,21 +279,21 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
             The order of systems in `componentSystems` is important
             and was determined when the `componentSystems` array was instantiated.
         */
-//        for componentSystem in componentSystems {
-//            componentSystem.update(deltaTime: deltaTime)
-//        }
+        for componentSystem in componentSystems {
+            componentSystem.update(deltaTime: deltaTime)
+        }
     }
 
     override func didFinishUpdate() {
         // Check if the `playerBot` has been added to this scene.
-//        if let playerBotNode = playerBot.component(ofType: RenderComponent.self)?.node, playerBotNode.scene == self {
-//            /*
-//                Update the `PlayerBot`'s agent position to match its node position.
-//                This makes sure that the agent is in a valid location in the SpriteKit
-//                physics world at the start of its next update cycle.
-//            */
-//            playerBot.updateAgentPositionToMatchNodePosition()
-//        }
+        if let reaperNode = reaper.component(ofType: RenderComponent.self)?.node, reaperNode.scene == self {
+            /*
+                Update the `PlayerBot`'s agent position to match its node position.
+                This makes sure that the agent is in a valid location in the SpriteKit
+               physics world at the start of its next update cycle.
+            */
+            reaper.updateAgentPositionToMatchNodePosition()
+        }
         
         // Sort the entities in the scene by ascending y-position.
         let ySortedEntities = entities.sorted {
@@ -401,47 +386,31 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     func addEntity(entity: GKEntity) {
         entities.insert(entity)
 
-//        for componentSystem in self.componentSystems {
-//            componentSystem.addComponent(foundIn: entity)
-//        }
+        for componentSystem in self.componentSystems {
+            componentSystem.addComponent(foundIn: entity)
+        }
 
         // If the entity has a `RenderComponent`, add its node to the scene.
         if let renderNode = entity.component(ofType: RenderComponent.self)?.node {
             addNode(node: renderNode, toWorldLayer: .characters)
 
-            /*
-                If the entity has a `ShadowComponent`, add its shadow node to the scene.
-                Constrain the `ShadowComponent`'s node to the `RenderComponent`'s node.
-            */
-//            if let shadowNode = entity.component(ofType: ShadowComponent.self)?.node {
-//                addNode(node: shadowNode, toWorldLayer: .shadows)
-//
-//                // Constrain the shadow node's position to the render node.
-//                let xRange = SKRange(constantValue: shadowNode.position.x)
-//                let yRange = SKRange(constantValue: shadowNode.position.y)
-//
-//                let constraint = SKConstraint.positionX(xRange, y: yRange)
-//                constraint.referenceNode = renderNode
-//
-//                shadowNode.constraints = [constraint]
-//            }
-            
+                        
             /*
                 If the entity has a `ChargeComponent` with a `ChargeBar`, add the `ChargeBar`
                 to the scene. Constrain the `ChargeBar` to the `RenderComponent`'s node.
             */
-//            if let chargeBar = entity.component(ofType: ChargeComponent.self)?.chargeBar {
-//                addNode(node: chargeBar, toWorldLayer: .aboveCharacters)
-//                
-//                // Constrain the `ChargeBar`'s node position to the render node.
-//                let xRange = SKRange(constantValue: GameplayConfiguration.PlayerBot.chargeBarOffset.x)
-//                let yRange = SKRange(constantValue: GameplayConfiguration.PlayerBot.chargeBarOffset.y)
-//
-//                let constraint = SKConstraint.positionX(xRange, y: yRange)
-//                constraint.referenceNode = renderNode
-//                
-//                chargeBar.constraints = [constraint]
-//            }
+            if let chargeBar = entity.component(ofType: ChargeComponent.self)?.chargeBar {
+                addNode(node: chargeBar, toWorldLayer: .top)
+                
+                // Constrain the `ChargeBar`'s node position to the render node.
+                let xRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.x)
+                let yRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.y)
+
+                let constraint = SKConstraint.positionX(xRange, y: yRange)
+                constraint.referenceNode = renderNode
+                
+                chargeBar.constraints = [constraint]
+            }
         }
         
         // If the entity has an `IntelligenceComponent`, enter its initial state.
@@ -465,9 +434,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
             Update the player's `controlInputSources` to delegate input
             to the playerBot's `InputComponent`.
         */
-//        for controlInputSource in gameInput.controlInputSources {
-//            controlInputSource.delegate = playerBot.component(ofType: InputComponent.self)
-//        }
+        for controlInputSource in gameInput.controlInputSources {
+            controlInputSource.delegate = reaper.component(ofType: InputComponent.self)
+        }
         
         #if os(iOS)
         // When a game controller is connected, hide the thumb stick nodes.
@@ -486,31 +455,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         }
     }
 
-//    #if DEBUG
-//    override func controlInputSourceDidToggleDebugInfo(_ controlInputSource: ControlInputSourceType) {
-//        debugDrawingEnabled = !debugDrawingEnabled
-//
-//        if let view = view {
-//            view.showsPhysics   = debugDrawingEnabled
-//            view.showsFPS       = debugDrawingEnabled
-//            view.showsNodeCount = debugDrawingEnabled
-//            view.showsDrawCount = debugDrawingEnabled
-//        }
-//    }
-//
-//    override func controlInputSourceDidTriggerLevelSuccess(_ controlInputSource: ControlInputSourceType) {
-//        if stateMachine.currentState is LevelSceneActiveState {
-//            stateMachine.enter(LevelSceneSuccessState.self)
-//        }
-//    }
-//
-//    override func controlInputSourceDidTriggerLevelFailure(_ controlInputSource: ControlInputSourceType) {
-//        if stateMachine.currentState is LevelSceneActiveState {
-//            stateMachine.enter(LevelSceneFailState.self)
-//        }
-//    }
-//
-//    #endif
+
     
     // MARK: ButtonNodeResponderType
     
@@ -534,8 +479,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         // Constrain the camera to stay a constant distance of 0 points from the player node.
         let zeroRange = SKRange(constantValue: 0.0)
-//        let playerNode = playerBot.renderComponent.node
-//        let playerBotLocationConstraint = SKConstraint.distance(zeroRange, to: playerNode)
+        let reaperNode = reaper.renderComponent.node
+        let reaperLocationConstraint = SKConstraint.distance(zeroRange, to: reaperNode)
         
         /*
             Also constrain the camera to avoid it moving to the very edges of the scene.
@@ -584,7 +529,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
             The result is that the camera will follow the player, unless this would mean
             moving too close to the edge of the level.
         */
-//        camera.constraints = [playerBotLocationConstraint, levelEdgeConstraint]
+        camera.constraints = [reaperLocationConstraint, levelEdgeConstraint]
     }
     
     /// Scales and positions the timer node to fit the scene's current height.
@@ -603,28 +548,28 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         #endif
     }
     
-//    private func beamInPlayerBot() {
-//        // Find the location of the player's initial position.
-//        let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
-//        let transporterCoordinate = charactersNode.childNode(withName: "transporter_coordinate")!
-//        
-//        // Set the initial orientation.
-//        guard let orientationComponent = playerBot.component(ofType: OrientationComponent.self) else {
-//            fatalError("A player bot must have an orientation component to be able to be added to a level")
-//        }
-//        orientationComponent.compassDirection = levelConfiguration.initialPlayerBotOrientation
-//
-//        // Set up the `PlayerBot` position in the scene.
-//        let playerNode = playerBot.renderComponent.node
-//        playerNode.position = transporterCoordinate.position
-//        playerBot.updateAgentPositionToMatchNodePosition()
-//        
-//        // Constrain the camera to the `PlayerBot` position and the level edges.
-//        setCameraConstraints()
-//        
-//        // Add the `PlayerBot` to the scene and component systems.
-//        addEntity(entity: playerBot)
-//    }
+    private func beamInPlayerBot() {
+        // Find the location of the player's initial position.
+        let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
+        let transporterCoordinate = charactersNode.childNode(withName: "transporter_coordinate")!
+        
+        // Set the initial orientation.
+        guard let orientationComponent = reaper.component(ofType: OrientationComponent.self) else {
+            fatalError("A player bot must have an orientation component to be able to be added to a level")
+        }
+        orientationComponent.compassDirection = .south
+
+        // Set up the `PlayerBot` position in the scene.
+        let reaperNode = reaper.renderComponent.node
+        reaperNode.position = transporterCoordinate.position
+        reaper.updateAgentPositionToMatchNodePosition()
+        
+        // Constrain the camera to the `PlayerBot` position and the level edges.
+        setCameraConstraints()
+        
+        // Add the `PlayerBot` to the scene and component systems.
+        addEntity(entity: reaper)
+    }
   
 }
 
