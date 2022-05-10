@@ -17,7 +17,6 @@
 		51231D9428295EEC00D31CB3 /* ReaperHitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9328295EEC00D31CB3 /* ReaperHitState.swift */; };
 		51231D9628295F6500D31CB3 /* ReaperRechargingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9528295F6400D31CB3 /* ReaperRechargingState.swift */; };
 		517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5BF428210F8600C39D21 /* AppDelegate.swift */; };
-		517F5BF728210F8600C39D21 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5BF628210F8600C39D21 /* GameScene.sks */; };
 		517F5BF928210F8600C39D21 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5BF828210F8600C39D21 /* Actions.sks */; };
 		517F5BFD28210F8600C39D21 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5BFC28210F8600C39D21 /* GameViewController.swift */; };
 		517F5C0028210F8600C39D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517F5BFE28210F8600C39D21 /* Main.storyboard */; };
@@ -84,7 +83,6 @@
 		51231D9528295F6400D31CB3 /* ReaperRechargingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaperRechargingState.swift; sourceTree = "<group>"; };
 		517F5BF128210F8600C39D21 /* ReapersDayOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReapersDayOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517F5BF428210F8600C39D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		517F5BF628210F8600C39D21 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		517F5BF828210F8600C39D21 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		517F5BFC28210F8600C39D21 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		517F5BFF28210F8600C39D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 		517F5C0C2821115800C39D21 /* SKS */ = {
 			isa = PBXGroup;
 			children = (
-				517F5BF628210F8600C39D21 /* GameScene.sks */,
 				517F5C522822BBFD00C39D21 /* RDOStageOneScene.sks */,
 				6646314828250A9200311BE3 /* RDOSettingsScene.sks */,
 				6641E462282A49B800308AB3 /* RDOPauseScene.sks */,
@@ -400,7 +397,6 @@
 			files = (
 				667C2E73282524CA00A5D13E /* RDOStartScene.sks in Resources */,
 				517F5C0028210F8600C39D21 /* Main.storyboard in Resources */,
-				517F5BF728210F8600C39D21 /* GameScene.sks in Resources */,
 				517F5C542822BBFD00C39D21 /* RDOStageOneScene.sks in Resources */,
 				517F5C0228210F8900C39D21 /* Assets.xcassets in Resources */,
 				517F5C0528210F8900C39D21 /* LaunchScreen.storyboard in Resources */,
