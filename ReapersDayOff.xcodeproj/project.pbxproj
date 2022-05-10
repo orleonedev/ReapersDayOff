@@ -222,6 +222,7 @@
 		517F5C0E2821747200C39D21 /* SceneManager */ = {
 			isa = PBXGroup;
 			children = (
+				517F5C6C2825137400C39D21 /* RDOAboutScene.swift */,
 				517F5C0F2821749300C39D21 /* RDOSceneManager.swift */,
 			);
 			path = SceneManager;
@@ -254,7 +255,6 @@
 				6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */,
 				6641E45C2829504C00308AB3 /* RDOLevelSceneGameoverState.swift */,
 				517F5C562822BC8A00C39D21 /* RDOStartScene.swift */,
-				517F5C6C2825137400C39D21 /* RDOAboutScene.swift */,
 				517F5C6828250DA700C39D21 /* RDOMainScene.swift */,
 				517F5C6A2825130A00C39D21 /* RDOSettingsScene.swift */,
 				517F5C6E2825139000C39D21 /* RDOCollectionScene.swift */,

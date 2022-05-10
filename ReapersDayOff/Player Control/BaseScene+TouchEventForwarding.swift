@@ -27,25 +27,25 @@ extension RDOBaseScene {
         // Ensure the touch input source is not associated any other parent.
         touchControlInputNode.removeFromParent()
         
-//        if self is LevelScene {
-//            // Ensure the control node fills the scene's size.
-//            touchControlInputNode.size = size
-//
-//            // Center the control node on the camera.
-//            touchControlInputNode.position = CGPoint.zero
-//
-//            /*
-//                Assign a `zPosition` that is above in-game elements, but below the top
-//                layer where buttons are added.
-//            */
-//            touchControlInputNode.zPosition = WorldLayer.top.rawValue - CGFloat(1.0)
-//
-//            // Add the control node to the camera node so the controls remain stationary as the camera moves.
-//            camera.addChild(touchControlInputNode)
-//
-//            // Make sure the controls are visible.
-//            touchControlInputNode.hideThumbStickNodes = false
-//        }
+        if self is RDOLevelScene {
+            // Ensure the control node fills the scene's size.
+            touchControlInputNode.size = size
+
+            // Center the control node on the camera.
+            touchControlInputNode.position = CGPoint.zero
+
+            /*
+                Assign a `zPosition` that is above in-game elements, but below the top
+                layer where buttons are added.
+            */
+            touchControlInputNode.zPosition = WorldLayer.top.rawValue - CGFloat(1.0)
+
+            // Add the control node to the camera node so the controls remain stationary as the camera moves.
+            camera.addChild(touchControlInputNode)
+
+            // Make sure the controls are visible.
+            touchControlInputNode.hideThumbStickNodes = false
+        }
     }
 }
 
