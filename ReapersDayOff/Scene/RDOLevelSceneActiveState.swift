@@ -45,7 +45,7 @@ class RDOLevelSceneActiveState: GKState {
     init(levelScene: RDOLevelScene) {
         self.levelScene = levelScene
         
-        timeRemaining = TimeInterval(3.0)
+        timeRemaining = TimeInterval(10.0)
     }
     
     // MARK: GKState Life Cycle
