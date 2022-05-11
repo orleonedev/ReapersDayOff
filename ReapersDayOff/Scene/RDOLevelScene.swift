@@ -45,13 +45,6 @@ enum WorldLayer: CGFloat {
 
 class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
-   
-    
-
-    /// An array of objects for `SceneLoader` notifications.
-    private var sceneLoaderNotificationObservers = [Any]()
-    
-    
     // MARK: Properties
     
     let reaper = Reaper()
@@ -63,13 +56,12 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         return childNode(withName: "world")!
     }
 
-//    let playerBot = PlayerBot()
     var entities = Set<GKEntity>()
     
     var lastUpdateTimeInterval: TimeInterval = 0
     let maximumUpdateDeltaTime: TimeInterval = 1.0 / 60.0
     
-    var levelConfiguration: RDOLevelConfiguration!
+//    var levelConfiguration: RDOLevelConfiguration!
     
     lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
         RDOLevelSceneActiveState(levelScene: self),
@@ -180,7 +172,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         }
         
         // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
-        let pathPoints = [CGPoint(), CGPoint(x: 100, y: 100)]
+        let pathPoints = [CGPoint(x: -350, y: -100), CGPoint(x: 350, y: 100)]
         
         let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
         

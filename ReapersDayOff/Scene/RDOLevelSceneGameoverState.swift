@@ -25,9 +25,9 @@ class RDOLevelSceneGameoverState: RDOLevelSceneOverlayState {
     override func didEnter(from previousState: GKState?) {
         super.didEnter(from: previousState)
 
-//        if let inputComponent = levelScene.playerBot.component(ofType: InputComponent.self) {
-//            inputComponent.isEnabled = false
-//        }
+        if let inputComponent = levelScene.reaper.component(ofType: InputComponent.self) {
+            inputComponent.isEnabled = false
+        }
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

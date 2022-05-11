@@ -219,7 +219,6 @@
 		517F5C0E2821747200C39D21 /* SceneManager */ = {
 			isa = PBXGroup;
 			children = (
-				517F5C6C2825137400C39D21 /* RDOAboutScene.swift */,
 				517F5C0F2821749300C39D21 /* RDOSceneManager.swift */,
 			);
 			path = SceneManager;
@@ -228,7 +227,6 @@
 		517F5C112821B34300C39D21 /* Player Control */ = {
 			isa = PBXGroup;
 			children = (
-				51231D8D28295A5000D31CB3 /* ChargeBar.swift */,
 				517F5C18282284D800C39D21 /* RDOGameInput.swift */,
 				517F5C2228228DF900C39D21 /* ControlInputSource.swift */,
 				517F5C2428228F0900C39D21 /* GameControllerInputSource.swift */,
@@ -256,6 +254,7 @@
 				517F5C6828250DA700C39D21 /* RDOMainScene.swift */,
 				517F5C6A2825130A00C39D21 /* RDOSettingsScene.swift */,
 				517F5C6E2825139000C39D21 /* RDOCollectionScene.swift */,
+				517F5C6C2825137400C39D21 /* RDOAboutScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -263,6 +262,7 @@
 		517F5C652822BE0100C39D21 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				51231D8D28295A5000D31CB3 /* ChargeBar.swift */,
 				517F5C622822BCC300C39D21 /* RDOButtonNode.swift */,
 				517F5C282822942C00C39D21 /* ThumbStickNode.swift */,
 			);
