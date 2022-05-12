@@ -111,6 +111,20 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 //        return levelStateSnapshot!.entitySnapshots[entity]
 //    }
 
+    
+    // MARK: Rule State
+    
+    var levelStateSnapshot: RDOLevelStateSnapshot?
+    
+    func entitySnapshotForEntity(entity: GKEntity) -> EntitySnapshot? {
+        // Create a snapshot of the level's state if one does not already exist for this update cycle.
+        if levelStateSnapshot == nil {
+            levelStateSnapshot = RDOLevelStateSnapshot(scene: self)
+        }
+        
+        // Find and return the entity snapshot for this entity.
+        return levelStateSnapshot!.entitySnapshots[entity]
+    }
     // MARK: Component Systems
     
     lazy var componentSystems: [GKComponentSystem] = {
@@ -120,7 +134,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let intelligenceSystem = GKComponentSystem(componentClass: IntelligenceComponent.self)
         let movementSystem = GKComponentSystem(componentClass: MovementComponent.self)
 
-//        let rulesSystem = GKComponentSystem(componentClass: RulesComponent.self)
+        let rulesSystem = GKComponentSystem(componentClass: RulesComponent.self)
 
         // The systems will be updated in order. This order is explicitly defined to match assumptions made within components.
         return [intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
@@ -180,9 +194,13 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         }
         
         // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
-        let pathPoints = [CGPoint(), CGPoint(x: 100, y: 100)]
+        let pathPoints = [CGPoint(x: -100, y: -100), CGPoint(x: 100, y: 100)]
+        let pathPoints2 = [CGPoint(x: -150, y: -150), CGPoint(x: 200, y: 200)]
+        let pathPoints3 = [CGPoint(x: -200, y: -200), CGPoint(x: 100, y: 300)]
         
         let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
+        let blueSoul = BlueSoul(pathPoints: pathPoints2, mandate: .followPatrolPath)
+        let greenSoul = GreenSoul(pathPoints: pathPoints3, mandate: .followPatrolPath)
         
 //        for soulConfiguration in levelConfiguration.soulConfigurations {
 //            let soul: Soul
@@ -214,6 +232,32 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 //
 //            // Add the `TaskBot` to the scene and the component systems.
             addEntity(entity: redSoul)
+        
+        guard let orientationComponent = blueSoul.component(ofType: OrientationComponent.self) else {
+            fatalError("A task bot must have an orientation component to be able to be added to a level")
+        }
+        orientationComponent.compassDirection = .west
+        
+        // Set the `TaskBot`'s initial position.
+                    let blueSoulNode = blueSoul.renderComponent.node
+                blueSoulNode.position = pathPoints.first!
+                blueSoul.updateAgentPositionToMatchNodePosition()
+        //
+        //            // Add the `TaskBot` to the scene and the component systems.
+                    addEntity(entity: blueSoul)
+        
+        guard let orientationComponent = greenSoul.component(ofType: OrientationComponent.self) else {
+            fatalError("A task bot must have an orientation component to be able to be added to a level")
+        }
+        orientationComponent.compassDirection = .south
+        
+        // Set the `TaskBot`'s initial position.
+                    let greenSoulNode = greenSoul.renderComponent.node
+                greenSoulNode.position = pathPoints.first!
+                greenSoul.updateAgentPositionToMatchNodePosition()
+        //
+        //            // Add the `TaskBot` to the scene and the component systems.
+                    addEntity(entity: greenSoul)
 //
 //            // Add the `TaskBot`'s debug drawing node beneath all characters.
 //            addNode(node: taskBot.debugNode, toWorldLayer: .debug)

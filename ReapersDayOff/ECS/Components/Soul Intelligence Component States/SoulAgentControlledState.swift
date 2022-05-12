@@ -35,7 +35,7 @@ class SoulAgentControlledState: GKState {
         elapsedTime = 0.0
         
         // Ensure that the agent's behavior is the appropriate behavior for its current mandate.
-//        entity.agent.behavior = entity.behaviorForCurrentMandate
+        entity.agent.behavior = entity.behaviorForCurrentMandate
         
         /*
             `TaskBot`s recover to a full charge if they're hit with the beam but don't become "good".

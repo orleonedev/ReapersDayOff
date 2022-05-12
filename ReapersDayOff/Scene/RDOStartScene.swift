@@ -44,6 +44,8 @@ class RDOStartScene: RDOBaseScene {
         // Enable focus based navigation.
         focusChangesEnabled = true
         RedSoul.loadResources(){}
+        BlueSoul.loadResources() {}
+        GreenSoul.loadResources() {}
         Reaper.loadResources(){}
         
 //        registerForNotifications()

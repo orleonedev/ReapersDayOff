@@ -93,6 +93,52 @@ struct GameplayConfiguration {
         static let beamTargetOffset = CGPoint(x: 0.0, y: 65.0)
     }
     
+    struct BlueSoul {
+        /// The maximum amount of charge a `FlyingBot` stores.
+        static let maximumCharge = 100.0
+        
+        /// The radius of a `FlyingBot` blast.
+        static let blastRadius: Float = 100.0
+        
+        /// The amount of charge a `FlyingBot` blast drains from `PlayerBot`s per second.
+        static let blastChargeLossPerSecond = 25.0
+
+        /// The duration of a `FlyingBot` blast.
+        static let blastDuration: TimeInterval = 1.25
+        
+        /// The duration over which a `FlyingBot` blast affects entities in its blast radius.
+        static let blastEffectDuration: TimeInterval = 0.75
+
+        /// The offset from the `FlyingBot`'s position for the blast particle emitter node.
+        static let blastEmitterOffset = CGPoint(x: 0.0, y: 20.0)
+        
+        /// The offset from the `FlyingBot`'s position that should be used for beam targeting.
+        static let beamTargetOffset = CGPoint(x: 0.0, y: 65.0)
+    }
+    
+    struct GreenSoul {
+        /// The maximum amount of charge a `FlyingBot` stores.
+        static let maximumCharge = 100.0
+        
+        /// The radius of a `FlyingBot` blast.
+        static let blastRadius: Float = 100.0
+        
+        /// The amount of charge a `FlyingBot` blast drains from `PlayerBot`s per second.
+        static let blastChargeLossPerSecond = 25.0
+
+        /// The duration of a `FlyingBot` blast.
+        static let blastDuration: TimeInterval = 1.25
+        
+        /// The duration over which a `FlyingBot` blast affects entities in its blast radius.
+        static let blastEffectDuration: TimeInterval = 0.75
+
+        /// The offset from the `FlyingBot`'s position for the blast particle emitter node.
+        static let blastEmitterOffset = CGPoint(x: 0.0, y: 20.0)
+        
+        /// The offset from the `FlyingBot`'s position that should be used for beam targeting.
+        static let beamTargetOffset = CGPoint(x: 0.0, y: 65.0)
+    }
+    
     struct Reaper {
         /// The movement speed (in points per second) for the `PlayerBot`.
         static let movementSpeed: CGFloat = 210.0
