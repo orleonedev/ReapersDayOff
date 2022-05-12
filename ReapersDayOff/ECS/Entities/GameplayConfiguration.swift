@@ -217,9 +217,9 @@ struct GameplayConfiguration {
         static let minimumRequiredThumbstickDisplacement: Float = 0.35
         
         /// The minimum size for an on-screen control.
-        static let minimumControlSize: CGFloat = 140
+        static let minimumControlSize: CGFloat = 200
         
         /// The ideal size for an on-screen control as a ratio of the scene's width.
-        static let idealRelativeControlSize: CGFloat = 0.15
+        static let idealRelativeControlSize: CGFloat = 0.2
     }
 }

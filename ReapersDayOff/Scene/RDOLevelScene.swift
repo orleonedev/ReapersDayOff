@@ -88,20 +88,6 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
      
     lazy var graph: GKObstacleGraph = GKObstacleGraph(obstacles: self.polygonObstacles, bufferRadius: GameplayConfiguration.Soul.pathfindingGraphBufferRadius)
 
-    
-    // MARK: Rule State
-    
-//    var levelStateSnapshot: LevelStateSnapshot?
-//    
-//    func entitySnapshotForEntity(entity: GKEntity) -> EntitySnapshot? {
-//        // Create a snapshot of the level's state if one does not already exist for this update cycle.
-//        if levelStateSnapshot == nil {
-//            levelStateSnapshot = LevelStateSnapshot(scene: self)
-//        }
-//        
-//        // Find and return the entity snapshot for this entity.
-//        return levelStateSnapshot!.entitySnapshots[entity]
-//    }
 
     
     // MARK: Rule State
@@ -129,7 +115,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let rulesSystem = GKComponentSystem(componentClass: RulesComponent.self)
 
         // The systems will be updated in order. This order is explicitly defined to match assumptions made within components.
-        return [intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
+        return [rulesSystem, intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
     }()
     
     // MARK: Initializers
@@ -298,7 +284,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         lastUpdateTimeInterval = currentTime
         
         // Get rid of the now-stale `LevelStateSnapshot` if it exists. It will be regenerated when next needed.
-//        levelStateSnapshot = nil
+        levelStateSnapshot = nil
         
         /*
             Don't evaluate any updates if the `worldNode` is paused.
