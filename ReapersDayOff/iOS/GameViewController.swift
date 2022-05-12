@@ -20,7 +20,7 @@ class GameViewController: UIViewController, SceneManagerDelegate {
         let viewSize = view.bounds.size
         
         /// Controller
-        let controlLength = min(140, viewSize.width * 0.15)
+        let controlLength = min(GameplayConfiguration.TouchControl.minimumControlSize, viewSize.width * GameplayConfiguration.TouchControl.idealRelativeControlSize)
         let controlSize = CGSize(width: controlLength, height: controlLength)
 
         let touchControlInputNode = TouchControlInputNode(frame: view.bounds, thumbStickNodeSize: controlSize)

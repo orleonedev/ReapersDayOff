@@ -18,7 +18,7 @@ class SoulBehavior: GKBehavior {
         
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
         behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
-//        behavior.addAvoidObstaclesGoal(forScene: scene)
+        behavior.addAvoidObstaclesGoal(forScene: scene)
 
         // Find any nearby "bad" TaskBots to flock with.
         let agentsToFlockWith: [GKAgent2D] = scene.entities.compactMap { entity in
@@ -176,6 +176,11 @@ class SoulBehavior: GKBehavior {
         // Convert the `GKGraphNode2D` nodes into `CGPoint`s for debug drawing.
         let pathPoints = pathNodes.map { CGPoint($0.position) }
         return pathPoints
+    }
+    
+    /// Adds a goal to avoid all polygon obstacles in the scene.
+    private func addAvoidObstaclesGoal(forScene scene: RDOLevelScene) {
+        setWeight(1.0, for: GKGoal(toAvoid: scene.polygonObstacles, maxPredictionTime: GameplayConfiguration.Soul.maxPredictionTimeForObstacleAvoidance))
     }
     
     /// Adds a goal to attain a target speed.

@@ -41,6 +41,7 @@ class RDOLevelSceneOverlayState: GKState {
         
         // Provide the levelScene with a reference to the overlay node.
         levelScene.overlay = overlay
+        overlay.contentNode.isPaused = false
     }
 
     override func willExit(to nextState: GKState) {

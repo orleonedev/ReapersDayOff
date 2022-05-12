@@ -59,7 +59,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         // Setup pause button.
         let buttonSize = CGSize(width: frame.height / 4, height: frame.height / 4)
         pauseButton = SKSpriteNode(texture: nil, color: UIColor.gray, size: buttonSize)
-        pauseButton.position = CGPoint(x: 0, y: frame.height / 2)
+        pauseButton.position = CGPoint(x: 0, y: frame.height / 3)
         
         super.init(texture: nil, color: UIColor.clear, size: frame.size)
         rightThumbStickNode.delegate = self
@@ -92,7 +92,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
             let displacement = SIMD2<Float>(x: xValue, y: yValue)
             
             // Rotate the character only if the `thumbStickNode` is sufficiently displaced.
-            if length(displacement) >= 0.35 {
+            if length(displacement) >= GameplayConfiguration.TouchControl.minimumRequiredThumbstickDisplacement {
                 delegate?.controlInputSource(self, didUpdateAngularDisplacement: displacement)
             }
             else {

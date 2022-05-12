@@ -211,4 +211,15 @@ struct GameplayConfiguration {
         
         static let agentSearchDistanceForFlocking: Float = 50.0
     }
+    
+    struct TouchControl {
+        /// The minimum distance a virtual thumbstick must move before it is considered to have been moved.
+        static let minimumRequiredThumbstickDisplacement: Float = 0.35
+        
+        /// The minimum size for an on-screen control.
+        static let minimumControlSize: CGFloat = 140
+        
+        /// The ideal size for an on-screen control as a ratio of the scene's width.
+        static let idealRelativeControlSize: CGFloat = 0.15
+    }
 }

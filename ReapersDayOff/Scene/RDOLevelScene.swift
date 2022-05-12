@@ -45,13 +45,6 @@ enum WorldLayer: CGFloat {
 
 class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
-   
-    
-
-    /// An array of objects for `SceneLoader` notifications.
-    private var sceneLoaderNotificationObservers = [Any]()
-    
-    
     // MARK: Properties
     
     let reaper = Reaper()
@@ -63,13 +56,12 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         return childNode(withName: "world")!
     }
 
-//    let playerBot = PlayerBot()
     var entities = Set<GKEntity>()
     
     var lastUpdateTimeInterval: TimeInterval = 0
     let maximumUpdateDeltaTime: TimeInterval = 1.0 / 60.0
     
-    var levelConfiguration: RDOLevelConfiguration!
+//    var levelConfiguration: RDOLevelConfiguration!
     
     lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
         RDOLevelSceneActiveState(levelScene: self),
@@ -194,9 +186,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         }
         
         // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
-        let pathPoints = [CGPoint(x: -100, y: -100), CGPoint(x: 100, y: 100)]
-        let pathPoints2 = [CGPoint(x: -150, y: -150), CGPoint(x: 200, y: 200)]
-        let pathPoints3 = [CGPoint(x: -200, y: -200), CGPoint(x: 100, y: 300)]
+        let pathPoints = [CGPoint(x: -350, y: -200), CGPoint(x: 350, y: 200)]
+        let pathPoints2 = [CGPoint(x: -300, y: -150), CGPoint(x: 200, y: 100)]
+        let pathPoints3 = [CGPoint(x: -200, y: -100), CGPoint(x: 100, y: 10)]
         
         let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
         let blueSoul = BlueSoul(pathPoints: pathPoints2, mandate: .followPatrolPath)
