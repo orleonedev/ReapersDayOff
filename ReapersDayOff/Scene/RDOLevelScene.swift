@@ -71,6 +71,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
     let timerNode = SKLabelNode(text: "--:--")
     
+    let score = SKLabelNode(text: "0")
+        
     override var overlay: RDOSceneOverlay? {
         didSet {
             // Ensure that focus changes are only enabled when the `overlay` is present.
@@ -176,6 +178,15 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         timerNode.verticalAlignmentMode = .top
         scaleTimerNode()
         camera!.addChild(timerNode)
+        
+        // Setup score label
+        score.zPosition = WorldLayer.top.rawValue
+        score.fontColor = SKColor.white
+        score.fontName = GameplayConfiguration.Timer.fontName
+        score.horizontalAlignmentMode = .right
+        score.verticalAlignmentMode = .top
+        scaleScoreNode()
+        camera!.addChild(score)
 
         // A convenience function to find node locations given a set of node names.
         func nodePointsFromNodeNames(nodeNames: [String]) -> [CGPoint] {
@@ -586,6 +597,24 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         timerNode.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
         #endif
     }
+    
+    func scaleScoreNode() {
+       // Update the font size of the score node based on the height of the scene.
+       score.fontSize = size.height * GameplayConfiguration.Timer.fontSize
+       
+       // Make sure the score node is positioned at the top of the scene.
+       score.position.y = size.height / 2.0
+       
+        // Make sure the score node is positioned at the right of the scene.
+        score.position.x = size.width / 3.0
+        
+       // Add padding between the top of scene and the top of the score node.
+       #if os(tvOS)
+       score.position.y -= GameplayConfiguration.Timer.paddingSize
+       #else
+       score.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+       #endif
+   }
     
     private func beamInPlayerBot() {
         // Find the location of the player's initial position.
