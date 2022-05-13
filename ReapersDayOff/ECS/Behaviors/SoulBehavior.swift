@@ -19,6 +19,7 @@ class SoulBehavior: GKBehavior {
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
         behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
         behavior.addAvoidObstaclesGoal(forScene: scene)
+        behavior.addFleeReaperGoal(forScene: scene)
 
         // Find any nearby "bad" TaskBots to flock with.
         let agentsToFlockWith: [GKAgent2D] = scene.entities.compactMap { entity in
@@ -62,6 +63,12 @@ class SoulBehavior: GKBehavior {
         return (behavior, pathPoints)
     }
     
+    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, huntingAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) {
+        let behavior = SoulBehavior()
+        
+        
+    }
+    
     /// Constructs a behavior to patrol a path of points, avoiding obstacles along the way.
     static func behavior(forAgent agent: GKAgent2D, patrollingPathWithPoints patrolPathPoints: [CGPoint], pathRadius: Float, inScene scene: RDOLevelScene) -> GKBehavior {
         let behavior = SoulBehavior()
@@ -69,7 +76,7 @@ class SoulBehavior: GKBehavior {
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
         behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
 //        behavior.addAvoidObstaclesGoal(forScene: scene)
-        
+        behavior.addFleeReaperGoal(forScene: scene)
         // Convert the patrol path to an array of `float2`s.
         
         let pathVectorPoints = patrolPathPoints.map { SIMD2<Float>($0) }
@@ -182,6 +189,14 @@ class SoulBehavior: GKBehavior {
     private func addAvoidObstaclesGoal(forScene scene: RDOLevelScene) {
         setWeight(1.0, for: GKGoal(toAvoid: scene.polygonObstacles, maxPredictionTime: GameplayConfiguration.Soul.maxPredictionTimeForObstacleAvoidance))
     }
+    
+    private func addFleeReaperGoal(forScene scene: RDOLevelScene) {
+        setWeight(1.0, for: GKGoal(toFleeAgent: scene.reaper.agent))
+    }
+    
+//    private func addAvoidReaperGoal(forScene scene: RDOLevelScene) {
+//        setWeight(1.5, for: GKGoal(toAvoid: scene.reaper, maxPredictionTime: GameplayConfiguration.Soul.maxPredictionTimeForReaperAvoidance))
+//    }
     
     /// Adds a goal to attain a target speed.
     private func addTargetSpeedGoal(speed: Float) {

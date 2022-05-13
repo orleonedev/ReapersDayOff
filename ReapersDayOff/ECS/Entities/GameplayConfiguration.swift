@@ -50,6 +50,8 @@ struct GameplayConfiguration {
         
         /// The maximum time to look ahead for obstacles to be avoided.
         static let maxPredictionTimeForObstacleAvoidance: TimeInterval = 1.0
+        
+        static let maxPredictionTimeForReaperAvoidance: TimeInterval = 1.0
 
         /// The radius of the path along which an agent patrols.
         static let patrolPathRadius: Float = 10.0
