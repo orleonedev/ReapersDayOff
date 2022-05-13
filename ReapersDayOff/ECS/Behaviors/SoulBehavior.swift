@@ -19,7 +19,7 @@ class SoulBehavior: GKBehavior {
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
         behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
         behavior.addAvoidObstaclesGoal(forScene: scene)
-        behavior.addFleeReaperGoal(forScene: scene)
+//        behavior.addFleeReaperGoal(forScene: scene)
 
         // Find any nearby "bad" TaskBots to flock with.
         let agentsToFlockWith: [GKAgent2D] = scene.entities.compactMap { entity in
@@ -54,7 +54,8 @@ class SoulBehavior: GKBehavior {
         
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
         behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
-//        behavior.addAvoidObstaclesGoal(forScene: scene)
+        behavior.addAvoidObstaclesGoal(forScene: scene)
+//        behavior.addFleeReaperGoal(forScene: scene)
         
         // Add goals to follow a calculated path from the `TaskBot` to the start of its patrol path.
         let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: endPoint, pathRadius: pathRadius, inScene: scene)
@@ -63,11 +64,11 @@ class SoulBehavior: GKBehavior {
         return (behavior, pathPoints)
     }
     
-    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, huntingAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) {
-        let behavior = SoulBehavior()
-        
-        
-    }
+//    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, huntingAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) {
+//        let behavior = SoulBehavior()
+//
+//
+//    }
     
     /// Constructs a behavior to patrol a path of points, avoiding obstacles along the way.
     static func behavior(forAgent agent: GKAgent2D, patrollingPathWithPoints patrolPathPoints: [CGPoint], pathRadius: Float, inScene scene: RDOLevelScene) -> GKBehavior {
@@ -75,8 +76,8 @@ class SoulBehavior: GKBehavior {
         
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
         behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
-//        behavior.addAvoidObstaclesGoal(forScene: scene)
-        behavior.addFleeReaperGoal(forScene: scene)
+        behavior.addAvoidObstaclesGoal(forScene: scene)
+//        behavior.addFleeReaperGoal(forScene: scene)
         // Convert the patrol path to an array of `float2`s.
         
         let pathVectorPoints = patrolPathPoints.map { SIMD2<Float>($0) }

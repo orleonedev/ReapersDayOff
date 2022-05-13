@@ -197,9 +197,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         }
         
         // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
-        let pathPoints = [CGPoint(x: -350, y: -200), CGPoint(x: 350, y: 200)]
-        let pathPoints2 = [CGPoint(x: -300, y: -150), CGPoint(x: 200, y: 100)]
-        let pathPoints3 = [CGPoint(x: -200, y: -100), CGPoint(x: 100, y: 10)]
+        let pathPoints = [CGPoint(x: -600, y: -0), CGPoint(x: 350, y: 0)]
+        let pathPoints2 = [CGPoint(x: -650, y: -0), CGPoint(x: 200, y: 0)]
+        let pathPoints3 = [CGPoint(x: -700, y: -0), CGPoint(x: 100, y: 0)]
         
         let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
         let blueSoul = BlueSoul(pathPoints: pathPoints2, mandate: .followPatrolPath)
