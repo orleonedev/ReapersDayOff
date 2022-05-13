@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class Reaper: GKEntity, GKAgentDelegate, ChargeComponentDelegate/*, ResourceLoadableType */{
+class Reaper: GKEntity, /*GKAgentDelegate,*/ ChargeComponentDelegate/*, ResourceLoadableType */{
     // MARK: Static properties
     
     /// The size to use for the `Reaper`s animation textures.
@@ -191,16 +191,5 @@ class Reaper: GKEntity, GKAgentDelegate, ChargeComponentDelegate/*, ResourceLoad
         agent.position = SIMD2<Float>(x: Float(renderComponent.node.position.x + agentOffset.x), y: Float(renderComponent.node.position.y + agentOffset.y))
     }
     
-    //  MARK: Agent Delegate
-    func agentWillUpdate(agent: GKAgent) {
-        if let agent2D = agent as? GKAgent2D {
-            agent2D.position = float2(Float(position.x), Float(position.y))
-        }
-    }
-     
-    func agentDidUpdate(agent: GKAgent) {
-        if let agent2D = agent as? GKAgent2D {
-            self.position = CGPoint(x: CGFloat(agent2D.position.x), y: CGFloat(agent2D.position.y))
-        }
-    }
+
 }

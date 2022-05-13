@@ -266,8 +266,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 //            addNode(node: taskBot.debugNode, toWorldLayer: .debug)
 //        }
         
-        Reaper().addComponent(reaper.agent)
-        reaper.agent.delegate = reaper
+//        Reaper().addComponent(reaper.agent)
+//        reaper.agent.delegate = reaper
         
         #if os(iOS)
         /*

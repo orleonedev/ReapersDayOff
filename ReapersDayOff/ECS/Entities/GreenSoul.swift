@@ -18,7 +18,7 @@ class GreenSoul: Soul {
         return GreenSoul.soulAnimations!
     }
     
-    required override init(pathPoints: [CGPoint], mandate: SoulMandate) {
+    required init(pathPoints: [CGPoint], mandate: SoulMandate) {
         super.init(pathPoints: pathPoints, mandate: mandate)
 
         // Create components that define how the entity looks and behaves.
