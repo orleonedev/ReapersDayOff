@@ -352,51 +352,51 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
     // MARK: SKPhysicsContactDelegate
     
-//    @objc(didBeginContact:) func didBegin(_ contact: SKPhysicsContact) {
-//        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
-//            ContactNotifiableType.contactWithEntityDidBegin(otherEntity)
-//        }
-//    }
-//
-//    @objc(didEndContact:) func didEnd(_ contact: SKPhysicsContact) {
-//        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
-//            ContactNotifiableType.contactWithEntityDidEnd(otherEntity)
-//        }
-//    }
+    @objc(didBeginContact:) func didBegin(_ contact: SKPhysicsContact) {
+        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
+            ContactNotifiableType.contactWithEntityDidBegin(otherEntity)
+        }
+    }
+
+    @objc(didEndContact:) func didEnd(_ contact: SKPhysicsContact) {
+        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
+            ContactNotifiableType.contactWithEntityDidEnd(otherEntity)
+        }
+    }
     
     // MARK: SKPhysicsContactDelegate convenience
     
-//    private func handleContact(contact: SKPhysicsContact, contactCallback: (ContactNotifiableType, GKEntity) -> Void) {
-//        // Get the `ColliderType` for each contacted body.
-//        let colliderTypeA = ColliderType(rawValue: contact.bodyA.categoryBitMask)
-//        let colliderTypeB = ColliderType(rawValue: contact.bodyB.categoryBitMask)
-//        
-//        // Determine which `ColliderType` should be notified of the contact.
-//        let aWantsCallback = colliderTypeA.notifyOnContactWith(colliderTypeB)
-//        let bWantsCallback = colliderTypeB.notifyOnContactWith(colliderTypeA)
-//        
-//        // Make sure that at least one of the entities wants to handle this contact.
-//        assert(aWantsCallback || bWantsCallback, "Unhandled physics contact - A = \(colliderTypeA), B = \(colliderTypeB)")
-//        
-//        let entityA = contact.bodyA.node?.entity
-//        let entityB = contact.bodyB.node?.entity
-//
-//        /*
-//            If `entityA` is a notifiable type and `colliderTypeA` specifies that it should be notified
-//            of contact with `colliderTypeB`, call the callback on `entityA`.
-//        */
-//        if let notifiableEntity = entityA as? ContactNotifiableType, let otherEntity = entityB, aWantsCallback {
-//            contactCallback(notifiableEntity, otherEntity)
-//        }
-//        
-//        /*
-//            If `entityB` is a notifiable type and `colliderTypeB` specifies that it should be notified
-//            of contact with `colliderTypeA`, call the callback on `entityB`.
-//        */
-//        if let notifiableEntity = entityB as? ContactNotifiableType, let otherEntity = entityA, bWantsCallback {
-//            contactCallback(notifiableEntity, otherEntity)
-//        }
-//    }
+    private func handleContact(contact: SKPhysicsContact, contactCallback: (ContactNotifiableType, GKEntity) -> Void) {
+        // Get the `ColliderType` for each contacted body.
+        let colliderTypeA = ColliderType(rawValue: contact.bodyA.categoryBitMask)
+        let colliderTypeB = ColliderType(rawValue: contact.bodyB.categoryBitMask)
+        print("A: \(colliderTypeA) B: \(colliderTypeB) ")
+        // Determine which `ColliderType` should be notified of the contact.
+        let aWantsCallback = colliderTypeA.notifyOnContactWith(colliderTypeB)
+        let bWantsCallback = colliderTypeB.notifyOnContactWith(colliderTypeA)
+        
+        // Make sure that at least one of the entities wants to handle this contact.
+        assert(aWantsCallback || bWantsCallback, "Unhandled physics contact - A = \(colliderTypeA), B = \(colliderTypeB)")
+        
+        let entityA = contact.bodyA.node?.entity
+        let entityB = contact.bodyB.node?.entity
+
+        /*
+            If `entityA` is a notifiable type and `colliderTypeA` specifies that it should be notified
+            of contact with `colliderTypeB`, call the callback on `entityA`.
+        */
+        if let notifiableEntity = entityA as? ContactNotifiableType, let otherEntity = entityB, aWantsCallback {
+            contactCallback(notifiableEntity, otherEntity)
+        }
+        
+        /*
+            If `entityB` is a notifiable type and `colliderTypeB` specifies that it should be notified
+            of contact with `colliderTypeA`, call the callback on `entityB`.
+        */
+        if let notifiableEntity = entityB as? ContactNotifiableType, let otherEntity = entityA, bWantsCallback {
+            contactCallback(notifiableEntity, otherEntity)
+        }
+    }
     
     // MARK: Level Construction
     

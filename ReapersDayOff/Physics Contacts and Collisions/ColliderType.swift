@@ -23,9 +23,10 @@ struct ColliderType: OptionSet, Hashable, CustomDebugStringConvertible {
 
     // MARK: Options
     
-    static var Obstacle: ColliderType  { return self.init(rawValue: 1 << 0) }
-    static var Reaper: ColliderType { return self.init(rawValue: 1 << 1) }
-    static var Soul: ColliderType   { return self.init(rawValue: 1 << 2) }
+    static var Obstacle: ColliderType  { return self.init(rawValue: 1 << 0) } // 1
+    static var Reaper: ColliderType { return self.init(rawValue: 1 << 1) } // 2
+    static var Soul: ColliderType   { return self.init(rawValue: 1 << 2) } // 4
+    static var Gate: ColliderType { return self.init(rawValue: 1 << 3) } // 8
 
     // MARK: Hashable
     
@@ -41,10 +42,12 @@ struct ColliderType: OptionSet, Hashable, CustomDebugStringConvertible {
                 return "ColliderType.Obstacle"
 
             case ColliderType.Reaper.rawValue:
-                return "ColliderType.PlayerBot"
+                return "ColliderType.Reaper"
             
             case ColliderType.Soul.rawValue:
                 return "ColliderType.Soul"
+        case ColliderType.Gate.rawValue:
+                return "ColliderType.Gate"
                 
             default:
                 return "UnknownColliderType(\(self.rawValue))"

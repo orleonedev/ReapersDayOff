@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class Soul: GKEntity,GKAgentDelegate {
+class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
     
     // MARK: Nested types
     
@@ -238,6 +238,12 @@ class Soul: GKEntity,GKAgentDelegate {
         renderComponent.node.position = CGPoint(x: agentPosition.x - agentOffset.x, y: agentPosition.y - agentOffset.y)
     }
     
+    // MARK: ContactableType
+    
+    func contactWithEntityDidBegin(_ entity: GKEntity) {}
+
+    func contactWithEntityDidEnd(_ entity: GKEntity) {}
+    
     // MARK: Shared Assets
     class func loadSharedAssets() {
         ColliderType.definedCollisions[.Soul] = [
@@ -247,9 +253,7 @@ class Soul: GKEntity,GKAgentDelegate {
         ]
         
         ColliderType.requestedContactNotifications[.Soul] = [
-            .Obstacle,
             .Reaper,
-            .Soul
         ]
     }
 }

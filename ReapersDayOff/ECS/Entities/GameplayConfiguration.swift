@@ -37,7 +37,7 @@ struct GameplayConfiguration {
         static var physicsBodyRadius: CGFloat = 32
 
         /// The offset of the `TaskBot` physics body's center from the `TaskBot`'s center.
-        static let physicsBodyOffset = CGPoint(x: 0.0, y: -25.0)
+        static let physicsBodyOffset = CGPoint(x: 0.0, y: -16.0)
 
         /// The radius (in points) of the agent associated with this `TaskBot` for steering.
         static let agentRadius = Float(physicsBodyRadius)
@@ -152,7 +152,7 @@ struct GameplayConfiguration {
         static var physicsBodyRadius: CGFloat = 30.0
         
         /// The offset of the `PlayerBot`'s physics body's center from the `PlayerBot`'s center.
-        static let physicsBodyOffset = CGPoint(x: 0.0, y: -25.0)
+        static let physicsBodyOffset = CGPoint(x: 0.0, y: -16.0)
         
         /// The radius of the agent associated with this `PlayerBot` for pathfinding.
         static let agentRadius = Float(physicsBodyRadius)

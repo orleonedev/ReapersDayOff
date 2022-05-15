@@ -85,7 +85,7 @@ class RDOBaseScene: SKScene, GameInputDelegate, ControlInputSourceGameStateDeleg
         
         // Find all the buttons and set the initial focus.
         buttons = findAllButtonsInScene()
-        print(buttons)
+        
         resetFocus()
     }
      

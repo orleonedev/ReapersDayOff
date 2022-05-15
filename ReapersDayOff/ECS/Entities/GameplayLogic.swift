@@ -13,21 +13,42 @@ class GameplayLogic {
         return GameplayLogicInstance
     }
     
+    var score: UInt = 0
     var redSouls: UInt = 0
     var greenSouls: UInt = 0
     var blueSouls: UInt = 0
+    var sumSoul: UInt {
+        return redSouls+greenSouls+blueSouls
+    }
     var isFull: Bool {
-        return (redSouls+greenSouls+blueSouls) == soulLimit
+        return sumSoul == soulLimit
     }
     
      var soulLimit: UInt = 15
      let timeLimit: TimeInterval = 60.0
     
     func setupGame(){
+        score = 0
         redSouls = 0
         greenSouls = 0
         blueSouls = 0
         
+    }
+    
+    func deposit(type: String){
+        switch type {
+        case "redGate":
+            score += redSouls
+            redSouls = 0
+        case "greenGate":
+            score += greenSouls
+            greenSouls = 0
+        case "blueGate":
+            score += blueSouls
+            blueSouls = 0
+        default:
+            print("Unkown Gate type")
+        }
     }
     
     func addSouls(type: String){
