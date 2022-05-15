@@ -34,7 +34,7 @@ struct GameplayConfiguration {
         static let agentMass: Float = 0.25
         
         /// The radius of the `TaskBot`'s physics body.
-        static var physicsBodyRadius: CGFloat = 35.0
+        static var physicsBodyRadius: CGFloat = 32
 
         /// The offset of the `TaskBot` physics body's center from the `TaskBot`'s center.
         static let physicsBodyOffset = CGPoint(x: 0.0, y: -25.0)
@@ -50,18 +50,20 @@ struct GameplayConfiguration {
         
         /// The maximum time to look ahead for obstacles to be avoided.
         static let maxPredictionTimeForObstacleAvoidance: TimeInterval = 1.0
+        
+        static let maxPredictionTimeForReaperAvoidance: TimeInterval = 1.0
 
         /// The radius of the path along which an agent patrols.
-        static let patrolPathRadius: Float = 10.0
+        static let patrolPathRadius: Float = 32
         
         /// The radius of the path along which an agent travels when hunting.
-        static let huntPathRadius: Float = 20.0
+        static let huntPathRadius: Float = 32
 
         /// The radius of the path along which an agent travels when returning to its patrol path.
-        static let returnToPatrolPathRadius: Float = 20.0
+        static let returnToPatrolPathRadius: Float = 32
         
         /// The buffer radius (in points) to add to polygon obstacles when calculating agent pathfinding.
-        static let pathfindingGraphBufferRadius: Float = 30.0
+        static let pathfindingGraphBufferRadius: Float = 64.0
         
         /// The duration of a `TaskBot`'s pre-attack state.
         static let preAttackStateDuration: TimeInterval = 0.8

@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class Reaper: GKEntity, ChargeComponentDelegate/*, ResourceLoadableType */{
+class Reaper: GKEntity, /*GKAgentDelegate,*/ ChargeComponentDelegate/*, ResourceLoadableType */{
     // MARK: Static properties
     
     /// The size to use for the `Reaper`s animation textures.
@@ -29,6 +29,8 @@ class Reaper: GKEntity, ChargeComponentDelegate/*, ResourceLoadableType */{
     /// The agent used when pathfinding to the `PlayerBot`.
     let agent: GKAgent2D
     
+    var position: CGPoint
+    
     /// The `RenderComponent` associated with this `PlayerBot`.
     var renderComponent: RenderComponent {
         guard let renderComponent = component(ofType: RenderComponent.self) else { fatalError("A Reaper must have an RenderComponent.") }
@@ -40,6 +42,7 @@ class Reaper: GKEntity, ChargeComponentDelegate/*, ResourceLoadableType */{
     override init() {
         agent = GKAgent2D()
         agent.radius = GameplayConfiguration.Reaper.agentRadius
+        self.position = CGPoint()
         
         super.init()
         
@@ -187,4 +190,6 @@ class Reaper: GKEntity, ChargeComponentDelegate/*, ResourceLoadableType */{
         let agentOffset = GameplayConfiguration.Reaper.agentOffset
         agent.position = SIMD2<Float>(x: Float(renderComponent.node.position.x + agentOffset.x), y: Float(renderComponent.node.position.y + agentOffset.y))
     }
+    
+
 }

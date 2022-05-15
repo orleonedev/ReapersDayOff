@@ -71,6 +71,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
     let timerNode = SKLabelNode(text: "--:--")
     
+    let score = SKLabelNode(text: "0")
+        
     override var overlay: RDOSceneOverlay? {
         didSet {
             // Ensure that focus changes are only enabled when the `overlay` is present.
@@ -162,6 +164,15 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         timerNode.verticalAlignmentMode = .top
         scaleTimerNode()
         camera!.addChild(timerNode)
+        
+        // Setup score label
+        score.zPosition = WorldLayer.top.rawValue
+        score.fontColor = SKColor.white
+        score.fontName = GameplayConfiguration.Timer.fontName
+        score.horizontalAlignmentMode = .right
+        score.verticalAlignmentMode = .top
+        scaleScoreNode()
+        camera!.addChild(score)
 
         // A convenience function to find node locations given a set of node names.
         func nodePointsFromNodeNames(nodeNames: [String]) -> [CGPoint] {
@@ -172,9 +183,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         }
         
         // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
-        let pathPoints = [CGPoint(x: -350, y: -200), CGPoint(x: 350, y: 200)]
-        let pathPoints2 = [CGPoint(x: -300, y: -150), CGPoint(x: 200, y: 100)]
-        let pathPoints3 = [CGPoint(x: -200, y: -100), CGPoint(x: 100, y: 10)]
+        let pathPoints = [CGPoint(x: -600, y: -0), CGPoint(x: 350, y: 0)]
+        let pathPoints2 = [CGPoint(x: -650, y: -0), CGPoint(x: 200, y: 0)]
+        let pathPoints3 = [CGPoint(x: -700, y: -0), CGPoint(x: 100, y: 0)]
         
         let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
         let blueSoul = BlueSoul(pathPoints: pathPoints2, mandate: .followPatrolPath)
@@ -240,6 +251,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 //            // Add the `TaskBot`'s debug drawing node beneath all characters.
 //            addNode(node: taskBot.debugNode, toWorldLayer: .debug)
 //        }
+        
+//        Reaper().addComponent(reaper.agent)
+//        reaper.agent.delegate = reaper
         
         #if os(iOS)
         /*
@@ -569,6 +583,24 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         timerNode.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
         #endif
     }
+    
+    func scaleScoreNode() {
+       // Update the font size of the score node based on the height of the scene.
+       score.fontSize = size.height * GameplayConfiguration.Timer.fontSize
+       
+       // Make sure the score node is positioned at the top of the scene.
+       score.position.y = size.height / 2.0
+       
+        // Make sure the score node is positioned at the right of the scene.
+        score.position.x = size.width / 3.0
+        
+       // Add padding between the top of scene and the top of the score node.
+       #if os(tvOS)
+       score.position.y -= GameplayConfiguration.Timer.paddingSize
+       #else
+       score.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+       #endif
+   }
     
     private func beamInPlayerBot() {
         // Find the location of the player's initial position.

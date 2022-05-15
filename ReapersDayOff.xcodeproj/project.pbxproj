@@ -13,6 +13,7 @@
 		29AAD9A3282B15EA0088F48C /* RDOLevelStateSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAD9A2282B15EA0088F48C /* RDOLevelStateSnapshot.swift */; };
 		29AAD9A5282B3E4F0088F48C /* BlueSoul.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAD9A4282B3E4F0088F48C /* BlueSoul.swift */; };
 		29AAD9A7282B3E5C0088F48C /* GreenSoul.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAD9A6282B3E5C0088F48C /* GreenSoul.swift */; };
+		29C813FF282D0F6400E8868A /* ContactNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C813FE282D0F6400E8868A /* ContactNode.swift */; };
 		51231D86282953E500D31CB3 /* Reaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D85282953E500D31CB3 /* Reaper.swift */; };
 		51231D882829561400D31CB3 /* InputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D872829561400D31CB3 /* InputComponent.swift */; };
 		51231D8A2829566F00D31CB3 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D892829566F00D31CB3 /* MovementComponent.swift */; };
@@ -85,6 +86,7 @@
 		29AAD9A2282B15EA0088F48C /* RDOLevelStateSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelStateSnapshot.swift; sourceTree = "<group>"; };
 		29AAD9A4282B3E4F0088F48C /* BlueSoul.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSoul.swift; sourceTree = "<group>"; };
 		29AAD9A6282B3E5C0088F48C /* GreenSoul.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenSoul.swift; sourceTree = "<group>"; };
+		29C813FE282D0F6400E8868A /* ContactNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNode.swift; sourceTree = "<group>"; };
 		51231D85282953E500D31CB3 /* Reaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaper.swift; sourceTree = "<group>"; };
 		51231D872829561400D31CB3 /* InputComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputComponent.swift; sourceTree = "<group>"; };
 		51231D892829566F00D31CB3 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				51231D8D28295A5000D31CB3 /* ChargeBar.swift */,
 				517F5C622822BCC300C39D21 /* RDOButtonNode.swift */,
 				517F5C282822942C00C39D21 /* ThumbStickNode.swift */,
+				29C813FE282D0F6400E8868A /* ContactNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				517F5C2528228F0900C39D21 /* GameControllerInputSource.swift in Sources */,
 				51231D9628295F6500D31CB3 /* ReaperRechargingState.swift in Sources */,
 				51231D9228295E9500D31CB3 /* ReaperPlayerControlledState.swift in Sources */,
+				29C813FF282D0F6400E8868A /* ContactNode.swift in Sources */,
 				51231D8A2829566F00D31CB3 /* MovementComponent.swift in Sources */,
 				6641E45B2829500500308AB3 /* RDOLevelScenePauseState.swift in Sources */,
 				517F5C6928250DA700C39D21 /* RDOMainScene.swift in Sources */,
