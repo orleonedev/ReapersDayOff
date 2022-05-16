@@ -34,10 +34,10 @@ struct GameplayConfiguration {
         static let agentMass: Float = 0.25
         
         /// The radius of the `TaskBot`'s physics body.
-        static var physicsBodyRadius: CGFloat = 35.0
+        static var physicsBodyRadius: CGFloat = 32
 
         /// The offset of the `TaskBot` physics body's center from the `TaskBot`'s center.
-        static let physicsBodyOffset = CGPoint(x: 0.0, y: -25.0)
+        static let physicsBodyOffset = CGPoint(x: 0.0, y: -16.0)
 
         /// The radius (in points) of the agent associated with this `TaskBot` for steering.
         static let agentRadius = Float(physicsBodyRadius)
@@ -54,16 +54,16 @@ struct GameplayConfiguration {
         static let maxPredictionTimeForReaperAvoidance: TimeInterval = 1.0
 
         /// The radius of the path along which an agent patrols.
-        static let patrolPathRadius: Float = 10.0
+        static let patrolPathRadius: Float = 32
         
         /// The radius of the path along which an agent travels when hunting.
         static let fleePathRadius: Float = 20.0
 
         /// The radius of the path along which an agent travels when returning to its patrol path.
-        static let returnToPatrolPathRadius: Float = 20.0
+        static let returnToPatrolPathRadius: Float = 32
         
         /// The buffer radius (in points) to add to polygon obstacles when calculating agent pathfinding.
-        static let pathfindingGraphBufferRadius: Float = 30.0
+        static let pathfindingGraphBufferRadius: Float = 64.0
         
         /// The duration of a `TaskBot`'s pre-attack state.
         static let preAttackStateDuration: TimeInterval = 0.8
@@ -152,7 +152,7 @@ struct GameplayConfiguration {
         static var physicsBodyRadius: CGFloat = 30.0
         
         /// The offset of the `PlayerBot`'s physics body's center from the `PlayerBot`'s center.
-        static let physicsBodyOffset = CGPoint(x: 0.0, y: -25.0)
+        static let physicsBodyOffset = CGPoint(x: 0.0, y: -16.0)
         
         /// The radius of the agent associated with this `PlayerBot` for pathfinding.
         static let agentRadius = Float(physicsBodyRadius)
@@ -219,9 +219,9 @@ struct GameplayConfiguration {
         static let minimumRequiredThumbstickDisplacement: Float = 0.35
         
         /// The minimum size for an on-screen control.
-        static let minimumControlSize: CGFloat = 140
+        static let minimumControlSize: CGFloat = 200
         
         /// The ideal size for an on-screen control as a ratio of the scene's width.
-        static let idealRelativeControlSize: CGFloat = 0.15
+        static let idealRelativeControlSize: CGFloat = 0.2
     }
 }

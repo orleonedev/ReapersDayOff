@@ -29,6 +29,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
     
     /// The width of the zone in the center of the screen where the touch controls cannot be placed.
     let centerDividerWidth: CGFloat
+    let centerDividerHeight: CGFloat
     var hideThumbStickNodes: Bool = false {
         didSet {
             leftThumbStickNode.isHidden = hideThumbStickNodes
@@ -46,6 +47,8 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         // An approximate width appropriate for different scene sizes.
         centerDividerWidth = frame.width / 4.5
         
+        centerDividerHeight = frame.height / 4.5
+        
         // Setup the thumbStickNodes.
         let initialVerticalOffset = -thumbStickNodeSize.height
         let initialHorizontalOffset = frame.width / 2 - thumbStickNodeSize.width
@@ -59,7 +62,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         // Setup pause button.
         let buttonSize = CGSize(width: frame.height / 4, height: frame.height / 4)
         pauseButton = SKSpriteNode(texture: nil, color: UIColor.gray, size: buttonSize)
-        pauseButton.position = CGPoint(x: 0, y: frame.height/4)
+        pauseButton.position = CGPoint(x: 0, y: frame.height / 4)
         
         super.init(texture: nil, color: UIColor.clear, size: frame.size)
         rightThumbStickNode.delegate = self
@@ -131,7 +134,8 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
                 the touch is in the center of the screen.
             */
             let touchIsInCenter = touchPoint.x < centerDividerWidth / 2 && touchPoint.x > -centerDividerWidth / 2
-            if hideThumbStickNodes || touchIsInCenter {
+            let touchIsOnUpperBorder = touchPoint.y < centerDividerHeight / 2
+            if hideThumbStickNodes || touchIsInCenter || !touchIsOnUpperBorder {
                     continue
             }
             

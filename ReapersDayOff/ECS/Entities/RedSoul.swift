@@ -19,7 +19,7 @@ class RedSoul: Soul {
         return RedSoul.soulAnimations!
     }
     
-    required override init(pathPoints: [CGPoint], mandate: SoulMandate) {
+    required init(pathPoints: [CGPoint], mandate: SoulMandate) {
         super.init(pathPoints: pathPoints, mandate: mandate)
 
         // Create components that define how the entity looks and behaves.
@@ -111,4 +111,44 @@ class RedSoul: Soul {
             completionHandler()
         }
     }
+    
+    // MARK: ContactableType
+
+    override func contactWithEntityDidBegin(_ entity: GKEntity) {
+        super.contactWithEntityDidBegin(entity)
+        
+        let gameState = GameplayLogic.sharedInstance()
+        
+        if !gameState.isFull{
+            if let scene = renderComponent.node.scene as? RDOLevelScene {
+                scene.entities.remove(self)
+            }
+            renderComponent.node.removeFromParent()
+            gameState.addSouls(type: "red")
+        }
+        else {
+            print("you can't take more souls")
+        }
+        
+        
+        
+    //    guard !isGood else { return }
+    //
+    //    var shouldStartAttack = false
+    //
+    //    if let otherTaskBot = entity as? TaskBot, otherTaskBot.isGood {
+    //        // Contact with good task bot will trigger an attack.
+    //        shouldStartAttack = true
+    //    }
+    //    else if let playerBot = entity as? PlayerBot, !playerBot.isPoweredDown {
+    //        // Contact with an active `PlayerBot` will trigger an attack.
+    //        shouldStartAttack = true
+    //    }
+    //
+    //    if let stateMachine = component(ofType: IntelligenceComponent.self)?.stateMachine, shouldStartAttack {
+    //        stateMachine.enter(FlyingBotPreAttackState.self)
+    //    }
+    }
+
 }
+

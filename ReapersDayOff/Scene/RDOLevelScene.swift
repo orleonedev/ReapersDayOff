@@ -49,6 +49,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
     let reaper = Reaper()
     
+    var redGate: Gate?
+    var blueGate: Gate?
+    var greenGate: Gate?
+    
     /// Stores a reference to the root nodes for each world layer in the scene.
     var worldLayerNodes = [WorldLayer: SKNode]()
     
@@ -72,6 +76,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     let timerNode = SKLabelNode(text: "--:--")
     
     let score = SKLabelNode(text: "0")
+    
+    let bluecounter = SKLabelNode(text: "0")
+    let redcounter = SKLabelNode(text: "0")
+    let greencounter = SKLabelNode(text: "0")
         
     override var overlay: RDOSceneOverlay? {
         didSet {
@@ -90,20 +98,6 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
      
     lazy var graph: GKObstacleGraph = GKObstacleGraph(obstacles: self.polygonObstacles, bufferRadius: GameplayConfiguration.Soul.pathfindingGraphBufferRadius)
 
-    
-    // MARK: Rule State
-    
-//    var levelStateSnapshot: LevelStateSnapshot?
-//    
-//    func entitySnapshotForEntity(entity: GKEntity) -> EntitySnapshot? {
-//        // Create a snapshot of the level's state if one does not already exist for this update cycle.
-//        if levelStateSnapshot == nil {
-//            levelStateSnapshot = LevelStateSnapshot(scene: self)
-//        }
-//        
-//        // Find and return the entity snapshot for this entity.
-//        return levelStateSnapshot!.entitySnapshots[entity]
-//    }
 
     
     // MARK: Rule State
@@ -131,8 +125,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let rulesSystem = GKComponentSystem(componentClass: RulesComponent.self)
 
         // The systems will be updated in order. This order is explicitly defined to match assumptions made within components.
-        return [intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
+        return [rulesSystem, intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
     }()
+    
+    
     
     // MARK: Initializers
     
@@ -187,6 +183,30 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         score.verticalAlignmentMode = .top
         scaleScoreNode()
         camera!.addChild(score)
+        
+        bluecounter.zPosition = WorldLayer.top.rawValue
+        bluecounter.fontColor = SKColor.blue
+        bluecounter.fontName = GameplayConfiguration.Timer.fontName
+        bluecounter.horizontalAlignmentMode = .left
+        bluecounter.verticalAlignmentMode = .top
+        scaleBlueCounterNode()
+        camera!.addChild(bluecounter)
+        
+        redcounter.zPosition = WorldLayer.top.rawValue
+        redcounter.fontColor = SKColor.red
+        redcounter.fontName = GameplayConfiguration.Timer.fontName
+        redcounter.horizontalAlignmentMode = .left
+        redcounter.verticalAlignmentMode = .top
+        scaleRedCounterNode()
+        camera!.addChild(redcounter)
+        
+        greencounter.zPosition = WorldLayer.top.rawValue
+        greencounter.fontColor = SKColor.green
+        greencounter.fontName = GameplayConfiguration.Timer.fontName
+        greencounter.horizontalAlignmentMode = .left
+        greencounter.verticalAlignmentMode = .top
+        scaleGreenCounterNode()
+        camera!.addChild(greencounter)
 
         // A convenience function to find node locations given a set of node names.
         func nodePointsFromNodeNames(nodeNames: [String]) -> [CGPoint] {
@@ -196,10 +216,19 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
             }
         }
         
+        redGate = Gate(type: "red")
+        blueGate = Gate(type: "blue")
+        greenGate = Gate(type: "green")
+        
+        putGateInScene(gate: redGate!, pos: 1)
+        putGateInScene(gate: blueGate!, pos: 2)
+        putGateInScene(gate: greenGate!, pos: 3)
+        
+        
         // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
-        let pathPoints = [CGPoint(x: -350, y: -200), CGPoint(x: 350, y: 200)]
-        let pathPoints2 = [CGPoint(x: -300, y: -150), CGPoint(x: 200, y: 100)]
-        let pathPoints3 = [CGPoint(x: -200, y: -100), CGPoint(x: 100, y: 10)]
+        let pathPoints = [CGPoint(x: -600, y: -0), CGPoint(x: 350, y: 0)]
+        let pathPoints2 = [CGPoint(x: -650, y: -0), CGPoint(x: 200, y: 0)]
+        let pathPoints3 = [CGPoint(x: -700, y: -0), CGPoint(x: 100, y: 0)]
         
         let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
         let blueSoul = BlueSoul(pathPoints: pathPoints2, mandate: .followPatrolPath)
@@ -266,8 +295,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 //            addNode(node: taskBot.debugNode, toWorldLayer: .debug)
 //        }
         
-        Reaper().addComponent(reaper.agent)
-        reaper.agent.delegate = reaper
+//        Reaper().addComponent(reaper.agent)
+//        reaper.agent.delegate = reaper
         
         #if os(iOS)
         /*
@@ -291,6 +320,14 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         // As the scene may now have a different height, scale and position the timer node appropriately.
         scaleTimerNode()
+        
+        scaleScoreNode()
+        
+        scaleBlueCounterNode()
+        scaleRedCounterNode()
+        scaleGreenCounterNode()
+
+
     }
     
     // MARK: SKScene Processing
@@ -312,7 +349,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         lastUpdateTimeInterval = currentTime
         
         // Get rid of the now-stale `LevelStateSnapshot` if it exists. It will be regenerated when next needed.
-//        levelStateSnapshot = nil
+        levelStateSnapshot = nil
         
         /*
             Don't evaluate any updates if the `worldNode` is paused.
@@ -366,51 +403,51 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
     // MARK: SKPhysicsContactDelegate
     
-//    @objc(didBeginContact:) func didBegin(_ contact: SKPhysicsContact) {
-//        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
-//            ContactNotifiableType.contactWithEntityDidBegin(otherEntity)
-//        }
-//    }
-//
-//    @objc(didEndContact:) func didEnd(_ contact: SKPhysicsContact) {
-//        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
-//            ContactNotifiableType.contactWithEntityDidEnd(otherEntity)
-//        }
-//    }
+    @objc(didBeginContact:) func didBegin(_ contact: SKPhysicsContact) {
+        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
+            ContactNotifiableType.contactWithEntityDidBegin(otherEntity)
+        }
+    }
+
+    @objc(didEndContact:) func didEnd(_ contact: SKPhysicsContact) {
+        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
+            ContactNotifiableType.contactWithEntityDidEnd(otherEntity)
+        }
+    }
     
     // MARK: SKPhysicsContactDelegate convenience
     
-//    private func handleContact(contact: SKPhysicsContact, contactCallback: (ContactNotifiableType, GKEntity) -> Void) {
-//        // Get the `ColliderType` for each contacted body.
-//        let colliderTypeA = ColliderType(rawValue: contact.bodyA.categoryBitMask)
-//        let colliderTypeB = ColliderType(rawValue: contact.bodyB.categoryBitMask)
-//        
-//        // Determine which `ColliderType` should be notified of the contact.
-//        let aWantsCallback = colliderTypeA.notifyOnContactWith(colliderTypeB)
-//        let bWantsCallback = colliderTypeB.notifyOnContactWith(colliderTypeA)
-//        
-//        // Make sure that at least one of the entities wants to handle this contact.
-//        assert(aWantsCallback || bWantsCallback, "Unhandled physics contact - A = \(colliderTypeA), B = \(colliderTypeB)")
-//        
-//        let entityA = contact.bodyA.node?.entity
-//        let entityB = contact.bodyB.node?.entity
-//
-//        /*
-//            If `entityA` is a notifiable type and `colliderTypeA` specifies that it should be notified
-//            of contact with `colliderTypeB`, call the callback on `entityA`.
-//        */
-//        if let notifiableEntity = entityA as? ContactNotifiableType, let otherEntity = entityB, aWantsCallback {
-//            contactCallback(notifiableEntity, otherEntity)
-//        }
-//        
-//        /*
-//            If `entityB` is a notifiable type and `colliderTypeB` specifies that it should be notified
-//            of contact with `colliderTypeA`, call the callback on `entityB`.
-//        */
-//        if let notifiableEntity = entityB as? ContactNotifiableType, let otherEntity = entityA, bWantsCallback {
-//            contactCallback(notifiableEntity, otherEntity)
-//        }
-//    }
+    private func handleContact(contact: SKPhysicsContact, contactCallback: (ContactNotifiableType, GKEntity) -> Void) {
+        // Get the `ColliderType` for each contacted body.
+        let colliderTypeA = ColliderType(rawValue: contact.bodyA.categoryBitMask)
+        let colliderTypeB = ColliderType(rawValue: contact.bodyB.categoryBitMask)
+        print("A: \(colliderTypeA) B: \(colliderTypeB) ")
+        // Determine which `ColliderType` should be notified of the contact.
+        let aWantsCallback = colliderTypeA.notifyOnContactWith(colliderTypeB)
+        let bWantsCallback = colliderTypeB.notifyOnContactWith(colliderTypeA)
+        
+        // Make sure that at least one of the entities wants to handle this contact.
+        assert(aWantsCallback || bWantsCallback, "Unhandled physics contact - A = \(colliderTypeA), B = \(colliderTypeB)")
+        
+        let entityA = contact.bodyA.node?.entity
+        let entityB = contact.bodyB.node?.entity
+
+        /*
+            If `entityA` is a notifiable type and `colliderTypeA` specifies that it should be notified
+            of contact with `colliderTypeB`, call the callback on `entityA`.
+        */
+        if let notifiableEntity = entityA as? ContactNotifiableType, let otherEntity = entityB, aWantsCallback {
+            contactCallback(notifiableEntity, otherEntity)
+        }
+        
+        /*
+            If `entityB` is a notifiable type and `colliderTypeB` specifies that it should be notified
+            of contact with `colliderTypeA`, call the callback on `entityB`.
+        */
+        if let notifiableEntity = entityB as? ContactNotifiableType, let otherEntity = entityA, bWantsCallback {
+            contactCallback(notifiableEntity, otherEntity)
+        }
+    }
     
     // MARK: Level Construction
     
@@ -616,6 +653,60 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        #endif
    }
     
+    func scaleBlueCounterNode() {
+       // Update the font size of the score node based on the height of the scene.
+       bluecounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
+       
+       // Make sure the score node is positioned at the top of the scene.
+       bluecounter.position.y = size.height / 2.0
+       
+        // Make sure the score node is positioned at the right of the scene.
+        bluecounter.position.x = -size.width / 2.8
+        
+       // Add padding between the top of scene and the top of the score node.
+       #if os(tvOS)
+       bluecounter.position.y -= GameplayConfiguration.Timer.paddingSize
+       #else
+       bluecounter.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+       #endif
+   }
+    
+    func scaleGreenCounterNode() {
+       // Update the font size of the score node based on the height of the scene.
+       greencounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
+       
+       // Make sure the score node is positioned at the top of the scene.
+       greencounter.position.y = size.height / 2.0
+       
+        // Make sure the score node is positioned at the right of the scene.
+        greencounter.position.x = -size.width / 3.2
+        
+       // Add padding between the top of scene and the top of the score node.
+       #if os(tvOS)
+       greencounter.position.y -= GameplayConfiguration.Timer.paddingSize
+       #else
+       greencounter.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+       #endif
+   }
+    
+    func scaleRedCounterNode() {
+       // Update the font size of the score node based on the height of the scene.
+       redcounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
+       
+       // Make sure the score node is positioned at the top of the scene.
+       redcounter.position.y = size.height / 2.0
+       
+        // Make sure the score node is positioned at the right of the scene.
+        redcounter.position.x = -size.width / 3.0
+        
+       // Add padding between the top of scene and the top of the score node.
+       #if os(tvOS)
+       redcounter.position.y -= GameplayConfiguration.Timer.paddingSize
+       #else
+       redcounter.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+       #endif
+   }
+    
     private func beamInPlayerBot() {
         // Find the location of the player's initial position.
         let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
@@ -637,6 +728,19 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         // Add the `PlayerBot` to the scene and component systems.
         addEntity(entity: reaper)
+    }
+    
+    private func putGateInScene(gate: Gate, pos: Int){
+        let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
+        let gateCoordinate = charactersNode.childNode(withName: "gate_coordinate\(pos)")!
+        
+        let gateNode = gate.renderComponent.node
+        gateNode.position = gateCoordinate.position
+        
+        addEntity(entity: gate)
+        
+        
+        
     }
   
 }
