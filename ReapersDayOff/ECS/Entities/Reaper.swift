@@ -198,7 +198,10 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
     }
     
     func contactWithEntityDidBegin(_ entity: GKEntity) {
-        GameplayLogic.sharedInstance().deposit(type: "redGate")
+        if let gate = entity as? Gate {
+            GameplayLogic.sharedInstance().deposit(type: gate.name)
+        }
+        
     }
     
     func contactWithEntityDidEnd(_ entity: GKEntity) {

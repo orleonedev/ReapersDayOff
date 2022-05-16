@@ -49,6 +49,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
     let reaper = Reaper()
     
+    var redGate: Gate?
+    var blueGate: Gate?
+    var greenGate: Gate?
+    
     /// Stores a reference to the root nodes for each world layer in the scene.
     var worldLayerNodes = [WorldLayer: SKNode]()
     
@@ -120,6 +124,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         return [rulesSystem, intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
     }()
     
+    
+    
     // MARK: Initializers
     
 //    deinit {
@@ -181,6 +187,15 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
                 charactersNode[$0].first!.position
             }
         }
+        
+        redGate = Gate(type: "red")
+        blueGate = Gate(type: "blue")
+        greenGate = Gate(type: "green")
+        
+        putGateInScene(gate: redGate!, pos: 1)
+        putGateInScene(gate: blueGate!, pos: 2)
+        putGateInScene(gate: greenGate!, pos: 3)
+        
         
         // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
         let pathPoints = [CGPoint(x: -600, y: -0), CGPoint(x: 350, y: 0)]
@@ -623,6 +638,19 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         // Add the `PlayerBot` to the scene and component systems.
         addEntity(entity: reaper)
+    }
+    
+    private func putGateInScene(gate: Gate, pos: Int){
+        let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
+        let gateCoordinate = charactersNode.childNode(withName: "gate_coordinate\(pos)")!
+        
+        let gateNode = gate.renderComponent.node
+        gateNode.position = gateCoordinate.position
+        
+        addEntity(entity: gate)
+        
+        
+        
     }
   
 }

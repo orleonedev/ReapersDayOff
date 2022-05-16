@@ -24,7 +24,7 @@ class GameplayLogic {
         return sumSoul == soulLimit
     }
     
-     var soulLimit: UInt = 15
+     var soulLimit: UInt = 10
      let timeLimit: TimeInterval = 60.0
     
     func setupGame(){
@@ -37,18 +37,21 @@ class GameplayLogic {
     
     func deposit(type: String){
         switch type {
-        case "redGate":
+        case "red":
             score += redSouls
             redSouls = 0
-        case "greenGate":
+        case "green":
             score += greenSouls
             greenSouls = 0
-        case "blueGate":
+        case "blue":
             score += blueSouls
             blueSouls = 0
         default:
-            print("Unkown Gate type")
+            print("Unknown Gate type")
         }
+        
+        print("Red:\(redSouls) Green:\(greenSouls) Blue:\(blueSouls) Total:\(sumSoul)")
+        
     }
     
     func addSouls(type: String){
@@ -62,10 +65,8 @@ class GameplayLogic {
         default:
             fatalError("Unknown Soul type")
         }
+        print("Red:\(redSouls) Green:\(greenSouls) Blue:\(blueSouls) Total:\(sumSoul)")
     }
-    
-    
-    
     
 }
 
