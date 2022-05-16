@@ -13,7 +13,7 @@ class SoulBehavior: GKBehavior {
     // MARK: Behavior factory methods
     
     /// Constructs a behavior to hunt a `TaskBot` or `PlayerBot` via a computed path.
-    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, huntingAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) -> (behavior: GKBehavior, pathPoints: [CGPoint]) {
+    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, fleeAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) -> (behavior: GKBehavior, pathPoints: [CGPoint]) {
         let behavior = SoulBehavior()
         
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
@@ -63,7 +63,7 @@ class SoulBehavior: GKBehavior {
         return (behavior, pathPoints)
     }
     
-    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, huntingAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) {
+    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, fleeAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) {
         let behavior = SoulBehavior()
         
         

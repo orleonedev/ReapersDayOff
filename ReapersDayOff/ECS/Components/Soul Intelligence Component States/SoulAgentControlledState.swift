@@ -56,7 +56,16 @@ class SoulAgentControlledState: GKState {
         
         // Check if enough time has passed since the last behavior update, and update the behavior if so.
         if timeSinceBehaviorUpdate >= GameplayConfiguration.Soul.behaviorUpdateWaitDuration {
-//
+// add flee function somehow (control distance tra reaper e soul)
+            if let levelScene = entity.renderComponent.node.scene as? RDOLevelScene {
+                let reaperAgent = levelScene.reaper.agent
+                if entity.distanceToAgent(otherAgent: reaperAgent) < 32.0 {
+                    entity.mandate = .fleeAgent(reaperAgent)
+                    
+                }
+                
+            }
+            
 //            // When a `TaskBot` is returning to its path patrol start, and gets near enough, it should start to patrol.
             if case let .returnToPositionOnPath(position) = entity.mandate, entity.distanceToPoint(otherPoint: position) <= GameplayConfiguration.Soul.thresholdProximityToPatrolPathStartPoint {
                 entity.mandate = .followPatrolPath

@@ -15,7 +15,7 @@ class Soul: GKEntity,GKAgentDelegate {
     /// Encapsulates a `Soul`'s current mandate, i.e. the aim that the `Soul` is setting out to achieve.
     enum SoulMandate {
         // Hunt another agent (either a `PlayerBot` or a "good" `TaskBot`).
-//        case huntAgent(GKAgent2D)
+        case fleeAgent(GKAgent2D)
 
         // Follow the `TaskBot`'s "good" patrol path.
 //        case followGoodPatrolPath
@@ -63,9 +63,9 @@ class Soul: GKEntity,GKAgentDelegate {
 //                debugPathShouldCycle = true
 //                debugColor = isGood ? SKColor.green : SKColor.purple
             
-//            case let .huntAgent(targetAgent):
-//                radius = GameplayConfiguration.TaskBot.huntPathRadius
-//                (agentBehavior, debugPathPoints) = TaskBotBehavior.behaviorAndPathPoints(forAgent: agent, huntingAgent: targetAgent, pathRadius: radius, inScene: levelScene)
+            case let .fleeAgent(targetAgent):
+                radius = GameplayConfiguration.Soul.fleePathRadius
+                (agentBehavior, debugPathPoints) = SoulBehavior.behaviorAndPathPoints(forAgent: agent, fleeAgent: targetAgent, pathRadius: radius, inScene: levelScene)
 //                debugColor = SKColor.red
 
             case let .returnToPositionOnPath(position):
