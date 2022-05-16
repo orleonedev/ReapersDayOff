@@ -8,7 +8,8 @@
 import SpriteKit
 import GameplayKit
 
-class Reaper: GKEntity, /*GKAgentDelegate,*/ ChargeComponentDelegate/*, ResourceLoadableType */{
+class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, ResourceLoadableType */{
+    
     // MARK: Static properties
     
     /// The size to use for the `Reaper`s animation textures.
@@ -176,7 +177,12 @@ class Reaper: GKEntity, /*GKAgentDelegate,*/ ChargeComponentDelegate/*, Resource
         ColliderType.definedCollisions[.Reaper] = [
             .Reaper,
             .Soul,
-            .Obstacle
+            .Obstacle,
+            .Gate
+        ]
+        
+        ColliderType.requestedContactNotifications[.Reaper] = [
+            .Gate
         ]
     }
 
@@ -191,5 +197,14 @@ class Reaper: GKEntity, /*GKAgentDelegate,*/ ChargeComponentDelegate/*, Resource
         agent.position = SIMD2<Float>(x: Float(renderComponent.node.position.x + agentOffset.x), y: Float(renderComponent.node.position.y + agentOffset.y))
     }
     
-
+    func contactWithEntityDidBegin(_ entity: GKEntity) {
+        if let gate = entity as? Gate {
+            GameplayLogic.sharedInstance().deposit(type: gate.name)
+        }
+        
+    }
+    
+    func contactWithEntityDidEnd(_ entity: GKEntity) {
+        
+    }
 }

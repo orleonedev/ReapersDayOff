@@ -29,6 +29,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
     
     /// The width of the zone in the center of the screen where the touch controls cannot be placed.
     let centerDividerWidth: CGFloat
+    let centerDividerHeight: CGFloat
     var hideThumbStickNodes: Bool = false {
         didSet {
             leftThumbStickNode.isHidden = hideThumbStickNodes
@@ -45,6 +46,8 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
     init(frame: CGRect, thumbStickNodeSize: CGSize) {
         // An approximate width appropriate for different scene sizes.
         centerDividerWidth = frame.width / 4.5
+        
+        centerDividerHeight = frame.height / 4.5
         
         // Setup the thumbStickNodes.
         let initialVerticalOffset = -thumbStickNodeSize.height
@@ -131,7 +134,8 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
                 the touch is in the center of the screen.
             */
             let touchIsInCenter = touchPoint.x < centerDividerWidth / 2 && touchPoint.x > -centerDividerWidth / 2
-            if hideThumbStickNodes || touchIsInCenter {
+            let touchIsOnUpperBorder = touchPoint.y < centerDividerHeight / 2
+            if hideThumbStickNodes || touchIsInCenter || !touchIsOnUpperBorder {
                     continue
             }
             

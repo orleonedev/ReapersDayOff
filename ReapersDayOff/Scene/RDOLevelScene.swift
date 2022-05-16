@@ -49,6 +49,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
     let reaper = Reaper()
     
+    var redGate: Gate?
+    var blueGate: Gate?
+    var greenGate: Gate?
+    
     /// Stores a reference to the root nodes for each world layer in the scene.
     var worldLayerNodes = [WorldLayer: SKNode]()
     
@@ -94,20 +98,6 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
      
     lazy var graph: GKObstacleGraph = GKObstacleGraph(obstacles: self.polygonObstacles, bufferRadius: GameplayConfiguration.Soul.pathfindingGraphBufferRadius)
 
-    
-    // MARK: Rule State
-    
-//    var levelStateSnapshot: LevelStateSnapshot?
-//    
-//    func entitySnapshotForEntity(entity: GKEntity) -> EntitySnapshot? {
-//        // Create a snapshot of the level's state if one does not already exist for this update cycle.
-//        if levelStateSnapshot == nil {
-//            levelStateSnapshot = LevelStateSnapshot(scene: self)
-//        }
-//        
-//        // Find and return the entity snapshot for this entity.
-//        return levelStateSnapshot!.entitySnapshots[entity]
-//    }
 
     
     // MARK: Rule State
@@ -135,8 +125,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let rulesSystem = GKComponentSystem(componentClass: RulesComponent.self)
 
         // The systems will be updated in order. This order is explicitly defined to match assumptions made within components.
-        return [intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
+        return [rulesSystem, intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
     }()
+    
+    
     
     // MARK: Initializers
     
@@ -223,6 +215,15 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
                 charactersNode[$0].first!.position
             }
         }
+        
+        redGate = Gate(type: "red")
+        blueGate = Gate(type: "blue")
+        greenGate = Gate(type: "green")
+        
+        putGateInScene(gate: redGate!, pos: 1)
+        putGateInScene(gate: blueGate!, pos: 2)
+        putGateInScene(gate: greenGate!, pos: 3)
+        
         
         // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
         let pathPoints = [CGPoint(x: -600, y: -0), CGPoint(x: 350, y: 0)]
@@ -348,7 +349,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         lastUpdateTimeInterval = currentTime
         
         // Get rid of the now-stale `LevelStateSnapshot` if it exists. It will be regenerated when next needed.
-//        levelStateSnapshot = nil
+        levelStateSnapshot = nil
         
         /*
             Don't evaluate any updates if the `worldNode` is paused.
@@ -402,51 +403,51 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
     // MARK: SKPhysicsContactDelegate
     
-//    @objc(didBeginContact:) func didBegin(_ contact: SKPhysicsContact) {
-//        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
-//            ContactNotifiableType.contactWithEntityDidBegin(otherEntity)
-//        }
-//    }
-//
-//    @objc(didEndContact:) func didEnd(_ contact: SKPhysicsContact) {
-//        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
-//            ContactNotifiableType.contactWithEntityDidEnd(otherEntity)
-//        }
-//    }
+    @objc(didBeginContact:) func didBegin(_ contact: SKPhysicsContact) {
+        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
+            ContactNotifiableType.contactWithEntityDidBegin(otherEntity)
+        }
+    }
+
+    @objc(didEndContact:) func didEnd(_ contact: SKPhysicsContact) {
+        handleContact(contact: contact) { (ContactNotifiableType: ContactNotifiableType, otherEntity: GKEntity) in
+            ContactNotifiableType.contactWithEntityDidEnd(otherEntity)
+        }
+    }
     
     // MARK: SKPhysicsContactDelegate convenience
     
-//    private func handleContact(contact: SKPhysicsContact, contactCallback: (ContactNotifiableType, GKEntity) -> Void) {
-//        // Get the `ColliderType` for each contacted body.
-//        let colliderTypeA = ColliderType(rawValue: contact.bodyA.categoryBitMask)
-//        let colliderTypeB = ColliderType(rawValue: contact.bodyB.categoryBitMask)
-//        
-//        // Determine which `ColliderType` should be notified of the contact.
-//        let aWantsCallback = colliderTypeA.notifyOnContactWith(colliderTypeB)
-//        let bWantsCallback = colliderTypeB.notifyOnContactWith(colliderTypeA)
-//        
-//        // Make sure that at least one of the entities wants to handle this contact.
-//        assert(aWantsCallback || bWantsCallback, "Unhandled physics contact - A = \(colliderTypeA), B = \(colliderTypeB)")
-//        
-//        let entityA = contact.bodyA.node?.entity
-//        let entityB = contact.bodyB.node?.entity
-//
-//        /*
-//            If `entityA` is a notifiable type and `colliderTypeA` specifies that it should be notified
-//            of contact with `colliderTypeB`, call the callback on `entityA`.
-//        */
-//        if let notifiableEntity = entityA as? ContactNotifiableType, let otherEntity = entityB, aWantsCallback {
-//            contactCallback(notifiableEntity, otherEntity)
-//        }
-//        
-//        /*
-//            If `entityB` is a notifiable type and `colliderTypeB` specifies that it should be notified
-//            of contact with `colliderTypeA`, call the callback on `entityB`.
-//        */
-//        if let notifiableEntity = entityB as? ContactNotifiableType, let otherEntity = entityA, bWantsCallback {
-//            contactCallback(notifiableEntity, otherEntity)
-//        }
-//    }
+    private func handleContact(contact: SKPhysicsContact, contactCallback: (ContactNotifiableType, GKEntity) -> Void) {
+        // Get the `ColliderType` for each contacted body.
+        let colliderTypeA = ColliderType(rawValue: contact.bodyA.categoryBitMask)
+        let colliderTypeB = ColliderType(rawValue: contact.bodyB.categoryBitMask)
+        print("A: \(colliderTypeA) B: \(colliderTypeB) ")
+        // Determine which `ColliderType` should be notified of the contact.
+        let aWantsCallback = colliderTypeA.notifyOnContactWith(colliderTypeB)
+        let bWantsCallback = colliderTypeB.notifyOnContactWith(colliderTypeA)
+        
+        // Make sure that at least one of the entities wants to handle this contact.
+        assert(aWantsCallback || bWantsCallback, "Unhandled physics contact - A = \(colliderTypeA), B = \(colliderTypeB)")
+        
+        let entityA = contact.bodyA.node?.entity
+        let entityB = contact.bodyB.node?.entity
+
+        /*
+            If `entityA` is a notifiable type and `colliderTypeA` specifies that it should be notified
+            of contact with `colliderTypeB`, call the callback on `entityA`.
+        */
+        if let notifiableEntity = entityA as? ContactNotifiableType, let otherEntity = entityB, aWantsCallback {
+            contactCallback(notifiableEntity, otherEntity)
+        }
+        
+        /*
+            If `entityB` is a notifiable type and `colliderTypeB` specifies that it should be notified
+            of contact with `colliderTypeA`, call the callback on `entityB`.
+        */
+        if let notifiableEntity = entityB as? ContactNotifiableType, let otherEntity = entityA, bWantsCallback {
+            contactCallback(notifiableEntity, otherEntity)
+        }
+    }
     
     // MARK: Level Construction
     
@@ -727,6 +728,19 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         // Add the `PlayerBot` to the scene and component systems.
         addEntity(entity: reaper)
+    }
+    
+    private func putGateInScene(gate: Gate, pos: Int){
+        let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
+        let gateCoordinate = charactersNode.childNode(withName: "gate_coordinate\(pos)")!
+        
+        let gateNode = gate.renderComponent.node
+        gateNode.position = gateCoordinate.position
+        
+        addEntity(entity: gate)
+        
+        
+        
     }
   
 }

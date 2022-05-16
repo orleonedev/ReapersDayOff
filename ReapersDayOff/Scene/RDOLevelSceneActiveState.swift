@@ -46,6 +46,7 @@ class RDOLevelSceneActiveState: GKState {
         self.levelScene = levelScene
         
         timeRemaining = TimeInterval(60.0)
+        GameplayLogic.sharedInstance().setupGame()
     }
     
     // MARK: GKState Life Cycle
@@ -64,6 +65,7 @@ class RDOLevelSceneActiveState: GKState {
         
         // Update the displayed time remaining.
         levelScene.timerNode.text = timeRemainingString
+        levelScene.score.text = String(GameplayLogic.sharedInstance().score)
         
         // Check if the `levelScene` contains any bad `TaskBot`s.
 //        let allTaskBotsAreGood = !levelScene.entities.contains { entity in
