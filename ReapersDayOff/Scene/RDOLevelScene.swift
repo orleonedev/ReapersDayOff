@@ -72,6 +72,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     let timerNode = SKLabelNode(text: "--:--")
     
     let score = SKLabelNode(text: "0")
+    
+    let bluecounter = SKLabelNode(text: "0")
+    let redcounter = SKLabelNode(text: "0")
+    let greencounter = SKLabelNode(text: "0")
         
     override var overlay: RDOSceneOverlay? {
         didSet {
@@ -187,6 +191,30 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         score.verticalAlignmentMode = .top
         scaleScoreNode()
         camera!.addChild(score)
+        
+        bluecounter.zPosition = WorldLayer.top.rawValue
+        bluecounter.fontColor = SKColor.blue
+        bluecounter.fontName = GameplayConfiguration.Timer.fontName
+        bluecounter.horizontalAlignmentMode = .left
+        bluecounter.verticalAlignmentMode = .top
+        scaleBlueCounterNode()
+        camera!.addChild(bluecounter)
+        
+        redcounter.zPosition = WorldLayer.top.rawValue
+        redcounter.fontColor = SKColor.red
+        redcounter.fontName = GameplayConfiguration.Timer.fontName
+        redcounter.horizontalAlignmentMode = .left
+        redcounter.verticalAlignmentMode = .top
+        scaleRedCounterNode()
+        camera!.addChild(redcounter)
+        
+        greencounter.zPosition = WorldLayer.top.rawValue
+        greencounter.fontColor = SKColor.green
+        greencounter.fontName = GameplayConfiguration.Timer.fontName
+        greencounter.horizontalAlignmentMode = .left
+        greencounter.verticalAlignmentMode = .top
+        scaleGreenCounterNode()
+        camera!.addChild(greencounter)
 
         // A convenience function to find node locations given a set of node names.
         func nodePointsFromNodeNames(nodeNames: [String]) -> [CGPoint] {
@@ -291,6 +319,14 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         // As the scene may now have a different height, scale and position the timer node appropriately.
         scaleTimerNode()
+        
+        scaleScoreNode()
+        
+        scaleBlueCounterNode()
+        scaleRedCounterNode()
+        scaleGreenCounterNode()
+
+
     }
     
     // MARK: SKScene Processing
@@ -613,6 +649,60 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        score.position.y -= GameplayConfiguration.Timer.paddingSize
        #else
        score.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+       #endif
+   }
+    
+    func scaleBlueCounterNode() {
+       // Update the font size of the score node based on the height of the scene.
+       bluecounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
+       
+       // Make sure the score node is positioned at the top of the scene.
+       bluecounter.position.y = size.height / 2.0
+       
+        // Make sure the score node is positioned at the right of the scene.
+        bluecounter.position.x = -size.width / 2.8
+        
+       // Add padding between the top of scene and the top of the score node.
+       #if os(tvOS)
+       bluecounter.position.y -= GameplayConfiguration.Timer.paddingSize
+       #else
+       bluecounter.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+       #endif
+   }
+    
+    func scaleGreenCounterNode() {
+       // Update the font size of the score node based on the height of the scene.
+       greencounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
+       
+       // Make sure the score node is positioned at the top of the scene.
+       greencounter.position.y = size.height / 2.0
+       
+        // Make sure the score node is positioned at the right of the scene.
+        greencounter.position.x = -size.width / 3.2
+        
+       // Add padding between the top of scene and the top of the score node.
+       #if os(tvOS)
+       greencounter.position.y -= GameplayConfiguration.Timer.paddingSize
+       #else
+       greencounter.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+       #endif
+   }
+    
+    func scaleRedCounterNode() {
+       // Update the font size of the score node based on the height of the scene.
+       redcounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
+       
+       // Make sure the score node is positioned at the top of the scene.
+       redcounter.position.y = size.height / 2.0
+       
+        // Make sure the score node is positioned at the right of the scene.
+        redcounter.position.x = -size.width / 3.0
+        
+       // Add padding between the top of scene and the top of the score node.
+       #if os(tvOS)
+       redcounter.position.y -= GameplayConfiguration.Timer.paddingSize
+       #else
+       redcounter.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
        #endif
    }
     
