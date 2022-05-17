@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29353ADC283396AA0026F9DC /* SoulZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29353ADB283396AA0026F9DC /* SoulZone.swift */; };
 		29A2075D282BEC2100DBDDB1 /* RulesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2075C282BEC2100DBDDB1 /* RulesComponent.swift */; };
 		29AAD99F282B0F280088F48C /* RDORules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAD99E282B0F280088F48C /* RDORules.swift */; };
 		29AAD9A1282B101D0088F48C /* FuzzySoulRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAD9A0282B101D0088F48C /* FuzzySoulRule.swift */; };
@@ -21,7 +22,7 @@
 		51231D8E28295A5000D31CB3 /* ChargeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D8D28295A5000D31CB3 /* ChargeBar.swift */; };
 		51231D9028295E1C00D31CB3 /* ReaperAppearState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D8F28295E1C00D31CB3 /* ReaperAppearState.swift */; };
 		51231D9228295E9500D31CB3 /* ReaperPlayerControlledState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9128295E9500D31CB3 /* ReaperPlayerControlledState.swift */; };
-		51231D9428295EEC00D31CB3 /* ReaperHitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9328295EEC00D31CB3 /* ReaperHitState.swift */; };
+		51231D9428295EEC00D31CB3 /* ReaperFleeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9328295EEC00D31CB3 /* ReaperFleeState.swift */; };
 		51231D9628295F6500D31CB3 /* ReaperRechargingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9528295F6400D31CB3 /* ReaperRechargingState.swift */; };
 		51231D98282D112300D31CB3 /* GameplayLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D97282D112300D31CB3 /* GameplayLogic.swift */; };
 		51231D9E2831681700D31CB3 /* ContactNotifiableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9D2831681700D31CB3 /* ContactNotifiableType.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29353ADB283396AA0026F9DC /* SoulZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulZone.swift; sourceTree = "<group>"; };
 		29A2075C282BEC2100DBDDB1 /* RulesComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesComponent.swift; sourceTree = "<group>"; };
 		29AAD99E282B0F280088F48C /* RDORules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDORules.swift; sourceTree = "<group>"; };
 		29AAD9A0282B101D0088F48C /* FuzzySoulRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuzzySoulRule.swift; sourceTree = "<group>"; };
@@ -96,7 +98,7 @@
 		51231D8D28295A5000D31CB3 /* ChargeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeBar.swift; sourceTree = "<group>"; };
 		51231D8F28295E1C00D31CB3 /* ReaperAppearState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaperAppearState.swift; sourceTree = "<group>"; };
 		51231D9128295E9500D31CB3 /* ReaperPlayerControlledState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaperPlayerControlledState.swift; sourceTree = "<group>"; };
-		51231D9328295EEC00D31CB3 /* ReaperHitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaperHitState.swift; sourceTree = "<group>"; };
+		51231D9328295EEC00D31CB3 /* ReaperFleeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaperFleeState.swift; sourceTree = "<group>"; };
 		51231D9528295F6400D31CB3 /* ReaperRechargingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaperRechargingState.swift; sourceTree = "<group>"; };
 		51231D97282D112300D31CB3 /* GameplayLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayLogic.swift; sourceTree = "<group>"; };
 		51231D9D2831681700D31CB3 /* ContactNotifiableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNotifiableType.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				517F5C762826AFC000C39D21 /* Soul.swift */,
+				29353ADB283396AA0026F9DC /* SoulZone.swift */,
 				517F5C872826B2B700C39D21 /* GameplayConfiguration.swift */,
 				517F5C892826B2D000C39D21 /* SoulAgent.swift */,
 				517F5C8B2826B2F300C39D21 /* RedSoul.swift */,
@@ -351,7 +354,7 @@
 				51231D8B282957A800D31CB3 /* ChargeComponent.swift */,
 				51231D8F28295E1C00D31CB3 /* ReaperAppearState.swift */,
 				51231D9128295E9500D31CB3 /* ReaperPlayerControlledState.swift */,
-				51231D9328295EEC00D31CB3 /* ReaperHitState.swift */,
+				51231D9328295EEC00D31CB3 /* ReaperFleeState.swift */,
 				51231D9528295F6400D31CB3 /* ReaperRechargingState.swift */,
 				29A2075C282BEC2100DBDDB1 /* RulesComponent.swift */,
 			);
@@ -468,7 +471,7 @@
 				51231D8C282957A800D31CB3 /* ChargeComponent.swift in Sources */,
 				517F5C8C2826B2F300C39D21 /* RedSoul.swift in Sources */,
 				517F5C882826B2B700C39D21 /* GameplayConfiguration.swift in Sources */,
-				51231D9428295EEC00D31CB3 /* ReaperHitState.swift in Sources */,
+				51231D9428295EEC00D31CB3 /* ReaperFleeState.swift in Sources */,
 				517F5C5C2822BC8A00C39D21 /* RDOStartScene.swift in Sources */,
 				51231D9028295E1C00D31CB3 /* ReaperAppearState.swift in Sources */,
 				517F5C27282293CD00C39D21 /* TouchControlInputNode.swift in Sources */,
@@ -500,6 +503,7 @@
 				51231D8A2829566F00D31CB3 /* MovementComponent.swift in Sources */,
 				51231DA0283227E600D31CB3 /* Gate.swift in Sources */,
 				6641E45B2829500500308AB3 /* RDOLevelScenePauseState.swift in Sources */,
+				29353ADC283396AA0026F9DC /* SoulZone.swift in Sources */,
 				517F5C6928250DA700C39D21 /* RDOMainScene.swift in Sources */,
 				517F5C862826B28100C39D21 /* AnimationComponent.swift in Sources */,
 				517F5C822826B1E400C39D21 /* OrientationComponent.swift in Sources */,

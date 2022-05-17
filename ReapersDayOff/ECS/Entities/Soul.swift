@@ -57,7 +57,7 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
             case .followPatrolPath:
                 let pathPoints = pathPoints
                 radius = GameplayConfiguration.Soul.patrolPathRadius
-                agentBehavior = SoulBehavior.behavior(forAgent: agent, patrollingPathWithPoints: pathPoints, pathRadius: radius, inScene: levelScene)
+            agentBehavior = SoulBehavior.behavior(forAgent: agent, fleeAgent: agent, patrollingPathWithPoints: pathPoints, pathRadius: radius, inScene: levelScene)
 //                debugPathPoints = pathPoints
 //                // Patrol paths are always closed loops, so the debug drawing of the path should cycle back round to the start.
 //                debugPathShouldCycle = true
@@ -240,7 +240,10 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
     
     // MARK: ContactableType
     
-    func contactWithEntityDidBegin(_ entity: GKEntity) {}
+    func contactWithEntityDidBegin(_ entity: GKEntity) {
+        
+        // creare nuova entity "soulZone" che ha physic component. Fare che il contatto tra soulZone e reaper quando succede, soul deve cambiare position
+    }
 
     func contactWithEntityDidEnd(_ entity: GKEntity) {}
     

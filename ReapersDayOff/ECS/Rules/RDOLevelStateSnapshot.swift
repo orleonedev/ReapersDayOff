@@ -118,7 +118,7 @@ class EntitySnapshot {
     let proximityFactor: Float
     
     /// Distance to the `PlayerBot` if it is targetable.
-//    let reaperTarget: (target: Reaper, distance: Float)?
+    let reaperTarget: (target: Reaper, distance: Float)?
     
     /// The nearest "good" `TaskBot`.
 //    let nearestGoodTaskBotTarget: (target: TaskBot, distance: Float)?
@@ -137,28 +137,28 @@ class EntitySnapshot {
             return $0.distance < $1.distance
         }
         
-//        var playerBotTarget: (target: PlayerBot, distance: Float)?
+        var reaperTarget: (target: Reaper, distance: Float)?
 //        var nearestGoodTaskBotTarget: (target: TaskBot, distance: Float)?
         
         /*
             Iterate over the sorted `entityDistances` array to find the `PlayerBot`
             (if it is targetable) and the nearest "good" `TaskBot`.
         */
-//        for entityDistance in self.entityDistances {
-//            if let target = entityDistance.target as? Reaper, reaperTarget == nil && target.isTargetable {
-//                reaperTarget = (target: target, distance: entityDistance.distance)
+        for entityDistance in self.entityDistances {
+            if let target = entityDistance.target as? Reaper, reaperTarget == nil && target.isFleeable {
+                reaperTarget = (target: target, distance: entityDistance.distance)
+            }
+//            else if let target = entityDistance.target as? TaskBot, nearestGoodTaskBotTarget == nil && target.isGood {
+//                nearestGoodTaskBotTarget = (target: target, distance: entityDistance.distance)
 //            }
-////            else if let target = entityDistance.target as? TaskBot, nearestGoodTaskBotTarget == nil && target.isGood {
-////                nearestGoodTaskBotTarget = (target: target, distance: entityDistance.distance)
-////            }
-//
-//            // Stop iterating over the array once we have found both the `PlayerBot` and the nearest good `TaskBot`.
-////            if playerBotTarget != nil && nearestGoodTaskBotTarget != nil {
-////                break
-////            }
-//        }
+
+            // Stop iterating over the array once we have found both the `PlayerBot` and the nearest good `TaskBot`.
+//            if playerBotTarget != nil && nearestGoodTaskBotTarget != nil {
+//                break
+//            }
+        }
         
-//        self.reaperTarget = reaperTarget
+        self.reaperTarget = reaperTarget
 //        self.nearestGoodTaskBotTarget = nearestGoodTaskBotTarget
     }
 }

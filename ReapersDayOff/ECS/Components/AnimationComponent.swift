@@ -14,7 +14,7 @@ enum AnimationState: String {
     case walkForward = "WalkForward"
     case walkBackward = "WalkBackward"
     case inactive = "Inactive"
-    case hit = "Hit"
+    case flee = "Flee"
 }
 
 struct Animation {

@@ -30,6 +30,18 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
     /// The agent used when pathfinding to the `PlayerBot`.
     let agent: GKAgent2D
     
+    var isFleeable: Bool {
+        guard let currentState = component(ofType: IntelligenceComponent.self)?.stateMachine.currentState else { return false }
+
+        switch currentState {
+            case is ReaperPlayerControlledState, is ReaperFleeState:
+                return true
+
+            default:
+                return false
+        }
+    }
+    
     var position: CGPoint
     
     /// The `RenderComponent` associated with this `PlayerBot`.
@@ -95,7 +107,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
         let intelligenceComponent = IntelligenceComponent(states: [
             ReaperAppearState(entity: self),
             ReaperPlayerControlledState(entity: self),
-            ReaperHitState(entity: self),
+            ReaperFleeState(entity: self),
             ReaperRechargingState(entity: self)
         ])
         addComponent(intelligenceComponent)
@@ -114,7 +126,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
                 intelligenceComponent.stateMachine.enter(ReaperRechargingState.self)
             }
             else {
-                intelligenceComponent.stateMachine.enter(ReaperHitState.self)
+                intelligenceComponent.stateMachine.enter(ReaperFleeState.self)
             }
         }
     }

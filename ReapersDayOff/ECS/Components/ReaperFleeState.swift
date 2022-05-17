@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class ReaperHitState: GKState {
+class ReaperFleeState: GKState {
     // MARK: Properties
     
     unowned var entity: Reaper
@@ -37,7 +37,7 @@ class ReaperHitState: GKState {
         elapsedTime = 0.0
         
         // Request the "hit" animation for this `PlayerBot`.
-        animationComponent.requestedAnimationState = .hit
+        animationComponent.requestedAnimationState = .flee
     }
     
     override func update(deltaTime seconds: TimeInterval) {

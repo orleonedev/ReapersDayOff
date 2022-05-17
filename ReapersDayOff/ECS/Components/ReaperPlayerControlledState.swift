@@ -58,7 +58,7 @@ class ReaperPlayerControlledState: GKState {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         switch stateClass {
-            case is ReaperHitState.Type, is ReaperRechargingState.Type:
+            case is ReaperFleeState.Type, is ReaperRechargingState.Type:
                 return true
             
             default:

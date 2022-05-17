@@ -56,32 +56,32 @@ class SoulPercentageMediumRule: FuzzySoulRule {
 }
 
 /// Asserts whether the number of "bad" `TaskBot`s is considered "high".
-class SoulPercentageHighRule: FuzzySoulRule {
-    // MARK: Properties
-    
-    override func grade() -> Float {
-        return min(1.0, max(0.0, (3.0 * snapshot.soulPercentage - 1)))
-    }
-    
-    // MARK: Initializers
-    
-    init() { super.init(fact: .soulPercentageHigh) }
-}
-
-/// Asserts whether the `PlayerBot` is considered to be "near" to this `TaskBot`.
-//class ReapertNearRule: FuzzySoulRule {
+//class SoulPercentageHighRule: FuzzySoulRule {
 //    // MARK: Properties
 //
 //    override func grade() -> Float {
-//        guard let distance = snapshot.reaperTarget?.distance else { return 0.0 }
-//        let oneThird = snapshot.proximityFactor / 3
-//        return (oneThird - distance) / oneThird
+//        return min(1.0, max(0.0, (3.0 * snapshot.soulPercentage - 1)))
 //    }
 //
 //    // MARK: Initializers
-//    
-//    init() { super.init(fact: .reaperNear) }
+//
+//    init() { super.init(fact: .soulPercentageHigh) }
 //}
+
+/// Asserts whether the `PlayerBot` is considered to be "near" to this `TaskBot`.
+class ReapertNearRule: FuzzySoulRule {
+    // MARK: Properties
+
+    override func grade() -> Float {
+        guard let distance = snapshot.reaperTarget?.distance else { return 0.0 }
+        let oneThird = snapshot.proximityFactor / 3
+        return (oneThird - distance) / oneThird
+    }
+
+    // MARK: Initializers
+    
+    init() { super.init(fact: .reaperNear) }
+}
 
 /// Asserts whether the `PlayerBot` is considered to be at a "medium" distance from this `TaskBot`.
 //class ReaperMediumRule: FuzzySoulRule {
