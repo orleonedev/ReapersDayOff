@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29353ADC283396AA0026F9DC /* SoulZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29353ADB283396AA0026F9DC /* SoulZone.swift */; };
+		29353ADC283396AA0026F9DC /* soulZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29353ADB283396AA0026F9DC /* soulZone.swift */; };
 		29A2075D282BEC2100DBDDB1 /* RulesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2075C282BEC2100DBDDB1 /* RulesComponent.swift */; };
 		29AAD99F282B0F280088F48C /* RDORules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAD99E282B0F280088F48C /* RDORules.swift */; };
 		29AAD9A1282B101D0088F48C /* FuzzySoulRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAD9A0282B101D0088F48C /* FuzzySoulRule.swift */; };
@@ -83,7 +83,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		29353ADB283396AA0026F9DC /* SoulZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulZone.swift; sourceTree = "<group>"; };
+		29353ADB283396AA0026F9DC /* soulZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = soulZone.swift; sourceTree = "<group>"; };
 		29A2075C282BEC2100DBDDB1 /* RulesComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesComponent.swift; sourceTree = "<group>"; };
 		29AAD99E282B0F280088F48C /* RDORules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDORules.swift; sourceTree = "<group>"; };
 		29AAD9A0282B101D0088F48C /* FuzzySoulRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuzzySoulRule.swift; sourceTree = "<group>"; };
@@ -326,7 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				517F5C762826AFC000C39D21 /* Soul.swift */,
-				29353ADB283396AA0026F9DC /* SoulZone.swift */,
+				29353ADB283396AA0026F9DC /* soulZone.swift */,
 				517F5C872826B2B700C39D21 /* GameplayConfiguration.swift */,
 				517F5C892826B2D000C39D21 /* SoulAgent.swift */,
 				517F5C8B2826B2F300C39D21 /* RedSoul.swift */,
@@ -503,7 +503,7 @@
 				51231D8A2829566F00D31CB3 /* MovementComponent.swift in Sources */,
 				51231DA0283227E600D31CB3 /* Gate.swift in Sources */,
 				6641E45B2829500500308AB3 /* RDOLevelScenePauseState.swift in Sources */,
-				29353ADC283396AA0026F9DC /* SoulZone.swift in Sources */,
+				29353ADC283396AA0026F9DC /* soulZone.swift in Sources */,
 				517F5C6928250DA700C39D21 /* RDOMainScene.swift in Sources */,
 				517F5C862826B28100C39D21 /* AnimationComponent.swift in Sources */,
 				517F5C822826B1E400C39D21 /* OrientationComponent.swift in Sources */,
