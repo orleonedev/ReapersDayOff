@@ -18,7 +18,8 @@ class RDOLevelSceneActiveState: GKState {
     
     unowned let levelScene: RDOLevelScene
     
-    var timeRemaining: TimeInterval = 0.0
+    var logic = GameplayLogic.sharedInstance()
+    var spawnRate: TimeInterval = 2.0
     
     /*
         A formatter for individual date components used to provide an appropriate
@@ -35,7 +36,7 @@ class RDOLevelSceneActiveState: GKState {
     // The formatted string representing the time remaining.
     var timeRemainingString: String {
         let components = NSDateComponents()
-        components.second = Int(max(0.0, timeRemaining))
+        components.second = Int(max(0.0, logic.timeRemaining ))
         
         return timeRemainingFormatter.string(from: components as DateComponents)!
     }
@@ -45,8 +46,8 @@ class RDOLevelSceneActiveState: GKState {
     init(levelScene: RDOLevelScene) {
         self.levelScene = levelScene
         
-        timeRemaining = TimeInterval(60.0)
-        GameplayLogic.sharedInstance().setupGame()
+        
+        logic.setupGame()
     }
     
     // MARK: GKState Life Cycle
@@ -61,14 +62,20 @@ class RDOLevelSceneActiveState: GKState {
         super.update(deltaTime: seconds)
         
         // Subtract the elapsed time from the remaining time.
-        timeRemaining -= seconds
+        logic.timeRemaining -= seconds
+        spawnRate -= seconds
+        if spawnRate < 0 {
+            
+            spawnRate = 1.0
+            levelScene.spawnSoul()
+        }
         
         // Update the displayed time remaining.
         levelScene.timerNode.text = timeRemainingString
-        levelScene.score.text = String(GameplayLogic.sharedInstance().score)
-        levelScene.bluecounter.text = String(GameplayLogic.sharedInstance().blueSouls)
-        levelScene.redcounter.text = String(GameplayLogic.sharedInstance().redSouls)
-        levelScene.greencounter.text = String(GameplayLogic.sharedInstance().greenSouls)
+        levelScene.score.text = String(logic.currentScore)
+        levelScene.bluecounter.text = String(logic.blueSouls)
+        levelScene.redcounter.text = String(logic.redSouls)
+        levelScene.greencounter.text = String(logic.greenSouls)
         
         // Check if the `levelScene` contains any bad `TaskBot`s.
 //        let allTaskBotsAreGood = !levelScene.entities.contains { entity in
@@ -79,7 +86,7 @@ class RDOLevelSceneActiveState: GKState {
 //            return false
 //        }
         
-        if timeRemaining <= 0.0 {
+        if logic.timeRemaining <= 0.0 {
             // If all the TaskBots are good, the player has completed the level.
             stateMachine?.enter(RDOLevelSceneGameoverState.self)
         }
