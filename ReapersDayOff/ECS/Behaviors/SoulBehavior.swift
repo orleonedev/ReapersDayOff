@@ -21,7 +21,7 @@ class SoulBehavior: GKBehavior {
         behavior.addAvoidObstaclesGoal(forScene: scene)
         behavior.addFleeReaperGoal(forScene: scene)
 
-        // Find any nearby "bad" TaskBots to flock with.
+    // Find any nearby "bad" TaskBots to flock with.
 //        let agentsToFlockWith: [GKAgent2D] = scene.entities.compactMap { entity in
 //            if let soul = entity as? Soul, soul.agent !== agent && soul.distanceToAgent(otherAgent: agent) <= GameplayConfiguration.Flocking.agentSearchDistanceForFlocking {
 //                return soul.agent
@@ -43,7 +43,7 @@ class SoulBehavior: GKBehavior {
 //        }
 
         // Add goals to follow a calculated path from the `TaskBot` to its target.
-        let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: target.position, pathRadius: pathRadius, inScene: scene )
+        let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: target.position , pathRadius: pathRadius, inScene: scene )
         
         // Return a tuple containing the new behavior, and the found path points for debug drawing.
         return (behavior, pathPoints)
@@ -55,7 +55,7 @@ class SoulBehavior: GKBehavior {
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
         behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
         behavior.addAvoidObstaclesGoal(forScene: scene)
-        behavior.addFleeReaperGoal(forScene: scene)
+//        behavior.addFleeReaperGoal(forScene: scene)
         
         // Add goals to follow a calculated path from the `TaskBot` to the start of its patrol path.
         let pathPoints = behavior.addGoalsToFollowPath(from: agent.position, to: endPoint, pathRadius: pathRadius, inScene: scene)
@@ -64,11 +64,11 @@ class SoulBehavior: GKBehavior {
         return (behavior, pathPoints)
     }
     
-    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, fleeAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) {
-        let behavior = SoulBehavior()
-        
-        
-    }
+//    static func behaviorAndPathPoints(forAgent agent: GKAgent2D, fleeAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) {
+//        let behavior = SoulBehavior()
+//
+//        
+//    }
     
 //    (forAgent agent: GKAgent2D, fleeAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) -> (behavior: GKBehavior, pathPoints: [CGPoint])
     
@@ -79,8 +79,8 @@ class SoulBehavior: GKBehavior {
         // Add basic goals to reach the `TaskBot`'s maximum speed and avoid obstacles.
         behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
         behavior.addAvoidObstaclesGoal(forScene: scene)
-        behavior.addGoalsToFollowPath(from: agent.position, to: target.position, pathRadius: 20, inScene: scene)
-        behavior.addFleeReaperGoal(forScene: scene)
+//        behavior.addGoalsToFollowPath(from: agent.position, to: target.position, pathRadius: 20, inScene: scene)
+//        behavior.addFleeReaperGoal(forScene: scene)
         // Convert the patrol path to an array of `float2`s.
         
         let pathVectorPoints = patrolPathPoints.map { SIMD2<Float>($0) }
@@ -195,7 +195,7 @@ class SoulBehavior: GKBehavior {
     }
     
     private func addFleeReaperGoal(forScene scene: RDOLevelScene) {
-        setWeight(0.5, for: GKGoal(toFleeAgent: scene.reaper.agent))
+        setWeight(0.8, for: GKGoal(toFleeAgent: scene.reaper.agent))
     }
     
 //    private func addAvoidReaperGoal(forScene scene: RDOLevelScene) {

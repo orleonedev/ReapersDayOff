@@ -59,17 +59,23 @@ class SoulAgentControlledState: GKState {
 // add flee function somehow (control distance tra reaper e soul)
             if let levelScene = entity.renderComponent.node.scene as? RDOLevelScene {
                 let reaperAgent = levelScene.reaper.agent
-                if entity.distanceToAgent(otherAgent: reaperAgent) < 32.0 {
+                if entity.distanceToAgent(otherAgent: reaperAgent) < 256 {
                     entity.mandate = .fleeAgent(reaperAgent)
                     
+                }else {
+                    // When a `TaskBot` is returning to its path patrol start, and gets near enough, it should start to patrol.
+//                    if case let .returnToPositionOnPath(position) = entity.mandate, entity.distanceToPoint(otherPoint: position) <= GameplayConfiguration.Soul.thresholdProximityToPatrolPathStartPoint {
+//                        entity.mandate = .followPatrolPath
+//                    }
+//                    else {
+                        entity.mandate = .followPatrolPath
+//                    }
                 }
                 
             }
             
-//            // When a `TaskBot` is returning to its path patrol start, and gets near enough, it should start to patrol.
-            if case let .returnToPositionOnPath(position) = entity.mandate, entity.distanceToPoint(otherPoint: position) <= GameplayConfiguration.Soul.thresholdProximityToPatrolPathStartPoint {
-                entity.mandate = .followPatrolPath
-            }
+//
+            
 //
 //            // Ensure the agent's behavior is the appropriate behavior for its current mandate.
             entity.agent.behavior = entity.behaviorForCurrentMandate

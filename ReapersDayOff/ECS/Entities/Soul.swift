@@ -30,11 +30,11 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
     // MARK: Properties
     
     
-    func didSet() {
-    let closestPointOnBadPath = closestPointOnPath(path: pathPoints)
-    mandate = .returnToPositionOnPath(SIMD2<Float>(closestPointOnBadPath))
-    
-    }
+//    func didSet() {
+//    let closestPointOnBadPath = closestPointOnPath(path: pathPoints)
+//    mandate = .returnToPositionOnPath(SIMD2<Float>(closestPointOnBadPath))
+//
+//    }
     var mandate: SoulMandate
     
     var pathPoints: [CGPoint]
