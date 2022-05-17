@@ -134,7 +134,6 @@ class AnimationComponent: GKComponent {
             if we choose to offset the animation's start point from zero.
         */
         guard let unwrappedAnimation = animations[animationState]?[compassDirection] else {
-            print("Unknown animation for state \(animationState.rawValue), compass direction \(compassDirection.rawValue).")
             return
         }
         var animation = unwrappedAnimation

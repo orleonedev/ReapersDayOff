@@ -32,11 +32,11 @@ class SoulBehavior: GKBehavior {
         
 //        if !agentsToFlockWith.isEmpty {
 //            // Add flocking goals for any nearby "bad" `TaskBot`s.
-////            let separationGoal = GKGoal(toSeparateFrom: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.separationRadius, maxAngle: GameplayConfiguration.Flocking.separationAngle)
-////            behavior.setWeight(GameplayConfiguration.Flocking.separationWeight, for: separationGoal)
+//            let separationGoal = GKGoal(toSeparateFrom: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.separationRadius, maxAngle: GameplayConfiguration.Flocking.separationAngle)
+//            behavior.setWeight(GameplayConfiguration.Flocking.separationWeight, for: separationGoal)
 //
-////            let alignmentGoal = GKGoal(toAlignWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.alignmentRadius, maxAngle: GameplayConfiguration.Flocking.alignmentAngle)
-////            behavior.setWeight(GameplayConfiguration.Flocking.alignmentWeight, for: alignmentGoal)
+//            let alignmentGoal = GKGoal(toAlignWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.alignmentRadius, maxAngle: GameplayConfiguration.Flocking.alignmentAngle)
+//            behavior.setWeight(GameplayConfiguration.Flocking.alignmentWeight, for: alignmentGoal)
 //
 //            let cohesionGoal = GKGoal(toCohereWith: agentsToFlockWith, maxDistance: GameplayConfiguration.Flocking.cohesionRadius, maxAngle: GameplayConfiguration.Flocking.cohesionAngle)
 //            behavior.setWeight(GameplayConfiguration.Flocking.cohesionWeight, for: cohesionGoal)

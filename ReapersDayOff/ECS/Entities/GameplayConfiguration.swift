@@ -34,7 +34,7 @@ struct GameplayConfiguration {
         static let agentMass: Float = 0.25
         
         /// The radius of the `TaskBot`'s physics body.
-        static var physicsBodyRadius: CGFloat = 32
+        static var physicsBodyRadius: CGFloat = 24
 
         /// The offset of the `TaskBot` physics body's center from the `TaskBot`'s center.
         static let physicsBodyOffset = CGPoint(x: 0.0, y: -16.0)
@@ -143,13 +143,13 @@ struct GameplayConfiguration {
     
     struct Reaper {
         /// The movement speed (in points per second) for the `PlayerBot`.
-        static let movementSpeed: CGFloat = 210.0
+        static let movementSpeed: CGFloat = 220.0
 
         /// The angular rotation speed (in radians per second) for the `PlayerBot`.
         static let angularSpeed = CGFloat.pi * 1.4
         
         /// The radius of the `PlayerBot`'s physics body.
-        static var physicsBodyRadius: CGFloat = 30.0
+        static var physicsBodyRadius: CGFloat = 32.0
         
         /// The offset of the `PlayerBot`'s physics body's center from the `PlayerBot`'s center.
         static let physicsBodyOffset = CGPoint(x: 0.0, y: -16.0)

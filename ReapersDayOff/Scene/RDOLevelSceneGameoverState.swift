@@ -20,6 +20,8 @@ class RDOLevelSceneGameoverState: RDOLevelSceneOverlayState {
         return "RDOGameoverScene"
     }
 
+    var logic = GameplayLogic.sharedInstance()
+    
     // MARK: GKState Life Cycle
     
     override func didEnter(from previousState: GKState?) {
@@ -28,9 +30,27 @@ class RDOLevelSceneGameoverState: RDOLevelSceneOverlayState {
         if let inputComponent = levelScene.reaper.component(ofType: InputComponent.self) {
             inputComponent.isEnabled = false
         }
+        levelScene.worldNode.isPaused = true
+        
+        if logic.currentScore > logic.highScore {
+            logic.highScore = Int(logic.currentScore)
+        }
+        
+        if let scoreLabel = overlay.contentNode.childNode(withName: "//score") as? SKLabelNode {
+            scoreLabel.text = "Score: " + String(logic.currentScore)
+        }
+        if let highLabel = overlay.contentNode.childNode(withName: "//highscore") as? SKLabelNode {
+            highLabel.text = "Highest: " + String(logic.highScore)
+        }
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return false
+    }
+    
+    override func willExit(to nextState: GKState) {
+        super.willExit(to: nextState)
+        
+        levelScene.worldNode.isPaused = false
     }
 }
