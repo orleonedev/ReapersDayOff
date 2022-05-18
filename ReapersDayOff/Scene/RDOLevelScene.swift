@@ -84,6 +84,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     //bar indicating the number of souls transported
     var soulsbar = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: 0, height: 0))
 
+    
     override var overlay: RDOSceneOverlay? {
         didSet {
             // Ensure that focus changes are only enabled when the `overlay` is present.
@@ -211,9 +212,12 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         scaleGreenCounterNode()
         camera!.addChild(greencounter)
         
+
+        
         let barSize = CGSize(width: 0, height: frame.height / 30)
+        soulsbar.anchorPoint.x = 0
         soulsbar.size = barSize
-        soulsbar.position = CGPoint(x: -frame.height / 2.0, y: frame.height / 2.5)
+        soulsbar.position = CGPoint(x: -frame.width / 2.5, y: frame.height / 2.5)
         camera!.addChild(soulsbar)
         
 
@@ -320,7 +324,6 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
             
         #endif
     }
-    
     
     override func didChangeSize(_ oldSize: CGSize) {
         super.didChangeSize(oldSize)
