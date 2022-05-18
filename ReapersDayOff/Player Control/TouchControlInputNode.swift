@@ -61,7 +61,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         
         // Setup pause button.
         let buttonSize = CGSize(width: frame.height / 4, height: frame.height / 4)
-        pauseButton = SKSpriteNode(texture: nil, color: UIColor.gray, size: buttonSize)
+        pauseButton = SKSpriteNode(texture: nil, color: UIColor.clear, size: buttonSize)
         pauseButton.position = CGPoint(x: 0, y: frame.height / 4)
         
         super.init(texture: nil, color: UIColor.clear, size: frame.size)
