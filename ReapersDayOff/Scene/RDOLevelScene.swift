@@ -17,10 +17,10 @@ import GameplayKit
 /// The names and z-positions of each layer in a level's world.
 enum WorldLayer: CGFloat {
     // The zPosition offset to use per character (`PlayerBot` or `TaskBot`).
-    static let zSpacePerCharacter: CGFloat = 100
+    static let zSpacePerCharacter: CGFloat = 1
     
     // Specifying `AboveCharacters` as 1000 gives room for 9 enemies on a level.
-    case board = -100, shadows = -50, obstacles = -25, characters = 0,  top = 1100
+    case board = -100, shadows = -50, obstacles = -25, characters = 0,  top = 1600
     
     // The expected name for this node in the scene file.
     var nodeName: String {
@@ -224,79 +224,82 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         putGateInScene(gate: blueGate!, pos: 2)
         putGateInScene(gate: greenGate!, pos: 3)
         
+        spawnSoul()
+        spawnSoul()
+        spawnSoul()
         
-        // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
-        let pathPoints = [CGPoint(x: -600, y: -0), CGPoint(x: 350, y: 0)]
-        let pathPoints2 = [CGPoint(x: -650, y: -0), CGPoint(x: 200, y: 0)]
-        let pathPoints3 = [CGPoint(x: -700, y: -0), CGPoint(x: 100, y: 0)]
-        
-        let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
-        let blueSoul = BlueSoul(pathPoints: pathPoints2, mandate: .followPatrolPath)
-        let greenSoul = GreenSoul(pathPoints: pathPoints3, mandate: .followPatrolPath)
-        
-//        for soulConfiguration in levelConfiguration.soulConfigurations {
-//            let soul: Soul
+//        // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
+//        let pathPoints = [CGPoint(x: -600, y: -0), CGPoint(x: 350, y: 0)]
+//        let pathPoints2 = [CGPoint(x: -650, y: -0), CGPoint(x: 200, y: 0)]
+//        let pathPoints3 = [CGPoint(x: -700, y: -0), CGPoint(x: 100, y: 0)]
 //
-//            // Find the locations of the nodes that define the `TaskBot`'s "good" and "bad" patrol paths.
-////            let goodPathPoints = nodePointsFromNodeNames(nodeNames: taskBotConfiguration.goodPathNodeNames)
-//            let pathPoints = nodePointsFromNodeNames(nodeNames: soulConfiguration.pathNodeNames)
+//        let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
+//        let blueSoul = BlueSoul(pathPoints: pathPoints2, mandate: .followPatrolPath)
+//        let greenSoul = GreenSoul(pathPoints: pathPoints3, mandate: .followPatrolPath)
 //
-//
-//            // Create the appropriate type `TaskBot` (ground or flying).
-//            switch soulConfiguration.locomotion {
-////                case .flying:
-////                    taskBot = FlyingBot(isGood: !taskBotConfiguration.startsBad, goodPathPoints: goodPathPoints, badPathPoints: badPathPoints)
-//
-//                case .red:
-//                soul = RedSoul(pathPoints: pathPoints, mandate: .followPatrolPath)
+////        for soulConfiguration in levelConfiguration.soulConfigurations {
+////            let soul: Soul
+////
+////            // Find the locations of the nodes that define the `TaskBot`'s "good" and "bad" patrol paths.
+//////            let goodPathPoints = nodePointsFromNodeNames(nodeNames: taskBotConfiguration.goodPathNodeNames)
+////            let pathPoints = nodePointsFromNodeNames(nodeNames: soulConfiguration.pathNodeNames)
+////
+////
+////            // Create the appropriate type `TaskBot` (ground or flying).
+////            switch soulConfiguration.locomotion {
+//////                case .flying:
+//////                    taskBot = FlyingBot(isGood: !taskBotConfiguration.startsBad, goodPathPoints: goodPathPoints, badPathPoints: badPathPoints)
+////
+////                case .red:
+////                soul = RedSoul(pathPoints: pathPoints, mandate: .followPatrolPath)
+////            }
+////
+////            // Set the `TaskBot`'s initial orientation so that it is facing the correct way.
+//            guard let orientationComponent = redSoul.component(ofType: OrientationComponent.self) else {
+//                fatalError("A task bot must have an orientation component to be able to be added to a level")
 //            }
+//        orientationComponent.compassDirection = .east
+////
+////            // Set the `TaskBot`'s initial position.
+//            let soulNode = redSoul.renderComponent.node
+//        soulNode.position = pathPoints.first!
+//        redSoul.updateAgentPositionToMatchNodePosition()
+////
+////            // Add the `TaskBot` to the scene and the component systems.
+//            addEntity(entity: redSoul)
 //
-//            // Set the `TaskBot`'s initial orientation so that it is facing the correct way.
-            guard let orientationComponent = redSoul.component(ofType: OrientationComponent.self) else {
-                fatalError("A task bot must have an orientation component to be able to be added to a level")
-            }
-        orientationComponent.compassDirection = .east
-//
-//            // Set the `TaskBot`'s initial position.
-            let soulNode = redSoul.renderComponent.node
-        soulNode.position = pathPoints.first!
-        redSoul.updateAgentPositionToMatchNodePosition()
-//
-//            // Add the `TaskBot` to the scene and the component systems.
-            addEntity(entity: redSoul)
-        
-        guard let orientationComponent = blueSoul.component(ofType: OrientationComponent.self) else {
-            fatalError("A task bot must have an orientation component to be able to be added to a level")
-        }
-        orientationComponent.compassDirection = .west
-        
-        // Set the `TaskBot`'s initial position.
-                    let blueSoulNode = blueSoul.renderComponent.node
-                blueSoulNode.position = pathPoints.first!
-                blueSoul.updateAgentPositionToMatchNodePosition()
-        //
-        //            // Add the `TaskBot` to the scene and the component systems.
-                    addEntity(entity: blueSoul)
-        
-        guard let orientationComponent = greenSoul.component(ofType: OrientationComponent.self) else {
-            fatalError("A task bot must have an orientation component to be able to be added to a level")
-        }
-        orientationComponent.compassDirection = .south
-        
-        // Set the `TaskBot`'s initial position.
-                    let greenSoulNode = greenSoul.renderComponent.node
-                greenSoulNode.position = pathPoints.first!
-                greenSoul.updateAgentPositionToMatchNodePosition()
-        //
-        //            // Add the `TaskBot` to the scene and the component systems.
-                    addEntity(entity: greenSoul)
-//
-//            // Add the `TaskBot`'s debug drawing node beneath all characters.
-//            addNode(node: taskBot.debugNode, toWorldLayer: .debug)
+//        guard let orientationComponent = blueSoul.component(ofType: OrientationComponent.self) else {
+//            fatalError("A task bot must have an orientation component to be able to be added to a level")
 //        }
-        
-//        Reaper().addComponent(reaper.agent)
-//        reaper.agent.delegate = reaper
+//        orientationComponent.compassDirection = .west
+//
+//        // Set the `TaskBot`'s initial position.
+//                    let blueSoulNode = blueSoul.renderComponent.node
+//                blueSoulNode.position = pathPoints.first!
+//                blueSoul.updateAgentPositionToMatchNodePosition()
+//        //
+//        //            // Add the `TaskBot` to the scene and the component systems.
+//                    addEntity(entity: blueSoul)
+//
+//        guard let orientationComponent = greenSoul.component(ofType: OrientationComponent.self) else {
+//            fatalError("A task bot must have an orientation component to be able to be added to a level")
+//        }
+//        orientationComponent.compassDirection = .south
+//
+//        // Set the `TaskBot`'s initial position.
+//                    let greenSoulNode = greenSoul.renderComponent.node
+//                greenSoulNode.position = pathPoints.first!
+//                greenSoul.updateAgentPositionToMatchNodePosition()
+//        //
+//        //            // Add the `TaskBot` to the scene and the component systems.
+//                    addEntity(entity: greenSoul)
+////
+////            // Add the `TaskBot`'s debug drawing node beneath all characters.
+////            addNode(node: taskBot.debugNode, toWorldLayer: .debug)
+////        }
+//
+////        Reaper().addComponent(reaper.agent)
+////        reaper.agent.delegate = reaper
         
         #if os(iOS)
         /*
@@ -422,7 +425,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         // Get the `ColliderType` for each contacted body.
         let colliderTypeA = ColliderType(rawValue: contact.bodyA.categoryBitMask)
         let colliderTypeB = ColliderType(rawValue: contact.bodyB.categoryBitMask)
-        print("A: \(colliderTypeA) B: \(colliderTypeB) ")
+        
         // Determine which `ColliderType` should be notified of the contact.
         let aWantsCallback = colliderTypeA.notifyOnContactWith(colliderTypeB)
         let bWantsCallback = colliderTypeB.notifyOnContactWith(colliderTypeA)
@@ -740,9 +743,59 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         addEntity(entity: gate)
         
+    }
+    
+    private func createSoul() -> Soul {
+        let random = UInt.random(in: 0...2)
+        var soul: Soul
+        switch random {
+        case 0:
+            soul = RedSoul(pathPoints: [], mandate: .followPatrolPath)
+        case 1:
+            soul = GreenSoul(pathPoints: [], mandate: .followPatrolPath)
+        case 2:
+            soul = BlueSoul(pathPoints: [], mandate: .followPatrolPath)
+        default:
+            fatalError("Unable to create soul type")
+        }
         
-        
+        return soul
     }
   
+    func spawnSoul() {
+        
+        let soul = createSoul()
+        let pathPoints = createPathPoints()
+        soul.pathPoints = pathPoints
+        guard let orientationComponent = soul.component(ofType: OrientationComponent.self) else {
+            fatalError("A task bot must have an orientation component to be able to be added to a level")
+        }
+        orientationComponent.compassDirection = .west
+        
+        putSoulInScene(soul: soul, pos: Int.random(in: 1...3))
+    }
+    
+    private func putSoulInScene(soul: Soul, pos: Int){
+        let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
+        let spawnCoordinate = charactersNode.childNode(withName: "spawn_coordinate\(pos)")!
+        
+        let soulNode = soul.renderComponent.node
+        soulNode.position = spawnCoordinate.position
+        soul.updateAgentPositionToMatchNodePosition()
+        
+        addEntity(entity: soul)
+        
+    }
+    
+    private func createPathPoints() -> [CGPoint] {
+        
+        
+        return [
+                CGPoint(x: -256, y: -512),
+                CGPoint(x: 0, y: 384),
+                CGPoint(x: 512, y: -128),
+                CGPoint(x: -386, y: -447)
+        ]
+    }
 }
 

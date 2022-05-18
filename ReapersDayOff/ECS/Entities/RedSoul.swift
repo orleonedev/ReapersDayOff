@@ -11,7 +11,7 @@ import GameplayKit
 
 class RedSoul: Soul {
     
-    static var textureSize = CGSize(width: 64 , height: 64)
+    static var textureSize = CGSize(width: 48 , height: 48)
     
     static var soulAnimations: [AnimationState: [CompassDirection: Animation]]?
     
@@ -130,24 +130,6 @@ class RedSoul: Soul {
             print("you can't take more souls")
         }
         
-        
-        
-    //    guard !isGood else { return }
-    //
-    //    var shouldStartAttack = false
-    //
-    //    if let otherTaskBot = entity as? TaskBot, otherTaskBot.isGood {
-    //        // Contact with good task bot will trigger an attack.
-    //        shouldStartAttack = true
-    //    }
-    //    else if let playerBot = entity as? PlayerBot, !playerBot.isPoweredDown {
-    //        // Contact with an active `PlayerBot` will trigger an attack.
-    //        shouldStartAttack = true
-    //    }
-    //
-    //    if let stateMachine = component(ofType: IntelligenceComponent.self)?.stateMachine, shouldStartAttack {
-    //        stateMachine.enter(FlyingBotPreAttackState.self)
-    //    }
     }
 
 }
