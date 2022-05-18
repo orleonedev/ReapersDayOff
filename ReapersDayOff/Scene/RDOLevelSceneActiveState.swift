@@ -76,6 +76,15 @@ class RDOLevelSceneActiveState: GKState {
         levelScene.bluecounter.text = String(logic.blueSouls)
         levelScene.redcounter.text = String(logic.redSouls)
         levelScene.greencounter.text = String(logic.greenSouls)
+        levelScene.soulsbar.size.width = CGFloat(logic.sumSoul) * (levelScene.frame.height / 5) / 10
+        if (logic.isFull){
+            levelScene.soulsbar.color = UIColor.red
+        }
+        else
+        {
+            levelScene.soulsbar.color = UIColor.black
+        }
+
         
         // Check if the `levelScene` contains any bad `TaskBot`s.
 //        let allTaskBotsAreGood = !levelScene.entities.contains { entity in

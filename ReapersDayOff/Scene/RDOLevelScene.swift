@@ -80,7 +80,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     let bluecounter = SKLabelNode(text: "0")
     let redcounter = SKLabelNode(text: "0")
     let greencounter = SKLabelNode(text: "0")
-            
+    
+    //bar indicating the number of souls transported
+    var soulsbar = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: 0, height: 0))
+
     override var overlay: RDOSceneOverlay? {
         didSet {
             // Ensure that focus changes are only enabled when the `overlay` is present.
@@ -207,6 +210,12 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         greencounter.verticalAlignmentMode = .top
         scaleGreenCounterNode()
         camera!.addChild(greencounter)
+        
+        let barSize = CGSize(width: 0, height: frame.height / 30)
+        soulsbar.size = barSize
+        soulsbar.position = CGPoint(x: -frame.height / 2.0, y: frame.height / 2.5)
+        camera!.addChild(soulsbar)
+        
 
         // A convenience function to find node locations given a set of node names.
         func nodePointsFromNodeNames(nodeNames: [String]) -> [CGPoint] {
