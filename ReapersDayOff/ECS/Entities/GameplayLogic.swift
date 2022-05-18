@@ -43,7 +43,7 @@ class GameplayLogic {
     }
     
      var soulLimit: UInt = 10
-     let timeLimit: TimeInterval = 60.0
+    let timeLimit: TimeInterval = 90.0
     var timeRemaining: TimeInterval = 0.0
     
     func setupGame(){
@@ -60,11 +60,11 @@ class GameplayLogic {
         switch souls {
         case 0..<3:
             ret = Double(souls)*0.5
-        case 3..<5:
+        case 3..<6:
             ret = Double(souls)
-        case 5..<8:
+        case 6..<10:
             ret = Double(souls)*1.5
-        case 8...10:
+        case 10:
             ret = Double(souls)*2.0
         default:
             print("Unhandled number")

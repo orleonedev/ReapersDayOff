@@ -48,7 +48,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     // MARK: Properties
     
     let reaper = Reaper()
-    
+    var isSpeeding = false 
     var redGate: Gate?
     var blueGate: Gate?
     var greenGate: Gate?
