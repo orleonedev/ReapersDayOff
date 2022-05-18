@@ -20,7 +20,7 @@ class RedSoul: Soul {
     }
     
     required init(pathPoints: [CGPoint], mandate: SoulMandate) {
-        super.init(pathPoints: pathPoints, mandate: mandate)
+        super.init(pathPoints: pathPoints, mandate: mandate, color: "red")
 
         // Create components that define how the entity looks and behaves.
         createRenderingComponents()
@@ -54,6 +54,10 @@ class RedSoul: Soul {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    required init(pathPoints: [CGPoint], mandate: SoulMandate, color: String) {
+        fatalError("init(pathPoints:mandate:color:) has not been implemented")
     }
     
     func createRenderingComponents(){

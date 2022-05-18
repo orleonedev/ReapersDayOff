@@ -20,9 +20,9 @@ struct GameplayConfiguration {
         static let thresholdProximityToPatrolPathStartPoint: Float = 50.0
 
         /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
-        static let maximumSpeed: Float = 120.0
+//        static let maximumSpeed: Float = 120.0
 
-        
+
         /*
             `maximumAcceleration` is set to a high number to enable the TaskBot to turn very quickly.
             This ensures that the `TaskBot` can follow its patrol path more effectively.
@@ -73,6 +73,11 @@ struct GameplayConfiguration {
     }
     
     struct RedSoul {
+        
+        /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
+        static let maximumSpeedRed: Float = 70.0
+        static let maximumAccelerationRed: Float = 120.0
+        
         /// The maximum amount of charge a `FlyingBot` stores.
         static let maximumCharge = 100.0
         
@@ -93,9 +98,25 @@ struct GameplayConfiguration {
         
         /// The offset from the `FlyingBot`'s position that should be used for beam targeting.
         static let beamTargetOffset = CGPoint(x: 0.0, y: 65.0)
+        
+        /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
+//        static let maximumSpeed: Float = 80.0
+
+        
+        /*
+            `maximumAcceleration` is set to a high number to enable the TaskBot to turn very quickly.
+            This ensures that the `TaskBot` can follow its patrol path more effectively.
+        */
+        /// The maximum acceleration (in points per second per second) for the `TaskBot`.
+//        static let maximumAcceleration: Float = 150.0
     }
     
     struct BlueSoul {
+        
+        /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
+        static let maximumSpeedBlue: Float = 200.0
+        static let maximumAccelerationBlue: Float = 400.0
+        
         /// The maximum amount of charge a `FlyingBot` stores.
         static let maximumCharge = 100.0
         
@@ -116,9 +137,24 @@ struct GameplayConfiguration {
         
         /// The offset from the `FlyingBot`'s position that should be used for beam targeting.
         static let beamTargetOffset = CGPoint(x: 0.0, y: 65.0)
+        
+        /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
+//        static let maximumSpeed: Float = 200.0
+
+        
+        /*
+            `maximumAcceleration` is set to a high number to enable the TaskBot to turn very quickly.
+            This ensures that the `TaskBot` can follow its patrol path more effectively.
+        */
+        /// The maximum acceleration (in points per second per second) for the `TaskBot`.
+//        static let maximumAcceleration: Float = 400.0
     }
     
     struct GreenSoul {
+        /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
+        static let maximumSpeedGreen: Float = 120.0
+        
+        static let maximumAccelerationGreen: Float = 300.0
         /// The maximum amount of charge a `FlyingBot` stores.
         static let maximumCharge = 100.0
         
@@ -139,6 +175,17 @@ struct GameplayConfiguration {
         
         /// The offset from the `FlyingBot`'s position that should be used for beam targeting.
         static let beamTargetOffset = CGPoint(x: 0.0, y: 65.0)
+        
+        /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
+//        static let maximumSpeed: Float = 120.0
+
+        
+        /*
+            `maximumAcceleration` is set to a high number to enable the TaskBot to turn very quickly.
+            This ensures that the `TaskBot` can follow its patrol path more effectively.
+        */
+        /// The maximum acceleration (in points per second per second) for the `TaskBot`.
+//        static let maximumAcceleration: Float = 300.0
     }
     
     struct Reaper {
@@ -197,22 +244,22 @@ struct GameplayConfiguration {
         #endif
     }
     
-    struct Flocking {
-        /// Separation, alignment, and cohesion parameters for multiple `TaskBot`s.
-        static let separationRadius: Float = 25.3
-        static let separationAngle = Float (3 * (Float.pi / 4))
-        static let separationWeight: Float = 2.0
-        
-        static let alignmentRadius: Float = 43.333
-        static let alignmentAngle: Float = Float.pi / 2
-        static let alignmentWeight: Float = 1.667
-        
-        static let cohesionRadius: Float = 50.0
-        static let cohesionAngle: Float = Float.pi / 2
-        static let cohesionWeight: Float = 1.667
-        
-        static let agentSearchDistanceForFlocking: Float = 50.0
-    }
+//    struct Flocking {
+//        /// Separation, alignment, and cohesion parameters for multiple `TaskBot`s.
+//        static let separationRadius: Float = 25.3
+//        static let separationAngle = Float (3 * (Float.pi / 4))
+//        static let separationWeight: Float = 2.0
+//        
+//        static let alignmentRadius: Float = 43.333
+//        static let alignmentAngle: Float = Float.pi / 2
+//        static let alignmentWeight: Float = 1.667
+//        
+//        static let cohesionRadius: Float = 50.0
+//        static let cohesionAngle: Float = Float.pi / 2
+//        static let cohesionWeight: Float = 1.667
+//        
+//        static let agentSearchDistanceForFlocking: Float = 50.0
+//    }
     
     struct TouchControl {
         /// The minimum distance a virtual thumbstick must move before it is considered to have been moved.
