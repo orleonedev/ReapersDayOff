@@ -62,11 +62,17 @@ class RDOLevelSceneActiveState: GKState {
         super.update(deltaTime: seconds)
         
         // Subtract the elapsed time from the remaining time.
-        logic.timeRemaining -= seconds
+        if levelScene.isSpeeding{
+            logic.timeRemaining -= seconds*2
+            
+        }else {
+            logic.timeRemaining -= seconds
+        }
+        
         spawnRate -= seconds
         if spawnRate < 0 {
             
-            spawnRate = 1.0
+            spawnRate = 2.0
             levelScene.spawnSoul()
         }
         
@@ -76,6 +82,32 @@ class RDOLevelSceneActiveState: GKState {
         levelScene.bluecounter.text = String(logic.blueSouls)
         levelScene.redcounter.text = String(logic.redSouls)
         levelScene.greencounter.text = String(logic.greenSouls)
+        levelScene.soulsbar.size.width = CGFloat(logic.sumSoul) * (levelScene.frame.height / 5) / 10
+        
+        if (logic.isFull){
+            levelScene.soulsbar.color = UIColor.red
+            
+        }
+        else
+        {
+            levelScene.soulsbar.color = UIColor.black
+            
+        }
+
+        if let movComp = levelScene.reaper.component(ofType: MovementComponent.self) {
+            
+            if logic.isFull {
+                movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed - 70
+            }
+            else {
+                if levelScene.isSpeeding {
+                    movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed + 100
+                }
+                else {
+                    movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed
+                }
+            }
+        }
         
         // Check if the `levelScene` contains any bad `TaskBot`s.
 //        let allTaskBotsAreGood = !levelScene.entities.contains { entity in

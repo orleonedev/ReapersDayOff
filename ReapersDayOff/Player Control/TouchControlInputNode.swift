@@ -60,9 +60,9 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         rightThumbStickNode.position = CGPoint(x: initialHorizontalOffset, y: initialVerticalOffset)
         
         // Setup pause button.
-        let buttonSize = CGSize(width: frame.height / 4, height: frame.height / 4)
+        let buttonSize = CGSize(width: frame.height / 10, height: frame.height / 10)
         pauseButton = SKSpriteNode(texture: nil, color: UIColor.gray, size: buttonSize)
-        pauseButton.position = CGPoint(x: 0, y: frame.height / 4)
+        pauseButton.position = CGPoint(x: frame.width / 2.5, y: frame.height / 2.0)
         
         super.init(texture: nil, color: UIColor.clear, size: frame.size)
         rightThumbStickNode.delegate = self

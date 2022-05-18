@@ -48,7 +48,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     // MARK: Properties
     
     let reaper = Reaper()
-    
+    var isSpeeding = false 
     var redGate: Gate?
     var blueGate: Gate?
     var greenGate: Gate?
@@ -80,7 +80,11 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     let bluecounter = SKLabelNode(text: "0")
     let redcounter = SKLabelNode(text: "0")
     let greencounter = SKLabelNode(text: "0")
-        
+    
+    //bar indicating the number of souls transported
+    var soulsbar = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: 0, height: 0))
+
+    
     override var overlay: RDOSceneOverlay? {
         didSet {
             // Ensure that focus changes are only enabled when the `overlay` is present.
@@ -207,6 +211,15 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         greencounter.verticalAlignmentMode = .top
         scaleGreenCounterNode()
         camera!.addChild(greencounter)
+        
+
+        
+        let barSize = CGSize(width: 0, height: frame.height / 30)
+        soulsbar.anchorPoint.x = 0
+        soulsbar.size = barSize
+        soulsbar.position = CGPoint(x: -frame.width / 2.5, y: frame.height / 2.5)
+        camera!.addChild(soulsbar)
+        
 
         // A convenience function to find node locations given a set of node names.
         func nodePointsFromNodeNames(nodeNames: [String]) -> [CGPoint] {
@@ -553,7 +566,6 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         switch button.buttonIdentifier! {
         case .resume:
             stateMachine.enter(RDOLevelSceneActiveState.self)
-            
         default:
             // Allow `BaseScene` to handle the event in `BaseScene+Buttons`.
             super.buttonTriggered(button: button)
@@ -646,7 +658,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        score.position.y = size.height / 2.0
        
         // Make sure the score node is positioned at the right of the scene.
-        score.position.x = size.width / 3.0
+        score.position.x = size.width / 2.5
         
        // Add padding between the top of scene and the top of the score node.
        #if os(tvOS)
@@ -664,7 +676,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        bluecounter.position.y = size.height / 2.0
        
         // Make sure the score node is positioned at the right of the scene.
-        bluecounter.position.x = -size.width / 2.8
+        bluecounter.position.x = -size.width / 2.5
         
        // Add padding between the top of scene and the top of the score node.
        #if os(tvOS)
@@ -682,7 +694,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        greencounter.position.y = size.height / 2.0
        
         // Make sure the score node is positioned at the right of the scene.
-        greencounter.position.x = -size.width / 3.2
+        greencounter.position.x = -size.width / 2.5 + greencounter.fontSize
         
        // Add padding between the top of scene and the top of the score node.
        #if os(tvOS)
@@ -700,7 +712,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        redcounter.position.y = size.height / 2.0
        
         // Make sure the score node is positioned at the right of the scene.
-        redcounter.position.x = -size.width / 3.0
+        redcounter.position.x = -size.width / 2.5 + (2 * redcounter.fontSize)
         
        // Add padding between the top of scene and the top of the score node.
        #if os(tvOS)
@@ -709,6 +721,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        redcounter.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
        #endif
    }
+    
     
     private func beamInPlayerBot() {
         // Find the location of the player's initial position.

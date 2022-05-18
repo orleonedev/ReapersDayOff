@@ -93,11 +93,22 @@ class InputComponent: GKComponent, ControlInputSourceDelegate {
             movementComponent.allowsStrafing = state.allowsStrafing
             movementComponent.nextRotation = state.rotation
             movementComponent.nextTranslation = state.translation
+            if state.beamIsTriggered {
+                if let levelScene = entity?.component(ofType: RenderComponent.self)?.node.scene as? RDOLevelScene {
+                    levelScene.isSpeeding = true
+                }
+            }else{
+                
+                if let levelScene = entity?.component(ofType: RenderComponent.self)?.node.scene as? RDOLevelScene {
+                    levelScene.isSpeeding = false
+                }
+            }
         }
         
 //        if let beamComponent = entity?.component(ofType: BeamComponent.self) {
 //            beamComponent.isTriggered = state.beamIsTriggered
 //        }
+        
     }
 }
 
