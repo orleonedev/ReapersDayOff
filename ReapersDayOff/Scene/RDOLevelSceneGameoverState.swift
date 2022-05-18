@@ -42,6 +42,9 @@ class RDOLevelSceneGameoverState: RDOLevelSceneOverlayState {
         if let highLabel = overlay.contentNode.childNode(withName: "//highscore") as? SKLabelNode {
             highLabel.text = "Highest: " + String(logic.highScore)
         }
+        if let total = overlay.contentNode.childNode(withName: "//total") as? SKLabelNode {
+            total.text = String(logic.totalSouls)
+        }
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

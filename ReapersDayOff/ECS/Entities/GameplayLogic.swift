@@ -22,6 +22,15 @@ class GameplayLogic {
         }
     }
     
+    var totalSouls: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "SoulsCollected")
+        }
+        set {
+            UserDefaults.standard.set(newValue,forKey: "SoulsCollected")
+        }
+    }
+    
     var currentScore: UInt = 0
     var redSouls: UInt = 0
     var greenSouls: UInt = 0
@@ -34,7 +43,7 @@ class GameplayLogic {
     }
     
      var soulLimit: UInt = 10
-     let timeLimit: TimeInterval = 60.0
+    let timeLimit: TimeInterval = 90.0
     var timeRemaining: TimeInterval = 0.0
     
     func setupGame(){
@@ -46,25 +55,59 @@ class GameplayLogic {
         
     }
     
+    private func timeForDeposit(souls: UInt) -> Double{
+        var ret: Double
+        switch souls {
+        case 0..<3:
+            ret = Double(souls)*0.5
+        case 3..<6:
+            ret = Double(souls)
+        case 6..<10:
+            ret = Double(souls)*1.5
+        case 10:
+            ret = Double(souls)*2.0
+        default:
+            print("Unhandled number")
+            ret = 0
+        }
+        return ret
+    }
+    private func pointsForDeposit(souls: UInt) -> UInt{
+        var ret: UInt
+        switch souls {
+        case 0..<5:
+            ret = souls
+        case 5..<9:
+            ret = UInt(Double(souls) * 1.5)
+        case 9...10:
+            ret = souls * 2
+        default:
+            print("Unhandled number")
+            ret = 0
+        }
+        return ret
+    }
+    
     func deposit(type: String){
         switch type {
         case "red":
-            timeRemaining += Double(redSouls)/2
-            currentScore += redSouls
+            timeRemaining += timeForDeposit(souls: redSouls)
+            currentScore += pointsForDeposit(souls: redSouls)
+            totalSouls += Int(redSouls)
             redSouls = 0
         case "green":
-            timeRemaining += Double(greenSouls)/2
-            currentScore += greenSouls
+            timeRemaining += timeForDeposit(souls: greenSouls)
+            currentScore += pointsForDeposit(souls: greenSouls)
+            totalSouls += Int(greenSouls)
             greenSouls = 0
         case "blue":
-            timeRemaining += Double(blueSouls)/2
-            currentScore += blueSouls
+            timeRemaining += timeForDeposit(souls: blueSouls)
+            currentScore += pointsForDeposit(souls: blueSouls)
+            totalSouls += Int(blueSouls)
             blueSouls = 0
         default:
             fatalError("Unknown Gate type")
         }
-        
-        
         
     }
     
