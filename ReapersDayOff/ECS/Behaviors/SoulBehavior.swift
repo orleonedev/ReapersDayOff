@@ -213,7 +213,7 @@ class SoulBehavior: GKBehavior {
     
     /// Adds a goal to attain a target speed.
     private func addTargetSpeedGoal(speed: Float) {
-        setWeight(1.0, for: GKGoal(toReachTargetSpeed: speed))
+        setWeight(0.8, for: GKGoal(toReachTargetSpeed: speed))
     }
     
     /// Adds goals to follow and stay on a path.
@@ -226,6 +226,6 @@ class SoulBehavior: GKBehavior {
     }
         // To Wander
     private func addWonderAroundGoal(speed: Float){
-        setWeight(0.6, for: GKGoal(toWander: speed))
+        setWeight(0.3, for: GKGoal(toWander: speed))
     }
 }
