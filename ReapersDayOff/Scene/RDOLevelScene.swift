@@ -84,7 +84,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     //bar indicating the number of souls transported
     var soulsbar = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: 0, height: 0))
 
-    
+
     override var overlay: RDOSceneOverlay? {
         didSet {
             // Ensure that focus changes are only enabled when the `overlay` is present.
@@ -220,7 +220,6 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         soulsbar.position = CGPoint(x: -frame.width / 2.5, y: frame.height / 2.5)
         camera!.addChild(soulsbar)
         
-
         // A convenience function to find node locations given a set of node names.
         func nodePointsFromNodeNames(nodeNames: [String]) -> [CGPoint] {
             let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!

@@ -30,6 +30,7 @@ extension RDOBaseScene {
         if self is RDOLevelScene {
             // Ensure the control node fills the scene's size.
             touchControlInputNode.size = size
+//            touchControlInputNode.size = size
 
             // Center the control node on the camera.
             touchControlInputNode.position = CGPoint.zero
