@@ -17,8 +17,7 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
         // Hunt another agent (either a `PlayerBot` or a "good" `TaskBot`).
         case fleeAgent(GKAgent2D)
 
-        // Follow the `TaskBot`'s "good" patrol path.
-//        case followGoodPatrolPath
+        case wander
 
         // Follow the `Soul`'s patrol path.
         case followPatrolPath
@@ -72,14 +71,9 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
                 radius = GameplayConfiguration.Soul.returnToPatrolPathRadius
                 (agentBehavior, debugPathPoints) = SoulBehavior.behaviorAndPathPoints(forAgent: agent, returningToPoint: position, pathRadius: radius, inScene: levelScene)
 //                debugColor = SKColor.yellow
+        case .wander:
+            agentBehavior = SoulBehavior.behaviorWonder(forAgent: agent, inScene: levelScene)
         }
-
-//        if levelScene.debugDrawingEnabled {
-//            drawDebugPath(path: debugPathPoints, cycle: debugPathShouldCycle, color: debugColor, radius: radius)
-//        }
-//        else {
-//            debugNode.removeAllChildren()
-//        }
 
         return agentBehavior
     }
@@ -102,7 +96,7 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
 //        agent = SoulAgent()
 //        agent.radius = GameplayConfiguration.PlayerBot.agentRadius
         self.pathPoints = [CGPoint()]
-        self.mandate = SoulMandate.followPatrolPath
+        self.mandate = SoulMandate.wander
         self.soulColor = "red"
         super.init()
     }
@@ -273,7 +267,7 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
         ]
         
         ColliderType.requestedContactNotifications[.Soul] = [
-            .Reaper,
+            .Reaper
         ]
     }
 }
