@@ -12,7 +12,7 @@ class Gate: GKEntity {
     
     var name: String
     
-    static var textureSize = CGSize(width: 120.0, height: 120.0)
+    static var textureSize = CGSize(width: 96, height: 128.0)
     
     /// The `RenderComponent` associated with this `PlayerBot`.
     var renderComponent: RenderComponent {
@@ -28,8 +28,19 @@ class Gate: GKEntity {
         
         let renderComponent = RenderComponent()
         addComponent(renderComponent)
+        var gateOffset: CGPoint
+        switch type {
+        case "red":
+            gateOffset = CGPoint(x: 32.0, y: 0.0)
+        case "green":
+            gateOffset = CGPoint(x: 0.0, y: -32.0)
+        case "blue":
+            gateOffset = CGPoint(x: -32.0, y: 0.0)
+        default:
+            fatalError("Unknown gate type")
+        }
         
-        let physicsComponent = PhysicsComponent(physicsBody: SKPhysicsBody(circleOfRadius: GameplayConfiguration.Reaper.physicsBodyRadius*2, center: GameplayConfiguration.Reaper.physicsBodyOffset), colliderType: .Gate)
+        let physicsComponent = PhysicsComponent(physicsBody: SKPhysicsBody(circleOfRadius: GameplayConfiguration.Reaper.physicsBodyRadius*3, center: gateOffset), colliderType: .Gate)
         physicsComponent.physicsBody.isDynamic = false
         addComponent(physicsComponent)
 
@@ -55,7 +66,8 @@ class Gate: GKEntity {
     
     class func loadSharedAssets() {
         ColliderType.definedCollisions[.Gate] = [
-            .Reaper
+            .Reaper,
+            .Soul
         ]
         
         ColliderType.requestedContactNotifications[.Gate] = [

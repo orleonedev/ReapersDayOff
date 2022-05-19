@@ -232,6 +232,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         blueGate = Gate(type: "blue")
         greenGate = Gate(type: "green")
         
+        
         putGateInScene(gate: redGate!, pos: 1)
         putGateInScene(gate: blueGate!, pos: 2)
         putGateInScene(gate: greenGate!, pos: 3)
