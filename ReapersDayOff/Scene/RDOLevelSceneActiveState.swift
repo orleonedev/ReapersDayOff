@@ -19,7 +19,7 @@ class RDOLevelSceneActiveState: GKState {
     unowned let levelScene: RDOLevelScene
     
     var logic = GameplayLogic.sharedInstance()
-    var spawnRate: TimeInterval = 2.0
+    var spawnRate: TimeInterval = 1.5
     
     /*
         A formatter for individual date components used to provide an appropriate
@@ -72,7 +72,7 @@ class RDOLevelSceneActiveState: GKState {
         spawnRate -= seconds
         if spawnRate < 0 {
             
-            spawnRate = 2.0
+            spawnRate = 1.5
             levelScene.spawnSoul()
         }
         
