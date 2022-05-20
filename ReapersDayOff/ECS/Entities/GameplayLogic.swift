@@ -58,12 +58,14 @@ class GameplayLogic {
     private func timeForDeposit(souls: UInt) -> Double{
         var ret: Double
         switch souls {
-        case 0..<3:
+        case 0..<2:
             ret = Double(souls)*0.5
-        case 3..<9:
+        case 2..<5:
             ret = Double(souls)
-        case 9...10:
+        case 5..<7:
             ret = Double(souls)*1.5
+        case 7...10:
+            ret = Double(souls)*2
         default:
             print("Unhandled number")
             ret = 0
@@ -95,12 +97,12 @@ class GameplayLogic {
             redSouls = 0
         case "green":
             timeRemaining += timeForDeposit(souls: greenSouls)
-            currentScore += pointsForDeposit(souls: greenSouls)
+            currentScore += pointsForDeposit(souls: greenSouls)*2
             totalSouls += Int(greenSouls)
             greenSouls = 0
         case "blue":
             timeRemaining += timeForDeposit(souls: blueSouls)
-            currentScore += pointsForDeposit(souls: blueSouls)
+            currentScore += pointsForDeposit(souls: blueSouls)*3
             totalSouls += Int(blueSouls)
             blueSouls = 0
         default:

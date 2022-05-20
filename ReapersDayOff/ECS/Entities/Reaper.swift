@@ -189,8 +189,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
         ColliderType.definedCollisions[.Reaper] = [
             .Reaper,
             .Soul,
-            .Obstacle,
-            .Gate
+            .Obstacle
         ]
         
         ColliderType.requestedContactNotifications[.Reaper] = [

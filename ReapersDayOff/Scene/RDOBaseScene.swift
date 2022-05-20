@@ -134,7 +134,12 @@ class RDOBaseScene: SKScene, GameInputDelegate, ControlInputSourceGameStateDeleg
             original heights to calculate the camera scale.
         */
         if let camera = camera {
-            camera.setScale(nativeSize.height / size.height)
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                camera.setScale(nativeSize.height / size.height)
+            }else {
+                camera.setScale((nativeSize.height / size.height) + 0.1)
+            }
+            
         }
     }
     

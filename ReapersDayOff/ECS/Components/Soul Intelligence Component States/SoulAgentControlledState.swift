@@ -59,7 +59,7 @@ class SoulAgentControlledState: GKState {
 // add flee function somehow (control distance tra reaper e soul)
             if let levelScene = entity.renderComponent.node.scene as? RDOLevelScene {
                 let reaperAgent = levelScene.reaper.agent
-                if entity.distanceToAgent(otherAgent: reaperAgent) < 256 {
+                if entity.distanceToAgent(otherAgent: reaperAgent) < 224{
                     entity.mandate = .fleeAgent(reaperAgent)
                     
                 }else {
@@ -68,7 +68,7 @@ class SoulAgentControlledState: GKState {
 //                        entity.mandate = .followPatrolPath
 //                    }
 //                    else {
-                        entity.mandate = .followPatrolPath
+                        entity.mandate = .wander
 //                    }
                 }
                 

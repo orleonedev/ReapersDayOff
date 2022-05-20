@@ -72,6 +72,15 @@ class SoulBehavior: GKBehavior {
     
 //    (forAgent agent: GKAgent2D, fleeAgent target: GKAgent2D, pathRadius: Float, inScene scene: RDOLevelScene) -> (behavior: GKBehavior, pathPoints: [CGPoint])
     
+    static func behaviorWonder(forAgent agent: GKAgent2D, inScene scene: RDOLevelScene) -> GKBehavior {
+        let behavior = SoulBehavior()
+        
+        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
+        behavior.addAvoidObstaclesGoal(forScene: scene)
+        behavior.addWonderAroundGoal(speed: agent.maxSpeed)
+        
+        return behavior
+    }
     /// Constructs a behavior to patrol a path of points, avoiding obstacles along the way.
     static func behavior(forAgent agent: GKAgent2D, fleeAgent target: GKAgent2D, patrollingPathWithPoints patrolPathPoints: [CGPoint], pathRadius: Float, inScene scene: RDOLevelScene) -> GKBehavior {
         let behavior = SoulBehavior()
@@ -204,7 +213,7 @@ class SoulBehavior: GKBehavior {
     
     /// Adds a goal to attain a target speed.
     private func addTargetSpeedGoal(speed: Float) {
-        setWeight(1.0, for: GKGoal(toReachTargetSpeed: speed))
+        setWeight(0.8, for: GKGoal(toReachTargetSpeed: speed))
     }
     
     /// Adds goals to follow and stay on a path.
@@ -214,5 +223,9 @@ class SoulBehavior: GKBehavior {
 
         // The "stay on path" goal tries to keep the agent on the path within the path's radius.
         setWeight(0.5, for: GKGoal(toStayOn: path, maxPredictionTime: GameplayConfiguration.Soul.maxPredictionTimeWhenFollowingPath))
+    }
+        // To Wander
+    private func addWonderAroundGoal(speed: Float){
+        setWeight(0.3, for: GKGoal(toWander: speed))
     }
 }

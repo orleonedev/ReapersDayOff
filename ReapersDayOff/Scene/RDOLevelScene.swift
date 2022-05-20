@@ -98,14 +98,13 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     }
   
     // MARK: Pathfinding
-    
-    var graphs = [String : GKGraph]()
+
     
     lazy var obstacleSpriteNodes: [SKSpriteNode] = self["world/obstacles/*"] as! [SKSpriteNode]
      
     lazy var polygonObstacles: [GKPolygonObstacle] = SKNode.obstacles(fromNodePhysicsBodies: self.obstacleSpriteNodes)
      
-    lazy var graph: GKObstacleGraph = GKObstacleGraph(obstacles: self.polygonObstacles, bufferRadius: GameplayConfiguration.Soul.pathfindingGraphBufferRadius)
+    let graph: GKObstacleGraph = GKObstacleGraph(obstacles: [], bufferRadius: GameplayConfiguration.Soul.pathfindingGraphBufferRadius)
 
 
     
