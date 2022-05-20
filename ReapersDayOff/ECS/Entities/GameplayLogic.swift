@@ -95,12 +95,12 @@ class GameplayLogic {
             redSouls = 0
         case "green":
             timeRemaining += timeForDeposit(souls: greenSouls)
-            currentScore += pointsForDeposit(souls: greenSouls)
+            currentScore += pointsForDeposit(souls: greenSouls)*2
             totalSouls += Int(greenSouls)
             greenSouls = 0
         case "blue":
             timeRemaining += timeForDeposit(souls: blueSouls)
-            currentScore += pointsForDeposit(souls: blueSouls)
+            currentScore += pointsForDeposit(souls: blueSouls)*3
             totalSouls += Int(blueSouls)
             blueSouls = 0
         default:
