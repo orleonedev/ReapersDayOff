@@ -114,8 +114,8 @@ struct GameplayConfiguration {
     struct BlueSoul {
         
         /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
-        static let maximumSpeedBlue: Float = 200.0
-        static let maximumAccelerationBlue: Float = 400.0
+        static let maximumSpeedBlue: Float = 300.0
+        static let maximumAccelerationBlue: Float = 600.0
         
         /// The maximum amount of charge a `FlyingBot` stores.
         static let maximumCharge = 100.0
