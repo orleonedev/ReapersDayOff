@@ -19,7 +19,7 @@ class RDOLevelSceneActiveState: GKState {
     unowned let levelScene: RDOLevelScene
     
     var logic = GameplayLogic.sharedInstance()
-    var spawnRate: TimeInterval = 1.5
+    var spawnRate: TimeInterval = 1.0
     
     /*
         A formatter for individual date components used to provide an appropriate
@@ -72,7 +72,7 @@ class RDOLevelSceneActiveState: GKState {
         spawnRate -= seconds
         if spawnRate < 0 {
             
-            spawnRate = 1.5
+            spawnRate = 1.0
             levelScene.spawnSoul()
         }
         
@@ -97,7 +97,7 @@ class RDOLevelSceneActiveState: GKState {
         if let movComp = levelScene.reaper.component(ofType: MovementComponent.self) {
             
             if logic.isFull {
-                movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed - 70
+                movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed - 100
             }
             else {
                 if levelScene.isSpeeding {

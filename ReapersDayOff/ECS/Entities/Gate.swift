@@ -40,7 +40,7 @@ class Gate: GKEntity {
             fatalError("Unknown gate type")
         }
         
-        let physicsComponent = PhysicsComponent(physicsBody: SKPhysicsBody(circleOfRadius: GameplayConfiguration.Reaper.physicsBodyRadius*3, center: gateOffset), colliderType: .Gate)
+        let physicsComponent = PhysicsComponent(physicsBody: SKPhysicsBody(circleOfRadius: GameplayConfiguration.Reaper.physicsBodyRadius*5, center: gateOffset), colliderType: .Gate)
         physicsComponent.physicsBody.isDynamic = false
         addComponent(physicsComponent)
 

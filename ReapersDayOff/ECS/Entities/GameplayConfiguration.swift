@@ -190,7 +190,7 @@ struct GameplayConfiguration {
     
     struct Reaper {
         /// The movement speed (in points per second) for the `PlayerBot`.
-        static let movementSpeed: CGFloat = 220.0
+        static let movementSpeed: CGFloat = 280.0
 
         /// The angular rotation speed (in radians per second) for the `PlayerBot`.
         static let angularSpeed = CGFloat.pi * 1.4
