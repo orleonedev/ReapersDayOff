@@ -84,7 +84,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     //bar indicating the number of souls transported
     var soulsContainer = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: 0, height: 0))
     
-    var stamina = SKSpriteNode(texture: SKTexture(imageNamed: "staminaBlack"), color: UIColor.black, size: CGSize(width: 0, height: 0))
+//    var stamina = SKSpriteNode(texture: SKTexture(imageNamed: "staminaBlack"), color: UIColor.black, size: CGSize(width: 0, height: 0))
 
     let pauseButton = SKSpriteNode(texture: SKTexture(imageNamed: "pauseBlack"), color: UIColor.gray, size: CGSize(width: 0, height: 0))
     
@@ -426,7 +426,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
                 break
             }
         }
-        print("ciao")
+        
     }
 
     override func didFinishUpdate() {
@@ -545,16 +545,20 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
                 to the scene. Constrain the `ChargeBar` to the `RenderComponent`'s node.
             */
             if let chargeBar = entity.component(ofType: ChargeComponent.self)?.chargeBar {
-                addNode(node: chargeBar, toWorldLayer: .top)
                 
+//                addNode(node: chargeBar, toWorldLayer: .top)
+                chargeBar.position.y = size.height / 2.1
+                chargeBar.position.x = -size.width / 3
+                chargeBar.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+                camera!.addChild(chargeBar)
                 // Constrain the `ChargeBar`'s node position to the render node.
-                let xRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.x)
-                let yRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.y)
-
-                let constraint = SKConstraint.positionX(xRange, y: yRange)
-                constraint.referenceNode = renderNode
-                
-                chargeBar.constraints = [constraint]
+//                let xRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.x)
+//                let yRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.y)
+//
+//                let constraint = SKConstraint.positionX(xRange, y: yRange)
+//                constraint.referenceNode = renderNode
+//
+//                chargeBar.constraints = [constraint]
             }
         }
         
