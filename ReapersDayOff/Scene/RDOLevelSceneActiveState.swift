@@ -41,6 +41,10 @@ class RDOLevelSceneActiveState: GKState {
         return timeRemainingFormatter.string(from: components as DateComponents)!
     }
     
+    var chargeComponent: ChargeComponent {
+        guard let chargeComponent = levelScene.reaper.component(ofType: ChargeComponent.self) else { fatalError("A Reaper must have an ChargeComponent.") }
+        return chargeComponent
+    }
     // MARK: Initializers
     
     init(levelScene: RDOLevelScene) {
@@ -64,9 +68,10 @@ class RDOLevelSceneActiveState: GKState {
         // Subtract the elapsed time from the remaining time.
         if levelScene.isSpeeding{
             logic.timeRemaining -= seconds*2
-            
+            chargeComponent.loseCharge(chargeToLose: Double(seconds)*2)
         }else {
             logic.timeRemaining -= seconds
+            chargeComponent.loseCharge(chargeToLose: Double(seconds))
         }
         
         spawnRate -= seconds
@@ -118,10 +123,15 @@ class RDOLevelSceneActiveState: GKState {
 //            return false
 //        }
         
-        if logic.timeRemaining <= 0.0 {
-            // If all the TaskBots are good, the player has completed the level.
+        
+        if !chargeComponent.hasCharge {
             stateMachine?.enter(RDOLevelSceneGameoverState.self)
         }
+        
+//        if logic.timeRemaining <= 0.0 {
+//            // If all the TaskBots are good, the player has completed the level.
+//            stateMachine?.enter(RDOLevelSceneGameoverState.self)
+//        }
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

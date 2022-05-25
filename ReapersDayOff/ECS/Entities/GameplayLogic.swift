@@ -43,7 +43,7 @@ class GameplayLogic {
     }
     
      var soulLimit: UInt = 10
-    let timeLimit: TimeInterval = 90.0
+    let timeLimit: TimeInterval = 100.0
     var timeRemaining: TimeInterval = 0.0
     
     func setupGame(){
@@ -55,7 +55,7 @@ class GameplayLogic {
         
     }
     
-    private func timeForDeposit(souls: UInt) -> Double{
+    func timeForDeposit(souls: UInt) -> Double{
         var ret: Double
         switch souls {
         case 0..<2:
@@ -72,7 +72,7 @@ class GameplayLogic {
         }
         return ret
     }
-    private func pointsForDeposit(souls: UInt) -> UInt{
+    func pointsForDeposit(souls: UInt) -> UInt{
         var ret: UInt
         switch souls {
         case 0..<5:

@@ -120,15 +120,15 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
     // MARK: Charge component delegate
     
     func chargeComponentDidLoseCharge(chargeComponent: ChargeComponent) {
-        if let intelligenceComponent = component(ofType: IntelligenceComponent.self) {
-            if !chargeComponent.hasCharge {
-                isPoweredDown = true
-                intelligenceComponent.stateMachine.enter(ReaperRechargingState.self)
-            }
-            else {
-                intelligenceComponent.stateMachine.enter(ReaperFleeState.self)
-            }
-        }
+//        if let intelligenceComponent = component(ofType: IntelligenceComponent.self) {
+//            if !chargeComponent.hasCharge {
+//                isPoweredDown = true
+//                intelligenceComponent.stateMachine.enter(ReaperRechargingState.self)
+//            }
+//            else {
+//                intelligenceComponent.stateMachine.enter(ReaperFleeState.self)
+//            }
+//        }
     }
     
     // MARK: ResourceLoadableType
@@ -210,7 +210,24 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
     
     func contactWithEntityDidBegin(_ entity: GKEntity) {
         if let gate = entity as? Gate {
-            GameplayLogic.sharedInstance().deposit(type: gate.name)
+            let shared = GameplayLogic.sharedInstance()
+            
+            
+            if let chargeComp = component(ofType: ChargeComponent.self) {
+                
+                switch gate.name {
+                case "red":
+                    chargeComp.addCharge(chargeToAdd: shared.timeForDeposit(souls: shared.redSouls))
+                case "green":
+                    chargeComp.addCharge(chargeToAdd: shared.timeForDeposit(souls: shared.greenSouls))
+                case "blue":
+                    chargeComp.addCharge(chargeToAdd: shared.timeForDeposit(souls: shared.blueSouls))
+                default:
+                    fatalError("Unknown Gate type")
+                }
+            }
+            
+            shared.deposit(type: gate.name)
         }
         
     }
