@@ -82,7 +82,7 @@ class RDOLevelSceneActiveState: GKState {
         levelScene.bluecounter.text = String(logic.blueSouls)
         levelScene.redcounter.text = String(logic.redSouls)
         levelScene.greencounter.text = String(logic.greenSouls)
-        levelScene.soulsContainer.size.width = CGFloat(logic.sumSoul) * (levelScene.frame.height / 5) / 10
+        levelScene.soulsContainer.size.height = CGFloat(logic.sumSoul) * (levelScene.soulsContainerTexture.size.height / 10)
         
         if (logic.isFull){
             levelScene.soulsContainer.color = UIColor.red

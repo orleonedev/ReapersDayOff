@@ -223,29 +223,29 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         scalePauseButton()
         camera!.addChild(pauseButton)
         
-        let staminaSize = CGSize(width: frame.width / 2, height: frame.height / 35)
-        stamina.size = staminaSize
-        stamina.anchorPoint.y = 1
-        stamina.zPosition = WorldLayer.top.rawValue
-        scaleStamina()
-        camera!.addChild(stamina)
-        
-        let barSize = CGSize(width: 0, height: frame.height / 30)
-        soulsContainer.anchorPoint.y = 1
+        let barSize = CGSize(width: frame.height / 10, height: 0)
+        soulsContainer.anchorPoint.y = 0
         soulsContainer.anchorPoint.x = 0
         soulsContainer.size = barSize
-        scaleBarSize()
+        scaleSoulsContainer()
         soulsContainer.zPosition = WorldLayer.top.rawValue
         camera!.addChild(soulsContainer)
         
-//        let barSize = CGSize(width: 0, height: frame.height / 30)
+        let SoulsContainerTextureSize = CGSize(width: frame.height / 10, height: frame.height / 10)
         soulsContainerTexture.anchorPoint.y = 1
         soulsContainerTexture.anchorPoint.x = 0
-        soulsContainerTexture.size = CGSize(width: frame.height / 10, height: frame.height / 10)
-//        scaleBarSize()
-        soulsContainerTexture.position = CGPoint(x: 0, y: 0)
-        soulsContainerTexture.zPosition = WorldLayer.top.rawValue
+        soulsContainerTexture.size = SoulsContainerTextureSize
+        soulsContainerTexture.zPosition = WorldLayer.top.rawValue + 1
+        scaleSoulsContainerTexture()
         camera!.addChild(soulsContainerTexture)
+        
+//        let staminaSize = CGSize(width: frame.width / 3, height: frame.height / 35)
+//        stamina.size = staminaSize
+//        stamina.anchorPoint.y = 1
+//        stamina.anchorPoint.x = 0
+//        stamina.zPosition = WorldLayer.top.rawValue
+//        scaleStamina()
+//        camera!.addChild(stamina)
         
         // A convenience function to find node locations given a set of node names.
         func nodePointsFromNodeNames(nodeNames: [String]) -> [CGPoint] {
@@ -367,8 +367,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         scaleBlueCounterNode()
         scaleRedCounterNode()
         scaleGreenCounterNode()
-        scaleStamina()
-        scaleBarSize()
+//        scaleStamina()
+        scaleSoulsContainer()
         scalePauseButton()
 
     }
@@ -767,7 +767,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     func scalePauseButton() {
         
        // Make sure the score node is positioned at the top of the scene.
-       pauseButton.position.y = size.height / 2.0
+       pauseButton.position.y = size.height / 2.1
        
         // Make sure the score node is positioned at the right of the scene.
         pauseButton.position.x = size.width / 2.5
@@ -780,36 +780,52 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        #endif
    }
     
-    func scaleStamina() {
-        
-       // Make sure the score node is positioned at the top of the scene.
-       stamina.position.y = size.height / 2.0
-       
-        // Make sure the score node is positioned at the right of the scene.
-        stamina.position.x = -size.width / 2.5
-        
-       // Add padding between the top of scene and the top of the score node.
-       #if os(tvOS)
-       stamina.position.y -= GameplayConfiguration.Timer.paddingSize
-       #else
-       stamina.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
-       #endif
-   }
+//    func scaleStamina() {
+//
+//        // Make sure the score node is positioned at the top of the scene.
+//        stamina.position.y = size.height / 2.05
+//
+//         // Make sure the score node is positioned at the right of the scene.
+//        stamina.position.x = -size.width / 2.45
+//
+//       // Add padding between the top of scene and the top of the score node.
+//       #if os(tvOS)
+//       stamina.position.y -= GameplayConfiguration.Timer.paddingSize
+//       #else
+//       stamina.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+//       #endif
+//   }
     
 
-    func scaleBarSize() {
+    func scaleSoulsContainer() {
         
        // Make sure the score node is positioned at the top of the scene.
-       soulsContainer.position.y = size.height / 2.0
+       soulsContainer.position.y = size.height / 2.5
        
         // Make sure the score node is positioned at the right of the scene.
-        soulsContainer.position.x = -size.width / 2.5
+        soulsContainer.position.x = -size.width / 2.25
         
        // Add padding between the top of scene and the top of the score node.
        #if os(tvOS)
        soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize
        #else
        soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+       #endif
+   }
+    
+    func scaleSoulsContainerTexture() {
+        
+       // Make sure the score node is positioned at the top of the scene.
+       soulsContainerTexture.position.y = size.height / 2.0
+       
+        // Make sure the score node is positioned at the right of the scene.
+        soulsContainerTexture.position.x = -size.width / 2.25
+        
+       // Add padding between the top of scene and the top of the score node.
+       #if os(tvOS)
+        soulsContainerTexture.position.y -= GameplayConfiguration.Timer.paddingSize
+       #else
+        soulsContainerTexture.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
        #endif
    }
     
