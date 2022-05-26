@@ -21,7 +21,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
     let rightThumbStickNode: ThumbStickNode
     
     /// Node representing the touch area for the pause button.
-    let pauseButton: SKSpriteNode
+//    let pauseButton: SKSpriteNode
     
     /// Sets used to keep track of touches, and their relevant controls.
     var leftControlTouches = Set<UITouch>()
@@ -60,9 +60,9 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         rightThumbStickNode.position = CGPoint(x: initialHorizontalOffset, y: initialVerticalOffset)
         
         // Setup pause button.
-        let buttonSize = CGSize(width: frame.height / 10, height: frame.height / 10)
-        pauseButton = SKSpriteNode(texture: nil, color: UIColor.gray, size: buttonSize)
-        pauseButton.position = CGPoint(x: frame.width / 2.5, y: frame.height / 2.0)
+//        let buttonSize = CGSize(width: frame.height / 10, height: frame.height / 10)
+//        pauseButton = SKSpriteNode(texture: nil, color: UIColor.gray, size: buttonSize)
+//        pauseButton.position = CGPoint(x: frame.width / 2.5, y: frame.height / 2.0)
         
         super.init(texture: nil, color: UIColor.clear, size: frame.size)
         rightThumbStickNode.delegate = self
@@ -70,7 +70,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         
         addChild(leftThumbStickNode)
         addChild(rightThumbStickNode)
-        addChild(pauseButton)
+//        addChild(pauseButton)
         
         /*
             A `TouchControlInputNode` is designed to receive all user interaction
@@ -173,15 +173,15 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         
-        for touch in touches {
-            let touchPoint = touch.location(in: self)
-            
-            /// Toggle pause when touching in the pause node.
-            if pauseButton === atPoint(touchPoint) {
-                gameStateDelegate?.controlInputSourceDidTogglePauseState(self)
-                break
-            }
-        }
+//        for touch in touches {
+//            let touchPoint = touch.location(in: self)
+//            
+//            /// Toggle pause when touching in the pause node.
+//            if pauseButton === atPoint(touchPoint) {
+//                gameStateDelegate?.controlInputSourceDidTogglePauseState(self)
+//                break
+//            }
+//        }
         
         let endedLeftTouches = touches.intersection(leftControlTouches)
         leftThumbStickNode.touchesEnded(endedLeftTouches, with: event)

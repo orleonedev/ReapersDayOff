@@ -71,6 +71,9 @@
 		517F5C8F2826B36D00C39D21 /* SoulBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C8E2826B36D00C39D21 /* SoulBehavior.swift */; };
 		517F5C912826B3B800C39D21 /* GeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C902826B3B800C39D21 /* GeometryExtension.swift */; };
 		517F5C93282817D900C39D21 /* Soul.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517F5C92282817D900C39D21 /* Soul.xcassets */; };
+		51B1450E283F7BA0005517A3 /* LaunchscreenScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51B1450D283F7BA0005517A3 /* LaunchscreenScene.sks */; };
+		51B14510283F7E38005517A3 /* RDOLaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B1450F283F7E38005517A3 /* RDOLaunchScreen.swift */; };
+		51B14512283F899D005517A3 /* RDOMainScenePhone.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51B14511283F899D005517A3 /* RDOMainScenePhone.sks */; };
 		6641E45728294FC600308AB3 /* RDOLevelSceneOverlayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45628294FC600308AB3 /* RDOLevelSceneOverlayState.swift */; };
 		6641E45928294FEB00308AB3 /* RDOLevelSceneActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */; };
 		6641E45B2829500500308AB3 /* RDOLevelScenePauseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45A2829500500308AB3 /* RDOLevelScenePauseState.swift */; };
@@ -153,6 +156,9 @@
 		517F5C8E2826B36D00C39D21 /* SoulBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulBehavior.swift; sourceTree = "<group>"; };
 		517F5C902826B3B800C39D21 /* GeometryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtension.swift; sourceTree = "<group>"; };
 		517F5C92282817D900C39D21 /* Soul.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Soul.xcassets; sourceTree = "<group>"; };
+		51B1450D283F7BA0005517A3 /* LaunchscreenScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LaunchscreenScene.sks; sourceTree = "<group>"; };
+		51B1450F283F7E38005517A3 /* RDOLaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLaunchScreen.swift; sourceTree = "<group>"; };
+		51B14511283F899D005517A3 /* RDOMainScenePhone.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOMainScenePhone.sks; sourceTree = "<group>"; };
 		6641E45628294FC600308AB3 /* RDOLevelSceneOverlayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneOverlayState.swift; sourceTree = "<group>"; };
 		6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneActiveState.swift; sourceTree = "<group>"; };
 		6641E45A2829500500308AB3 /* RDOLevelScenePauseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelScenePauseState.swift; sourceTree = "<group>"; };
@@ -251,6 +257,8 @@
 				66463146282506DB00311BE3 /* RDOMainScene.sks */,
 				517F5C532822BBFD00C39D21 /* RDOStartScene.sks */,
 				517F5BF828210F8600C39D21 /* Actions.sks */,
+				51B1450D283F7BA0005517A3 /* LaunchscreenScene.sks */,
+				51B14511283F899D005517A3 /* RDOMainScenePhone.sks */,
 			);
 			path = SKS;
 			sourceTree = "<group>";
@@ -303,6 +311,7 @@
 				517F5C6A2825130A00C39D21 /* RDOSettingsScene.swift */,
 				517F5C6E2825139000C39D21 /* RDOCollectionScene.swift */,
 				517F5C6C2825137400C39D21 /* RDOAboutScene.swift */,
+				51B1450F283F7E38005517A3 /* RDOLaunchScreen.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -460,6 +469,7 @@
 				517F5C0028210F8600C39D21 /* Main.storyboard in Resources */,
 				517F5C542822BBFD00C39D21 /* RDOStageOneScene.sks in Resources */,
 				517F5C0228210F8900C39D21 /* Assets.xcassets in Resources */,
+				51B14512283F899D005517A3 /* RDOMainScenePhone.sks in Resources */,
 				517F5C0528210F8900C39D21 /* LaunchScreen.storyboard in Resources */,
 				667C2E7028250B6600A5D13E /* RDOAboutScene.sks in Resources */,
 				667C2E7228250FAC00A5D13E /* RDOCollectionScene.sks in Resources */,
@@ -467,6 +477,7 @@
 				6641E463282A49B800308AB3 /* RDOPauseScene.sks in Resources */,
 				6646314928250A9200311BE3 /* RDOSettingsScene.sks in Resources */,
 				517F5BF928210F8600C39D21 /* Actions.sks in Resources */,
+				51B1450E283F7BA0005517A3 /* LaunchscreenScene.sks in Resources */,
 				6641E465282A4A3B00308AB3 /* RDOGameoverScene.sks in Resources */,
 				66463147282506DB00311BE3 /* RDOMainScene.sks in Resources */,
 			);
@@ -492,6 +503,7 @@
 				51231D8C282957A800D31CB3 /* ChargeComponent.swift in Sources */,
 				517F5C8C2826B2F300C39D21 /* RedSoul.swift in Sources */,
 				517F5C882826B2B700C39D21 /* GameplayConfiguration.swift in Sources */,
+				51B14510283F7E38005517A3 /* RDOLaunchScreen.swift in Sources */,
 				51231D9428295EEC00D31CB3 /* ReaperFleeState.swift in Sources */,
 				517F5C5C2822BC8A00C39D21 /* RDOStartScene.swift in Sources */,
 				51231D9028295E1C00D31CB3 /* ReaperAppearState.swift in Sources */,
@@ -689,7 +701,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = PMGDGYXM4J;
+				DEVELOPMENT_TEAM = SA4H49C4LT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -720,7 +732,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = PMGDGYXM4J;
+				DEVELOPMENT_TEAM = SA4H49C4LT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

@@ -12,10 +12,10 @@ class ChargeBar: SKSpriteNode {
     
     struct Configuration {
         /// The size of the complete bar (back and level indicator).
-        static let size = CGSize(width: 74.0, height: 10.0)
+        static let size = CGSize(width: 516.0, height: 20.0)
         
         /// The size of the colored level bar.
-        static let chargeLevelNodeSize = CGSize(width: 70.0, height: 6.0)
+        static let chargeLevelNodeSize = CGSize(width: 512.0, height: 16.0)
         
         /// The duration used for actions to update the level indicator.
         static let levelUpdateDuration: TimeInterval = 0.1
@@ -42,15 +42,20 @@ class ChargeBar: SKSpriteNode {
     /// A node representing the charge level.
     let chargeLevelNode = SKSpriteNode(color: Configuration.chargeLevelColor, size: Configuration.chargeLevelNodeSize)
     
+    /// A node representing the overlay
+    let overlayNode = SKSpriteNode(texture: SKTexture(imageNamed: "staminaPurple"), color: .black, size: Configuration.size)
+    
     // MARK: Initializers
     
     init() {
-        super.init(texture: nil, color: Configuration.backgroundColor, size: Configuration.size)
-        
+        super.init(texture: nil, color: Configuration.backgroundColor, size: Configuration.chargeLevelNodeSize)
+        self.anchorPoint = CGPoint(x: 0.0, y: 0.5)
         addChild(chargeLevelNode)
+        overlayNode.anchorPoint = CGPoint(x: 0.0, y: 0.5)
+        addChild(overlayNode)
         
         // Constrain the position of the `chargeLevelNode`.
-        let xRange = SKRange(constantValue: chargeLevelNode.size.width / -2.0)
+        let xRange = SKRange(constantValue: 1.0)
         let yRange = SKRange(constantValue: 0.0)
         
         let constraint = SKConstraint.positionX(xRange, y: yRange)
