@@ -81,6 +81,11 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     let redcounter = SKLabelNode(text: "0")
     let greencounter = SKLabelNode(text: "0")
     
+    
+    let blueHUD = SKSpriteNode(texture: nil, color: UIColor.blue, size: CGSize(width: 0, height: 0))
+    let redHUD = SKSpriteNode(texture: nil, color: UIColor.red, size: CGSize(width: 0, height: 0))
+    let greenHUD = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 0, height: 0))
+    
     //bar indicating the number of souls transported
     var soulsContainer = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: 0, height: 0))
     
@@ -215,6 +220,28 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         greencounter.verticalAlignmentMode = .top
         scaleGreenCounterNode()
         camera!.addChild(greencounter)
+        
+        let counterHUDSize = CGSize(width: frame.height / 30, height: frame.height / 30)
+        blueHUD.size = counterHUDSize
+        blueHUD.zPosition = WorldLayer.top.rawValue
+        blueHUD.anchorPoint.y = 1
+        blueHUD.anchorPoint.x = 0
+        scaleBlueHUD()
+        camera!.addChild(blueHUD)
+        
+        redHUD.size = counterHUDSize
+        redHUD.anchorPoint.y = 1
+        redHUD.anchorPoint.x = 0
+        redHUD.zPosition = WorldLayer.top.rawValue
+        scaleRedHUD()
+        camera!.addChild(redHUD)
+        
+        greenHUD.size = counterHUDSize
+        greenHUD.zPosition = WorldLayer.top.rawValue
+        greenHUD.anchorPoint.y = 1
+        greenHUD.anchorPoint.x = 0
+        scaleGreenHUD()
+        camera!.addChild(greenHUD)
         
         let buttonSize = CGSize(width: frame.height / 20, height: frame.height / 20)
         pauseButton.size = buttonSize
@@ -718,11 +745,11 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        // Update the font size of the score node based on the height of the scene.
        bluecounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
        
-       // Make sure the score node is positioned at the top of the scene.
-       bluecounter.position.y = size.height / 2.5
-       
-        // Make sure the score node is positioned at the right of the scene.
-        bluecounter.position.x = -size.width / 2.5
+        // Make sure the score node is positioned at the top of the scene.
+        bluecounter.position.y = size.height / 2.25
+        
+         // Make sure the score node is positioned at the right of the scene.
+        bluecounter.position.x = -size.width / 3.5
         
        // Add padding between the top of scene and the top of the score node.
        #if os(tvOS)
@@ -737,10 +764,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        greencounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
        
        // Make sure the score node is positioned at the top of the scene.
-       greencounter.position.y = size.height / 2.5
+       greencounter.position.y = size.height / 2.25
        
         // Make sure the score node is positioned at the right of the scene.
-        greencounter.position.x = -size.width / 2.5 + greencounter.fontSize
+        greencounter.position.x = -size.width / 4.25 + greencounter.fontSize
         
        // Add padding between the top of scene and the top of the score node.
        #if os(tvOS)
@@ -755,16 +782,61 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        redcounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
        
        // Make sure the score node is positioned at the top of the scene.
-       redcounter.position.y = size.height / 2.5
+       redcounter.position.y = size.height / 2.25
        
         // Make sure the score node is positioned at the right of the scene.
-        redcounter.position.x = -size.width / 2.5 + (2 * redcounter.fontSize)
+        redcounter.position.x = -size.width / 5.25 + (2 * redcounter.fontSize)
         
        // Add padding between the top of scene and the top of the score node.
        #if os(tvOS)
        redcounter.position.y -= GameplayConfiguration.Timer.paddingSize
        #else
        redcounter.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+       #endif
+   }
+    
+    func scaleBlueHUD() {
+
+         // Make sure the score node is positioned at the top of the scene.
+         blueHUD.position.y = size.height / 2.25
+         
+          // Make sure the score node is positioned at the right of the scene.
+         blueHUD.position.x = -size.width / 3.0
+         
+        // Add padding between the top of scene and the top of the score node.
+        #if os(tvOS)
+        blueHUD.position.y -= GameplayConfiguration.Timer.paddingSize
+        #else
+        blueHUD.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+        #endif
+   }
+    
+    func scaleGreenHUD() {
+        // Make sure the score node is positioned at the top of the scene.
+        greenHUD.position.y = size.height / 2.25
+        
+         // Make sure the score node is positioned at the right of the scene.
+         greenHUD.position.x = -size.width / 3.5 + greencounter.fontSize
+         
+        // Add padding between the top of scene and the top of the score node.
+        #if os(tvOS)
+        greenHUD.position.y -= GameplayConfiguration.Timer.paddingSize
+        #else
+        greenHUD.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+        #endif
+   }
+    func scaleRedHUD() {
+       // Make sure the score node is positioned at the top of the scene.
+       redHUD.position.y = size.height / 2.25
+       
+        // Make sure the score node is positioned at the right of the scene.
+        redHUD.position.x = -size.width / 4.25 + (2 * redcounter.fontSize)
+        
+       // Add padding between the top of scene and the top of the score node.
+       #if os(tvOS)
+       redHUD.position.y -= GameplayConfiguration.Timer.paddingSize
+       #else
+       redHUD.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
        #endif
    }
     
