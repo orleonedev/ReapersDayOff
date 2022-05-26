@@ -30,7 +30,7 @@ class GameViewController: UIViewController, SceneManagerDelegate {
         if let view = self.view as! SKView? {
             sceneManager = RDOSceneManager(presentingView: view, gameInput: gameInput )
             sceneManager.delegate = self
-            sceneManager.transitionToScene(identifier: .start)
+            sceneManager.transitionToScene(identifier: .launch)
             
             view.showsFPS = true
             view.showsNodeCount = true

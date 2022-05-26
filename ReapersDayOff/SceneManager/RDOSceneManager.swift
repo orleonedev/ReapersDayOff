@@ -16,11 +16,15 @@ final class RDOSceneManager {
     // MARK: Types
     
     enum RDOSceneIdentifier {
+        case launch
         case start
         case main, settings, about, collection
         case stageOne, results
     }
     
+    var device: UIUserInterfaceIdiom {
+       return UIDevice.current.userInterfaceIdiom
+    }
     /**
         The games input via connected control input sources. Used to
         provide control to scenes after presentation.
@@ -48,7 +52,11 @@ final class RDOSceneManager {
             scene = SKScene.init(fileNamed: "RDOStartScene") as? RDOStartScene
 //            scene = SKScene.init(fileNamed: "Start")
         case .main:
+            
             scene = SKScene.init(fileNamed: "RDOMainScene") as? RDOMainScene
+            if device == .phone {
+                scene = SKScene.init(fileNamed: "RDOMainScenePhone") as? RDOMainScene
+            }
 //            scene = SKScene.init(fileNamed: "Main")
         case .settings:
             scene = SKScene.init(fileNamed: "RDOSettingsScene") as? RDOSettingsScene
@@ -65,6 +73,8 @@ final class RDOSceneManager {
         case .results:
             scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
 //            scene = SKScene.init(fileNamed: "Results")
+        case .launch:
+            scene = SKScene.init(fileNamed: "LaunchscreenScene") as? RDOLaunchScreen
         }
         
         if scene != nil {
