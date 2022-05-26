@@ -188,6 +188,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         timerNode.fontName = GameplayConfiguration.Timer.fontName
         timerNode.horizontalAlignmentMode = .center
         timerNode.verticalAlignmentMode = .top
+        timerNode.isHidden = true
         scaleTimerNode()
         camera!.addChild(timerNode)
         
@@ -938,7 +939,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     private func beamInEnemy() {
         // Find the location of the player's initial position.
         let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
-        let transporterCoordinate = charactersNode.childNode(withName: "transporter_coordinate")!
+        let transporterCoordinate = charactersNode.childNode(withName: "enemy_coordinate")!
         
         // Set the initial orientation.
         guard let orientationComponent = enemy.component(ofType: OrientationComponent.self) else {

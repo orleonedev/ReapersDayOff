@@ -277,7 +277,7 @@ struct GameplayConfiguration {
         static let patrolPathRadius: Float = 32
         
         /// The radius of the path along which an agent travels when hunting.
-        static let huntPathRadius: Float = 20.0
+        static let huntPathRadius: Float = 1.0 // era 20
 
         /// The radius of the path along which an agent travels when returning to its patrol path.
         static let returnToPatrolPathRadius: Float = 32
@@ -295,7 +295,7 @@ struct GameplayConfiguration {
     struct HeartReaper {
         
         /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
-        static let maximumSpeedRed: Float = 280.0
+        static let maximumSpeedRed: Float = 320.0
         static let maximumAccelerationRed: Float = 120.0
         
         /// The maximum amount of charge a `FlyingBot` stores.

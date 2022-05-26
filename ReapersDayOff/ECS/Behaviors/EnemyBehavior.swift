@@ -54,9 +54,9 @@ class EnemyBehavior: GKBehavior {
     static func behaviorWonder(forAgent agent: GKAgent2D, inScene scene: RDOLevelScene) -> GKBehavior {
         let behavior = EnemyBehavior()
         
-        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
+//        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
         behavior.addAvoidObstaclesGoal(forScene: scene)
-        behavior.addWonderAroundGoal(speed: agent.maxSpeed)
+        behavior.addWonderAroundGoal(speed: agent.maxSpeed/2)
         
         return behavior
     }
