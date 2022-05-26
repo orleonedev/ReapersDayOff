@@ -65,20 +65,12 @@ class RDOLevelSceneActiveState: GKState {
     override func update(deltaTime seconds: TimeInterval) {
         super.update(deltaTime: seconds)
         
-        // Subtract the elapsed time from the remaining time.
-        if levelScene.isSpeeding{
-            logic.timeRemaining -= seconds*2
-            chargeComponent.loseCharge(chargeToLose: Double(seconds)*2)
-        }else {
-            logic.timeRemaining -= seconds
-            chargeComponent.loseCharge(chargeToLose: Double(seconds))
-        }
-        
         spawnRate -= seconds
         if spawnRate < 0 {
-            
             spawnRate = 1.0
-            levelScene.spawnSoul()
+            if logic.soulsOnStage < 50 {
+                levelScene.spawnSoul()
+            }
         }
         
         // Update the displayed time remaining.
@@ -90,53 +82,39 @@ class RDOLevelSceneActiveState: GKState {
         levelScene.soulsContainer.size.height = CGFloat(logic.sumSoul) * (levelScene.soulsContainerTexture.size.height / 10)
 
         
-        
-        
-        
-        
         if (logic.isFull){
-            levelScene.soulsContainer.color = UIColor.red
-            
+            levelScene.soulsContainer.color = UIColor.orange
         }
         else
         {
-            levelScene.soulsContainer.color = UIColor.black
-            
+            levelScene.soulsContainer.color = UIColor.yellow
         }
 
         if let movComp = levelScene.reaper.component(ofType: MovementComponent.self) {
             
             if logic.isFull {
                 movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed - 100
+                logic.timeRemaining -= seconds
+                chargeComponent.loseCharge(chargeToLose: Double(seconds))
             }
             else {
                 if levelScene.isSpeeding {
                     movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed + 100
+                    logic.timeRemaining -= seconds*2
+                    chargeComponent.loseCharge(chargeToLose: Double(seconds)*2)
                 }
                 else {
                     movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed
+                    logic.timeRemaining -= seconds
+                    chargeComponent.loseCharge(chargeToLose: Double(seconds))
                 }
             }
         }
-        
-        // Check if the `levelScene` contains any bad `TaskBot`s.
-//        let allTaskBotsAreGood = !levelScene.entities.contains { entity in
-//            if let taskBot = entity as? TaskBot {
-//                return !taskBot.isGood
-//            }
-//
-//            return false
-//        }
-        
         
         if !chargeComponent.hasCharge {
             stateMachine?.enter(RDOLevelSceneGameoverState.self)
         }
         
-//        if logic.timeRemaining <= 0.0 {
-//            // If all the TaskBots are good, the player has completed the level.
-//            stateMachine?.enter(RDOLevelSceneGameoverState.self)
-//        }
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

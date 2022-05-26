@@ -42,9 +42,19 @@ class GameplayLogic {
         return sumSoul == soulLimit
     }
     
-     var soulLimit: UInt = 10
+    var soulLimit: UInt = 10
     let timeLimit: TimeInterval = 100.0
     var timeRemaining: TimeInterval = 0.0
+    
+    var soulsOnStage: UInt = 0
+    func LOGAddSoulOnStage(n: UInt){
+        soulsOnStage += n
+        print(soulsOnStage)
+    }
+    func LOGremoveSoulOnStage(n: UInt){
+        soulsOnStage -= n
+        print(soulsOnStage)
+    }
     
     func setupGame(){
         currentScore = 0
@@ -52,6 +62,7 @@ class GameplayLogic {
         greenSouls = 0
         blueSouls = 0
         timeRemaining = timeLimit
+        soulsOnStage = 0
         
     }
     
@@ -72,6 +83,7 @@ class GameplayLogic {
         }
         return ret
     }
+    
     func pointsForDeposit(souls: UInt) -> UInt{
         var ret: UInt
         switch souls {
@@ -94,16 +106,19 @@ class GameplayLogic {
             timeRemaining += timeForDeposit(souls: redSouls)
             currentScore += pointsForDeposit(souls: redSouls)
             totalSouls += Int(redSouls)
+            LOGremoveSoulOnStage(n: redSouls)
             redSouls = 0
         case "green":
             timeRemaining += timeForDeposit(souls: greenSouls)
             currentScore += pointsForDeposit(souls: greenSouls)*2
             totalSouls += Int(greenSouls)
+            LOGremoveSoulOnStage(n: greenSouls)
             greenSouls = 0
         case "blue":
             timeRemaining += timeForDeposit(souls: blueSouls)
             currentScore += pointsForDeposit(souls: blueSouls)*3
             totalSouls += Int(blueSouls)
+            LOGremoveSoulOnStage(n: blueSouls)
             blueSouls = 0
         default:
             fatalError("Unknown Gate type")

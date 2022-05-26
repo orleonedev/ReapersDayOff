@@ -87,7 +87,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     let greenHUD = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 0, height: 0))
     
     //bar indicating the number of souls transported
-    var soulsContainer = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: 0, height: 0))
+    var soulsContainer = SKSpriteNode(texture: nil, color: UIColor.yellow, size: CGSize(width: 0, height: 0))
     
 //    var stamina = SKSpriteNode(texture: SKTexture(imageNamed: "staminaBlack"), color: UIColor.black, size: CGSize(width: 0, height: 0))
 
@@ -968,6 +968,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         orientationComponent.compassDirection = .west
         
         putSoulInScene(soul: soul, pos: Int.random(in: 1...3))
+        GameplayLogic.sharedInstance().LOGAddSoulOnStage(n: 1)
     }
     
     private func putSoulInScene(soul: Soul, pos: Int){
