@@ -52,7 +52,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     var redGate: Gate?
     var blueGate: Gate?
     var greenGate: Gate?
-    
+    let enemy = HeartReaper()
     /// Stores a reference to the root nodes for each world layer in the scene.
     var worldLayerNodes = [WorldLayer: SKNode]()
     
@@ -119,7 +119,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     // MARK: Component Systems
     
     lazy var componentSystems: [GKComponentSystem] = {
-        let agentSystem = GKComponentSystem(componentClass: SoulAgent.self)
+        let soulAgentSystem = GKComponentSystem(componentClass: SoulAgent.self)
+        let enemyAgentSystem = GKComponentSystem(componentClass: EnemyAgent.self)
         let animationSystem = GKComponentSystem(componentClass: AnimationComponent.self)
         let chargeSystem = GKComponentSystem(componentClass: ChargeComponent.self)
         let intelligenceSystem = GKComponentSystem(componentClass: IntelligenceComponent.self)
@@ -128,7 +129,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let rulesSystem = GKComponentSystem(componentClass: RulesComponent.self)
 
         // The systems will be updated in order. This order is explicitly defined to match assumptions made within components.
-        return [rulesSystem, intelligenceSystem, movementSystem, agentSystem, chargeSystem, animationSystem]
+        return [rulesSystem, intelligenceSystem, movementSystem, soulAgentSystem, enemyAgentSystem, chargeSystem, animationSystem]
     }()
     
     
@@ -158,6 +159,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 
         // Add a `PlayerBot` for the player.
         beamInPlayerBot()
+        
+        beamInEnemy()
         
         // Gravity will be in the negative z direction; there is no x or y component.
         physicsWorld.gravity = CGVector.zero
@@ -738,11 +741,39 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         reaperNode.position = transporterCoordinate.position
         reaper.updateAgentPositionToMatchNodePosition()
         
+//        let enemyNode = enemy.renderComponent.node
+//        enemyNode.position = transporterCoordinate.position
+//        enemy.updateAgentPositionToMatchNodePosition()
+        
         // Constrain the camera to the `PlayerBot` position and the level edges.
         setCameraConstraints()
         
         // Add the `PlayerBot` to the scene and component systems.
         addEntity(entity: reaper)
+    }
+    
+    private func beamInEnemy() {
+        // Find the location of the player's initial position.
+        let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
+        let transporterCoordinate = charactersNode.childNode(withName: "transporter_coordinate")!
+        
+        // Set the initial orientation.
+        guard let orientationComponent = enemy.component(ofType: OrientationComponent.self) else {
+            fatalError("An enemy bot must have an orientation component to be able to be added to a level")
+        }
+        orientationComponent.compassDirection = .south
+
+        // Set up the `PlayerBot` position in the scene.
+        
+        let enemyNode = enemy.renderComponent.node
+        enemyNode.position = transporterCoordinate.position
+        enemy.updateAgentPositionToMatchNodePosition()
+        
+        // Constrain the camera to the `PlayerBot` position and the level edges.
+        setCameraConstraints()
+        
+        // Add the `PlayerBot` to the scene and component systems.
+        addEntity(entity: enemy)
     }
     
     private func putGateInScene(gate: Gate, pos: Int){

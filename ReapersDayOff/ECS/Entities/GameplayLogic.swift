@@ -42,6 +42,7 @@ class GameplayLogic {
         return sumSoul == soulLimit
     }
     
+    
      var soulLimit: UInt = 10
     let timeLimit: TimeInterval = 90.0
     var timeRemaining: TimeInterval = 0.0
@@ -123,6 +124,12 @@ class GameplayLogic {
         
     }
     
+    func loseSouls() {
+
+        redSouls = redSouls/2
+        greenSouls = greenSouls/2
+        blueSouls = blueSouls/2
+    }
 }
 
 private let GameplayLogicInstance = GameplayLogic()

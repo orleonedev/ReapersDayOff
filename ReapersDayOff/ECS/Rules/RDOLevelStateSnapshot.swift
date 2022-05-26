@@ -36,6 +36,8 @@ class RDOLevelStateSnapshot {
             }
             else if let reaper = entity as? Reaper {
                 return reaper.agent
+            } else if let agent = entity.component(ofType: EnemyAgent.self) {
+                return agent
             }
             
             fatalError("All entities in a level must have an accessible associated GKEntity")

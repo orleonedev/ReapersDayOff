@@ -138,9 +138,9 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
     }
     
     static func loadResources(withCompletionHandler completionHandler: @escaping () -> ()) {
-        loadMiscellaneousAssets()
-        
-        let ReaperAtlasNames = [
+            loadMiscellaneousAssets()
+            
+            let ReaperAtlasNames = [
             "ReaperIdle",
             "ReaperWalk"
         ]

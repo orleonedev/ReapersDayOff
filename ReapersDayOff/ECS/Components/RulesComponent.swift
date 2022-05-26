@@ -61,6 +61,20 @@ class RulesComponent: GKComponent {
             
             delegate?.rulesComponent(rulesComponent: self, didFinishEvaluatingRuleSystem: ruleSystem)
         }
+        
+        if let enemy = entity as? Enemy,
+            let level = enemy.component(ofType: RenderComponent.self)?.node.scene as? RDOLevelScene,
+            let entitySnapshot = level.entitySnapshotForEntity(entity: enemy)
+        {
+
+            ruleSystem.reset()
+            
+            ruleSystem.state["snapshot"] = entitySnapshot
+        
+            ruleSystem.evaluate()
+            
+            delegate?.rulesComponent(rulesComponent: self, didFinishEvaluatingRuleSystem: ruleSystem)
+        }
     }
 }
 
