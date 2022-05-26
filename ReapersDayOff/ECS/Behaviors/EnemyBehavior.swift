@@ -192,7 +192,7 @@ class EnemyBehavior: GKBehavior {
     
     /// Adds a goal to attain a target speed.
     private func addTargetSpeedGoal(speed: Float) {
-        setWeight(0.8, for: GKGoal(toReachTargetSpeed: speed))
+        setWeight(0.7, for: GKGoal(toReachTargetSpeed: speed))
     }
     
     /// Adds goals to follow and stay on a path.
@@ -205,6 +205,6 @@ class EnemyBehavior: GKBehavior {
     }
         // To Wander
     private func addWonderAroundGoal(speed: Float){
-        setWeight(0.3, for: GKGoal(toWander: speed))
+        setWeight(0.4, for: GKGoal(toWander: speed))
     }
 }

@@ -56,10 +56,10 @@ class EnemyAgentControlledState: GKState {
         
         // Check if enough time has passed since the last behavior update, and update the behavior if so.
         if timeSinceBehaviorUpdate >= GameplayConfiguration.Enemy.behaviorUpdateWaitDuration {
-// add flee function somehow (control distance tra reaper e soul)
+
             if let levelScene = entity.renderComponent.node.scene as? RDOLevelScene {
                 let reaperAgent = levelScene.reaper.agent
-                if entity.distanceToAgent(otherAgent: reaperAgent) < 224{
+                if entity.distanceToAgent(otherAgent: reaperAgent) < 512 {
                     entity.mandate = .huntAgent(reaperAgent)
                     
                 }else {

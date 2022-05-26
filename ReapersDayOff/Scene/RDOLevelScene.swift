@@ -449,7 +449,6 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         for touch in touches {
             let touchPoint = touch.location(in: self)
-            print(atPoint(touchPoint))
             /// Toggle pause when touching in the pause node.
             if pauseButton === atPoint(touchPoint) {
                 stateMachine.enter(RDOLevelScenePauseState.self)

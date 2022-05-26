@@ -154,7 +154,8 @@ class HeartReaper: Enemy {
         
         ColliderType.definedCollisions[.Enemy] = [
             .Reaper,
-            .Obstacle
+            .Obstacle,
+            .Soul
         ]
         
         ColliderType.requestedContactNotifications[.Enemy] = [

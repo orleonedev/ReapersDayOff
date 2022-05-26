@@ -266,7 +266,7 @@ struct GameplayConfiguration {
         static let agentOffset = physicsBodyOffset
         
         /// The maximum time to look ahead when following a path.
-        static let maxPredictionTimeWhenFollowingPath: TimeInterval = 1.0
+        static let maxPredictionTimeWhenFollowingPath: TimeInterval = 2.0
         
         /// The maximum time to look ahead for obstacles to be avoided.
         static let maxPredictionTimeForObstacleAvoidance: TimeInterval = 2.0
@@ -295,7 +295,7 @@ struct GameplayConfiguration {
     struct HeartReaper {
         
         /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
-        static let maximumSpeedRed: Float = 70.0
+        static let maximumSpeedRed: Float = 280.0
         static let maximumAccelerationRed: Float = 120.0
         
         /// The maximum amount of charge a `FlyingBot` stores.

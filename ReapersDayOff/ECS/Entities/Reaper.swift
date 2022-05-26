@@ -193,7 +193,8 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
         ]
         
         ColliderType.requestedContactNotifications[.Reaper] = [
-            .Gate
+            .Gate,
+            .Enemy
         ]
     }
 
@@ -228,6 +229,12 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
             }
             
             shared.deposit(type: gate.name)
+        }
+        
+        if entity is HeartReaper {
+            if let chargeComp = component(ofType: ChargeComponent.self) {
+                chargeComp.loseCharge(chargeToLose: 5.0)
+            }
         }
         
     }
