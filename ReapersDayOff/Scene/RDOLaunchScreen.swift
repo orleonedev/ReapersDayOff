@@ -38,7 +38,7 @@ class RDOLaunchScreen: RDOBaseScene {
         centerCameraOnPoint(point: backgroundNode!.position)
         
         self.run(SKAction.sequence([
-            SKAction.wait(forDuration: 4.0),
+            SKAction.wait(forDuration: 2.0),
             SKAction.run {
                 self.sceneManager.transitionToScene(identifier: .start)
             }

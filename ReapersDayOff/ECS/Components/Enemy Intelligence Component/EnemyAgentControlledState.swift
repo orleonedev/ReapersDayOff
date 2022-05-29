@@ -59,7 +59,7 @@ class EnemyAgentControlledState: GKState {
 
             if let levelScene = entity.renderComponent.node.scene as? RDOLevelScene {
                 let reaperAgent = levelScene.reaper.agent
-                if entity.distanceToAgent(otherAgent: reaperAgent) < 256+128 {
+                if entity.distanceToAgent(otherAgent: reaperAgent) < 512 {
                     entity.mandate = .huntAgent(reaperAgent)
                     
                 }else {
