@@ -47,6 +47,7 @@ class RDOStartScene: RDOBaseScene {
         BlueSoul.loadResources() {}
         GreenSoul.loadResources() {}
         Reaper.loadResources(){}
+        HeartReaper.loadResources(){}
         
 //        registerForNotifications()
         centerCameraOnPoint(point: backgroundNode!.position)

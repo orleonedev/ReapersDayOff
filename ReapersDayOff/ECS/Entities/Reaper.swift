@@ -15,7 +15,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
     // MARK: Static properties
     
     /// The size to use for the `Reaper`s animation textures.
-    static var textureSize = CGSize(width: 120.0, height: 120.0)
+    static var textureSize = CGSize(width: 128.0, height: 128.0)
     
     
     /// The animations to use for a `PlayerBot`.
@@ -150,9 +150,9 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
     }
     
     static func loadResources(withCompletionHandler completionHandler: @escaping () -> ()) {
-        loadMiscellaneousAssets()
-        
-        let ReaperAtlasNames = [
+            loadMiscellaneousAssets()
+            
+            let ReaperAtlasNames = [
             "ReaperIdle",
             "ReaperWalk"
         ]
@@ -205,7 +205,8 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
         ]
         
         ColliderType.requestedContactNotifications[.Reaper] = [
-            .Gate
+            .Gate,
+            .Enemy
         ]
     }
 
@@ -240,6 +241,12 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
             }
             
             shared.deposit(type: gate.name)
+        }
+        
+        if entity is HeartReaper {
+            if let chargeComp = component(ofType: ChargeComponent.self) {
+                chargeComp.loseCharge(chargeToLose: 5.0)
+            }
         }
         
     }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		296E1DB428378D3C00945C89 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E1DB328378D3B00945C89 /* Enemy.swift */; };
+		296E1DB628378EA200945C89 /* EnemyAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E1DB528378EA100945C89 /* EnemyAgent.swift */; };
+		296E1DB82837949300945C89 /* EnemyBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E1DB72837949200945C89 /* EnemyBehavior.swift */; };
+		296E1DBA2837B7D400945C89 /* HeartReaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E1DB92837B7D400945C89 /* HeartReaper.swift */; };
+		296E1DBD2837BDC400945C89 /* EnemyAgentControlledState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E1DBC2837BDC400945C89 /* EnemyAgentControlledState.swift */; };
 		29A2075D282BEC2100DBDDB1 /* RulesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2075C282BEC2100DBDDB1 /* RulesComponent.swift */; };
 		29AAD99F282B0F280088F48C /* RDORules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAD99E282B0F280088F48C /* RDORules.swift */; };
 		29AAD9A1282B101D0088F48C /* FuzzySoulRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAD9A0282B101D0088F48C /* FuzzySoulRule.swift */; };
@@ -87,6 +92,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		296E1DB328378D3B00945C89 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		296E1DB528378EA100945C89 /* EnemyAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyAgent.swift; sourceTree = "<group>"; };
+		296E1DB72837949200945C89 /* EnemyBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBehavior.swift; sourceTree = "<group>"; };
+		296E1DB92837B7D400945C89 /* HeartReaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartReaper.swift; sourceTree = "<group>"; };
+		296E1DBC2837BDC400945C89 /* EnemyAgentControlledState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyAgentControlledState.swift; sourceTree = "<group>"; };
 		29A2075C282BEC2100DBDDB1 /* RulesComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesComponent.swift; sourceTree = "<group>"; };
 		29AAD99E282B0F280088F48C /* RDORules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDORules.swift; sourceTree = "<group>"; };
 		29AAD9A0282B101D0088F48C /* FuzzySoulRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuzzySoulRule.swift; sourceTree = "<group>"; };
@@ -178,6 +188,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		296E1DBB2837BDAA00945C89 /* Enemy Intelligence Component */ = {
+			isa = PBXGroup;
+			children = (
+				296E1DBC2837BDC400945C89 /* EnemyAgentControlledState.swift */,
+			);
+			path = "Enemy Intelligence Component";
+			sourceTree = "<group>";
+		};
 		29AAD99D282B0F050088F48C /* Rules */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +355,9 @@
 		517F5C742826AF8C00C39D21 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				296E1DB328378D3B00945C89 /* Enemy.swift */,
+				296E1DB528378EA100945C89 /* EnemyAgent.swift */,
+				296E1DB92837B7D400945C89 /* HeartReaper.swift */,
 				517F5C762826AFC000C39D21 /* Soul.swift */,
 				517F5C872826B2B700C39D21 /* GameplayConfiguration.swift */,
 				517F5C892826B2D000C39D21 /* SoulAgent.swift */,
@@ -353,6 +374,7 @@
 		517F5C752826AF9400C39D21 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				296E1DBB2837BDAA00945C89 /* Enemy Intelligence Component */,
 				517F5C7C2826B0DF00C39D21 /* Soul Intelligence Component States */,
 				517F5C782826AFF700C39D21 /* RenderComponent.swift */,
 				517F5C7A2826B07B00C39D21 /* IntelligenceComponent.swift */,
@@ -384,6 +406,7 @@
 		517F5C8D2826B31000C39D21 /* Behaviors */ = {
 			isa = PBXGroup;
 			children = (
+				296E1DB72837949200945C89 /* EnemyBehavior.swift */,
 				517F5C8E2826B36D00C39D21 /* SoulBehavior.swift */,
 				517F5C902826B3B800C39D21 /* GeometryExtension.swift */,
 			);
@@ -479,6 +502,7 @@
 				517F5C612822BC8A00C39D21 /* RDOLevelScene.swift in Sources */,
 				51231D98282D112300D31CB3 /* GameplayLogic.swift in Sources */,
 				6641E45728294FC600308AB3 /* RDOLevelSceneOverlayState.swift in Sources */,
+				296E1DB82837949300945C89 /* EnemyBehavior.swift in Sources */,
 				517F5C8F2826B36D00C39D21 /* SoulBehavior.swift in Sources */,
 				517F5C7B2826B07B00C39D21 /* IntelligenceComponent.swift in Sources */,
 				664976CD283FC4CC00584EA3 /* SoulsContainerComponent.swift in Sources */,
@@ -491,6 +515,8 @@
 				517F5C5C2822BC8A00C39D21 /* RDOStartScene.swift in Sources */,
 				51231D9028295E1C00D31CB3 /* ReaperAppearState.swift in Sources */,
 				517F5C27282293CD00C39D21 /* TouchControlInputNode.swift in Sources */,
+				296E1DBA2837B7D400945C89 /* HeartReaper.swift in Sources */,
+				296E1DB628378EA200945C89 /* EnemyAgent.swift in Sources */,
 				517F5C7E2826B10E00C39D21 /* SoulAgentControlledState.swift in Sources */,
 				517F5C632822BCC400C39D21 /* RDOButtonNode.swift in Sources */,
 				517F5C6D2825137400C39D21 /* RDOAboutScene.swift in Sources */,
@@ -532,8 +558,10 @@
 				517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */,
 				517F5C6B2825130A00C39D21 /* RDOSettingsScene.swift in Sources */,
 				29AAD9A3282B15EA0088F48C /* RDOLevelStateSnapshot.swift in Sources */,
+				296E1DB428378D3C00945C89 /* Enemy.swift in Sources */,
 				517F5C8A2826B2D000C39D21 /* SoulAgent.swift in Sources */,
 				517F5C19282284D800C39D21 /* RDOGameInput.swift in Sources */,
+				296E1DBD2837BDC400945C89 /* EnemyAgentControlledState.swift in Sources */,
 				517F5C2328228DF900C39D21 /* ControlInputSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

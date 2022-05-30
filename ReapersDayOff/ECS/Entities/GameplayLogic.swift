@@ -140,6 +140,12 @@ class GameplayLogic {
         
     }
     
+    func loseSouls() {
+
+        redSouls = redSouls/2
+        greenSouls = greenSouls/2
+        blueSouls = blueSouls/2
+    }
 }
 
 private let GameplayLogicInstance = GameplayLogic()
