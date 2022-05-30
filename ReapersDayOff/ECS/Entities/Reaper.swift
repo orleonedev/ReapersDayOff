@@ -8,7 +8,9 @@
 import SpriteKit
 import GameplayKit
 
-class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, ResourceLoadableType */{
+class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate, ContactNotifiableType  /*, ResourceLoadableType */{
+
+    
     
     // MARK: Static properties
     
@@ -89,6 +91,10 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
         chargeComponent.delegate = self
         addComponent(chargeComponent)
         
+        let soulsContainerComponent = SoulsContainerComponent(charge: GameplayConfiguration.Reaper.initialContainer, maximumCharge: GameplayConfiguration.Reaper.maximumContainer, displaysChargeBar: true)
+        soulsContainerComponent.delegate = self
+        addComponent(soulsContainerComponent)
+        
         // `AnimationComponent` tracks and vends the animations for different entity states and directions.
         guard let animations = Reaper.animations else {
             fatalError("Attempt to access Reaper.animations before they have been loaded.")
@@ -129,6 +135,12 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
 //                intelligenceComponent.stateMachine.enter(ReaperFleeState.self)
 //            }
 //        }
+    }
+    
+    // MARK: Souls container component delegate
+
+    func soulsContainerComponentDidLoseCharge(soulsContainerComponent: SoulsContainerComponent) {
+        
     }
     
     // MARK: ResourceLoadableType
