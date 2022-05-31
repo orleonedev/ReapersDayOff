@@ -982,17 +982,15 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     }
     
     private func createSoul() -> Soul {
-        let random = UInt.random(in: 0...2)
+        let random = UInt.random(in: 0...3)
         var soul: Soul
         switch random {
-        case 0:
-            soul = RedSoul(pathPoints: [], mandate: .followPatrolPath)
         case 1:
             soul = GreenSoul(pathPoints: [], mandate: .followPatrolPath)
         case 2:
             soul = BlueSoul(pathPoints: [], mandate: .followPatrolPath)
         default:
-            fatalError("Unable to create soul type")
+            soul = RedSoul(pathPoints: [], mandate: .followPatrolPath)
         }
         
         return soul

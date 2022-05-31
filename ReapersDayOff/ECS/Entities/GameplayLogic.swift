@@ -86,9 +86,9 @@ class GameplayLogic {
             ret = Double(souls)*0.5
         case 2..<5:
             ret = Double(souls)
-        case 5..<7:
+        case 5..<9:
             ret = Double(souls)*1.5
-        case 7...10:
+        case 9...10:
             ret = Double(souls)*2
         default:
             print("Unhandled number")
@@ -122,8 +122,8 @@ class GameplayLogic {
             LOGremoveSoulOnStage(n: redSouls)
             redSouls = 0
         case "green":
-            timeRemaining += timeForDeposit(souls: greenSouls)
-            currentScore += pointsForDeposit(souls: greenSouls)*2
+            timeRemaining += timeForDeposit(souls: greenSouls)*2
+            currentScore += pointsForDeposit(souls: greenSouls)
             totalSouls += Int(greenSouls)
             LOGremoveSoulOnStage(n: greenSouls)
             greenSouls = 0

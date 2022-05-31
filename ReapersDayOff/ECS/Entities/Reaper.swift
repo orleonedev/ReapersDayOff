@@ -220,7 +220,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
                 case "red":
                     chargeComp.addCharge(chargeToAdd: shared.timeForDeposit(souls: shared.redSouls))
                 case "green":
-                    chargeComp.addCharge(chargeToAdd: shared.timeForDeposit(souls: shared.greenSouls))
+                    chargeComp.addCharge(chargeToAdd: shared.timeForDeposit(souls: shared.greenSouls)*2)
                 case "blue":
                     chargeComp.addCharge(chargeToAdd: shared.timeForDeposit(souls: shared.blueSouls))
                 default:
