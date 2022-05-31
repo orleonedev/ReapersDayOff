@@ -6,9 +6,9 @@
 //
 
 /*    
-    Abstract:
-    A state used by `LevelScene` to indicate that the game is actively being played. This state updates the current time of the level's countdown timer.
-*/
+ Abstract:
+ A state used by `LevelScene` to indicate that the game is actively being played. This state updates the current time of the level's countdown timer.
+ */
 
 import SpriteKit
 import GameplayKit
@@ -20,11 +20,14 @@ class RDOLevelSceneActiveState: GKState {
     
     var logic = GameplayLogic.sharedInstance()
     var spawnRate: TimeInterval = 1.0
+    var heartReapSpwan: TimeInterval = GameplayConfiguration.HeartReaper.enemySpawnRate
+    var aliveTimer: TimeInterval = GameplayConfiguration.HeartReaper.enemySpawnRate*2
+    
     
     /*
-        A formatter for individual date components used to provide an appropriate
-        display value for the timer.
-    */
+     A formatter for individual date components used to provide an appropriate
+     display value for the timer.
+     */
     let timeRemainingFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.zeroFormattingBehavior = .pad
@@ -58,7 +61,7 @@ class RDOLevelSceneActiveState: GKState {
     
     override func didEnter(from previousState: GKState?) {
         super.didEnter(from: previousState)
-
+        
         levelScene.timerNode.text = timeRemainingString
     }
     
@@ -72,6 +75,36 @@ class RDOLevelSceneActiveState: GKState {
                 levelScene.spawnSoul()
             }
         }
+        
+        
+        if !logic.enemyOnStage {
+            
+            heartReapSpwan -= seconds
+            
+            print("heartReapSpwan \(heartReapSpwan)")
+            if heartReapSpwan < 0 {
+                heartReapSpwan = GameplayConfiguration.HeartReaper.enemySpawnRate
+                levelScene.spawnEnemy()
+                print("SPAWN")
+                logic.enemyOnStage = true
+            }
+        }
+        else {
+            aliveTimer -= seconds
+            print("aliveTimer \(aliveTimer)")
+            if aliveTimer < 0 {
+                aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate*2
+                levelScene.enemy?.removeHeartReaper()
+                print("REMOVE")
+                logic.enemyOnStage = false
+            }
+        }
+        
+        if levelScene.resetEnemyTimer{
+            aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate*2
+            levelScene.resetEnemyTimer = false
+        }
+        //solo se enemy non ci sta sulla scena: controllare
         
         // Update the displayed time remaining.
         levelScene.timerNode.text = timeRemainingString
@@ -119,11 +152,11 @@ class RDOLevelSceneActiveState: GKState {
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         switch stateClass {
-            case is RDOLevelScenePauseState.Type, is RDOLevelSceneGameoverState.Type:
-                return true
-                
-            default:
-                return false
+        case is RDOLevelScenePauseState.Type, is RDOLevelSceneGameoverState.Type:
+            return true
+            
+        default:
+            return false
         }
     }
 }

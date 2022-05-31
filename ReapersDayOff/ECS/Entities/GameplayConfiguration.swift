@@ -246,7 +246,7 @@ struct GameplayConfiguration {
         static let thresholdProximityToPatrolPathStartPoint: Float = 50.0
 
         /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
-        static let maximumSpeed: Float = 100.0
+        static let maximumSpeed: Float = 420.0
 
 
         /*
@@ -254,7 +254,7 @@ struct GameplayConfiguration {
             This ensures that the `TaskBot` can follow its patrol path more effectively.
         */
         /// The maximum acceleration (in points per second per second) for the `TaskBot`.
-        static let maximumAcceleration: Float = 200.0
+        static let maximumAcceleration: Float = 300.0
 
         /// The agent's mass.
         static let agentMass: Float = 0.25
@@ -272,10 +272,10 @@ struct GameplayConfiguration {
         static let agentOffset = physicsBodyOffset
         
         /// The maximum time to look ahead when following a path.
-        static let maxPredictionTimeWhenFollowingPath: TimeInterval = 2.0
+        static let maxPredictionTimeWhenFollowingPath: TimeInterval = 1.0
         
         /// The maximum time to look ahead for obstacles to be avoided.
-        static let maxPredictionTimeForObstacleAvoidance: TimeInterval = 2.0
+        static let maxPredictionTimeForObstacleAvoidance: TimeInterval = 1.0
         
 //        static let maxPredictionTimeForReaperHunting: TimeInterval = 2.5
 
@@ -301,8 +301,9 @@ struct GameplayConfiguration {
     struct HeartReaper {
         
         /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
-        static let maximumSpeedRed: Float = 320.0
-        static let maximumAccelerationRed: Float = 120.0
+        static let maximumSpeedRed: Float = 420.0
+        
+        static let maximumAccelerationRed: Float = 300.0
         
         /// The maximum amount of charge a `FlyingBot` stores.
         static let maximumCharge = 100.0
@@ -335,6 +336,8 @@ struct GameplayConfiguration {
         */
         /// The maximum acceleration (in points per second per second) for the `TaskBot`.
 //        static let maximumAcceleration: Float = 150.0
+        
+        static let enemySpawnRate: TimeInterval = 10.0
     }
     
         struct Timer {

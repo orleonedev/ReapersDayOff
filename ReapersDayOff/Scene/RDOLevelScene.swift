@@ -52,7 +52,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     var redGate: Gate?
     var blueGate: Gate?
     var greenGate: Gate?
-    let enemy = HeartReaper()
+    var enemy: HeartReaper?
+    var resetEnemyTimer: Bool = false
     /// Stores a reference to the root nodes for each world layer in the scene.
     var worldLayerNodes = [WorldLayer: SKNode]()
     
@@ -168,9 +169,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         loadWorldLayers()
 
         // Add a `PlayerBot` for the player.
-        beamInPlayerBot()
+        beamInReaper()
         
-        beamInEnemy()
+//        beamInEnemy()
         
         // Gravity will be in the negative z direction; there is no x or y component.
         physicsWorld.gravity = CGVector.zero
@@ -929,7 +930,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 //   }
     
     
-    private func beamInPlayerBot() {
+    private func beamInReaper() {
         // Find the location of the player's initial position.
         let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
         let transporterCoordinate = charactersNode.childNode(withName: "transporter_coordinate")!
@@ -956,7 +957,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         addEntity(entity: reaper)
     }
     
-    private func beamInEnemy() {
+    func beamInEnemy(enemy: HeartReaper) {
         // Find the location of the player's initial position.
         let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
         let transporterCoordinate = charactersNode.childNode(withName: "enemy_coordinate")!
@@ -972,12 +973,21 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let enemyNode = enemy.renderComponent.node
         enemyNode.position = transporterCoordinate.position
         enemy.updateAgentPositionToMatchNodePosition()
+         
         
         // Constrain the camera to the `PlayerBot` position and the level edges.
-        setCameraConstraints()
+//        setCameraConstraints()
         
         // Add the `PlayerBot` to the scene and component systems.
         addEntity(entity: enemy)
+    }
+    
+    func spawnEnemy() {
+
+        let newEnemy = HeartReaper()
+        enemy = newEnemy
+        beamInEnemy(enemy: enemy!)
+        
     }
     
     private func putGateInScene(gate: Gate, pos: Int){

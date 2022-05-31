@@ -39,6 +39,10 @@ class RDOMainScene: RDOBaseScene {
         
     }
     
+    var reaper: SKSpriteNode? {
+        return backgroundNode?.childNode(withName: "//reaper") as? SKSpriteNode
+    }
+    
     // MARK: Scene Life Cycle
     
     override func didMove(to view: SKView) {
@@ -47,6 +51,8 @@ class RDOMainScene: RDOBaseScene {
         focusChangesEnabled = true
         
         centerCameraOnPoint(point: backgroundNode!.position)
+        reaper?.run(SKAction(named: "reaperRotation")!)
+        
         
     }
     
