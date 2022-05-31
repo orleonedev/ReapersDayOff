@@ -13,7 +13,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, ContactNotifiableType  /*, Reso
     // MARK: Static properties
     
     /// The size to use for the `Reaper`s animation textures.
-    static var textureSize = CGSize(width: 120.0, height: 120.0)
+    static var textureSize = CGSize(width: 128.0, height: 128.0)
     
     
     /// The animations to use for a `PlayerBot`.

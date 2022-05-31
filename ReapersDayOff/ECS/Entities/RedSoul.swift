@@ -11,7 +11,7 @@ import GameplayKit
 
 class RedSoul: Soul {
     
-    static var textureSize = CGSize(width: 48 , height: 48)
+    static var textureSize = CGSize(width: 64 , height: 64)
     
     static var soulAnimations: [AnimationState: [CompassDirection: Animation]]?
     
