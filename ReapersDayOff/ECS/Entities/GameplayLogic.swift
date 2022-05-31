@@ -49,11 +49,11 @@ class GameplayLogic {
     var soulsOnStage: UInt = 0
     func LOGAddSoulOnStage(n: UInt){
         soulsOnStage += n
-        print(soulsOnStage)
+//        print(soulsOnStage)
     }
     func LOGremoveSoulOnStage(n: UInt){
         soulsOnStage -= n
-        print(soulsOnStage)
+//        print(soulsOnStage)
     }
     
     
@@ -158,6 +158,7 @@ class GameplayLogic {
         redSouls = redSouls/2
         greenSouls = greenSouls/2
         blueSouls = blueSouls/2
+        
     }
 }
 

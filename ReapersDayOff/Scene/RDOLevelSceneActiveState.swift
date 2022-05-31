@@ -112,17 +112,17 @@ class RDOLevelSceneActiveState: GKState {
         levelScene.bluecounter.text = String(logic.blueSouls)
         levelScene.redcounter.text = String(logic.redSouls)
         levelScene.greencounter.text = String(logic.greenSouls)
-        levelScene.soulsContainer.size.height = CGFloat(logic.sumSoul) * (levelScene.soulsContainerTexture.size.height / 10)
-        
-        
-        if (logic.isFull){
-            levelScene.soulsContainer.color = UIColor.orange
-        }
-        else
-        {
-            levelScene.soulsContainer.color = UIColor.yellow
-        }
-        
+//        levelScene.soulsContainer.size.height = CGFloat(logic.sumSoul) * (levelScene.soulsContainerTexture.size.height / 10)
+//
+//        
+//        if (logic.isFull){
+//            levelScene.soulsContainer.color = UIColor.orange
+//        }
+//        else
+//        {
+//            levelScene.soulsContainer.color = UIColor.yellow
+//        }
+
         if let movComp = levelScene.reaper.component(ofType: MovementComponent.self) {
             
             if logic.isFull {

@@ -216,6 +216,12 @@ struct GameplayConfiguration {
         /// The maximum charge value for the `PlayerBot`'s health bar.
         static let maximumCharge = 100.0
         
+        /// The initial number of souls that the `PlayerBot` transport.
+        static let initialContainer = 0.0
+
+        /// The maximum number of souls that the `PlayerBot` can transport.
+        static let maximumContainer = 10.0
+        
         /// The length of time for which the `PlayerBot` remains in its "hit" state.
         static let hitStateDuration: TimeInterval = 0.75
         

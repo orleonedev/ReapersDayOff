@@ -84,6 +84,8 @@
 		6641E465282A4A3B00308AB3 /* RDOGameoverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6641E464282A4A3B00308AB3 /* RDOGameoverScene.sks */; };
 		66463147282506DB00311BE3 /* RDOMainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66463146282506DB00311BE3 /* RDOMainScene.sks */; };
 		6646314928250A9200311BE3 /* RDOSettingsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6646314828250A9200311BE3 /* RDOSettingsScene.sks */; };
+		664976CB283FBCC300584EA3 /* SoulsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664976CA283FBCC300584EA3 /* SoulsContainer.swift */; };
+		664976CD283FC4CC00584EA3 /* SoulsContainerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664976CC283FC4CC00584EA3 /* SoulsContainerComponent.swift */; };
 		667C2E7028250B6600A5D13E /* RDOAboutScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 667C2E6F28250B6600A5D13E /* RDOAboutScene.sks */; };
 		667C2E7228250FAC00A5D13E /* RDOCollectionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 667C2E7128250FAB00A5D13E /* RDOCollectionScene.sks */; };
 		667C2E73282524CA00A5D13E /* RDOStartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5C532822BBFD00C39D21 /* RDOStartScene.sks */; };
@@ -169,6 +171,8 @@
 		6641E464282A4A3B00308AB3 /* RDOGameoverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOGameoverScene.sks; sourceTree = "<group>"; };
 		66463146282506DB00311BE3 /* RDOMainScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOMainScene.sks; sourceTree = "<group>"; };
 		6646314828250A9200311BE3 /* RDOSettingsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOSettingsScene.sks; sourceTree = "<group>"; };
+		664976CA283FBCC300584EA3 /* SoulsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulsContainer.swift; sourceTree = "<group>"; };
+		664976CC283FC4CC00584EA3 /* SoulsContainerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulsContainerComponent.swift; sourceTree = "<group>"; };
 		667C2E6F28250B6600A5D13E /* RDOAboutScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOAboutScene.sks; sourceTree = "<group>"; };
 		667C2E7128250FAB00A5D13E /* RDOCollectionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOCollectionScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -320,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				51231D8D28295A5000D31CB3 /* ChargeBar.swift */,
+				664976CA283FBCC300584EA3 /* SoulsContainer.swift */,
 				517F5C622822BCC300C39D21 /* RDOButtonNode.swift */,
 				517F5C282822942C00C39D21 /* ThumbStickNode.swift */,
 				29C813FE282D0F6400E8868A /* ContactNode.swift */,
@@ -380,6 +385,7 @@
 				51231D872829561400D31CB3 /* InputComponent.swift */,
 				51231D892829566F00D31CB3 /* MovementComponent.swift */,
 				51231D8B282957A800D31CB3 /* ChargeComponent.swift */,
+				664976CC283FC4CC00584EA3 /* SoulsContainerComponent.swift */,
 				51231D8F28295E1C00D31CB3 /* ReaperAppearState.swift */,
 				51231D9128295E9500D31CB3 /* ReaperPlayerControlledState.swift */,
 				51231D9328295EEC00D31CB3 /* ReaperFleeState.swift */,
@@ -499,6 +505,7 @@
 				296E1DB82837949300945C89 /* EnemyBehavior.swift in Sources */,
 				517F5C8F2826B36D00C39D21 /* SoulBehavior.swift in Sources */,
 				517F5C7B2826B07B00C39D21 /* IntelligenceComponent.swift in Sources */,
+				664976CD283FC4CC00584EA3 /* SoulsContainerComponent.swift in Sources */,
 				517F5C6F2825139000C39D21 /* RDOCollectionScene.swift in Sources */,
 				51231D8C282957A800D31CB3 /* ChargeComponent.swift in Sources */,
 				517F5C8C2826B2F300C39D21 /* RedSoul.swift in Sources */,
@@ -533,6 +540,7 @@
 				6641E46128295BA600308AB3 /* RDOLevelConfiguration.swift in Sources */,
 				517F5C2528228F0900C39D21 /* GameControllerInputSource.swift in Sources */,
 				51231D9628295F6500D31CB3 /* ReaperRechargingState.swift in Sources */,
+				664976CB283FBCC300584EA3 /* SoulsContainer.swift in Sources */,
 				51231D9228295E9500D31CB3 /* ReaperPlayerControlledState.swift in Sources */,
 				29C813FF282D0F6400E8868A /* ContactNode.swift in Sources */,
 				51231D8A2829566F00D31CB3 /* MovementComponent.swift in Sources */,
@@ -701,7 +709,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = SA4H49C4LT;
+				DEVELOPMENT_TEAM = BWUQ8K9QZU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

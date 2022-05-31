@@ -88,13 +88,13 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     let greenHUD = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 0, height: 0))
     
     //bar indicating the number of souls transported
-    var soulsContainer = SKSpriteNode(texture: nil, color: UIColor.yellow, size: CGSize(width: 0, height: 0))
-    
+//  var soulsContainer = SKSpriteNode(texture: nil, color: UIColor.yellow, size: CGSize(width: 0, height: 0))
+
 //    var stamina = SKSpriteNode(texture: SKTexture(imageNamed: "staminaBlack"), color: UIColor.black, size: CGSize(width: 0, height: 0))
 
     let pauseButton = SKSpriteNode(texture: SKTexture(imageNamed: "pauseBlack"), color: UIColor.gray, size: CGSize(width: 0, height: 0))
     
-    let soulsContainerTexture = SKSpriteNode(texture: SKTexture(imageNamed: "hudBlack"), color: UIColor.gray, size: CGSize(width: 0, height: 0))
+//    let soulsContainerTexture = SKSpriteNode(texture: SKTexture(imageNamed: "hudBlack"), color: UIColor.gray, size: CGSize(width: 0, height: 0))
     
     override var overlay: RDOSceneOverlay? {
         didSet {
@@ -255,21 +255,21 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         scalePauseButton()
         camera!.addChild(pauseButton)
         
-        let barSize = CGSize(width: frame.height / 10, height: 0)
-        soulsContainer.anchorPoint.y = 0
-        soulsContainer.anchorPoint.x = 0
-        soulsContainer.size = barSize
-        scaleSoulsContainer()
-        soulsContainer.zPosition = WorldLayer.top.rawValue
-        camera!.addChild(soulsContainer)
-        
-        let SoulsContainerTextureSize = CGSize(width: frame.height / 10, height: frame.height / 10)
-        soulsContainerTexture.anchorPoint.y = 1
-        soulsContainerTexture.anchorPoint.x = 0
-        soulsContainerTexture.size = SoulsContainerTextureSize
-        soulsContainerTexture.zPosition = WorldLayer.top.rawValue + 1
-        scaleSoulsContainerTexture()
-        camera!.addChild(soulsContainerTexture)
+//        let barSize = CGSize(width: frame.height / 10, height: 0)
+//        soulsContainer.anchorPoint.y = 0
+//        soulsContainer.anchorPoint.x = 0
+//        soulsContainer.size = barSize
+//        scaleSoulsContainer()
+//        soulsContainer.zPosition = WorldLayer.top.rawValue
+//        camera!.addChild(soulsContainer)
+//        
+//        let SoulsContainerTextureSize = CGSize(width: frame.height / 10, height: frame.height / 10)
+//        soulsContainerTexture.anchorPoint.y = 1
+//        soulsContainerTexture.anchorPoint.x = 0
+//        soulsContainerTexture.size = SoulsContainerTextureSize
+//        soulsContainerTexture.zPosition = WorldLayer.top.rawValue + 1
+//        scaleSoulsContainerTexture()
+//        camera!.addChild(soulsContainerTexture)
         
 //        let staminaSize = CGSize(width: frame.width / 3, height: frame.height / 35)
 //        stamina.size = staminaSize
@@ -400,7 +400,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         scaleRedCounterNode()
         scaleGreenCounterNode()
 //        scaleStamina()
-        scaleSoulsContainer()
+//        scaleSoulsContainer()
         scalePauseButton()
 
     }
@@ -591,7 +591,27 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 //
 //                chargeBar.constraints = [constraint]
             }
+            
+            if let soulsContainer = entity.component(ofType: SoulsContainerComponent.self)?.chargeBar {
+                
+                
+//                addNode(node: chargeBar, toWorldLayer: .top)
+                soulsContainer.position.y = size.height / 2.0
+                soulsContainer.position.x = -size.width / 2.25
+                soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+                camera!.addChild(soulsContainer)
+                // Constrain the `ChargeBar`'s node position to the render node.
+//                let xRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.x)
+//                let yRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.y)
+//
+//                let constraint = SKConstraint.positionX(xRange, y: yRange)
+//                constraint.referenceNode = renderNode
+//
+//                chargeBar.constraints = [constraint]
+            }
         }
+        
+        
         
         // If the entity has an `IntelligenceComponent`, enter its initial state.
         if let intelligenceComponent = entity.component(ofType: IntelligenceComponent.self) {
@@ -877,37 +897,37 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 //   }
     
 
-    func scaleSoulsContainer() {
-        
-       // Make sure the score node is positioned at the top of the scene.
-       soulsContainer.position.y = size.height / 2.5
-       
-        // Make sure the score node is positioned at the right of the scene.
-        soulsContainer.position.x = -size.width / 2.25
-        
-       // Add padding between the top of scene and the top of the score node.
-       #if os(tvOS)
-       soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize
-       #else
-       soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
-       #endif
-   }
-    
-    func scaleSoulsContainerTexture() {
-        
-       // Make sure the score node is positioned at the top of the scene.
-       soulsContainerTexture.position.y = size.height / 2.0
-       
-        // Make sure the score node is positioned at the right of the scene.
-        soulsContainerTexture.position.x = -size.width / 2.25
-        
-       // Add padding between the top of scene and the top of the score node.
-       #if os(tvOS)
-        soulsContainerTexture.position.y -= GameplayConfiguration.Timer.paddingSize
-       #else
-        soulsContainerTexture.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
-       #endif
-   }
+//    func scaleSoulsContainer() {
+//        
+//       // Make sure the score node is positioned at the top of the scene.
+//       soulsContainer.position.y = size.height / 2.5
+//       
+//        // Make sure the score node is positioned at the right of the scene.
+//        soulsContainer.position.x = -size.width / 2.25
+//        
+//       // Add padding between the top of scene and the top of the score node.
+//       #if os(tvOS)
+//       soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize
+//       #else
+//       soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+//       #endif
+//   }
+//    
+//    func scaleSoulsContainerTexture() {
+//        
+//       // Make sure the score node is positioned at the top of the scene.
+//       soulsContainerTexture.position.y = size.height / 2.0
+//       
+//        // Make sure the score node is positioned at the right of the scene.
+//        soulsContainerTexture.position.x = -size.width / 2.25
+//        
+//       // Add padding between the top of scene and the top of the score node.
+//       #if os(tvOS)
+//        soulsContainerTexture.position.y -= GameplayConfiguration.Timer.paddingSize
+//       #else
+//        soulsContainerTexture.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
+//       #endif
+//   }
     
     
     private func beamInReaper() {
