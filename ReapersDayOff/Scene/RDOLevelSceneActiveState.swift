@@ -78,20 +78,31 @@ class RDOLevelSceneActiveState: GKState {
         
         
         if !logic.enemyOnStage {
+            
             heartReapSpwan -= seconds
+            
+            print("heartReapSpwan \(heartReapSpwan)")
             if heartReapSpwan < 0 {
                 heartReapSpwan = GameplayConfiguration.HeartReaper.enemySpawnRate
                 levelScene.spawnEnemy()
+                print("SPAWN")
                 logic.enemyOnStage = true
             }
         }
         else {
             aliveTimer -= seconds
+            print("aliveTimer \(aliveTimer)")
             if aliveTimer < 0 {
                 aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate*2
-                levelScene.enemy.removeHeartReaper()
+                levelScene.enemy?.removeHeartReaper()
+                print("REMOVE")
                 logic.enemyOnStage = false
             }
+        }
+        
+        if levelScene.resetEnemyTimer{
+            aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate*2
+            levelScene.resetEnemyTimer = false
         }
         //solo se enemy non ci sta sulla scena: controllare
         

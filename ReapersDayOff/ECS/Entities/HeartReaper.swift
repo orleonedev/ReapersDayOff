@@ -186,8 +186,10 @@ class HeartReaper: Enemy {
     func removeHeartReaper() {
         if let scene = renderComponent.node.scene as? RDOLevelScene {
             scene.entities.remove(self)
+            scene.resetEnemyTimer = true
         }
         renderComponent.node.removeFromParent()
         GameplayLogic.sharedInstance().enemyOnStage = false
+        
     }
 }

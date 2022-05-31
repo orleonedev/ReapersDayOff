@@ -52,7 +52,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     var redGate: Gate?
     var blueGate: Gate?
     var greenGate: Gate?
-    let enemy = HeartReaper()
+    var enemy: HeartReaper?
+    var resetEnemyTimer: Bool = false
     /// Stores a reference to the root nodes for each world layer in the scene.
     var worldLayerNodes = [WorldLayer: SKNode]()
     
@@ -170,7 +171,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         // Add a `PlayerBot` for the player.
         beamInReaper()
         
-        beamInEnemy()
+//        beamInEnemy()
         
         // Gravity will be in the negative z direction; there is no x or y component.
         physicsWorld.gravity = CGVector.zero
@@ -936,7 +937,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         addEntity(entity: reaper)
     }
     
-     func beamInEnemy() {
+    func beamInEnemy(enemy: HeartReaper) {
         // Find the location of the player's initial position.
         let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
         let transporterCoordinate = charactersNode.childNode(withName: "enemy_coordinate")!
@@ -962,16 +963,11 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     }
     
     func spawnEnemy() {
-        let enemy: Enemy
-        let pathPoints = createPathPoints()
-//        enemy.pathPoints = pathPoints
-//        guard let orientationComponent = enemy.component(ofType: OrientationComponent.self) else {
-//            fatalError("A task bot must have an orientation component to be able to be added to a level")
-//        }
-//        orientationComponent.compassDirection = .west
+
+        let newEnemy = HeartReaper()
+        enemy = newEnemy
+        beamInEnemy(enemy: enemy!)
         
-        beamInEnemy()
-//        GameplayLogic.sharedInstance().LOGAddEnemyOnStage(n: 1)
     }
     
     private func putGateInScene(gate: Gate, pos: Int){
