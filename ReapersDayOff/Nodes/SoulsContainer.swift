@@ -89,15 +89,15 @@ class SoulsContainer: SKSpriteNode {
 
             soulsContainer.run(action)
             
-            if (level > 0.7)
+            if (level == 1.0)
             {
-                soulsContainer.color = SKColor.orange
+                soulsContainer.color = SKColor.red
             }
             else
             {
-                if (level == 1.0)
+                if (level > 0.7)
                 {
-                    soulsContainer.color = SKColor.red
+                    soulsContainer.color = SKColor.orange
 
                 }
                 else
