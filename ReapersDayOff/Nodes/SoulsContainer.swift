@@ -83,10 +83,28 @@ class SoulsContainer: SKSpriteNode {
     
     var level: Double = 1.0 {
         didSet {
-            let action = SKAction.scaleX(to: CGFloat(level), duration: Configuration.levelUpdateDuration)
+            
+            let action = SKAction.scaleY(to: CGFloat(level), duration: Configuration.levelUpdateDuration)
             action.timingMode = .easeInEaseOut
 
             soulsContainer.run(action)
+            
+            if (level > 0.7)
+            {
+                soulsContainer.color = SKColor.orange
+            }
+            else
+            {
+                if (level == 1.0)
+                {
+                    soulsContainer.color = SKColor.red
+
+                }
+                else
+                {
+                    soulsContainer.color = SKColor.yellow
+                }
+            }
         }
     }
     

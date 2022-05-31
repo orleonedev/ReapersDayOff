@@ -129,6 +129,9 @@ class RedSoul: Soul {
             }
             renderComponent.node.removeFromParent()
             gameState.addSouls(type: "red")
+
+        
+
         }
         else {
             print("you can't take more souls")

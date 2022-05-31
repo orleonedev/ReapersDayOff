@@ -206,7 +206,8 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
         
         ColliderType.requestedContactNotifications[.Reaper] = [
             .Gate,
-            .Enemy
+            .Enemy,
+            .Soul
         ]
     }
 
@@ -222,21 +223,25 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
     }
     
     func contactWithEntityDidBegin(_ entity: GKEntity) {
+        let shared = GameplayLogic.sharedInstance()
+        
         if let gate = entity as? Gate {
-            let shared = GameplayLogic.sharedInstance()
-            
-            
+
             if let chargeComp = component(ofType: ChargeComponent.self) {
-                
+                if let containerComp = component(ofType: SoulsContainerComponent.self) {
                 switch gate.name {
                 case "red":
                     chargeComp.addCharge(chargeToAdd: shared.timeForDeposit(souls: shared.redSouls))
+                    containerComp.loseCharge(chargeToLose: Double(shared.redSouls))
                 case "green":
                     chargeComp.addCharge(chargeToAdd: shared.timeForDeposit(souls: shared.greenSouls))
+                    containerComp.loseCharge(chargeToLose: Double(shared.greenSouls))
                 case "blue":
                     chargeComp.addCharge(chargeToAdd: shared.timeForDeposit(souls: shared.blueSouls))
+                    containerComp.loseCharge(chargeToLose: Double(shared.blueSouls))
                 default:
                     fatalError("Unknown Gate type")
+                    }
                 }
             }
             
@@ -245,11 +250,59 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
         
         if entity is HeartReaper {
             if let chargeComp = component(ofType: ChargeComponent.self) {
-                chargeComp.loseCharge(chargeToLose: 5.0)
+                if let containerComp = component(ofType: SoulsContainerComponent.self) {
+                    chargeComp.loseCharge(chargeToLose: 5.0)
+                    if (shared.redSouls % 2 == 0)
+                    {
+                        containerComp.loseCharge(chargeToLose: Double(shared.redSouls / 2))
+                    }
+                    else
+                    {
+                        containerComp.loseCharge(chargeToLose: (Double(shared.redSouls / 2) + 1.0))
+
+                    }
+                    if (shared.blueSouls % 2 == 0)
+                    {
+                        containerComp.loseCharge(chargeToLose: Double(shared.blueSouls / 2))
+                    }
+                    else
+                    {
+                        containerComp.loseCharge(chargeToLose: (Double(shared.blueSouls / 2) + 1.0))
+
+                    }
+                    if (shared.greenSouls % 2 == 0)
+                    {
+                        containerComp.loseCharge(chargeToLose: Double(shared.greenSouls / 2))
+                    }
+                    else
+                    {
+                        containerComp.loseCharge(chargeToLose: (Double(shared.greenSouls / 2) + 1.0))
+
+                    }
+                }
+            }
+                
+        }
+        
+        if entity is RedSoul {
+        if let containerComp = component(ofType: SoulsContainerComponent.self) {
+            containerComp.addCharge(chargeToAdd: 1.0)
             }
         }
         
+        if entity is BlueSoul {
+        if let containerComp = component(ofType: SoulsContainerComponent.self) {
+            containerComp.addCharge(chargeToAdd: 1.0)
+            }
+        }
+        
+        if entity is GreenSoul {
+        if let containerComp = component(ofType: SoulsContainerComponent.self) {
+            containerComp.addCharge(chargeToAdd: 1.0)
+            }
+        }
     }
+    
     
     func contactWithEntityDidEnd(_ entity: GKEntity) {
         
