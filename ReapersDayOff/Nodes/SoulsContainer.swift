@@ -84,7 +84,7 @@ class SoulsContainer: SKSpriteNode {
     var level: Double = 1.0 {
         didSet {
             
-            let action = SKAction.scaleY(to: CGFloat(level), duration: Configuration.levelUpdateDuration)
+            let action = SKAction.scaleY(to: CGFloat(-level), duration: Configuration.levelUpdateDuration)
             action.timingMode = .easeInEaseOut
 
             soulsContainer.run(action)
@@ -117,15 +117,15 @@ class SoulsContainer: SKSpriteNode {
     // MARK: Initializers
     
     init() {
-        super.init(texture: nil, color: Configuration.backgroundColor, size: Configuration.soulsContainerSize)
+        super.init(texture: nil, color: Configuration.backgroundColor, size: CGSize(width: 0, height: 0))
         self.anchorPoint = CGPoint(x: 0.0, y: 1.0)
         addChild(soulsContainer)
         overlayNode.anchorPoint = CGPoint(x: 0.0, y: 1.0)
         addChild(overlayNode)
         
         // Constrain the position of the `chargeLevelNode`.
-        let xRange = SKRange(constantValue: 1.0)
-        let yRange = SKRange(constantValue: 0.0)
+        let xRange = SKRange(constantValue: 0.0)
+        let yRange = SKRange(constantValue: -overlayNode.size.height)
         
         let constraint = SKConstraint.positionX(xRange, y: yRange)
         constraint.referenceNode = self
