@@ -56,6 +56,18 @@ class GameplayLogic {
         print(soulsOnStage)
     }
     
+    
+    
+    var enemyOnStage: Bool = false
+//    func LOGAddEnemyOnStage(n: UInt){
+//        enemyOnStage += n
+//        print(enemyOnStage)
+//    }
+//    func LOGremoveEnemyOnStage(n: UInt){
+//        enemyOnStage -= n
+//        print(enemyOnStage)
+//    }
+    
     func setupGame(){
         currentScore = 0
         redSouls = 0
@@ -63,6 +75,7 @@ class GameplayLogic {
         blueSouls = 0
         timeRemaining = timeLimit
         soulsOnStage = 0
+        enemyOnStage = false
         
     }
     

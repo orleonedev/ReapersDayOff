@@ -168,7 +168,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         loadWorldLayers()
 
         // Add a `PlayerBot` for the player.
-        beamInPlayerBot()
+        beamInReaper()
         
         beamInEnemy()
         
@@ -909,7 +909,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
    }
     
     
-    private func beamInPlayerBot() {
+    private func beamInReaper() {
         // Find the location of the player's initial position.
         let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
         let transporterCoordinate = charactersNode.childNode(withName: "transporter_coordinate")!
@@ -936,7 +936,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         addEntity(entity: reaper)
     }
     
-    private func beamInEnemy() {
+     func beamInEnemy() {
         // Find the location of the player's initial position.
         let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
         let transporterCoordinate = charactersNode.childNode(withName: "enemy_coordinate")!
@@ -952,12 +952,26 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let enemyNode = enemy.renderComponent.node
         enemyNode.position = transporterCoordinate.position
         enemy.updateAgentPositionToMatchNodePosition()
+         
         
         // Constrain the camera to the `PlayerBot` position and the level edges.
-        setCameraConstraints()
+//        setCameraConstraints()
         
         // Add the `PlayerBot` to the scene and component systems.
         addEntity(entity: enemy)
+    }
+    
+    func spawnEnemy() {
+        let enemy: Enemy
+        let pathPoints = createPathPoints()
+//        enemy.pathPoints = pathPoints
+//        guard let orientationComponent = enemy.component(ofType: OrientationComponent.self) else {
+//            fatalError("A task bot must have an orientation component to be able to be added to a level")
+//        }
+//        orientationComponent.compassDirection = .west
+        
+        beamInEnemy()
+//        GameplayLogic.sharedInstance().LOGAddEnemyOnStage(n: 1)
     }
     
     private func putGateInScene(gate: Gate, pos: Int){
