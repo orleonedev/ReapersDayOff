@@ -81,7 +81,7 @@ class SoulsContainer: SKSpriteNode {
     
     // MARK: Properties
     
-    var level: Double = 1.0 {
+    var level: Double = 0.0 {
         didSet {
             
             let action = SKAction.scaleY(to: CGFloat(-level), duration: Configuration.levelUpdateDuration)
