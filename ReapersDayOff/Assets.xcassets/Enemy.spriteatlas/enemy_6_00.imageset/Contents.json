@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "enemy.png",
+      "filename" : "heartFront.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

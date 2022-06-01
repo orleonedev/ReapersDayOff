@@ -11,7 +11,7 @@ import GameplayKit
 
 class HeartReaper: Enemy {
     
-    static var textureSize = CGSize(width: 64 , height: 72)
+    static var textureSize = CGSize(width: 128.0, height: 128.0)
     
     static var enemyAnimations: [AnimationState: [CompassDirection: Animation]]?
     
