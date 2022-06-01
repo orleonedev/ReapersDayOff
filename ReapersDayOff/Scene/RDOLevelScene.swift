@@ -83,9 +83,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     let greencounter = SKLabelNode(text: "0")
     
     
-    let blueHUD = SKSpriteNode(texture: nil, color: UIColor.blue, size: CGSize(width: 0, height: 0))
-    let redHUD = SKSpriteNode(texture: nil, color: UIColor.red, size: CGSize(width: 0, height: 0))
-    let greenHUD = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 0, height: 0))
+    let blueHUD = SKSpriteNode(texture: SKTexture(imageNamed: "blueSoul_6_00"), color: UIColor.blue, size: CGSize(width: 0, height: 0))
+    let redHUD = SKSpriteNode(texture: SKTexture(imageNamed: "redSoul_6_00"), color: UIColor.red, size: CGSize(width: 0, height: 0))
+    let greenHUD = SKSpriteNode(texture: SKTexture(imageNamed: "greenSoul_6_00"), color: UIColor.green, size: CGSize(width: 0, height: 0))
     
     //bar indicating the number of souls transported
 //  var soulsContainer = SKSpriteNode(texture: nil, color: UIColor.yellow, size: CGSize(width: 0, height: 0))
@@ -203,7 +203,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         camera!.addChild(score)
         
         bluecounter.zPosition = WorldLayer.top.rawValue
-        bluecounter.fontColor = SKColor.blue
+        bluecounter.fontColor = SKColor.black
         bluecounter.fontName = GameplayConfiguration.Timer.fontName
         bluecounter.horizontalAlignmentMode = .left
         bluecounter.verticalAlignmentMode = .top
@@ -211,7 +211,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         camera!.addChild(bluecounter)
         
         redcounter.zPosition = WorldLayer.top.rawValue
-        redcounter.fontColor = SKColor.red
+        redcounter.fontColor = SKColor.black
         redcounter.fontName = GameplayConfiguration.Timer.fontName
         redcounter.horizontalAlignmentMode = .left
         redcounter.verticalAlignmentMode = .top
@@ -219,14 +219,14 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         camera!.addChild(redcounter)
         
         greencounter.zPosition = WorldLayer.top.rawValue
-        greencounter.fontColor = SKColor.green
+        greencounter.fontColor = SKColor.black
         greencounter.fontName = GameplayConfiguration.Timer.fontName
         greencounter.horizontalAlignmentMode = .left
         greencounter.verticalAlignmentMode = .top
         scaleGreenCounterNode()
         camera!.addChild(greencounter)
         
-        let counterHUDSize = CGSize(width: frame.height / 30, height: frame.height / 30)
+        let counterHUDSize = CGSize(width: frame.height / 20, height: frame.height / 20)
         blueHUD.size = counterHUDSize
         blueHUD.zPosition = WorldLayer.top.rawValue
         blueHUD.anchorPoint.y = 1
