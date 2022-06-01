@@ -81,14 +81,14 @@ class SoulsContainer: SKSpriteNode {
     
     // MARK: Properties
     
-    var level: Double = 0.0 {
+    var level: Double = 1.0 {
         didSet {
-            
+
             let action = SKAction.scaleY(to: CGFloat(-level), duration: Configuration.levelUpdateDuration)
             action.timingMode = .easeInEaseOut
 
             soulsContainer.run(action)
-            
+                        
             if (level == 1.0)
             {
                 soulsContainer.color = SKColor.red
@@ -119,6 +119,12 @@ class SoulsContainer: SKSpriteNode {
     init() {
         super.init(texture: nil, color: Configuration.backgroundColor, size: CGSize(width: 0, height: 0))
         self.anchorPoint = CGPoint(x: 0.0, y: 1.0)
+        
+        //Hide the container because at the start it's appear fill and in the wrong position
+        soulsContainer.isHidden = true
+        soulsContainer.run(SKAction.sequence([
+            SKAction.wait(forDuration: 0.1),
+            SKAction.run {self.soulsContainer.isHidden = false }]))
         addChild(soulsContainer)
         overlayNode.anchorPoint = CGPoint(x: 0.0, y: 1.0)
         addChild(overlayNode)
