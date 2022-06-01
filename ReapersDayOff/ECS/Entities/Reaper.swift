@@ -224,7 +224,6 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
     
     func contactWithEntityDidBegin(_ entity: GKEntity) {
         let shared = GameplayLogic.sharedInstance()
-        
         if let gate = entity as? Gate {
 
             if let chargeComp = component(ofType: ChargeComponent.self) {
