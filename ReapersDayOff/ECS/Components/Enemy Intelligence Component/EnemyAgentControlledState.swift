@@ -62,15 +62,16 @@ class EnemyAgentControlledState: GKState {
                 if entity.distanceToAgent(otherAgent: reaperAgent) < 512 {
                     entity.mandate = .huntAgent(reaperAgent)
                     
-                }else {
-                    // When a `TaskBot` is returning to its path patrol start, and gets near enough, it should start to patrol.
-//                    if case let .returnToPositionOnPath(position) = entity.mandate, entity.distanceToPoint(otherPoint: position) <= GameplayConfiguration.Soul.thresholdProximityToPatrolPathStartPoint {
-//                        entity.mandate = .followPatrolPath
-//                    }
-//                    else {
-                        entity.mandate = .wander
-//                    }
                 }
+//                else {
+//                    // When a `TaskBot` is returning to its path patrol start, and gets near enough, it should start to patrol.
+////                    if case let .returnToPositionOnPath(position) = entity.mandate, entity.distanceToPoint(otherPoint: position) <= GameplayConfiguration.Soul.thresholdProximityToPatrolPathStartPoint {
+////                        entity.mandate = .followPatrolPath
+////                    }
+////                    else {
+//                        entity.mandate = .wander
+////                    }
+//                }
                 
             }
             

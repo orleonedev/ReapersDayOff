@@ -957,10 +957,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         addEntity(entity: reaper)
     }
     
-    func beamInEnemy(enemy: HeartReaper) {
+    func beamInEnemy(enemy: HeartReaper, pos: Int) {
         // Find the location of the player's initial position.
         let charactersNode = childNode(withName: WorldLayer.characters.nodePath)!
-        let transporterCoordinate = charactersNode.childNode(withName: "enemy_coordinate")!
+        let transporterCoordinate = charactersNode.childNode(withName: "enemy_coordinate\(pos)")!
         
         // Set the initial orientation.
         guard let orientationComponent = enemy.component(ofType: OrientationComponent.self) else {
@@ -986,7 +986,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 
         let newEnemy = HeartReaper()
         enemy = newEnemy
-        beamInEnemy(enemy: enemy!)
+        beamInEnemy(enemy: enemy!, pos: Int.random(in: 1...3))
+
         
     }
     

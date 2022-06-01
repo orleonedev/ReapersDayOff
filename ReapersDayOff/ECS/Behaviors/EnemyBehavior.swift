@@ -56,7 +56,7 @@ class EnemyBehavior: GKBehavior {
         
 //        behavior.addTargetSpeedGoal(speed: agent.maxSpeed)
         behavior.addAvoidObstaclesGoal(forScene: scene)
-        behavior.addWonderAroundGoal(speed: agent.maxSpeed/2)
+//        behavior.addWonderAroundGoal(speed: agent.maxSpeed/2)
         
         return behavior
     }
@@ -204,7 +204,7 @@ class EnemyBehavior: GKBehavior {
         setWeight(0.5, for: GKGoal(toStayOn: path, maxPredictionTime: GameplayConfiguration.Enemy.maxPredictionTimeWhenFollowingPath))
     }
         // To Wander
-    private func addWonderAroundGoal(speed: Float){
-        setWeight(0.4, for: GKGoal(toWander: speed))
-    }
+//    private func addWonderAroundGoal(speed: Float){
+//        setWeight(0.4, for: GKGoal(toWander: speed))
+//    }
 }

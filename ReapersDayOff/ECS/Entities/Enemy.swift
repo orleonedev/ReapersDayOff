@@ -13,7 +13,7 @@ class Enemy: GKEntity,GKAgentDelegate, ContactNotifiableType {
     enum EnemyMandate {
         case huntAgent(GKAgent2D)
         
-        case wander
+//        case wander
 
         // Follow the `Soul`'s patrol path.
         case followPatrolPath
@@ -64,8 +64,8 @@ class Enemy: GKEntity,GKAgentDelegate, ContactNotifiableType {
                 radius = GameplayConfiguration.Enemy.returnToPatrolPathRadius
                 (agentBehavior, debugPathPoints) = EnemyBehavior.behaviorAndPathPoints(forAgent: agent, returningToPoint: position, pathRadius: radius, inScene: levelScene)
 //                debugColor = SKColor.yellow
-        case .wander:
-            agentBehavior = EnemyBehavior.behaviorWonder(forAgent: agent, inScene: levelScene)
+//        case .wander:
+//            agentBehavior = EnemyBehavior.behaviorWonder(forAgent: agent, inScene: levelScene)
         }
 
         return agentBehavior
@@ -84,7 +84,7 @@ class Enemy: GKEntity,GKAgentDelegate, ContactNotifiableType {
     
     override init() {
         self.pathPoints = []
-        self.mandate = .wander
+        self.mandate = .huntAgent(EnemyAgent())
         super.init()
         let agent = EnemyAgent()
         agent.delegate = self
