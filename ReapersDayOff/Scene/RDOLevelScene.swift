@@ -945,10 +945,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let reaperNode = reaper.renderComponent.node
         reaperNode.position = transporterCoordinate.position
         reaper.updateAgentPositionToMatchNodePosition()
-        
-//        let enemyNode = enemy.renderComponent.node
-//        enemyNode.position = transporterCoordinate.position
-//        enemy.updateAgentPositionToMatchNodePosition()
+        if let animationComponent = reaper.component(ofType: AnimationComponent.self) {
+            animationComponent.node.isHidden = true
+        }
         
         // Constrain the camera to the `PlayerBot` position and the level edges.
         setCameraConstraints()
@@ -973,10 +972,13 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let enemyNode = enemy.renderComponent.node
         enemyNode.position = transporterCoordinate.position
         enemy.updateAgentPositionToMatchNodePosition()
+        enemyNode.run(SKAction(named: "heartAppear")!)
          
         
         // Constrain the camera to the `PlayerBot` position and the level edges.
 //        setCameraConstraints()
+        
+        
         
         // Add the `PlayerBot` to the scene and component systems.
         addEntity(entity: enemy)

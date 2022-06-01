@@ -51,7 +51,7 @@ class RDOMainScene: RDOBaseScene {
         focusChangesEnabled = true
         
         centerCameraOnPoint(point: backgroundNode!.position)
-        reaper?.run(SKAction(named: "reaperRotation")!)
+        reaper?.run(SKAction.repeatForever(SKAction(named: "reaperRotation")!))
         
         
     }
