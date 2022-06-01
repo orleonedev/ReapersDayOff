@@ -35,6 +35,10 @@ class EnemyAgentControlledState: GKState {
         elapsedTime = 0.0
         
         // Ensure that the agent's behavior is the appropriate behavior for its current mandate.
+        if let levelScene = entity.renderComponent.node.scene as? RDOLevelScene {
+            entity.mandate = .huntAgent(levelScene.reaper.agent)
+        }
+        
         entity.agent.behavior = entity.behaviorForCurrentMandate
         
         /*
@@ -59,10 +63,10 @@ class EnemyAgentControlledState: GKState {
 
             if let levelScene = entity.renderComponent.node.scene as? RDOLevelScene {
                 let reaperAgent = levelScene.reaper.agent
-                if entity.distanceToAgent(otherAgent: reaperAgent) < 512 {
+                
                     entity.mandate = .huntAgent(reaperAgent)
                     
-                }
+                
 //                else {
 //                    // When a `TaskBot` is returning to its path patrol start, and gets near enough, it should start to patrol.
 ////                    if case let .returnToPositionOnPath(position) = entity.mandate, entity.distanceToPoint(otherPoint: position) <= GameplayConfiguration.Soul.thresholdProximityToPatrolPathStartPoint {
