@@ -122,7 +122,7 @@ class GreenSoul: Soul {
         let gameState = GameplayLogic.sharedInstance()
         
         if !gameState.isFull{
-            HapticUtility.playHapticsFile(named: "Oscillate")
+            
             if let scene = renderComponent.node.scene as? RDOLevelScene {
                 scene.entities.remove(self)
             }
