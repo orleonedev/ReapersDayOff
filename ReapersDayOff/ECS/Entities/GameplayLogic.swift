@@ -22,6 +22,14 @@ class GameplayLogic {
         }
     }
     
+    var heartReaperHit : Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "HeartReaperHit")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "HeartReaperHit")
+        }
+    }
     var totalSouls: Int {
         get {
             return UserDefaults.standard.integer(forKey: "SoulsCollected")
@@ -30,6 +38,16 @@ class GameplayLogic {
             UserDefaults.standard.set(newValue,forKey: "SoulsCollected")
         }
     }
+    
+    var gamesPlayed: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "GamesPlayed")
+        }
+        set {
+            UserDefaults.standard.set(newValue,forKey: "GamesPlayed")
+        }
+    }
+
     
     var currentScore: UInt = 0
     var redSouls: UInt = 0
@@ -51,6 +69,9 @@ class GameplayLogic {
         soulsOnStage += n
 //        print(soulsOnStage)
     }
+    
+    
+    
     func LOGremoveSoulOnStage(n: UInt){
         soulsOnStage -= n
 //        print(soulsOnStage)
@@ -119,24 +140,26 @@ class GameplayLogic {
             timeRemaining += timeForDeposit(souls: redSouls)
             currentScore += pointsForDeposit(souls: redSouls)
             totalSouls += Int(redSouls)
+//            collectedSouls += UInt(totalSouls)
             LOGremoveSoulOnStage(n: redSouls)
             redSouls = 0
         case "green":
             timeRemaining += timeForDeposit(souls: greenSouls)*2
             currentScore += pointsForDeposit(souls: greenSouls)
             totalSouls += Int(greenSouls)
+//            collectedSouls += UInt(totalSouls)
             LOGremoveSoulOnStage(n: greenSouls)
             greenSouls = 0
         case "blue":
             timeRemaining += timeForDeposit(souls: blueSouls)
             currentScore += pointsForDeposit(souls: blueSouls)*3
             totalSouls += Int(blueSouls)
+//            collectedSouls += UInt(totalSouls)
             LOGremoveSoulOnStage(n: blueSouls)
             blueSouls = 0
         default:
             fatalError("Unknown Gate type")
         }
-        
     }
     
     func addSouls(type: String){

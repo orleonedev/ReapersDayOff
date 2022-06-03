@@ -146,6 +146,7 @@ class RDOLevelSceneActiveState: GKState {
         
         if !chargeComponent.hasCharge {
             stateMachine?.enter(RDOLevelSceneGameoverState.self)
+            logic.gamesPlayed += 1
         }
         
     }

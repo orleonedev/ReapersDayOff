@@ -31,6 +31,9 @@ class ReaperPlayerControlledState: GKState {
         return inputComponent
     }
     
+    
+
+    
     // MARK: Initializers
     
     required init(entity: Reaper) {
@@ -54,6 +57,8 @@ class ReaperPlayerControlledState: GKState {
             component in response to user input.
         */
         animationComponent.requestedAnimationState = .idle
+        
+        entity.walkedDistance.append(movementComponent.nextTranslation)
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

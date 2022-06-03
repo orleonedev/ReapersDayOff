@@ -173,6 +173,8 @@ class HeartReaper: Enemy {
         
         let gameState = GameplayLogic.sharedInstance()
         
+        gameState.heartReaperHit += 1
+        
         
         gameState.loseSouls()
         // add scene.entities.remove(self) when seconds finish

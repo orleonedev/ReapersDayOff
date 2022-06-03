@@ -21,7 +21,17 @@ class RDOCollectionScene: RDOBaseScene {
         
     }
     
+    var numSoulsCollected: SKLabelNode? {
+        return backgroundNode?.childNode(withName: "NumSoulsCollected") as? SKLabelNode
+    }
     
+    var numHitByHeartReaper: SKLabelNode? {
+        return backgroundNode?.childNode(withName: "NumHitByHeartReaper") as? SKLabelNode
+    }
+    
+    var numGamesPlayed: SKLabelNode? {
+        return backgroundNode?.childNode(withName: "NumGamesPlayed") as? SKLabelNode
+    }
     
     
     // MARK: Scene Life Cycle
@@ -32,7 +42,9 @@ class RDOCollectionScene: RDOBaseScene {
         focusChangesEnabled = true
         
         centerCameraOnPoint(point: backgroundNode!.position)
-        
+        numSoulsCollected?.text = "\(GameplayLogic.sharedInstance().totalSouls)"
+        numHitByHeartReaper?.text = "\(GameplayLogic.sharedInstance().heartReaperHit)"
+        numGamesPlayed?.text = "\(GameplayLogic.sharedInstance().gamesPlayed)"
     }
     
 }
