@@ -21,7 +21,13 @@ class RDOAboutScene: RDOBaseScene {
         
     }
     
+    var tutorialButton: RDOButtonNode? {
+        return backgroundNode?.childNode(withName: ButtonIdentifier.tutorial.rawValue) as? RDOButtonNode
+    }
     
+    var aboutUsButton: RDOButtonNode? {
+        return backgroundNode?.childNode(withName: ButtonIdentifier.aboutUs.rawValue) as? RDOButtonNode
+    }
     
     // MARK: Scene Life Cycle
     

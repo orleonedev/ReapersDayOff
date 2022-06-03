@@ -34,6 +34,9 @@ extension RDOBaseScene: ButtonNodeResponderType {
                 sceneManager.transitionToScene(identifier: .settings)
             case .retry:
                 sceneManager.transitionToScene(identifier: .stageOne)
+//            case .tutorial:
+                
+            
             
             
             default:

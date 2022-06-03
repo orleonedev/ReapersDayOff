@@ -20,10 +20,10 @@ class RDOStartScene: RDOBaseScene {
     }
     
     /// The "NEW GAME" button which allows the player to proceed to the first level.
-    var proceedButton: RDOButtonNode? {
-        return backgroundNode?.childNode(withName: ButtonIdentifier.home.rawValue) as? RDOButtonNode
-        
-    }
+//    var proceedButton: RDOButtonNode? {
+//        return backgroundNode?.childNode(withName: ButtonIdentifier.home.rawValue) as? RDOButtonNode
+//
+//    }
 
     /// An array of objects for `SceneLoader` notifications.
     private var sceneLoaderNotificationObservers = [Any]()
@@ -97,4 +97,16 @@ class RDOStartScene: RDOBaseScene {
         
     }
     */
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+//        let reveal = SKTransition.fade(withDuration: 0.5)
+//        reveal.pausesIncomingScene = false
+//        reveal.pausesOutgoingScene = true
+//        backgroundMusicPlayer.stop()
+        
+//        self.view?.presentScene(RDOLevelScene(size: self.size), transition: reveal)
+        sceneManager.transitionToScene(identifier: .main)
+    }
+
 }
