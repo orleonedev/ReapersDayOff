@@ -250,7 +250,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
             }
             
             shared.deposit(type: gate.name)
-            
+            HapticUtility.playHapticsFile(named: "Oscillate")
 //            collectedSouls +=
         }
         
