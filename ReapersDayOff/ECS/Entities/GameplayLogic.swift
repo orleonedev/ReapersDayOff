@@ -67,27 +67,20 @@ class GameplayLogic {
     var soulsOnStage: UInt = 0
     func LOGAddSoulOnStage(n: UInt){
         soulsOnStage += n
-//        print(soulsOnStage)
+
     }
     
     
     
     func LOGremoveSoulOnStage(n: UInt){
         soulsOnStage -= n
-//        print(soulsOnStage)
+
     }
     
     
     
     var enemyOnStage: Bool = false
-//    func LOGAddEnemyOnStage(n: UInt){
-//        enemyOnStage += n
-//        print(enemyOnStage)
-//    }
-//    func LOGremoveEnemyOnStage(n: UInt){
-//        enemyOnStage -= n
-//        print(enemyOnStage)
-//    }
+
     
     func setupGame(){
         currentScore = 0
@@ -145,7 +138,7 @@ class GameplayLogic {
             redSouls = 0
         case "green":
             timeRemaining += timeForDeposit(souls: greenSouls)*2
-            currentScore += pointsForDeposit(souls: greenSouls)
+            currentScore += pointsForDeposit(souls: greenSouls)*2
             totalSouls += Int(greenSouls)
 //            collectedSouls += UInt(totalSouls)
             LOGremoveSoulOnStage(n: greenSouls)

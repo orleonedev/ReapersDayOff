@@ -119,14 +119,16 @@ class SoulsContainer: SKSpriteNode {
     init() {
         super.init(texture: nil, color: Configuration.backgroundColor, size: CGSize(width: 0, height: 0))
         self.anchorPoint = CGPoint(x: 0.0, y: 1.0)
-        
-        //Hide the container because at the start it's appear fill and in the wrong position
+        self.zPosition = 100
+//        Hide the container because, at the start, it appears to fill and in the wrong position.
         soulsContainer.isHidden = true
         soulsContainer.run(SKAction.sequence([
             SKAction.wait(forDuration: 0.1),
             SKAction.run {self.soulsContainer.isHidden = false }]))
+        soulsContainer.zPosition = 98
         addChild(soulsContainer)
         overlayNode.anchorPoint = CGPoint(x: 0.0, y: 1.0)
+        overlayNode.zPosition = 99
         addChild(overlayNode)
         
         // Constrain the position of the `chargeLevelNode`.

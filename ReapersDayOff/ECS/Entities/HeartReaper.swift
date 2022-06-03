@@ -21,40 +21,6 @@ class HeartReaper: Enemy {
         return HeartReaper.enemyAnimations!
     }
     
-    
-    //    required init(pathPoints: [CGPoint], mandate: EnemyMandate) {
-    //        super.init(pathPoints: pathPoints, mandate: mandate)
-    //
-    //        // Create components that define how the entity looks and behaves.
-    //        createRenderingComponents()
-    //
-    //        let orientationComponent = OrientationComponent()
-    //        addComponent(orientationComponent)
-    //
-    ////        let shadowComponent = ShadowComponent(texture: FlyingBot.shadowTexture, size: FlyingBot.shadowSize, offset: FlyingBot.shadowOffset)
-    ////        addComponent(shadowComponent)
-    //
-    //
-    //        let intelligenceComponent = IntelligenceComponent(states: [
-    //            EnemyAgentControlledState(entity: self)
-    ////            FlyingBotPreAttackState(entity: self),
-    ////            FlyingBotBlastState(entity: self),
-    ////            TaskBotZappedState(entity: self)
-    //        ])
-    //        addComponent(intelligenceComponent)
-    //
-    //
-    //
-    ////        let chargeComponent = ChargeComponent(charge: initialCharge, maximumCharge: GameplayConfiguration.RedSoul.maximumCharge)
-    ////        chargeComponent.delegate = self
-    ////        addComponent(chargeComponent)
-    //
-    ////        animationComponent.shadowNode = shadowComponent.node
-    //
-    //        // Specify the offset for beam targeting.
-    ////        beamTargetOffset = GameplayConfiguration.RedSoul.beamTargetOffset
-    //    }
-    
     override init(){
         super.init()
         
@@ -66,9 +32,6 @@ class HeartReaper: Enemy {
         
         let intelligenceComponent = IntelligenceComponent(states: [
             EnemyAgentControlledState(entity: self)
-            //            FlyingBotPreAttackState(entity: self),
-            //            FlyingBotBlastState(entity: self),
-            //            TaskBotZappedState(entity: self)
         ])
         addComponent(intelligenceComponent)
         
@@ -176,6 +139,7 @@ class HeartReaper: Enemy {
         gameState.heartReaperHit += 1
         
         
+        HapticUtility.playHapticsFile(named: "DamageTaken")
         gameState.loseSouls()
         // add scene.entities.remove(self) when seconds finish
         

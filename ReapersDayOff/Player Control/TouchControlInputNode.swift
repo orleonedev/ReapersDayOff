@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputSourceType {
+class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, TouchButtonNodeDelegate, ControlInputSourceType {
     // MARK: Properties
     
     /// `ControlInputSourceType` delegates.
@@ -18,7 +18,8 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
     
     /// Analog thumb stick controls for the left and right half of the screen.
     let leftThumbStickNode: ThumbStickNode
-    let rightThumbStickNode: ThumbStickNode
+//    let rightThumbStickNode: ThumbStickNode
+    let rightButtonNode: TouchButtonNode
     
     /// Node representing the touch area for the pause button.
 //    let pauseButton: SKSpriteNode
@@ -33,7 +34,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
     var hideThumbStickNodes: Bool = false {
         didSet {
             leftThumbStickNode.isHidden = hideThumbStickNodes
-            rightThumbStickNode.isHidden = hideThumbStickNodes
+            rightButtonNode.isHidden = hideThumbStickNodes
         }
     }
     
@@ -56,8 +57,8 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         leftThumbStickNode = ThumbStickNode(size: thumbStickNodeSize)
         leftThumbStickNode.position = CGPoint(x: -initialHorizontalOffset, y: initialVerticalOffset)
         
-        rightThumbStickNode = ThumbStickNode(size: thumbStickNodeSize)
-        rightThumbStickNode.position = CGPoint(x: initialHorizontalOffset, y: initialVerticalOffset)
+        rightButtonNode = TouchButtonNode(size: thumbStickNodeSize)
+        rightButtonNode.position = CGPoint(x: initialHorizontalOffset, y: initialVerticalOffset)
         
         // Setup pause button.
 //        let buttonSize = CGSize(width: frame.height / 10, height: frame.height / 10)
@@ -65,11 +66,11 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
 //        pauseButton.position = CGPoint(x: frame.width / 2.5, y: frame.height / 2.0)
         
         super.init(texture: nil, color: UIColor.clear, size: frame.size)
-        rightThumbStickNode.delegate = self
+        rightButtonNode.delegate = self
         leftThumbStickNode.delegate = self
         
         addChild(leftThumbStickNode)
-        addChild(rightThumbStickNode)
+        addChild(rightButtonNode)
 //        addChild(pauseButton)
         
         /*
@@ -91,21 +92,14 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
             let displacement = SIMD2<Float>(x: xValue, y: yValue)
             delegate?.controlInputSource(self, didUpdateDisplacement: displacement)
         }
-        else if thumbStickNode === rightThumbStickNode {
-            let displacement = SIMD2<Float>(x: xValue, y: yValue)
-            
-            // Rotate the character only if the `thumbStickNode` is sufficiently displaced.
-            if length(displacement) >= GameplayConfiguration.TouchControl.minimumRequiredThumbstickDisplacement {
-                delegate?.controlInputSource(self, didUpdateAngularDisplacement: displacement)
-            }
-            else {
-                delegate?.controlInputSource(self, didUpdateAngularDisplacement: SIMD2<Float>())
-            }
-        }
     }
     
     func thumbStickNode(thumbStickNode: ThumbStickNode, isPressed: Bool) {
-        if thumbStickNode === rightThumbStickNode {
+        
+    }
+    
+    func touchButtonNode(touchButtonNode: TouchButtonNode, isPressed: Bool) {
+        if touchButtonNode === rightButtonNode {
             if isPressed {
                 delegate?.controlInputSourceDidBeginAttacking(self)
             }
@@ -146,8 +140,8 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
             }
             else {
                 rightControlTouches.formUnion([touch])
-                rightThumbStickNode.position = pointByCheckingControlOffset(suggestedPoint: touchPoint)
-                rightThumbStickNode.touchesBegan([touch], with: event)
+                rightButtonNode.position = pointByCheckingControlOffset(suggestedPoint: touchPoint)
+                rightButtonNode.touchesBegan([touch], with: event)
             }
         }
     }
@@ -167,7 +161,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         leftThumbStickNode.touchesMoved(movedLeftTouches, with: event)
         
         let movedRightTouches = touches.intersection(rightControlTouches)
-        rightThumbStickNode.touchesMoved(movedRightTouches, with: event)
+        rightButtonNode.touchesMoved(movedRightTouches, with: event)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -188,7 +182,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         leftControlTouches.subtract(endedLeftTouches)
         
         let endedRightTouches = touches.intersection(rightControlTouches)
-        rightThumbStickNode.touchesEnded(endedRightTouches, with: event)
+        rightButtonNode.touchesEnded(endedRightTouches, with: event)
         rightControlTouches.subtract(endedRightTouches)
     }
     
@@ -196,7 +190,7 @@ class TouchControlInputNode: SKSpriteNode, ThumbStickNodeDelegate, ControlInputS
         super.touchesCancelled(touches!, with: event)
 
         leftThumbStickNode.resetTouchPad()
-        rightThumbStickNode.resetTouchPad()
+        rightButtonNode.resetTouchPad()
         
         // Keep the set's capacity, because roughly the same number of touch events are being received.
         leftControlTouches.removeAll(keepingCapacity: true)

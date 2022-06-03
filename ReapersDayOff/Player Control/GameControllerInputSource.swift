@@ -27,7 +27,7 @@ class GameControllerInputSource: ControlInputSourceType {
         registerPauseEvent()
         registerAttackEvents()
         registerMovementEvents()
-        registerRotationEvents()
+        //registerRotationEvents()
     }
     
     // MARK: Gamepad Registration Methods

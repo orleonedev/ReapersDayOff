@@ -83,9 +83,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     let greencounter = SKLabelNode(text: "0")
     
     
-    let blueHUD = SKSpriteNode(texture: nil, color: UIColor.blue, size: CGSize(width: 0, height: 0))
-    let redHUD = SKSpriteNode(texture: nil, color: UIColor.red, size: CGSize(width: 0, height: 0))
-    let greenHUD = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 0, height: 0))
+    let blueHUD = SKSpriteNode(texture: SKTexture(imageNamed: "blueSoul_6_00"), color: UIColor.blue, size: CGSize(width: 0, height: 0))
+    let redHUD = SKSpriteNode(texture: SKTexture(imageNamed: "redSoul_6_00"), color: UIColor.red, size: CGSize(width: 0, height: 0))
+    let greenHUD = SKSpriteNode(texture: SKTexture(imageNamed: "greenSoul_6_00"), color: UIColor.green, size: CGSize(width: 0, height: 0))
     
     //bar indicating the number of souls transported
 //  var soulsContainer = SKSpriteNode(texture: nil, color: UIColor.yellow, size: CGSize(width: 0, height: 0))
@@ -203,7 +203,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         camera!.addChild(score)
         
         bluecounter.zPosition = WorldLayer.top.rawValue
-        bluecounter.fontColor = SKColor.blue
+        bluecounter.fontColor = SKColor.black
         bluecounter.fontName = GameplayConfiguration.Timer.fontName
         bluecounter.horizontalAlignmentMode = .left
         bluecounter.verticalAlignmentMode = .top
@@ -211,7 +211,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         camera!.addChild(bluecounter)
         
         redcounter.zPosition = WorldLayer.top.rawValue
-        redcounter.fontColor = SKColor.red
+        redcounter.fontColor = SKColor.black
         redcounter.fontName = GameplayConfiguration.Timer.fontName
         redcounter.horizontalAlignmentMode = .left
         redcounter.verticalAlignmentMode = .top
@@ -219,14 +219,14 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         camera!.addChild(redcounter)
         
         greencounter.zPosition = WorldLayer.top.rawValue
-        greencounter.fontColor = SKColor.green
+        greencounter.fontColor = SKColor.black
         greencounter.fontName = GameplayConfiguration.Timer.fontName
         greencounter.horizontalAlignmentMode = .left
         greencounter.verticalAlignmentMode = .top
         scaleGreenCounterNode()
         camera!.addChild(greencounter)
         
-        let counterHUDSize = CGSize(width: frame.height / 30, height: frame.height / 30)
+        let counterHUDSize = CGSize(width: frame.height / 20, height: frame.height / 20)
         blueHUD.size = counterHUDSize
         blueHUD.zPosition = WorldLayer.top.rawValue
         blueHUD.anchorPoint.y = 1
@@ -300,78 +300,6 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         spawnSoul()
         spawnSoul()
         
-//        // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
-//        let pathPoints = [CGPoint(x: -600, y: -0), CGPoint(x: 350, y: 0)]
-//        let pathPoints2 = [CGPoint(x: -650, y: -0), CGPoint(x: 200, y: 0)]
-//        let pathPoints3 = [CGPoint(x: -700, y: -0), CGPoint(x: 100, y: 0)]
-//
-//        let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
-//        let blueSoul = BlueSoul(pathPoints: pathPoints2, mandate: .followPatrolPath)
-//        let greenSoul = GreenSoul(pathPoints: pathPoints3, mandate: .followPatrolPath)
-//
-////        for soulConfiguration in levelConfiguration.soulConfigurations {
-////            let soul: Soul
-////
-////            // Find the locations of the nodes that define the `TaskBot`'s "good" and "bad" patrol paths.
-//////            let goodPathPoints = nodePointsFromNodeNames(nodeNames: taskBotConfiguration.goodPathNodeNames)
-////            let pathPoints = nodePointsFromNodeNames(nodeNames: soulConfiguration.pathNodeNames)
-////
-////
-////            // Create the appropriate type `TaskBot` (ground or flying).
-////            switch soulConfiguration.locomotion {
-//////                case .flying:
-//////                    taskBot = FlyingBot(isGood: !taskBotConfiguration.startsBad, goodPathPoints: goodPathPoints, badPathPoints: badPathPoints)
-////
-////                case .red:
-////                soul = RedSoul(pathPoints: pathPoints, mandate: .followPatrolPath)
-////            }
-////
-////            // Set the `TaskBot`'s initial orientation so that it is facing the correct way.
-//            guard let orientationComponent = redSoul.component(ofType: OrientationComponent.self) else {
-//                fatalError("A task bot must have an orientation component to be able to be added to a level")
-//            }
-//        orientationComponent.compassDirection = .east
-////
-////            // Set the `TaskBot`'s initial position.
-//            let soulNode = redSoul.renderComponent.node
-//        soulNode.position = pathPoints.first!
-//        redSoul.updateAgentPositionToMatchNodePosition()
-////
-////            // Add the `TaskBot` to the scene and the component systems.
-//            addEntity(entity: redSoul)
-//
-//        guard let orientationComponent = blueSoul.component(ofType: OrientationComponent.self) else {
-//            fatalError("A task bot must have an orientation component to be able to be added to a level")
-//        }
-//        orientationComponent.compassDirection = .west
-//
-//        // Set the `TaskBot`'s initial position.
-//                    let blueSoulNode = blueSoul.renderComponent.node
-//                blueSoulNode.position = pathPoints.first!
-//                blueSoul.updateAgentPositionToMatchNodePosition()
-//        //
-//        //            // Add the `TaskBot` to the scene and the component systems.
-//                    addEntity(entity: blueSoul)
-//
-//        guard let orientationComponent = greenSoul.component(ofType: OrientationComponent.self) else {
-//            fatalError("A task bot must have an orientation component to be able to be added to a level")
-//        }
-//        orientationComponent.compassDirection = .south
-//
-//        // Set the `TaskBot`'s initial position.
-//                    let greenSoulNode = greenSoul.renderComponent.node
-//                greenSoulNode.position = pathPoints.first!
-//                greenSoul.updateAgentPositionToMatchNodePosition()
-//        //
-//        //            // Add the `TaskBot` to the scene and the component systems.
-//                    addEntity(entity: greenSoul)
-////
-////            // Add the `TaskBot`'s debug drawing node beneath all characters.
-////            addNode(node: taskBot.debugNode, toWorldLayer: .debug)
-////        }
-//
-////        Reaper().addComponent(reaper.agent)
-////        reaper.agent.delegate = reaper
         
         #if os(iOS)
         /*
@@ -582,36 +510,18 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
                 chargeBar.position.x = -size.width / 3
                 chargeBar.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
                 camera!.addChild(chargeBar)
-                // Constrain the `ChargeBar`'s node position to the render node.
-//                let xRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.x)
-//                let yRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.y)
-//
-//                let constraint = SKConstraint.positionX(xRange, y: yRange)
-//                constraint.referenceNode = renderNode
-//
-//                chargeBar.constraints = [constraint]
+               
             }
             
             if let soulsContainer = entity.component(ofType: SoulsContainerComponent.self)?.chargeBar {
                 
-                
-//                addNode(node: chargeBar, toWorldLayer: .top)
                 soulsContainer.position.y = size.height / 2.0
                 soulsContainer.position.x = -size.width / 2.25
                 soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
                 camera!.addChild(soulsContainer)
-                // Constrain the `ChargeBar`'s node position to the render node.
-//                let xRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.x)
-//                let yRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.y)
-//
-//                let constraint = SKConstraint.positionX(xRange, y: yRange)
-//                constraint.referenceNode = renderNode
-//
-//                chargeBar.constraints = [constraint]
+                
             }
         }
-        
-        
         
         // If the entity has an `IntelligenceComponent`, enter its initial state.
         if let intelligenceComponent = entity.component(ofType: IntelligenceComponent.self) {
@@ -945,10 +855,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let reaperNode = reaper.renderComponent.node
         reaperNode.position = transporterCoordinate.position
         reaper.updateAgentPositionToMatchNodePosition()
-        
-//        let enemyNode = enemy.renderComponent.node
-//        enemyNode.position = transporterCoordinate.position
-//        enemy.updateAgentPositionToMatchNodePosition()
+        if let animationComponent = reaper.component(ofType: AnimationComponent.self) {
+            animationComponent.node.isHidden = true
+        }
         
         // Constrain the camera to the `PlayerBot` position and the level edges.
         setCameraConstraints()
@@ -973,10 +882,13 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         let enemyNode = enemy.renderComponent.node
         enemyNode.position = transporterCoordinate.position
         enemy.updateAgentPositionToMatchNodePosition()
+        enemyNode.run(SKAction(named: "heartAppear")!)
          
         
         // Constrain the camera to the `PlayerBot` position and the level edges.
 //        setCameraConstraints()
+        
+        
         
         // Add the `PlayerBot` to the scene and component systems.
         addEntity(entity: enemy)

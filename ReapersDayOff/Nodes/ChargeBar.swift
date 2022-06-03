@@ -50,7 +50,10 @@ class ChargeBar: SKSpriteNode {
     init() {
         super.init(texture: nil, color: Configuration.backgroundColor, size: Configuration.chargeLevelNodeSize)
         self.anchorPoint = CGPoint(x: 0.0, y: 0.5)
+        self.zPosition = 100
+        chargeLevelNode.zPosition = 98
         addChild(chargeLevelNode)
+        overlayNode.zPosition = 99
         overlayNode.anchorPoint = CGPoint(x: 0.0, y: 0.5)
         addChild(overlayNode)
         
