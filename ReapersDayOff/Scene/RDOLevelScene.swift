@@ -300,78 +300,6 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         spawnSoul()
         spawnSoul()
         
-//        // Iterate over the `TaskBot` configurations for this level, and create each `TaskBot`.
-//        let pathPoints = [CGPoint(x: -600, y: -0), CGPoint(x: 350, y: 0)]
-//        let pathPoints2 = [CGPoint(x: -650, y: -0), CGPoint(x: 200, y: 0)]
-//        let pathPoints3 = [CGPoint(x: -700, y: -0), CGPoint(x: 100, y: 0)]
-//
-//        let redSoul = RedSoul(pathPoints: pathPoints , mandate: .followPatrolPath)
-//        let blueSoul = BlueSoul(pathPoints: pathPoints2, mandate: .followPatrolPath)
-//        let greenSoul = GreenSoul(pathPoints: pathPoints3, mandate: .followPatrolPath)
-//
-////        for soulConfiguration in levelConfiguration.soulConfigurations {
-////            let soul: Soul
-////
-////            // Find the locations of the nodes that define the `TaskBot`'s "good" and "bad" patrol paths.
-//////            let goodPathPoints = nodePointsFromNodeNames(nodeNames: taskBotConfiguration.goodPathNodeNames)
-////            let pathPoints = nodePointsFromNodeNames(nodeNames: soulConfiguration.pathNodeNames)
-////
-////
-////            // Create the appropriate type `TaskBot` (ground or flying).
-////            switch soulConfiguration.locomotion {
-//////                case .flying:
-//////                    taskBot = FlyingBot(isGood: !taskBotConfiguration.startsBad, goodPathPoints: goodPathPoints, badPathPoints: badPathPoints)
-////
-////                case .red:
-////                soul = RedSoul(pathPoints: pathPoints, mandate: .followPatrolPath)
-////            }
-////
-////            // Set the `TaskBot`'s initial orientation so that it is facing the correct way.
-//            guard let orientationComponent = redSoul.component(ofType: OrientationComponent.self) else {
-//                fatalError("A task bot must have an orientation component to be able to be added to a level")
-//            }
-//        orientationComponent.compassDirection = .east
-////
-////            // Set the `TaskBot`'s initial position.
-//            let soulNode = redSoul.renderComponent.node
-//        soulNode.position = pathPoints.first!
-//        redSoul.updateAgentPositionToMatchNodePosition()
-////
-////            // Add the `TaskBot` to the scene and the component systems.
-//            addEntity(entity: redSoul)
-//
-//        guard let orientationComponent = blueSoul.component(ofType: OrientationComponent.self) else {
-//            fatalError("A task bot must have an orientation component to be able to be added to a level")
-//        }
-//        orientationComponent.compassDirection = .west
-//
-//        // Set the `TaskBot`'s initial position.
-//                    let blueSoulNode = blueSoul.renderComponent.node
-//                blueSoulNode.position = pathPoints.first!
-//                blueSoul.updateAgentPositionToMatchNodePosition()
-//        //
-//        //            // Add the `TaskBot` to the scene and the component systems.
-//                    addEntity(entity: blueSoul)
-//
-//        guard let orientationComponent = greenSoul.component(ofType: OrientationComponent.self) else {
-//            fatalError("A task bot must have an orientation component to be able to be added to a level")
-//        }
-//        orientationComponent.compassDirection = .south
-//
-//        // Set the `TaskBot`'s initial position.
-//                    let greenSoulNode = greenSoul.renderComponent.node
-//                greenSoulNode.position = pathPoints.first!
-//                greenSoul.updateAgentPositionToMatchNodePosition()
-//        //
-//        //            // Add the `TaskBot` to the scene and the component systems.
-//                    addEntity(entity: greenSoul)
-////
-////            // Add the `TaskBot`'s debug drawing node beneath all characters.
-////            addNode(node: taskBot.debugNode, toWorldLayer: .debug)
-////        }
-//
-////        Reaper().addComponent(reaper.agent)
-////        reaper.agent.delegate = reaper
         
         #if os(iOS)
         /*
@@ -582,36 +510,18 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
                 chargeBar.position.x = -size.width / 3
                 chargeBar.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
                 camera!.addChild(chargeBar)
-                // Constrain the `ChargeBar`'s node position to the render node.
-//                let xRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.x)
-//                let yRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.y)
-//
-//                let constraint = SKConstraint.positionX(xRange, y: yRange)
-//                constraint.referenceNode = renderNode
-//
-//                chargeBar.constraints = [constraint]
+               
             }
             
             if let soulsContainer = entity.component(ofType: SoulsContainerComponent.self)?.chargeBar {
                 
-                
-//                addNode(node: chargeBar, toWorldLayer: .top)
                 soulsContainer.position.y = size.height / 2.0
                 soulsContainer.position.x = -size.width / 2.25
                 soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
                 camera!.addChild(soulsContainer)
-                // Constrain the `ChargeBar`'s node position to the render node.
-//                let xRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.x)
-//                let yRange = SKRange(constantValue: GameplayConfiguration.Reaper.chargeBarOffset.y)
-//
-//                let constraint = SKConstraint.positionX(xRange, y: yRange)
-//                constraint.referenceNode = renderNode
-//
-//                chargeBar.constraints = [constraint]
+                
             }
         }
-        
-        
         
         // If the entity has an `IntelligenceComponent`, enter its initial state.
         if let intelligenceComponent = entity.component(ofType: IntelligenceComponent.self) {

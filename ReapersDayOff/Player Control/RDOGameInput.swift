@@ -85,11 +85,12 @@ final class RDOGameInput {
         
         update(withGameController: connectedGameController)
         delegate?.gameInputDidUpdateControlInputSources(gameInput: self)
+        HapticUtility.initHapticsFor(controller: connectedGameController)
     }
     
     @objc func handleControllerDidDisconnectNotification(notification: NSNotification) {
         let disconnectedGameController = notification.object as! GCController
-        
+        HapticUtility.deinitHapticsFor(controller: disconnectedGameController)
         // Check if the player was being controlled by the disconnected controller.
         if secondaryControlInputSource?.gameController == disconnectedGameController {
             controlsQueue.sync {
@@ -99,9 +100,11 @@ final class RDOGameInput {
             // Check for any other connected controllers.
             if let gameController = GCController.controllers().first {
                 update(withGameController: gameController)
+                HapticUtility.initHapticsFor(controller: gameController)
             }
             
             delegate?.gameInputDidUpdateControlInputSources(gameInput: self)
+            
         }
     }
 }

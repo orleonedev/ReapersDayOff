@@ -74,6 +74,11 @@
 		51B1450E283F7BA0005517A3 /* LaunchscreenScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51B1450D283F7BA0005517A3 /* LaunchscreenScene.sks */; };
 		51B14510283F7E38005517A3 /* RDOLaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B1450F283F7E38005517A3 /* RDOLaunchScreen.swift */; };
 		51B14512283F899D005517A3 /* RDOMainScenePhone.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51B14511283F899D005517A3 /* RDOMainScenePhone.sks */; };
+		51B3F45A284A1DB500A15D43 /* TouchButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B3F459284A1DB500A15D43 /* TouchButtonNode.swift */; };
+		51B3F45C284A543E00A15D43 /* HapticUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B3F45B284A543E00A15D43 /* HapticUtility.swift */; };
+		51B3F460284A553500A15D43 /* DamageTaken.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 51B3F45F284A553500A15D43 /* DamageTaken.ahap */; };
+		51B3F462284A581500A15D43 /* Sprint.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 51B3F461284A581500A15D43 /* Sprint.ahap */; };
+		51B3F464284A589D00A15D43 /* Oscillate.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 51B3F463284A589D00A15D43 /* Oscillate.ahap */; };
 		6641E45728294FC600308AB3 /* RDOLevelSceneOverlayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45628294FC600308AB3 /* RDOLevelSceneOverlayState.swift */; };
 		6641E45928294FEB00308AB3 /* RDOLevelSceneActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */; };
 		6641E45B2829500500308AB3 /* RDOLevelScenePauseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45A2829500500308AB3 /* RDOLevelScenePauseState.swift */; };
@@ -161,6 +166,11 @@
 		51B1450D283F7BA0005517A3 /* LaunchscreenScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LaunchscreenScene.sks; sourceTree = "<group>"; };
 		51B1450F283F7E38005517A3 /* RDOLaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLaunchScreen.swift; sourceTree = "<group>"; };
 		51B14511283F899D005517A3 /* RDOMainScenePhone.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOMainScenePhone.sks; sourceTree = "<group>"; };
+		51B3F459284A1DB500A15D43 /* TouchButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchButtonNode.swift; sourceTree = "<group>"; };
+		51B3F45B284A543E00A15D43 /* HapticUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticUtility.swift; sourceTree = "<group>"; };
+		51B3F45F284A553500A15D43 /* DamageTaken.ahap */ = {isa = PBXFileReference; lastKnownFileType = text; path = DamageTaken.ahap; sourceTree = "<group>"; };
+		51B3F461284A581500A15D43 /* Sprint.ahap */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sprint.ahap; sourceTree = "<group>"; };
+		51B3F463284A589D00A15D43 /* Oscillate.ahap */ = {isa = PBXFileReference; lastKnownFileType = text; path = Oscillate.ahap; sourceTree = "<group>"; };
 		6641E45628294FC600308AB3 /* RDOLevelSceneOverlayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneOverlayState.swift; sourceTree = "<group>"; };
 		6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneActiveState.swift; sourceTree = "<group>"; };
 		6641E45A2829500500308AB3 /* RDOLevelScenePauseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelScenePauseState.swift; sourceTree = "<group>"; };
@@ -225,6 +235,7 @@
 		517F5BF328210F8600C39D21 /* ReapersDayOff */ = {
 			isa = PBXGroup;
 			children = (
+				51B3F45E284A54AC00A15D43 /* AHAP */,
 				517F5C732826AF7B00C39D21 /* ECS */,
 				517F5C702826ABA200C39D21 /* Physics Contacts and Collisions */,
 				517F5C642822BDD000C39D21 /* Scene */,
@@ -292,6 +303,7 @@
 				517F5C2428228F0900C39D21 /* GameControllerInputSource.swift */,
 				517F5C26282293CD00C39D21 /* TouchControlInputNode.swift */,
 				517F5C662822C21C00C39D21 /* BaseScene+TouchEventForwarding.swift */,
+				51B3F45B284A543E00A15D43 /* HapticUtility.swift */,
 			);
 			path = "Player Control";
 			sourceTree = "<group>";
@@ -328,6 +340,7 @@
 				517F5C622822BCC300C39D21 /* RDOButtonNode.swift */,
 				517F5C282822942C00C39D21 /* ThumbStickNode.swift */,
 				29C813FE282D0F6400E8868A /* ContactNode.swift */,
+				51B3F459284A1DB500A15D43 /* TouchButtonNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -413,6 +426,16 @@
 			path = Behaviors;
 			sourceTree = "<group>";
 		};
+		51B3F45E284A54AC00A15D43 /* AHAP */ = {
+			isa = PBXGroup;
+			children = (
+				51B3F45F284A553500A15D43 /* DamageTaken.ahap */,
+				51B3F461284A581500A15D43 /* Sprint.ahap */,
+				51B3F463284A589D00A15D43 /* Oscillate.ahap */,
+			);
+			path = AHAP;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -478,13 +501,16 @@
 				51B14512283F899D005517A3 /* RDOMainScenePhone.sks in Resources */,
 				517F5C0528210F8900C39D21 /* LaunchScreen.storyboard in Resources */,
 				667C2E7028250B6600A5D13E /* RDOAboutScene.sks in Resources */,
+				51B3F462284A581500A15D43 /* Sprint.ahap in Resources */,
 				667C2E7228250FAC00A5D13E /* RDOCollectionScene.sks in Resources */,
 				517F5C93282817D900C39D21 /* Soul.xcassets in Resources */,
 				6641E463282A49B800308AB3 /* RDOPauseScene.sks in Resources */,
+				51B3F460284A553500A15D43 /* DamageTaken.ahap in Resources */,
 				6646314928250A9200311BE3 /* RDOSettingsScene.sks in Resources */,
 				517F5BF928210F8600C39D21 /* Actions.sks in Resources */,
 				51B1450E283F7BA0005517A3 /* LaunchscreenScene.sks in Resources */,
 				6641E465282A4A3B00308AB3 /* RDOGameoverScene.sks in Resources */,
+				51B3F464284A589D00A15D43 /* Oscillate.ahap in Resources */,
 				66463147282506DB00311BE3 /* RDOMainScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +543,7 @@
 				517F5C27282293CD00C39D21 /* TouchControlInputNode.swift in Sources */,
 				296E1DBA2837B7D400945C89 /* HeartReaper.swift in Sources */,
 				296E1DB628378EA200945C89 /* EnemyAgent.swift in Sources */,
+				51B3F45C284A543E00A15D43 /* HapticUtility.swift in Sources */,
 				517F5C7E2826B10E00C39D21 /* SoulAgentControlledState.swift in Sources */,
 				517F5C632822BCC400C39D21 /* RDOButtonNode.swift in Sources */,
 				517F5C6D2825137400C39D21 /* RDOAboutScene.swift in Sources */,
@@ -529,6 +556,7 @@
 				29AAD99F282B0F280088F48C /* RDORules.swift in Sources */,
 				517F5C5F2822BC8A00C39D21 /* RDOBaseScene+Focus.swift in Sources */,
 				517F5C912826B3B800C39D21 /* GeometryExtension.swift in Sources */,
+				51B3F45A284A1DB500A15D43 /* TouchButtonNode.swift in Sources */,
 				6641E45928294FEB00308AB3 /* RDOLevelSceneActiveState.swift in Sources */,
 				517F5C842826B20800C39D21 /* CompassDirection.swift in Sources */,
 				6641E45F2829570A00308AB3 /* RDOLevelScene+Pause.swift in Sources */,
