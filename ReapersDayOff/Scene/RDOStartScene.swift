@@ -20,10 +20,10 @@ class RDOStartScene: RDOBaseScene {
     }
     
     /// The "NEW GAME" button which allows the player to proceed to the first level.
-//    var proceedButton: RDOButtonNode? {
-//        return backgroundNode?.childNode(withName: ButtonIdentifier.home.rawValue) as? RDOButtonNode
-//
-//    }
+    var startButton: RDOButtonNode? {
+        return backgroundNode?.childNode(withName: ButtonIdentifier.home.rawValue) as? RDOButtonNode
+
+    }
     var bg : SKSpriteNode? {
         return backgroundNode?.childNode(withName: "bg") as? SKSpriteNode
     }
