@@ -42,6 +42,7 @@ final class RDOSceneManager {
     let t5 = SKTransition.doorway(withDuration: 1.0)
     let t6 = SKTransition.push(with: .left, duration: 1.0)
     let t7 = SKTransition.fade(withDuration: 1.0)
+    let t8 = SKTransition.push(with: .right, duration: 1.0)
     
     /// The `RDOSceneManager`'s delegate.
     weak var delegate: SceneManagerDelegate?
@@ -67,7 +68,7 @@ final class RDOSceneManager {
             if device == .phone {
                 scene = SKScene.init(fileNamed: "RDOMainScenePhone") as? RDOMainScene
             }
-            transit = t2
+            transit = t8
 
         case .settings:
             scene = SKScene.init(fileNamed: "RDOSettingsScene") as? RDOSettingsScene

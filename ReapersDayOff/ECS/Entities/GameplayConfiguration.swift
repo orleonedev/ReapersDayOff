@@ -342,7 +342,7 @@ struct GameplayConfiguration {
     
         struct Timer {
         /// The name of the font to use for the timer.
-        static let fontName = "DINCondensed-Bold"
+        static let fontName = "NokiaCellphoneFC-Small"
         
         /// The size of the timer node font as a proportion of the level scene's height.
         static let fontSize: CGFloat = 0.05

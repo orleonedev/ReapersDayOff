@@ -20,6 +20,7 @@ class GameViewController: UIViewController, SceneManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let viewSize = view.bounds.size
         
         /// Controller

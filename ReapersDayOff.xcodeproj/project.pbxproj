@@ -31,6 +31,7 @@
 		51231D98282D112300D31CB3 /* GameplayLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D97282D112300D31CB3 /* GameplayLogic.swift */; };
 		51231D9E2831681700D31CB3 /* ContactNotifiableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9D2831681700D31CB3 /* ContactNotifiableType.swift */; };
 		51231DA0283227E600D31CB3 /* Gate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51231D9F283227E600D31CB3 /* Gate.swift */; };
+		517844A6284E374C00F0C152 /* nokiafc22.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 517844A5284E374C00F0C152 /* nokiafc22.ttf */; };
 		517F5BF528210F8600C39D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5BF428210F8600C39D21 /* AppDelegate.swift */; };
 		517F5BF928210F8600C39D21 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5BF828210F8600C39D21 /* Actions.sks */; };
 		517F5BFD28210F8600C39D21 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5BFC28210F8600C39D21 /* GameViewController.swift */; };
@@ -125,6 +126,8 @@
 		51231D97282D112300D31CB3 /* GameplayLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayLogic.swift; sourceTree = "<group>"; };
 		51231D9D2831681700D31CB3 /* ContactNotifiableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNotifiableType.swift; sourceTree = "<group>"; };
 		51231D9F283227E600D31CB3 /* Gate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gate.swift; sourceTree = "<group>"; };
+		517844A5284E374C00F0C152 /* nokiafc22.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nokiafc22.ttf; sourceTree = "<group>"; };
+		517844A7284E378300F0C152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		517F5BF128210F8600C39D21 /* ReapersDayOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReapersDayOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517F5BF428210F8600C39D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		517F5BF828210F8600C39D21 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -224,6 +227,14 @@
 			path = Rules;
 			sourceTree = "<group>";
 		};
+		517844A4284E373800F0C152 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				517844A5284E374C00F0C152 /* nokiafc22.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		517F5BE828210F8600C39D21 = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +254,8 @@
 		517F5BF328210F8600C39D21 /* ReapersDayOff */ = {
 			isa = PBXGroup;
 			children = (
+				517844A7284E378300F0C152 /* Info.plist */,
+				517844A4284E373800F0C152 /* Font */,
 				51B3F465284E0D5F00A15D43 /* Audio */,
 				51B3F45E284A54AC00A15D43 /* AHAP */,
 				517F5C732826AF7B00C39D21 /* ECS */,
@@ -520,6 +533,7 @@
 				517F5C0228210F8900C39D21 /* Assets.xcassets in Resources */,
 				51B14512283F899D005517A3 /* RDOMainScenePhone.sks in Resources */,
 				51B3F46F284E141A00A15D43 /* DrumRoll.mp3 in Resources */,
+				517844A6284E374C00F0C152 /* nokiafc22.ttf in Resources */,
 				517F5C0528210F8900C39D21 /* LaunchScreen.storyboard in Resources */,
 				667C2E7028250B6600A5D13E /* RDOAboutScene.sks in Resources */,
 				51B3F469284E0DD000A15D43 /* life-of-a-wandering-wizard-15549.mp3 in Resources */,
@@ -763,6 +777,7 @@
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = SA4H49C4LT;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ReapersDayOff/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -794,6 +809,7 @@
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = SA4H49C4LT;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ReapersDayOff/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
