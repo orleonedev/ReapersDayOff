@@ -42,12 +42,14 @@ class RDOLevelSceneOverlayState: GKState {
         // Provide the levelScene with a reference to the overlay node.
         levelScene.overlay = overlay
         overlay.contentNode.isPaused = false
+        SoundClass.sharedInstance().backgroundMusicPlayer?.setVolume(0.05, fadeDuration: 0.5)
     }
 
     override func willExit(to nextState: GKState) {
         super.willExit(to: nextState)
         
         levelScene.overlay = nil
+        SoundClass.sharedInstance().backgroundMusicPlayer?.setVolume(0.3, fadeDuration: 0.5)
         
     }
     

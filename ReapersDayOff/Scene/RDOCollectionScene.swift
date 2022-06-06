@@ -32,6 +32,13 @@ class RDOCollectionScene: RDOBaseScene {
     var numGamesPlayed: SKLabelNode? {
         return backgroundNode?.childNode(withName: "NumGamesPlayed") as? SKLabelNode
     }
+    var bg : SKSpriteNode? {
+        return backgroundNode?.childNode(withName: "bg") as? SKSpriteNode
+    }
+
+    var bg2 : SKSpriteNode? {
+        return backgroundNode?.childNode(withName: "bg2") as? SKSpriteNode
+    }
     
     
     // MARK: Scene Life Cycle
@@ -40,6 +47,20 @@ class RDOCollectionScene: RDOBaseScene {
         super.didMove(to: view)
         // Enable focus based navigation.
         focusChangesEnabled = true
+        let seq1 = SKAction.sequence([
+            SKAction(named: "moveBG")!,
+            SKAction.run{
+                self.bg?.position = CGPoint(x: 0, y: 0)
+            }
+        ])
+        let seq2 = SKAction.sequence([
+            SKAction(named: "moveBG")!,
+            SKAction.run{
+                self.bg2?.position = CGPoint(x: 1888, y: 0)
+            }
+        ])
+        bg?.run(SKAction.repeatForever(seq1))
+        bg2?.run(SKAction.repeatForever(seq2))
         
         centerCameraOnPoint(point: backgroundNode!.position)
         numSoulsCollected?.text = "\(GameplayLogic.sharedInstance().totalSouls)"

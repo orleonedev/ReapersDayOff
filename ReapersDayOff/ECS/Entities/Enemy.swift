@@ -37,9 +37,9 @@ class Enemy: GKEntity,GKAgentDelegate, ContactNotifiableType {
         let radius: Float
             
         // `debugPathPoints`, `debugPathShouldCycle`, and `debugColor` are only used when debug drawing is enabled.
-        let debugPathPoints: [CGPoint]
-        var debugPathShouldCycle = false
-        let debugColor: SKColor
+//        let debugPathPoints: [CGPoint]
+//        var debugPathShouldCycle = false
+//        let debugColor: SKColor
         
         switch mandate {
             case .followPatrolPath:
@@ -53,7 +53,7 @@ class Enemy: GKEntity,GKAgentDelegate, ContactNotifiableType {
             
         case let .huntAgent(targetAgent):
             radius = GameplayConfiguration.Enemy.huntPathRadius
-            (agentBehavior, debugPathPoints) = EnemyBehavior.behaviorAndPathPoints(forAgent: agent, huntingAgent: targetAgent, pathRadius: radius, inScene: levelScene)
+            (agentBehavior, _) = EnemyBehavior.behaviorAndPathPoints(forAgent: agent, huntingAgent: targetAgent, pathRadius: radius, inScene: levelScene)
             
 //            case let .huntAgent(targetAgent):
 //                radius = GameplayConfiguration.Enemy.huntPathRadius
@@ -62,7 +62,7 @@ class Enemy: GKEntity,GKAgentDelegate, ContactNotifiableType {
 
             case let .returnToPositionOnPath(position):
                 radius = GameplayConfiguration.Enemy.returnToPatrolPathRadius
-                (agentBehavior, debugPathPoints) = EnemyBehavior.behaviorAndPathPoints(forAgent: agent, returningToPoint: position, pathRadius: radius, inScene: levelScene)
+                (agentBehavior, _) = EnemyBehavior.behaviorAndPathPoints(forAgent: agent, returningToPoint: position, pathRadius: radius, inScene: levelScene)
 //                debugColor = SKColor.yellow
 //        case .wander:
 //            agentBehavior = EnemyBehavior.behaviorWonder(forAgent: agent, inScene: levelScene)

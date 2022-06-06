@@ -79,6 +79,10 @@
 		51B3F460284A553500A15D43 /* DamageTaken.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 51B3F45F284A553500A15D43 /* DamageTaken.ahap */; };
 		51B3F462284A581500A15D43 /* Sprint.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 51B3F461284A581500A15D43 /* Sprint.ahap */; };
 		51B3F464284A589D00A15D43 /* Oscillate.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 51B3F463284A589D00A15D43 /* Oscillate.ahap */; };
+		51B3F469284E0DD000A15D43 /* life-of-a-wandering-wizard-15549.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51B3F468284E0DD000A15D43 /* life-of-a-wandering-wizard-15549.mp3 */; };
+		51B3F46B284E0DEF00A15D43 /* jazz-happy-110855.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51B3F46A284E0DEF00A15D43 /* jazz-happy-110855.mp3 */; };
+		51B3F46D284E0E2800A15D43 /* SoundClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B3F46C284E0E2800A15D43 /* SoundClass.swift */; };
+		51B3F46F284E141A00A15D43 /* DrumRoll.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51B3F46E284E141A00A15D43 /* DrumRoll.mp3 */; };
 		6641E45728294FC600308AB3 /* RDOLevelSceneOverlayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45628294FC600308AB3 /* RDOLevelSceneOverlayState.swift */; };
 		6641E45928294FEB00308AB3 /* RDOLevelSceneActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */; };
 		6641E45B2829500500308AB3 /* RDOLevelScenePauseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45A2829500500308AB3 /* RDOLevelScenePauseState.swift */; };
@@ -171,6 +175,10 @@
 		51B3F45F284A553500A15D43 /* DamageTaken.ahap */ = {isa = PBXFileReference; lastKnownFileType = text; path = DamageTaken.ahap; sourceTree = "<group>"; };
 		51B3F461284A581500A15D43 /* Sprint.ahap */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sprint.ahap; sourceTree = "<group>"; };
 		51B3F463284A589D00A15D43 /* Oscillate.ahap */ = {isa = PBXFileReference; lastKnownFileType = text; path = Oscillate.ahap; sourceTree = "<group>"; };
+		51B3F468284E0DD000A15D43 /* life-of-a-wandering-wizard-15549.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "life-of-a-wandering-wizard-15549.mp3"; sourceTree = "<group>"; };
+		51B3F46A284E0DEF00A15D43 /* jazz-happy-110855.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "jazz-happy-110855.mp3"; sourceTree = "<group>"; };
+		51B3F46C284E0E2800A15D43 /* SoundClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundClass.swift; sourceTree = "<group>"; };
+		51B3F46E284E141A00A15D43 /* DrumRoll.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DrumRoll.mp3; sourceTree = "<group>"; };
 		6641E45628294FC600308AB3 /* RDOLevelSceneOverlayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneOverlayState.swift; sourceTree = "<group>"; };
 		6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneActiveState.swift; sourceTree = "<group>"; };
 		6641E45A2829500500308AB3 /* RDOLevelScenePauseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelScenePauseState.swift; sourceTree = "<group>"; };
@@ -235,6 +243,7 @@
 		517F5BF328210F8600C39D21 /* ReapersDayOff */ = {
 			isa = PBXGroup;
 			children = (
+				51B3F465284E0D5F00A15D43 /* Audio */,
 				51B3F45E284A54AC00A15D43 /* AHAP */,
 				517F5C732826AF7B00C39D21 /* ECS */,
 				517F5C702826ABA200C39D21 /* Physics Contacts and Collisions */,
@@ -436,6 +445,17 @@
 			path = AHAP;
 			sourceTree = "<group>";
 		};
+		51B3F465284E0D5F00A15D43 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				51B3F46A284E0DEF00A15D43 /* jazz-happy-110855.mp3 */,
+				51B3F46E284E141A00A15D43 /* DrumRoll.mp3 */,
+				51B3F468284E0DD000A15D43 /* life-of-a-wandering-wizard-15549.mp3 */,
+				51B3F46C284E0E2800A15D43 /* SoundClass.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -499,10 +519,13 @@
 				517F5C542822BBFD00C39D21 /* RDOStageOneScene.sks in Resources */,
 				517F5C0228210F8900C39D21 /* Assets.xcassets in Resources */,
 				51B14512283F899D005517A3 /* RDOMainScenePhone.sks in Resources */,
+				51B3F46F284E141A00A15D43 /* DrumRoll.mp3 in Resources */,
 				517F5C0528210F8900C39D21 /* LaunchScreen.storyboard in Resources */,
 				667C2E7028250B6600A5D13E /* RDOAboutScene.sks in Resources */,
+				51B3F469284E0DD000A15D43 /* life-of-a-wandering-wizard-15549.mp3 in Resources */,
 				51B3F462284A581500A15D43 /* Sprint.ahap in Resources */,
 				667C2E7228250FAC00A5D13E /* RDOCollectionScene.sks in Resources */,
+				51B3F46B284E0DEF00A15D43 /* jazz-happy-110855.mp3 in Resources */,
 				517F5C93282817D900C39D21 /* Soul.xcassets in Resources */,
 				6641E463282A49B800308AB3 /* RDOPauseScene.sks in Resources */,
 				51B3F460284A553500A15D43 /* DamageTaken.ahap in Resources */,
@@ -564,6 +587,7 @@
 				29AAD9A7282B3E5C0088F48C /* GreenSoul.swift in Sources */,
 				517F5C5E2822BC8A00C39D21 /* RDOBaseScene+Buttons.swift in Sources */,
 				6641E45D2829504C00308AB3 /* RDOLevelSceneGameoverState.swift in Sources */,
+				51B3F46D284E0E2800A15D43 /* SoundClass.swift in Sources */,
 				517F5BFD28210F8600C39D21 /* GameViewController.swift in Sources */,
 				6641E46128295BA600308AB3 /* RDOLevelConfiguration.swift in Sources */,
 				517F5C2528228F0900C39D21 /* GameControllerInputSource.swift in Sources */,
@@ -737,7 +761,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = PMGDGYXM4J;
+				DEVELOPMENT_TEAM = SA4H49C4LT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

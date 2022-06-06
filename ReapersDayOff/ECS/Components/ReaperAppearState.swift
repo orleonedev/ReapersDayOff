@@ -66,7 +66,7 @@ class ReaperAppearState: GKState {
         guard let appearTextures = Reaper.appearTextures else {
             fatalError("Attempt to access PlayerBot.appearTextures before they have been loaded.")
         }
-        let texture = appearTextures[orientationComponent.compassDirection]!
+//        let texture = appearTextures[orientationComponent.compassDirection]!
 //        node.texture = texture
         node.size = Reaper.textureSize
         
