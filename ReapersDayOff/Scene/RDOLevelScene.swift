@@ -39,14 +39,18 @@ enum WorldLayer: CGFloat {
     var nodePath: String {
         return "/world/\(nodeName)"
     }
+    
 
     static var allLayers = [board, shadows, obstacles, characters, top]
 }
 
+
+
 class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     
     // MARK: Properties
-    
+    var test = 0
+
     let reaper = Reaper()
     var isSpeeding = false 
     var redGate: Gate?
@@ -72,6 +76,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         RDOLevelSceneActiveState(levelScene: self),
         RDOLevelScenePauseState(levelScene: self),
         RDOLevelSceneGameoverState(levelScene: self),
+        RDOLevelSceneTutorialState(levelScene: self),
     ])
     
     let timerNode = SKLabelNode(text: "--:--")
@@ -179,9 +184,13 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         // The scene will handle physics contacts itself.
         physicsWorld.contactDelegate = self
         
-        // Move to the active state, starting the level timer.
-        stateMachine.enter(RDOLevelSceneActiveState.self)
-        
+        // Start tutorial
+        let tutorial = UserDefaults.standard.bool(forKey: "tutorial")
+        if (tutorial == false)
+        {
+            UserDefaults.standard.set(true, forKey: "tutorial")
+            stateMachine.enter(RDOLevelSceneTutorialState.self)
+        }
 
         // Configure the `timerNode` and add it to the camera node.
         timerNode.zPosition = WorldLayer.top.rawValue
@@ -444,6 +453,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         for componentSystem in componentSystems {
             componentSystem.update(deltaTime: deltaTime)
         }
+        
+
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
