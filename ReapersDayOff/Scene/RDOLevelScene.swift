@@ -235,7 +235,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         scaleGreenCounterNode()
         camera!.addChild(greencounter)
         
-        let counterHUDSize = CGSize(width: frame.height / 20, height: frame.height / 20)
+        let counterHUDSize = CGSize(width: frame.height / 15, height: frame.height / 15)
         blueHUD.size = counterHUDSize
         blueHUD.zPosition = WorldLayer.top.rawValue
         blueHUD.anchorPoint.y = 1
@@ -257,7 +257,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         scaleGreenHUD()
         camera!.addChild(greenHUD)
         
-        let buttonSize = CGSize(width: frame.height / 20, height: frame.height / 20)
+        let buttonSize = CGSize(width: frame.height / 15, height: frame.height / 15)
         pauseButton.size = buttonSize
         pauseButton.anchorPoint.y = 1
         pauseButton.zPosition = WorldLayer.top.rawValue
@@ -517,7 +517,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
             if let chargeBar = entity.component(ofType: ChargeComponent.self)?.chargeBar {
                 
 //                addNode(node: chargeBar, toWorldLayer: .top)
-                chargeBar.position.y = size.height / 2.1
+                chargeBar.position.y = size.height / 2.15
                 chargeBar.position.x = -size.width / 3
                 chargeBar.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
                 camera!.addChild(chargeBar)
@@ -527,7 +527,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
             if let soulsContainer = entity.component(ofType: SoulsContainerComponent.self)?.chargeBar {
                 
                 soulsContainer.position.y = size.height / 2.0
-                soulsContainer.position.x = -size.width / 2.25
+                soulsContainer.position.x = -size.width / 2.3
                 soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
                 camera!.addChild(soulsContainer)
                 
@@ -673,7 +673,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        score.fontSize = size.height * GameplayConfiguration.Timer.fontSize
        
        // Make sure the score node is positioned at the top of the scene.
-       score.position.y = size.height / 2.5
+       score.position.y = size.height / 2.1
        
         // Make sure the score node is positioned at the right of the scene.
         score.position.x = size.width / 2.5
@@ -691,7 +691,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        bluecounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
        
         // Make sure the score node is positioned at the top of the scene.
-        bluecounter.position.y = size.height / 2.25
+        bluecounter.position.y = size.height / 2.3
         
          // Make sure the score node is positioned at the right of the scene.
         bluecounter.position.x = -size.width / 3.5
@@ -709,7 +709,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        greencounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
        
        // Make sure the score node is positioned at the top of the scene.
-       greencounter.position.y = size.height / 2.25
+       greencounter.position.y = size.height / 2.3
        
         // Make sure the score node is positioned at the right of the scene.
         greencounter.position.x = -size.width / 4.25 + greencounter.fontSize
@@ -727,7 +727,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        redcounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
        
        // Make sure the score node is positioned at the top of the scene.
-       redcounter.position.y = size.height / 2.25
+       redcounter.position.y = size.height / 2.3
        
         // Make sure the score node is positioned at the right of the scene.
         redcounter.position.x = -size.width / 5.25 + (2 * redcounter.fontSize)
@@ -791,7 +791,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        pauseButton.position.y = size.height / 2.1
        
         // Make sure the score node is positioned at the right of the scene.
-        pauseButton.position.x = size.width / 2.5
+        pauseButton.position.x = size.width / 2.3
         
        // Add padding between the top of scene and the top of the score node.
        #if os(tvOS)

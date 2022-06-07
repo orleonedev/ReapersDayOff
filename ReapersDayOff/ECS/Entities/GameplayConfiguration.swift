@@ -345,7 +345,7 @@ struct GameplayConfiguration {
         static let fontName = "NokiaCellphoneFC-Small"
         
         /// The size of the timer node font as a proportion of the level scene's height.
-        static let fontSize: CGFloat = 0.05
+        static let fontSize: CGFloat = 0.06
         
         #if os(tvOS)
         /// The size of padding between the top of the scene and the timer node.

@@ -72,10 +72,16 @@ final class RDOSceneManager {
 
         case .settings:
             scene = SKScene.init(fileNamed: "RDOSettingsScene") as? RDOSettingsScene
+            if device == .phone {
+                scene = SKScene.init(fileNamed: "RDOSettingsScenePhone") as? RDOSettingsScene
+            }
             transit = t6
 
         case .about:
             scene = SKScene.init(fileNamed: "RDOAboutScene") as? RDOAboutScene
+            if device == .phone {
+                scene = SKScene.init(fileNamed: "RDOAboutScenePhone") as? RDOAboutScene
+            }
             transit = t6
 
         case .collection:
