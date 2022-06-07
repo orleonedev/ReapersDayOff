@@ -86,6 +86,9 @@ final class RDOSceneManager {
 
         case .collection:
             scene = SKScene.init(fileNamed: "RDOCollectionScene") as? RDOCollectionScene
+            if device == .phone {
+                scene = SKScene.init(fileNamed: "RDOCollectionScenePhone") as? RDOCollectionScene
+            }
             transit = t6
 
         case .stageOne:

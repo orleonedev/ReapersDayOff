@@ -53,6 +53,9 @@ extension RDOBaseScene: ButtonNodeResponderType {
                     creditScreen.isHidden = false
                 }
             }
+        case .leaderboard:
+            print("Leaderboard")
+            
                 
             default:
                 fatalError("Unsupported ButtonNode type in Scene.")

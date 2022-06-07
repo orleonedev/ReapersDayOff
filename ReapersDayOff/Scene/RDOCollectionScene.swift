@@ -22,15 +22,15 @@ class RDOCollectionScene: RDOBaseScene {
     }
     
     var numSoulsCollected: SKLabelNode? {
-        return backgroundNode?.childNode(withName: "NumSoulsCollected") as? SKLabelNode
+        return backgroundNode?.childNode(withName: "//NumSoulsCollected") as? SKLabelNode
     }
     
     var numHitByHeartReaper: SKLabelNode? {
-        return backgroundNode?.childNode(withName: "NumHitByHeartReaper") as? SKLabelNode
+        return backgroundNode?.childNode(withName: "//NumHitByHeartReaper") as? SKLabelNode
     }
     
     var numGamesPlayed: SKLabelNode? {
-        return backgroundNode?.childNode(withName: "NumGamesPlayed") as? SKLabelNode
+        return backgroundNode?.childNode(withName: "//NumGamesPlayed") as? SKLabelNode
     }
     var bg : SKSpriteNode? {
         return backgroundNode?.childNode(withName: "bg") as? SKSpriteNode
