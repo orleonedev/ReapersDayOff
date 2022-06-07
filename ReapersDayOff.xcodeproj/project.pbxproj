@@ -100,7 +100,7 @@
 		667C2E7228250FAC00A5D13E /* RDOCollectionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 667C2E7128250FAB00A5D13E /* RDOCollectionScene.sks */; };
 		667C2E73282524CA00A5D13E /* RDOStartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517F5C532822BBFD00C39D21 /* RDOStartScene.sks */; };
 		669A6129284A082D00153CFA /* RDOLevelSceneTutorialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669A6128284A082D00153CFA /* RDOLevelSceneTutorialState.swift */; };
-		669A612B284A091D00153CFA /* RDOTutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 669A612A284A091D00153CFA /* RDOTutorialScene.sks */; };
+		669A612E284F649E00153CFA /* RDOTutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 669A612A284A091D00153CFA /* RDOTutorialScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -555,6 +555,7 @@
 				6641E465282A4A3B00308AB3 /* RDOGameoverScene.sks in Resources */,
 				51B3F464284A589D00A15D43 /* Oscillate.ahap in Resources */,
 				66463147282506DB00311BE3 /* RDOMainScene.sks in Resources */,
+				669A612E284F649E00153CFA /* RDOTutorialScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,7 +783,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = SA4H49C4LT;
+				DEVELOPMENT_TEAM = BWUQ8K9QZU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ReapersDayOff/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -814,7 +815,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = SA4H49C4LT;
+				DEVELOPMENT_TEAM = BWUQ8K9QZU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ReapersDayOff/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

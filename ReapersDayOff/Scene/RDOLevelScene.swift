@@ -186,11 +186,11 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         // Start tutorial
         let tutorial = UserDefaults.standard.bool(forKey: "tutorial")
-        if (tutorial == false)
-        {
+//        if (tutorial == false)
+//        {
             UserDefaults.standard.set(true, forKey: "tutorial")
             stateMachine.enter(RDOLevelSceneTutorialState.self)
-        }
+//        }
 
         // Configure the `timerNode` and add it to the camera node.
         timerNode.zPosition = WorldLayer.top.rawValue
