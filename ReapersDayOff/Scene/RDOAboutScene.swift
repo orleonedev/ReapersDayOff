@@ -25,8 +25,8 @@ class RDOAboutScene: RDOBaseScene {
         return backgroundNode?.childNode(withName: ButtonIdentifier.tutorial.rawValue) as? RDOButtonNode
     }
     
-    var aboutUsButton: RDOButtonNode? {
-        return backgroundNode?.childNode(withName: ButtonIdentifier.aboutUs.rawValue) as? RDOButtonNode
+    var creditsButton: RDOButtonNode? {
+        return backgroundNode?.childNode(withName: ButtonIdentifier.credits.rawValue) as? RDOButtonNode
     }
     
     var bg : SKSpriteNode? {
