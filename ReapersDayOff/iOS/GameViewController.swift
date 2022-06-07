@@ -13,9 +13,13 @@ class GameViewController: UIViewController, SceneManagerDelegate {
     
     
     var sceneManager: RDOSceneManager!
+    
+    let soundInstance = SoundClass.sharedInstance()
+    var isinMenu = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         let viewSize = view.bounds.size
         
@@ -58,5 +62,18 @@ class GameViewController: UIViewController, SceneManagerDelegate {
     
     func sceneManager(_ sceneManager: RDOSceneManager, didTransitionTo scene: SKScene) {
         
+        if scene is RDOLevelScene {
+            isinMenu = false
+            soundInstance.playBackgroundMusic("life-of-a-wandering-wizard-15549.mp3")
+        }
+        else if scene is RDOLaunchScreen {
+            soundInstance.playSoundEffect("DrumRoll.mp3")
+        }
+        else {
+            if !isinMenu {
+                soundInstance.playBackgroundMusic("jazz-happy-110855.mp3")
+                isinMenu = true
+            }
+        }
     }
 }

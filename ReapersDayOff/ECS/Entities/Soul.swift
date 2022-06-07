@@ -48,9 +48,9 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
         let radius: Float
             
         // `debugPathPoints`, `debugPathShouldCycle`, and `debugColor` are only used when debug drawing is enabled.
-        let debugPathPoints: [CGPoint]
-        var debugPathShouldCycle = false
-        let debugColor: SKColor
+//        let debugPathPoints: [CGPoint]
+//        var debugPathShouldCycle = false
+//        let debugColor: SKColor
         
         switch mandate {
             case .followPatrolPath:
@@ -64,12 +64,12 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
             
             case let .fleeAgent(targetAgent):
                 radius = GameplayConfiguration.Soul.fleePathRadius
-                (agentBehavior, debugPathPoints) = SoulBehavior.behaviorAndPathPoints(forAgent: agent, fleeAgent: targetAgent, pathRadius: radius, inScene: levelScene)
+                (agentBehavior, _ ) = SoulBehavior.behaviorAndPathPoints(forAgent: agent, fleeAgent: targetAgent, pathRadius: radius, inScene: levelScene)
 //                debugColor = SKColor.red
 
             case let .returnToPositionOnPath(position):
                 radius = GameplayConfiguration.Soul.returnToPatrolPathRadius
-                (agentBehavior, debugPathPoints) = SoulBehavior.behaviorAndPathPoints(forAgent: agent, returningToPoint: position, pathRadius: radius, inScene: levelScene)
+                (agentBehavior, _ ) = SoulBehavior.behaviorAndPathPoints(forAgent: agent, returningToPoint: position, pathRadius: radius, inScene: levelScene)
 //                debugColor = SKColor.yellow
         case .wander:
             agentBehavior = SoulBehavior.behaviorWonder(forAgent: agent, inScene: levelScene)

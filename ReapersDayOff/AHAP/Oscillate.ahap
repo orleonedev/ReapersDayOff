@@ -1,0 +1,13 @@
+{
+    "Version": 1,
+    "Metadata":
+    {
+        "Description": "Generated with Haptrix www.haptrix.com by nthState",
+        "Created": "",
+        "Project": "My Project",
+        "Title": "",
+        "Tags": ""
+        
+    },
+    "Pattern": [
+         {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.2980000078678131}, {"ParameterID": "HapticSharpness", "ParameterValue": 1}], "Name": "Haptic Event 1", "Time": 0.0, "EventType": "HapticContinuous", "EventDuration": 0.2}}]}

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 /// Extends `BaseScene` to respond to ButtonNode events.
 extension RDOBaseScene: ButtonNodeResponderType {
@@ -34,8 +35,25 @@ extension RDOBaseScene: ButtonNodeResponderType {
                 sceneManager.transitionToScene(identifier: .settings)
             case .retry:
                 sceneManager.transitionToScene(identifier: .stageOne)
-            
-            
+            case .tutorial:
+                if self is RDOAboutScene {
+                    if let tutorialScreen = childNode(withName: "//tutorialScreen") as? SKSpriteNode {
+                        tutorialScreen.isHidden = false
+                    }
+                    if let creditScreen = childNode(withName: "//creditScreen") as? SKSpriteNode {
+                        creditScreen.isHidden = true
+                    }
+                }
+            case .credits:
+            if self is RDOAboutScene {
+                if let tutorialScreen = childNode(withName: "//tutorialScreen") as? SKSpriteNode {
+                    tutorialScreen.isHidden = true
+                }
+                if let creditScreen = childNode(withName: "//creditScreen") as? SKSpriteNode {
+                    creditScreen.isHidden = false
+                }
+            }
+                
             default:
                 fatalError("Unsupported ButtonNode type in Scene.")
         }

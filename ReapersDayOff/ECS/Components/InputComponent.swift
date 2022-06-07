@@ -96,6 +96,9 @@ class InputComponent: GKComponent, ControlInputSourceDelegate {
             if state.beamIsTriggered {
                 if let levelScene = entity?.component(ofType: RenderComponent.self)?.node.scene as? RDOLevelScene {
                     levelScene.isSpeeding = true
+                    if !GameplayLogic.sharedInstance().isFull{
+                        HapticUtility.playHapticsFile(named: "Sprint")
+                    }
                 }
             }else{
                 

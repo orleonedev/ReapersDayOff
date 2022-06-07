@@ -51,7 +51,8 @@ extension RDOBaseScene {
             .collection,
             .settings,
             .about,
-            .back
+            .tutorial,
+            .credits
         ]
     }
     

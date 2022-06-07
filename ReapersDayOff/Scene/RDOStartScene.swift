@@ -20,11 +20,19 @@ class RDOStartScene: RDOBaseScene {
     }
     
     /// The "NEW GAME" button which allows the player to proceed to the first level.
-    var proceedButton: RDOButtonNode? {
+    var startButton: RDOButtonNode? {
         return backgroundNode?.childNode(withName: ButtonIdentifier.home.rawValue) as? RDOButtonNode
-        
+
+    }
+    var bg : SKSpriteNode? {
+        return backgroundNode?.childNode(withName: "bg") as? SKSpriteNode
     }
 
+    var bg2 : SKSpriteNode? {
+        return backgroundNode?.childNode(withName: "bg2") as? SKSpriteNode
+    }
+    
+    
     /// An array of objects for `SceneLoader` notifications.
     private var sceneLoaderNotificationObservers = [Any]()
 
@@ -43,12 +51,27 @@ class RDOStartScene: RDOBaseScene {
         super.didMove(to: view)
         // Enable focus based navigation.
         focusChangesEnabled = true
+        
         RedSoul.loadResources(){}
         BlueSoul.loadResources() {}
         GreenSoul.loadResources() {}
         Reaper.loadResources(){}
         HeartReaper.loadResources(){}
         
+        let seq1 = SKAction.sequence([
+            SKAction(named: "moveBG")!,
+            SKAction.run{
+                self.bg?.position = CGPoint(x: 0, y: 0)
+            }
+        ])
+        let seq2 = SKAction.sequence([
+            SKAction(named: "moveBG")!,
+            SKAction.run{
+                self.bg2?.position = CGPoint(x: 1888, y: 0)
+            }
+        ])
+        bg?.run(SKAction.repeatForever(seq1))
+        bg2?.run(SKAction.repeatForever(seq2))
 //        registerForNotifications()
         centerCameraOnPoint(point: backgroundNode!.position)
         
@@ -97,4 +120,16 @@ class RDOStartScene: RDOBaseScene {
         
     }
     */
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+//        let reveal = SKTransition.fade(withDuration: 0.5)
+//        reveal.pausesIncomingScene = false
+//        reveal.pausesOutgoingScene = true
+//        backgroundMusicPlayer.stop()
+        
+//        self.view?.presentScene(RDOLevelScene(size: self.size), transition: reveal)
+        sceneManager.transitionToScene(identifier: .main)
+    }
+
 }

@@ -21,7 +21,7 @@ class RDOLevelSceneActiveState: GKState {
     var logic = GameplayLogic.sharedInstance()
     var spawnRate: TimeInterval = 1.0
     var heartReapSpwan: TimeInterval = GameplayConfiguration.HeartReaper.enemySpawnRate
-    var aliveTimer: TimeInterval = GameplayConfiguration.HeartReaper.enemySpawnRate*2
+    var aliveTimer: TimeInterval = GameplayConfiguration.HeartReaper.enemySpawnRate
     
     
     /*
@@ -93,7 +93,7 @@ class RDOLevelSceneActiveState: GKState {
             aliveTimer -= seconds
             print("aliveTimer \(aliveTimer)")
             if aliveTimer < 0 {
-                aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate*2
+                aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate
                 levelScene.enemy?.removeHeartReaper()
                 print("REMOVE")
                 logic.enemyOnStage = false
@@ -101,7 +101,7 @@ class RDOLevelSceneActiveState: GKState {
         }
         
         if levelScene.resetEnemyTimer{
-            aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate*2
+            aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate
             levelScene.resetEnemyTimer = false
         }
         //solo se enemy non ci sta sulla scena: controllare
@@ -146,6 +146,7 @@ class RDOLevelSceneActiveState: GKState {
         
         if !chargeComponent.hasCharge {
             stateMachine?.enter(RDOLevelSceneGameoverState.self)
+            logic.gamesPlayed += 1
         }
         
     }

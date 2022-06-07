@@ -1,0 +1,12 @@
+{
+    "Version": 1,
+    "Metadata":
+    {"Description": "Generated with Haptrix www.haptrix.com by nthState",
+        "Created": "",
+        "Project": "My Project",
+        "Title": "",
+        "Tags": ""},
+    "Pattern": [
+        {"Event":
+            {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.6060000061988831}], "EventType": "HapticTransient", "Name": "Haptic Event 0", "Time": 0.003}}, {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.3179999887943268}], "EventType": "HapticTransient", "Name": "Haptic Event 1", "Time": 0.484}}, {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.22200000286102295}], "EventType": "HapticTransient", "Name": "Haptic Event 2", "Time": 0.412}}, {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.5299999713897705}], "EventType": "HapticTransient", "Name": "Haptic Event 3", "Time": 0.277}}, {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.3160000145435333}], "EventType": "HapticTransient", "Name": "Haptic Event 4", "Time": 0.303}}, {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.19699999690055847}], "EventType": "HapticTransient", "Name": "Haptic Event 5", "Time": 0.219}}, {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.45100000500679016}], "EventType": "HapticTransient", "Name": "Haptic Event 6", "Time": 0.193}}, {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.10400000214576721}], "EventType": "HapticTransient", "Name": "Haptic Event 7", "Time": 0.247}}, {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.9549999833106995}], "EventType": "HapticTransient", "Name": "Haptic Event 8", "Time": 0.054}}, {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.9559999704360962}], "EventType": "HapticTransient", "Name": "Haptic Event 9", "Time": 0.091}}, {"Event": {"EventParameters": [{"ParameterID": "HapticIntensity", "ParameterValue": 0.921999990940094}], "EventType": "HapticTransient", "Name": "Haptic Event 10", "Time": 0.124}}]}
+

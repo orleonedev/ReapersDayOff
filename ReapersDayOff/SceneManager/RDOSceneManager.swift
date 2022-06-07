@@ -19,7 +19,7 @@ final class RDOSceneManager {
         case launch
         case start
         case main, settings, about, collection
-        case stageOne, results
+        case stageOne
     }
     
     var device: UIUserInterfaceIdiom {
@@ -34,6 +34,16 @@ final class RDOSceneManager {
     /// The view used to choreograph scene transitions.
     let presentingView: SKView
     
+    /// type of transitions
+    let t1 = SKTransition.crossFade(withDuration: 1.0)
+    let t2 = SKTransition.reveal(with: .up, duration: 1.0)
+    let t3 = SKTransition.doorsCloseHorizontal(withDuration: 1.0)
+    let t4 = SKTransition.doorsOpenHorizontal(withDuration: 1.0)
+    let t5 = SKTransition.doorway(withDuration: 1.0)
+    let t6 = SKTransition.push(with: .left, duration: 1.0)
+    let t7 = SKTransition.fade(withDuration: 1.0)
+    let t8 = SKTransition.push(with: .right, duration: 1.0)
+    
     /// The `RDOSceneManager`'s delegate.
     weak var delegate: SceneManagerDelegate?
     
@@ -46,49 +56,53 @@ final class RDOSceneManager {
     
     func transitionToScene(identifier sceneIdentifier: RDOSceneIdentifier) {
         var scene: RDOBaseScene?
+        var transit: SKTransition
         // Block to initial file
         switch sceneIdentifier {
         case .start:
             scene = SKScene.init(fileNamed: "RDOStartScene") as? RDOStartScene
-//            scene = SKScene.init(fileNamed: "Start")
+            transit = t2
+
         case .main:
-            
             scene = SKScene.init(fileNamed: "RDOMainScene") as? RDOMainScene
             if device == .phone {
                 scene = SKScene.init(fileNamed: "RDOMainScenePhone") as? RDOMainScene
             }
-//            scene = SKScene.init(fileNamed: "Main")
+            transit = t8
+
         case .settings:
             scene = SKScene.init(fileNamed: "RDOSettingsScene") as? RDOSettingsScene
-//            scene = SKScene.init(fileNamed: "Settings")
+            transit = t6
+
         case .about:
             scene = SKScene.init(fileNamed: "RDOAboutScene") as? RDOAboutScene
-//            scene = SKScene.init(fileNamed: "About")
+            transit = t6
+
         case .collection:
             scene = SKScene.init(fileNamed: "RDOCollectionScene") as? RDOCollectionScene
-//            scene = SKScene.init(fileNamed: "Preparation")
+            transit = t6
+
         case .stageOne:
             scene = SKScene.init(fileNamed: "RDOStageOneScene") as? RDOLevelScene
-//            scene = SKScene.init(fileNamed: "StageOne")
-        case .results:
-            scene = SKScene.init(fileNamed: "GameScene") as? RDOBaseScene
-//            scene = SKScene.init(fileNamed: "Results")
+            transit = t7
+
         case .launch:
             scene = SKScene.init(fileNamed: "LaunchscreenScene") as? RDOLaunchScreen
+            transit = t7
         }
         
         if scene != nil {
             scene?.createCamera()
-            presentScene(scene!)
+            presentScene(scene!, transition: transit)
         }
         
     }
     
-    func presentScene(_ scene: RDOBaseScene){
+    func presentScene(_ scene: RDOBaseScene, transition: SKTransition){
         
         scene.sceneManager = self
         
-        let transition = SKTransition.fade(withDuration: 2.0)
+        
         self.presentingView.presentScene(scene, transition: transition)
         
         

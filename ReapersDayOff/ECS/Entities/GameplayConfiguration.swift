@@ -114,7 +114,7 @@ struct GameplayConfiguration {
     struct BlueSoul {
         
         /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
-        static let maximumSpeedBlue: Float = 300.0
+        static let maximumSpeedBlue: Float = 350.0
         static let maximumAccelerationBlue: Float = 600.0
         
         /// The maximum amount of charge a `FlyingBot` stores.
@@ -152,7 +152,7 @@ struct GameplayConfiguration {
     
     struct GreenSoul {
         /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
-        static let maximumSpeedGreen: Float = 120.0
+        static let maximumSpeedGreen: Float = 180.0
         
         static let maximumAccelerationGreen: Float = 300.0
         /// The maximum amount of charge a `FlyingBot` stores.
@@ -232,7 +232,7 @@ struct GameplayConfiguration {
         static let rechargeAmountPerSecond = 10.0
     
         /// The amount of time it takes the `PlayerBot` to appear in a level before becoming controllable by the player.
-        static let appearDuration: TimeInterval = 0.50
+        static let appearDuration: TimeInterval = 1.0
     }
     
     struct Enemy {
@@ -337,12 +337,12 @@ struct GameplayConfiguration {
         /// The maximum acceleration (in points per second per second) for the `TaskBot`.
 //        static let maximumAcceleration: Float = 150.0
         
-        static let enemySpawnRate: TimeInterval = 10.0
+        static let enemySpawnRate: TimeInterval = 20.0
     }
     
         struct Timer {
         /// The name of the font to use for the timer.
-        static let fontName = "DINCondensed-Bold"
+        static let fontName = "NokiaCellphoneFC-Small"
         
         /// The size of the timer node font as a proportion of the level scene's height.
         static let fontSize: CGFloat = 0.05

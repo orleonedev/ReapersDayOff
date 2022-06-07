@@ -122,6 +122,7 @@ class GreenSoul: Soul {
         let gameState = GameplayLogic.sharedInstance()
         
         if !gameState.isFull{
+            
             if let scene = renderComponent.node.scene as? RDOLevelScene {
                 scene.entities.remove(self)
             }

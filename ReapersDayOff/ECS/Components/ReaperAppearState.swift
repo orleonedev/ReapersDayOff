@@ -66,18 +66,23 @@ class ReaperAppearState: GKState {
         guard let appearTextures = Reaper.appearTextures else {
             fatalError("Attempt to access PlayerBot.appearTextures before they have been loaded.")
         }
-        let texture = appearTextures[orientationComponent.compassDirection]!
-        node.texture = texture
+//        let texture = appearTextures[orientationComponent.compassDirection]!
+//        node.texture = texture
         node.size = Reaper.textureSize
         
+        //animation
+        node.run(SKAction(named: "reaperAppear")!)
         // Add the node to the `PlayerBot`'s render node.
         renderComponent.node.addChild(node)
+        
         
         // Hide the animation component node until the `PlayerBot` exits this state.
         animationComponent.node.isHidden = true
 
         // Disable the input component while the `PlayerBot` appears.
         inputComponent.isEnabled = false
+        
+        
     }
     
     override func update(deltaTime seconds: TimeInterval) {

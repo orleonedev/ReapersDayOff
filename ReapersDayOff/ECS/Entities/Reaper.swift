@@ -51,6 +51,11 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
         guard let renderComponent = component(ofType: RenderComponent.self) else { fatalError("A Reaper must have an RenderComponent.") }
         return renderComponent
     }
+    
+    var walkedDistance = [MovementComponent().nextTranslation]
+
+    
+  
 
     // MARK: Initializers
     
@@ -245,6 +250,8 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
             }
             
             shared.deposit(type: gate.name)
+            HapticUtility.playHapticsFile(named: "Oscillate")
+//            collectedSouls +=
         }
         
         if entity is HeartReaper {
