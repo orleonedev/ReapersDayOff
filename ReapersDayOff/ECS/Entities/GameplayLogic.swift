@@ -47,6 +47,15 @@ class GameplayLogic {
             UserDefaults.standard.set(newValue,forKey: "GamesPlayed")
         }
     }
+    
+    var soulStolen: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "SoulsStolen")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "SoulsStolen")
+        }
+    }
 
     
     var currentScore: UInt = 0
@@ -70,18 +79,13 @@ class GameplayLogic {
 
     }
     
-    
-    
     func LOGremoveSoulOnStage(n: UInt){
         soulsOnStage -= n
 
     }
     
-    
-    
     var enemyOnStage: Bool = false
 
-    
     func setupGame(){
         currentScore = 0
         redSouls = 0
@@ -133,21 +137,18 @@ class GameplayLogic {
             timeRemaining += timeForDeposit(souls: redSouls)
             currentScore += pointsForDeposit(souls: redSouls)
             totalSouls += Int(redSouls)
-//            collectedSouls += UInt(totalSouls)
             LOGremoveSoulOnStage(n: redSouls)
             redSouls = 0
         case "green":
             timeRemaining += timeForDeposit(souls: greenSouls)*2
             currentScore += pointsForDeposit(souls: greenSouls)*2
             totalSouls += Int(greenSouls)
-//            collectedSouls += UInt(totalSouls)
             LOGremoveSoulOnStage(n: greenSouls)
             greenSouls = 0
         case "blue":
             timeRemaining += timeForDeposit(souls: blueSouls)
             currentScore += pointsForDeposit(souls: blueSouls)*3
             totalSouls += Int(blueSouls)
-//            collectedSouls += UInt(totalSouls)
             LOGremoveSoulOnStage(n: blueSouls)
             blueSouls = 0
         default:
@@ -171,10 +172,10 @@ class GameplayLogic {
     
     func loseSouls() {
 
+        soulStolen = Int((redSouls/2)+(greenSouls/2)+(blueSouls/2))
         redSouls = redSouls/2
         greenSouls = greenSouls/2
         blueSouls = blueSouls/2
-        
     }
 }
 
