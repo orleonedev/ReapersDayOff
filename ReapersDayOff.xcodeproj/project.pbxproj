@@ -87,6 +87,7 @@
 		51CEDAC3284F95D40066C294 /* RDOAboutScenePhone.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51CEDAC2284F95D40066C294 /* RDOAboutScenePhone.sks */; };
 		51CEDAC5284F9CC60066C294 /* RDOSettingsScenePhone.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51CEDAC4284F9CC60066C294 /* RDOSettingsScenePhone.sks */; };
 		51CEDAC7284FAD640066C294 /* RDOCollectionScenePhone.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51CEDAC6284FAD640066C294 /* RDOCollectionScenePhone.sks */; };
+		51CEDAC92851E42E0066C294 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51CEDAC82851E42E0066C294 /* MyTileSet.sks */; };
 		6641E45728294FC600308AB3 /* RDOLevelSceneOverlayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45628294FC600308AB3 /* RDOLevelSceneOverlayState.swift */; };
 		6641E45928294FEB00308AB3 /* RDOLevelSceneActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */; };
 		6641E45B2829500500308AB3 /* RDOLevelScenePauseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45A2829500500308AB3 /* RDOLevelScenePauseState.swift */; };
@@ -190,6 +191,7 @@
 		51CEDAC2284F95D40066C294 /* RDOAboutScenePhone.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOAboutScenePhone.sks; sourceTree = "<group>"; };
 		51CEDAC4284F9CC60066C294 /* RDOSettingsScenePhone.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOSettingsScenePhone.sks; sourceTree = "<group>"; };
 		51CEDAC6284FAD640066C294 /* RDOCollectionScenePhone.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOCollectionScenePhone.sks; sourceTree = "<group>"; };
+		51CEDAC82851E42E0066C294 /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
 		6641E45628294FC600308AB3 /* RDOLevelSceneOverlayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneOverlayState.swift; sourceTree = "<group>"; };
 		6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneActiveState.swift; sourceTree = "<group>"; };
 		6641E45A2829500500308AB3 /* RDOLevelScenePauseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelScenePauseState.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				517F5C0B28210FFC00C39D21 /* Storyboard */,
 				517F5C0128210F8900C39D21 /* Assets.xcassets */,
 				517F5C92282817D900C39D21 /* Soul.xcassets */,
+				51CEDAC82851E42E0066C294 /* MyTileSet.sks */,
 				517F5C0D282111DD00C39D21 /* iOS */,
 			);
 			path = ReapersDayOff;
@@ -566,6 +569,7 @@
 				51B1450E283F7BA0005517A3 /* LaunchscreenScene.sks in Resources */,
 				6641E465282A4A3B00308AB3 /* RDOGameoverScene.sks in Resources */,
 				51B3F464284A589D00A15D43 /* Oscillate.ahap in Resources */,
+				51CEDAC92851E42E0066C294 /* MyTileSet.sks in Resources */,
 				66463147282506DB00311BE3 /* RDOMainScene.sks in Resources */,
 				669A612E284F649E00153CFA /* RDOTutorialScene.sks in Resources */,
 			);
