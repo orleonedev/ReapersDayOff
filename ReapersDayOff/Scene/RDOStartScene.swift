@@ -10,6 +10,7 @@ Abstract:
 An `SKScene` used to represent and manage the Start scene of the game.
 */
 import SpriteKit
+import GameController
 
 class RDOStartScene: RDOBaseScene {
     // MARK: Properties
@@ -19,7 +20,7 @@ class RDOStartScene: RDOBaseScene {
         return childNode(withName: "backgroundNode") as? SKSpriteNode
     }
     
-    /// The "NEW GAME" button which allows the player to proceed to the first level.
+    /// The start button
     var startButton: RDOButtonNode? {
         return backgroundNode?.childNode(withName: ButtonIdentifier.home.rawValue) as? RDOButtonNode
 
@@ -72,6 +73,14 @@ class RDOStartScene: RDOBaseScene {
         ])
         bg?.run(SKAction.repeatForever(seq1))
         bg2?.run(SKAction.repeatForever(seq2))
+        
+        if let tap = startButton?.childNode(withName: "//taptostart") as? SKLabelNode {
+            if GCController.current != nil {
+                tap.text = "Press anything to continue"
+            } else {
+                tap.text = "Tap anywhere to continue"
+            }
+        }
 //        registerForNotifications()
         centerCameraOnPoint(point: backgroundNode!.position)
         

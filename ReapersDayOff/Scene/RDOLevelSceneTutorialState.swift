@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import GameController
 
 class RDOLevelSceneTutorialState: RDOLevelSceneOverlayState {
     // MARK: Properties
@@ -20,6 +21,15 @@ class RDOLevelSceneTutorialState: RDOLevelSceneOverlayState {
     override func didEnter(from previousState: GKState?) {
         
         super.didEnter(from: previousState)
+        
+            if let taptostart = overlay.contentNode.childNode(withName: "//ResumeLabel") as? SKLabelNode {
+                if GCController.current != nil {
+                    taptostart.text = "Press anything to continue"
+                } else {
+                    taptostart.text = "Tap anywhere to continue"
+                }
+        }
+        
 
     }
     
