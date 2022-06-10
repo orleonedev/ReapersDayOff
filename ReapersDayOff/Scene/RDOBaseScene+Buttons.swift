@@ -53,8 +53,11 @@ extension RDOBaseScene: ButtonNodeResponderType {
                     creditScreen.isHidden = false
                 }
             }
-        case .leaderboard:
-            print("Leaderboard")
+        case .scoreLeaderboard:
+            GameCenterHelper.sharedInstance().showDefaultLeaderboard()
+            
+        case .leaderboards:
+            GameCenterHelper.sharedInstance().showLeaderboards()
             
                 
             default:

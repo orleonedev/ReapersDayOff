@@ -111,9 +111,7 @@ final class RDOSceneManager {
         
         scene.sceneManager = self
         
-        
         self.presentingView.presentScene(scene, transition: transition)
-        
         
         self.delegate?.sceneManager(self, didTransitionTo: scene)
     }

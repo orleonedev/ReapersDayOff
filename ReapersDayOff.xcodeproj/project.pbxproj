@@ -72,6 +72,8 @@
 		517F5C8F2826B36D00C39D21 /* SoulBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C8E2826B36D00C39D21 /* SoulBehavior.swift */; };
 		517F5C912826B3B800C39D21 /* GeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F5C902826B3B800C39D21 /* GeometryExtension.swift */; };
 		517F5C93282817D900C39D21 /* Soul.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517F5C92282817D900C39D21 /* Soul.xcassets */; };
+		51873CF12853E7F800448637 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51873CF02853E7F800448637 /* GameKit.framework */; };
+		51873CF32853EDFA00448637 /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51873CF22853EDFA00448637 /* GameCenterHelper.swift */; };
 		51B1450E283F7BA0005517A3 /* LaunchscreenScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51B1450D283F7BA0005517A3 /* LaunchscreenScene.sks */; };
 		51B14510283F7E38005517A3 /* RDOLaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B1450F283F7E38005517A3 /* RDOLaunchScreen.swift */; };
 		51B14512283F899D005517A3 /* RDOMainScenePhone.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51B14511283F899D005517A3 /* RDOMainScenePhone.sks */; };
@@ -176,6 +178,8 @@
 		517F5C8E2826B36D00C39D21 /* SoulBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulBehavior.swift; sourceTree = "<group>"; };
 		517F5C902826B3B800C39D21 /* GeometryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryExtension.swift; sourceTree = "<group>"; };
 		517F5C92282817D900C39D21 /* Soul.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Soul.xcassets; sourceTree = "<group>"; };
+		51873CF02853E7F800448637 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		51873CF22853EDFA00448637 /* GameCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHelper.swift; sourceTree = "<group>"; };
 		51B1450D283F7BA0005517A3 /* LaunchscreenScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LaunchscreenScene.sks; sourceTree = "<group>"; };
 		51B1450F283F7E38005517A3 /* RDOLaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLaunchScreen.swift; sourceTree = "<group>"; };
 		51B14511283F899D005517A3 /* RDOMainScenePhone.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOMainScenePhone.sks; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51873CF12853E7F800448637 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +257,7 @@
 			children = (
 				517F5BF328210F8600C39D21 /* ReapersDayOff */,
 				517F5BF228210F8600C39D21 /* Products */,
+				51873CEF2853E7F800448637 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -330,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				517F5C0F2821749300C39D21 /* RDOSceneManager.swift */,
+				51873CF22853EDFA00448637 /* GameCenterHelper.swift */,
 			);
 			path = SceneManager;
 			sourceTree = "<group>";
@@ -466,6 +473,14 @@
 			path = Behaviors;
 			sourceTree = "<group>";
 		};
+		51873CEF2853E7F800448637 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51873CF02853E7F800448637 /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		51B3F45E284A54AC00A15D43 /* AHAP */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +609,7 @@
 				664976CD283FC4CC00584EA3 /* SoulsContainerComponent.swift in Sources */,
 				517F5C6F2825139000C39D21 /* RDOCollectionScene.swift in Sources */,
 				51231D8C282957A800D31CB3 /* ChargeComponent.swift in Sources */,
+				51873CF32853EDFA00448637 /* GameCenterHelper.swift in Sources */,
 				517F5C8C2826B2F300C39D21 /* RedSoul.swift in Sources */,
 				517F5C882826B2B700C39D21 /* GameplayConfiguration.swift in Sources */,
 				51B14510283F7E38005517A3 /* RDOLaunchScreen.swift in Sources */,
@@ -805,6 +821,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -837,6 +854,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import GameKit
 
 class GameplayLogic {
     
@@ -13,11 +14,14 @@ class GameplayLogic {
         return GameplayLogicInstance
     }
     
+    let gcHelper = GameCenterHelper.sharedInstance()
+    
     var highScore: Int {
         get{
             return UserDefaults.standard.integer(forKey: "HighScore")
         }
         set{
+            gcHelper.submitScore(kind: .score, value: newValue)
             UserDefaults.standard.set(newValue, forKey: "HighScore")
         }
     }
@@ -27,6 +31,7 @@ class GameplayLogic {
             return UserDefaults.standard.integer(forKey: "HeartReaperHit")
         }
         set {
+            gcHelper.submitScore(kind: .hit, value: newValue)
             UserDefaults.standard.set(newValue, forKey: "HeartReaperHit")
         }
     }
@@ -35,6 +40,7 @@ class GameplayLogic {
             return UserDefaults.standard.integer(forKey: "SoulsCollected")
         }
         set {
+            gcHelper.submitScore(kind: .catched, value: newValue)
             UserDefaults.standard.set(newValue,forKey: "SoulsCollected")
         }
     }
@@ -44,6 +50,7 @@ class GameplayLogic {
             return UserDefaults.standard.integer(forKey: "GamesPlayed")
         }
         set {
+            gcHelper.submitScore(kind: .games, value: newValue)
             UserDefaults.standard.set(newValue,forKey: "GamesPlayed")
         }
     }
@@ -53,6 +60,7 @@ class GameplayLogic {
             return UserDefaults.standard.integer(forKey: "SoulsStolen")
         }
         set {
+            gcHelper.submitScore(kind: .stolen, value: newValue)
             UserDefaults.standard.set(newValue, forKey: "SoulsStolen")
         }
     }

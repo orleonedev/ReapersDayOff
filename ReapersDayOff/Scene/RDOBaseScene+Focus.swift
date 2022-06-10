@@ -53,7 +53,8 @@ extension RDOBaseScene {
             .about,
             .tutorial,
             .credits,
-            .leaderboard
+            .scoreLeaderboard,
+            .leaderboards
         ]
     }
     

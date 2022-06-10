@@ -30,13 +30,14 @@ enum ButtonIdentifier: String {
     case collection = "Collection"
     case tutorial = "Tutorial"
     case credits = "Credits"
-    case leaderboard = "Leaderboard"
+    case scoreLeaderboard = "ScoreLeaderboard"
+    case leaderboards = "Leaderboards"
     
     
     
     /// Convenience array of all available button identifiers.
     static let allButtonIdentifiers: [ButtonIdentifier] = [
-        .resume, .home, .game, .retry, .start, .settings, .about, .collection, .tutorial, .credits, .leaderboard
+        .resume, .home, .game, .retry, .start, .settings, .about, .collection, .tutorial, .credits, .scoreLeaderboard, .leaderboards
     ]
     
     /// The name of the texture to use for a button when the button is selected.

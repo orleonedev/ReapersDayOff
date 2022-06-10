@@ -8,18 +8,22 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GameKit
 
-class GameViewController: UIViewController, SceneManagerDelegate {
+class GameViewController: UIViewController, SceneManagerDelegate, GKGameCenterControllerDelegate {
     
     
     var sceneManager: RDOSceneManager!
     
     let soundInstance = SoundClass.sharedInstance()
     var isinMenu = false
+    let gamecenterHelper = GameCenterHelper.sharedInstance()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        gamecenterHelper.viewDelegate = self
+        gamecenterHelper.authenticateLocalPlayer()
         
         let viewSize = view.bounds.size
         
@@ -76,4 +80,11 @@ class GameViewController: UIViewController, SceneManagerDelegate {
             }
         }
     }
+    
+    
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+    
 }
