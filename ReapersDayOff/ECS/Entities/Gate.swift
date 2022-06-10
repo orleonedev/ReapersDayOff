@@ -31,16 +31,16 @@ class Gate: GKEntity {
         var gateOffset: CGPoint
         switch type {
         case "red":
-            gateOffset = CGPoint(x: 32.0, y: 0.0)
+            gateOffset = CGPoint(x: -8.0, y: 0.0)
         case "green":
-            gateOffset = CGPoint(x: 0.0, y: -32.0)
+            gateOffset = CGPoint(x: 0.0, y: 8.0)
         case "blue":
-            gateOffset = CGPoint(x: -32.0, y: 0.0)
+            gateOffset = CGPoint(x: 8.0, y: 0.0)
         default:
             fatalError("Unknown gate type")
         }
         
-        let physicsComponent = PhysicsComponent(physicsBody: SKPhysicsBody(circleOfRadius: GameplayConfiguration.Reaper.physicsBodyRadius*5, center: gateOffset), colliderType: .Gate)
+        let physicsComponent = PhysicsComponent(physicsBody: SKPhysicsBody(circleOfRadius: GameplayConfiguration.Reaper.physicsBodyRadius*6, center: gateOffset), colliderType: .Gate)
         physicsComponent.physicsBody.isDynamic = false
         addComponent(physicsComponent)
 

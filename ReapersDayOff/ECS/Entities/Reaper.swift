@@ -257,7 +257,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
         if entity is HeartReaper {
             if let chargeComp = component(ofType: ChargeComponent.self) {
                 if let containerComp = component(ofType: SoulsContainerComponent.self) {
-                    chargeComp.loseCharge(chargeToLose: 5.0)
+                    chargeComp.loseCharge(chargeToLose: 8.0)
                     if (shared.redSouls % 2 == 0)
                     {
                         containerComp.loseCharge(chargeToLose: Double(shared.redSouls / 2))
