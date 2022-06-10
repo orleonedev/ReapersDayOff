@@ -629,8 +629,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
             We want to stop the camera when we get within 100pts of the edge of the screen,
             unless the level is so small that this inset would be outside of the level.
         */
-        let xInset = min((scaledSize.width / 2) - 100.0, boardContentRect.width / 2)
-        let yInset = min((scaledSize.height / 2) - 100.0, boardContentRect.height / 2)
+         let xInset = min((scaledSize.width / 2) - 16.0, boardContentRect.width / 2)
+         let yInset = min((scaledSize.height / 2) - 16.0, boardContentRect.height / 2)
         
         // Use these insets to create a smaller inset rectangle within which the camera must stay.
         let insetContentRect = boardContentRect.insetBy(dx: xInset, dy: yInset)

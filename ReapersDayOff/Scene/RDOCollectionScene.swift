@@ -32,6 +32,15 @@ class RDOCollectionScene: RDOBaseScene {
     var numGamesPlayed: SKLabelNode? {
         return backgroundNode?.childNode(withName: "//NumGamesPlayed") as? SKLabelNode
     }
+    
+    var numStolen: SKLabelNode? {
+        return backgroundNode?.childNode(withName: "//NumStolen") as? SKLabelNode
+    }
+    
+    var highscore: SKLabelNode? {
+        return backgroundNode?.childNode(withName: "//highScore") as? SKLabelNode
+    }
+    
     var bg : SKSpriteNode? {
         return backgroundNode?.childNode(withName: "bg") as? SKSpriteNode
     }
@@ -66,6 +75,8 @@ class RDOCollectionScene: RDOBaseScene {
         numSoulsCollected?.text = "\(GameplayLogic.sharedInstance().totalSouls)"
         numHitByHeartReaper?.text = "\(GameplayLogic.sharedInstance().heartReaperHit)"
         numGamesPlayed?.text = "\(GameplayLogic.sharedInstance().gamesPlayed)"
+        numStolen?.text = "\(GameplayLogic.sharedInstance().soulStolen)"
+        highscore?.text = "\(GameplayLogic.sharedInstance().highScore)"
     }
     
 }

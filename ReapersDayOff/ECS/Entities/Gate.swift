@@ -46,18 +46,18 @@ class Gate: GKEntity {
 
         // Connect the `PhysicsComponent` and the `RenderComponent`.
         renderComponent.node.physicsBody = physicsComponent.physicsBody
-        var color: UIColor
-        switch name {
-        case "red":
-            color = UIColor.red
-        case "blue":
-            color = UIColor.blue
-        case "green":
-            color = UIColor.green
-        default:
-            fatalError("Unknown Gate color")
-        }
-        renderComponent.node.addChild(SKSpriteNode(color: color, size: Gate.textureSize))
+//        var color: UIColor
+//        switch name {
+//        case "red":
+//            color = UIColor.red
+//        case "blue":
+//            color = UIColor.blue
+//        case "green":
+//            color = UIColor.green
+//        default:
+//            fatalError("Unknown Gate color")
+//        }
+        renderComponent.node.addChild(SKSpriteNode(color: .clear, size: Gate.textureSize))
     }
     
     required init?(coder: NSCoder) {
