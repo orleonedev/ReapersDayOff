@@ -112,7 +112,7 @@ class SoulsContainer: SKSpriteNode {
     let soulsContainer = SKSpriteNode(color: Configuration.soulsContainerColor, size: Configuration.soulsContainerSize)
     
     /// A node representing the overlay
-    let overlayNode = SKSpriteNode(texture: SKTexture(imageNamed: "hudBlack"), color: .black, size: Configuration.soulsContainerTextureSize)
+    let overlayNode = SKSpriteNode(texture: SKTexture(imageNamed: "hudBlackSquare"), color: .black, size: Configuration.soulsContainerTextureSize)
     
     // MARK: Initializers
     
