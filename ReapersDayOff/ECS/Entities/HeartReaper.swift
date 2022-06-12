@@ -31,7 +31,9 @@ class HeartReaper: Enemy {
         addComponent(orientationComponent)
         
         let intelligenceComponent = IntelligenceComponent(states: [
-            EnemyAgentControlledState(entity: self)
+            HeartReaperAppearState(entity: self),
+            EnemyAgentControlledState(entity: self),
+            HeartReaperDisappearState(entity: self)
         ])
         addComponent(intelligenceComponent)
         
@@ -62,6 +64,7 @@ class HeartReaper: Enemy {
         let physicsBody = SKPhysicsBody(circleOfRadius: GameplayConfiguration.Enemy.physicsBodyRadius, center: GameplayConfiguration.Enemy.physicsBodyOffset)
         
         let physicsComponent = PhysicsComponent(physicsBody: physicsBody, colliderType: .Enemy)
+        
         addComponent(physicsComponent)
         
         // Connect the `PhysicsComponent` and the `RenderComponent`.
@@ -144,9 +147,14 @@ class HeartReaper: Enemy {
         // add scene.entities.remove(self) when seconds finish
         
         // move to another function
+        if let intel = component(ofType: IntelligenceComponent.self) {
+            intel.stateMachine.enter(HeartReaperDisappearState.self)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
         
-        removeHeartReaper()
-        
+                self.removeHeartReaper()
+            }
+            
+        }
     }
     
     func removeHeartReaper() {

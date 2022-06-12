@@ -145,19 +145,18 @@ class GameplayLogic {
             timeRemaining += timeForDeposit(souls: redSouls)
             currentScore += pointsForDeposit(souls: redSouls)
             totalSouls += Int(redSouls)
-            LOGremoveSoulOnStage(n: redSouls)
+            
             redSouls = 0
         case "green":
             timeRemaining += timeForDeposit(souls: greenSouls)*2
             currentScore += pointsForDeposit(souls: greenSouls)*2
             totalSouls += Int(greenSouls)
-            LOGremoveSoulOnStage(n: greenSouls)
+            
             greenSouls = 0
         case "blue":
             timeRemaining += timeForDeposit(souls: blueSouls)
             currentScore += pointsForDeposit(souls: blueSouls)*3
             totalSouls += Int(blueSouls)
-            LOGremoveSoulOnStage(n: blueSouls)
             blueSouls = 0
         default:
             fatalError("Unknown Gate type")
@@ -168,13 +167,16 @@ class GameplayLogic {
         switch type{
         case "red":
             redSouls += 1
+            
         case "blue":
             blueSouls += 1
+            
         case "green":
             greenSouls += 1
         default:
             fatalError("Unknown Soul type")
         }
+        LOGremoveSoulOnStage(n: 1)
         
     }
     

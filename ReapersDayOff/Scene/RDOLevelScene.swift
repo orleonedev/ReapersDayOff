@@ -163,7 +163,28 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         // Load the level's configuration from the level data file.
 //        levelConfiguration = RDOLevelConfiguration(fileName: sceneManager.currentSceneMetadata!.fileName)
-
+        /// physics box con offset ma c'è il problema della profondità di unveil
+//        let columns = obstacleSpriteNodes.filter {$0.name == "Pillar"}
+//        if columns.count == 3 {
+//            let columnsSize = CGSize(width: columns[0].size.width, height: columns[0].size.height - 64)
+//            columns[0].physicsBody = SKPhysicsBody(rectangleOf: columnsSize, center: CGPoint(x: 0.0, y: -32))
+//            columns[0].physicsBody?.categoryBitMask = ColliderType.Obstacle.categoryMask
+//            columns[0].physicsBody?.collisionBitMask = ColliderType.Obstacle.collisionMask
+//            columns[0].physicsBody?.contactTestBitMask = ColliderType.Obstacle.contactMask
+//            columns[0].physicsBody?.isDynamic = false
+//
+//            columns[1].physicsBody = SKPhysicsBody(rectangleOf: columnsSize, center: CGPoint(x: 0.0, y: -32))
+//            columns[1].physicsBody?.categoryBitMask = ColliderType.Obstacle.categoryMask
+//            columns[1].physicsBody?.collisionBitMask = ColliderType.Obstacle.collisionMask
+//            columns[1].physicsBody?.contactTestBitMask = ColliderType.Obstacle.contactMask
+//            columns[1].physicsBody?.isDynamic = false
+//
+//            columns[2].physicsBody = SKPhysicsBody(rectangleOf: columnsSize, center: CGPoint(x: 0.0, y: -32))
+//            columns[2].physicsBody?.categoryBitMask = ColliderType.Obstacle.categoryMask
+//            columns[2].physicsBody?.collisionBitMask = ColliderType.Obstacle.collisionMask
+//            columns[2].physicsBody?.contactTestBitMask = ColliderType.Obstacle.contactMask
+//            columns[2].physicsBody?.isDynamic = false
+//        }
         // Set up the path finding graph with all polygon obstacles.
         graph.addObstacles(polygonObstacles)
         
@@ -909,9 +930,8 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 
         let newEnemy = HeartReaper()
         enemy = newEnemy
-        beamInEnemy(enemy: enemy!, pos: Int.random(in: 1...3))
+        beamInEnemy(enemy: enemy!, pos: 1 /*Int.random(in: 1...3)*/)
 
-        
     }
     
     private func putGateInScene(gate: Gate, pos: Int){
@@ -930,11 +950,11 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         var soul: Soul
         switch random {
         case 1:
-            soul = GreenSoul(pathPoints: [], mandate: .followPatrolPath)
+            soul = GreenSoul()
         case 2:
-            soul = BlueSoul(pathPoints: [], mandate: .followPatrolPath)
+            soul = BlueSoul()
         default:
-            soul = RedSoul(pathPoints: [], mandate: .followPatrolPath)
+            soul = RedSoul()
         }
         
         return soul
@@ -943,12 +963,10 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
     func spawnSoul() {
         
         let soul = createSoul()
-        let pathPoints = createPathPoints()
-        soul.pathPoints = pathPoints
         guard let orientationComponent = soul.component(ofType: OrientationComponent.self) else {
             fatalError("A task bot must have an orientation component to be able to be added to a level")
         }
-        orientationComponent.compassDirection = .west
+        orientationComponent.compassDirection = CompassDirection.allDirections.randomElement() ?? .northEast
         
         putSoulInScene(soul: soul, pos: Int.random(in: 1...3))
         GameplayLogic.sharedInstance().LOGAddSoulOnStage(n: 1)
@@ -966,15 +984,5 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
     }
     
-    private func createPathPoints() -> [CGPoint] {
-        
-        
-        return [
-                CGPoint(x: -256, y: -512),
-                CGPoint(x: 0, y: 384),
-                CGPoint(x: 512, y: -128),
-                CGPoint(x: -386, y: -447)
-        ]
-    }
 }
 
