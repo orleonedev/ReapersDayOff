@@ -12,10 +12,10 @@ class ChargeBar: SKSpriteNode {
     
     struct Configuration {
         /// The size of the complete bar (back and level indicator).
-        static let size = CGSize(width: 516.0, height: 20.0)
+        static let size = CGSize(width: 492.0 - 64, height: 16.0)
         
         /// The size of the colored level bar.
-        static let chargeLevelNodeSize = CGSize(width: 512.0, height: 16.0)
+        static let chargeLevelNodeSize = CGSize(width: 482.0 - 64, height: 14.0)
         
         /// The duration used for actions to update the level indicator.
         static let levelUpdateDuration: TimeInterval = 0.1

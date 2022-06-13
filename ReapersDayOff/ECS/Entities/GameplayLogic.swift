@@ -78,8 +78,6 @@ class GameplayLogic {
     }
     
     var soulLimit: UInt = 10
-    let timeLimit: TimeInterval = 100.0
-    var timeRemaining: TimeInterval = 0.0
     
     var soulsOnStage: UInt = 0
     func LOGAddSoulOnStage(n: UInt){
@@ -99,7 +97,6 @@ class GameplayLogic {
         redSouls = 0
         greenSouls = 0
         blueSouls = 0
-        timeRemaining = timeLimit
         soulsOnStage = 0
         enemyOnStage = false
         
@@ -142,17 +139,14 @@ class GameplayLogic {
     func deposit(type: String){
         switch type {
         case "red":
-            timeRemaining += timeForDeposit(souls: redSouls)
             currentScore += pointsForDeposit(souls: redSouls)
             totalSouls += Int(redSouls)
             redSouls = 0
         case "green":
-            timeRemaining += timeForDeposit(souls: greenSouls)*2
             currentScore += pointsForDeposit(souls: greenSouls)*2
             totalSouls += Int(greenSouls)
             greenSouls = 0
         case "blue":
-            timeRemaining += timeForDeposit(souls: blueSouls)
             currentScore += pointsForDeposit(souls: blueSouls)*3
             totalSouls += Int(blueSouls)
             blueSouls = 0

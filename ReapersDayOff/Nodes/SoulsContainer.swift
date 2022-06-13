@@ -7,58 +7,6 @@
 
 import SpriteKit
 
-//var soulsContainer = SKSpriteNode(texture: nil, color: UIColor.yellow, size: CGSize(width: 0, height: 0))
-//
-//let soulsContainerTexture = SKSpriteNode(texture: SKTexture(imageNamed: "hudBlack"), color: UIColor.gray, size: CGSize(width: 0, height: 0))
-//
-//let barSize = CGSize(width: frame.height / 10, height: 0)
-//soulsContainer.anchorPoint.y = 0
-//soulsContainer.anchorPoint.x = 0
-//soulsContainer.size = barSize
-//scaleSoulsContainer()
-//soulsContainer.zPosition = WorldLayer.top.rawValue
-//camera!.addChild(soulsContainer)
-//
-//let SoulsContainerTextureSize = CGSize(width: frame.height / 10, height: frame.height / 10)
-//soulsContainerTexture.anchorPoint.y = 1
-//soulsContainerTexture.anchorPoint.x = 0
-//soulsContainerTexture.size = SoulsContainerTextureSize
-//soulsContainerTexture.zPosition = WorldLayer.top.rawValue + 1
-//scaleSoulsContainerTexture()
-//camera!.addChild(soulsContainerTexture)
-//
-//func scaleSoulsContainer() {
-//
-//   // Make sure the score node is positioned at the top of the scene.
-//   soulsContainer.position.y = size.height / 2.5
-//
-//    // Make sure the score node is positioned at the right of the scene.
-//    soulsContainer.position.x = -size.width / 2.25
-//
-//   // Add padding between the top of scene and the top of the score node.
-//   #if os(tvOS)
-//   soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize
-//   #else
-//   soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
-//   #endif
-//}
-//
-//func scaleSoulsContainerTexture() {
-//
-//   // Make sure the score node is positioned at the top of the scene.
-//   soulsContainerTexture.position.y = size.height / 2.0
-//
-//    // Make sure the score node is positioned at the right of the scene.
-//    soulsContainerTexture.position.x = -size.width / 2.25
-//
-//   // Add padding between the top of scene and the top of the score node.
-//   #if os(tvOS)
-//    soulsContainerTexture.position.y -= GameplayConfiguration.Timer.paddingSize
-//   #else
-//    soulsContainerTexture.position.y -= GameplayConfiguration.Timer.paddingSize * timerNode.fontSize
-//   #endif
-//}
-
 class SoulsContainer: SKSpriteNode {
     // MARK: Static Properties
     

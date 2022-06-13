@@ -23,27 +23,6 @@ class RDOLevelSceneActiveState: GKState {
     var heartReapSpwan: TimeInterval = GameplayConfiguration.HeartReaper.enemySpawnRate
     var aliveTimer: TimeInterval = GameplayConfiguration.HeartReaper.enemySpawnRate
     
-    
-    /*
-     A formatter for individual date components used to provide an appropriate
-     display value for the timer.
-     */
-    let timeRemainingFormatter: DateComponentsFormatter = {
-        let formatter = DateComponentsFormatter()
-        formatter.zeroFormattingBehavior = .pad
-        formatter.allowedUnits = [.minute, .second]
-        
-        return formatter
-    }()
-    
-    // The formatted string representing the time remaining.
-    var timeRemainingString: String {
-        let components = NSDateComponents()
-        components.second = Int(max(0.0, logic.timeRemaining ))
-        
-        return timeRemainingFormatter.string(from: components as DateComponents)!
-    }
-    
     var chargeComponent: ChargeComponent {
         guard let chargeComponent = levelScene.reaper.component(ofType: ChargeComponent.self) else { fatalError("A Reaper must have an ChargeComponent.") }
         return chargeComponent
@@ -62,7 +41,6 @@ class RDOLevelSceneActiveState: GKState {
     override func didEnter(from previousState: GKState?) {
         super.didEnter(from: previousState)
         
-        levelScene.timerNode.text = timeRemainingString
     }
     
     override func update(deltaTime seconds: TimeInterval) {
@@ -114,7 +92,6 @@ class RDOLevelSceneActiveState: GKState {
         //solo se enemy non ci sta sulla scena: controllare
         
         // Update the displayed time remaining.
-        levelScene.timerNode.text = timeRemainingString
         levelScene.score.text = String(logic.currentScore)
         levelScene.bluecounter.text = String(logic.blueSouls)
         levelScene.redcounter.text = String(logic.redSouls)
@@ -125,18 +102,15 @@ class RDOLevelSceneActiveState: GKState {
             
             if logic.isFull {
                 movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed - 100
-                logic.timeRemaining -= seconds
                 chargeComponent.loseCharge(chargeToLose: Double(seconds))
             }
             else {
                 if levelScene.isSpeeding {
                     movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed + 100
-                    logic.timeRemaining -= seconds*2
                     chargeComponent.loseCharge(chargeToLose: Double(seconds)*2)
                 }
                 else {
                     movComp.movementSpeed = GameplayConfiguration.Reaper.movementSpeed
-                    logic.timeRemaining -= seconds
                     chargeComponent.loseCharge(chargeToLose: Double(seconds))
                 }
             }
