@@ -503,23 +503,31 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
                 If the entity has a `ChargeComponent` with a `ChargeBar`, add the `ChargeBar`
                 to the scene. Constrain the `ChargeBar` to the `RenderComponent`'s node.
             */
-            if let chargeBar = entity.component(ofType: ChargeComponent.self)?.chargeBar {
-                
-//                addNode(node: chargeBar, toWorldLayer: .top)
-                chargeBar.position.y = size.height / 2.15
-                chargeBar.position.x = -size.width / 3.2
-                chargeBar.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
-                camera!.addChild(chargeBar)
-               
-            }
-            
             if let soulsContainer = entity.component(ofType: SoulsContainerComponent.self)?.chargeBar {
+                if let chargeBar = entity.component(ofType: ChargeComponent.self)?.chargeBar {
                 
-                soulsContainer.position.y = size.height / 2.0
-                soulsContainer.position.x = -size.width / 2.3
-                soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
-                camera!.addChild(soulsContainer)
+                    soulsContainer.size = CGSize(width: size.height/7, height: size.height/7)
+                    soulsContainer.overlayNode.size = soulsContainer.size
+                    soulsContainer.soulsContainer.size = soulsContainer.size
+                    soulsContainer.position.y = size.height / 2.0
+                    soulsContainer.position.x = -size.width / 2.3
+                    soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize*2 * GameplayConfiguration.Timer.fontSize*size.height
+                    camera!.addChild(soulsContainer)
+                    
+                    chargeBar.size = CGSize(width: size.width/2.05, height: size.height/32)
+                    chargeBar.overlayNode.size = CGSize(width: size.width/2, height: size.height/30)
+                    chargeBar.chargeLevelNode.size = CGSize(width: size.width/2.1, height: size.height/31)
+                    chargeBar.position.y = size.height / 2.15
+                    chargeBar.position.x = soulsContainer.position.x + soulsContainer.size.width*1.2
+                    chargeBar.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
+                    camera!.addChild(chargeBar)
+               
+            
+            
+            
                 
+                
+                }
             }
         }
         
@@ -664,17 +672,17 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        bluecounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
        
         // Make sure the score node is positioned at the top of the scene.
-        bluecounter.position.y = size.height / 2.3
+        bluecounter.position.y = blueHUD.position.y
         
          // Make sure the score node is positioned at the right of the scene.
         //bluecounter.position.x = -size.width / 3.6
         bluecounter.position.x = blueHUD.position.x + blueHUD.size.width
-       // Add padding between the top of scene and the top of the score node.
-       #if os(tvOS)
-       bluecounter.position.y -= GameplayConfiguration.Timer.paddingSize
-       #else
-       bluecounter.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
-       #endif
+//       // Add padding between the top of scene and the top of the score node.
+//       #if os(tvOS)
+//       bluecounter.position.y -= GameplayConfiguration.Timer.paddingSize
+//       #else
+//       bluecounter.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
+//       #endif
    }
     
     func scaleGreenCounterNode() {
@@ -682,17 +690,17 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        greencounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
        
        // Make sure the score node is positioned at the top of the scene.
-       greencounter.position.y = size.height / 2.3
+        greencounter.position.y = greenHUD.position.y
        
         // Make sure the score node is positioned at the right of the scene.
         //greencounter.position.x = -size.width / 4.25 + greencounter.fontSize
         greencounter.position.x = greenHUD.position.x + greenHUD.size.width
-       // Add padding between the top of scene and the top of the score node.
-       #if os(tvOS)
-       greencounter.position.y -= GameplayConfiguration.Timer.paddingSize
-       #else
-       greencounter.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
-       #endif
+//       // Add padding between the top of scene and the top of the score node.
+//       #if os(tvOS)
+//       greencounter.position.y -= GameplayConfiguration.Timer.paddingSize
+//       #else
+//       greencounter.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
+//       #endif
    }
     
     func scaleRedCounterNode() {
@@ -700,64 +708,72 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
        redcounter.fontSize = size.height * GameplayConfiguration.Timer.fontSize
        
        // Make sure the score node is positioned at the top of the scene.
-       redcounter.position.y = size.height / 2.3
+        redcounter.position.y = redHUD.position.y
        
         // Make sure the score node is positioned at the right of the scene.
         //redcounter.position.x = -size.width / 5.25 + (2 * redcounter.fontSize)
         redcounter.position.x = redHUD.position.x + redHUD.size.width
         
-       // Add padding between the top of scene and the top of the score node.
-       #if os(tvOS)
-       redcounter.position.y -= GameplayConfiguration.Timer.paddingSize
-       #else
-       redcounter.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
-       #endif
+//       // Add padding between the top of scene and the top of the score node.
+//       #if os(tvOS)
+//       redcounter.position.y -= GameplayConfiguration.Timer.paddingSize
+//       #else
+//       redcounter.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
+//       #endif
    }
     
     func scaleBlueHUD() {
 
-         // Make sure the score node is positioned at the top of the scene.
-         blueHUD.position.y = size.height / 2.25
+        if let chargeBarNode = reaper.component(ofType: ChargeComponent.self)?.chargeBar {
+            
+            blueHUD.position.y = chargeBarNode.position.y - chargeBarNode.size.height
+            blueHUD.position.x = chargeBarNode.position.x
+        }
+        else {
+            // Make sure the score node is positioned at the top of the scene.
+            blueHUD.position.y = size.height / 2.25
+            
+             // Make sure the score node is positioned at the right of the scene.
+            blueHUD.position.x = -size.width / 3.2
+        }
          
-          // Make sure the score node is positioned at the right of the scene.
-         blueHUD.position.x = -size.width / 3.2
-         
-        // Add padding between the top of scene and the top of the score node.
-        #if os(tvOS)
-        blueHUD.position.y -= GameplayConfiguration.Timer.paddingSize
-        #else
-        blueHUD.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
-        #endif
+//
+//        // Add padding between the top of scene and the top of the score node.
+//        #if os(tvOS)
+//        blueHUD.position.y -= GameplayConfiguration.Timer.paddingSize
+//        #else
+//        blueHUD.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
+//        #endif
    }
     
     func scaleGreenHUD() {
         // Make sure the score node is positioned at the top of the scene.
-        greenHUD.position.y = size.height / 2.25
+        greenHUD.position.y = blueHUD.position.y
         
          // Make sure the score node is positioned at the right of the scene.
          //greenHUD.position.x = -size.width / 3.5 + greencounter.fontSize
         greenHUD.position.x = bluecounter.position.x + bluecounter.frame.width*1.5
         
-        // Add padding between the top of scene and the top of the score node.
-        #if os(tvOS)
-        greenHUD.position.y -= GameplayConfiguration.Timer.paddingSize
-        #else
-        greenHUD.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
-        #endif
+//        // Add padding between the top of scene and the top of the score node.
+//        #if os(tvOS)
+//        greenHUD.position.y -= GameplayConfiguration.Timer.paddingSize
+//        #else
+//        greenHUD.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
+//        #endif
    }
     func scaleRedHUD() {
        // Make sure the score node is positioned at the top of the scene.
-       redHUD.position.y = size.height / 2.25
+        redHUD.position.y = blueHUD.position.y
        
         // Make sure the score node is positioned at the right of the scene.
         //redHUD.position.x = -size.width / 4.25 + (2 * redcounter.fontSize)
         redHUD.position.x = greencounter.position.x + greencounter.frame.width*1.5
-       // Add padding between the top of scene and the top of the score node.
-       #if os(tvOS)
-       redHUD.position.y -= GameplayConfiguration.Timer.paddingSize
-       #else
-       redHUD.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
-       #endif
+//       // Add padding between the top of scene and the top of the score node.
+//       #if os(tvOS)
+//       redHUD.position.y -= GameplayConfiguration.Timer.paddingSize
+//       #else
+//       redHUD.position.y -= GameplayConfiguration.Timer.paddingSize * GameplayConfiguration.Timer.fontSize*size.height
+//       #endif
    }
     
     func scalePauseButton() {
