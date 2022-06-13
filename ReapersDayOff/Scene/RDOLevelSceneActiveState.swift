@@ -81,7 +81,7 @@ class RDOLevelSceneActiveState: GKState {
             
             heartReapSpwan -= seconds
             
-            print("heartReapSpwan \(heartReapSpwan)")
+//            print("heartReapSpwan \(heartReapSpwan)")
             if heartReapSpwan < 0 {
                 heartReapSpwan = GameplayConfiguration.HeartReaper.enemySpawnRate
                 levelScene.spawnEnemy()
@@ -91,7 +91,7 @@ class RDOLevelSceneActiveState: GKState {
         }
         else {
             aliveTimer -= seconds
-            print("aliveTimer \(aliveTimer)")
+//            print("aliveTimer \(aliveTimer)")
             if aliveTimer < 0 {
                 aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate
                 if let intel = levelScene.enemy?.component(ofType: IntelligenceComponent.self) {

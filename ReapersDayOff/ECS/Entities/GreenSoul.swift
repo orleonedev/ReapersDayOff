@@ -106,10 +106,7 @@ class GreenSoul: Soul {
         
         if !gameState.isFull{
             
-            if let scene = renderComponent.node.scene as? RDOLevelScene {
-                scene.entities.remove(self)
-            }
-            renderComponent.node.removeFromParent()
+            self.removeSoul()
             gameState.addSouls(type: "green")
         }
         else {

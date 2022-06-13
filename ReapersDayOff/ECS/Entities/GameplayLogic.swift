@@ -145,13 +145,11 @@ class GameplayLogic {
             timeRemaining += timeForDeposit(souls: redSouls)
             currentScore += pointsForDeposit(souls: redSouls)
             totalSouls += Int(redSouls)
-            
             redSouls = 0
         case "green":
             timeRemaining += timeForDeposit(souls: greenSouls)*2
             currentScore += pointsForDeposit(souls: greenSouls)*2
             totalSouls += Int(greenSouls)
-            
             greenSouls = 0
         case "blue":
             timeRemaining += timeForDeposit(souls: blueSouls)
@@ -176,12 +174,10 @@ class GameplayLogic {
         default:
             fatalError("Unknown Soul type")
         }
-        LOGremoveSoulOnStage(n: 1)
         
     }
     
     func loseSouls() {
-
         soulStolen = Int((redSouls/2)+(greenSouls/2)+(blueSouls/2))
         redSouls = redSouls/2
         greenSouls = greenSouls/2

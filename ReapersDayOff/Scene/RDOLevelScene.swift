@@ -197,7 +197,6 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         // Add a `PlayerBot` for the player.
         beamInReaper()
         
-//        beamInEnemy()
         
         // Gravity will be in the negative z direction; there is no x or y component.
         physicsWorld.gravity = CGVector.zero
@@ -206,12 +205,14 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         // Start tutorial
-        let tutorial = UserDefaults.standard.bool(forKey: "tutorial")
-//        if (tutorial == false)
-//        {
+        
+        if !UserDefaults.standard.bool(forKey: "tutorial")
+        {
             UserDefaults.standard.set(true, forKey: "tutorial")
             stateMachine.enter(RDOLevelSceneTutorialState.self)
-//        }
+        } else {
+            stateMachine.enter(RDOLevelSceneActiveState.self)
+        }
 
         // Configure the `timerNode` and add it to the camera node.
         timerNode.zPosition = WorldLayer.top.rawValue
@@ -930,7 +931,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
 
         let newEnemy = HeartReaper()
         enemy = newEnemy
-        beamInEnemy(enemy: enemy!, pos: 1 /*Int.random(in: 1...3)*/)
+        beamInEnemy(enemy: enemy!, pos:  Int.random(in: 1...3))
 
     }
     
@@ -942,6 +943,9 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         gateNode.position = gateCoordinate.position
         
         addEntity(entity: gate)
+        if let gate = charactersNode.childNode(withName: "//\(gate.name)Gate") as? SKSpriteNode {
+            gate.run(SKAction(named: gate.name!)!)
+        }
         
     }
     
@@ -970,6 +974,7 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
         
         putSoulInScene(soul: soul, pos: Int.random(in: 1...3))
         GameplayLogic.sharedInstance().LOGAddSoulOnStage(n: 1)
+        
     }
     
     private func putSoulInScene(soul: Soul, pos: Int){
