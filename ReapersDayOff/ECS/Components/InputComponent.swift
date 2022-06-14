@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import GameController
 
 class InputComponent: GKComponent, ControlInputSourceDelegate {
     // MARK: Types
@@ -28,6 +29,7 @@ class InputComponent: GKComponent, ControlInputSourceDelegate {
         This is used to prevent the player from moving or firing while
         being attacked.
     */
+    
     var isEnabled = true {
         didSet {
             if isEnabled {
@@ -97,7 +99,13 @@ class InputComponent: GKComponent, ControlInputSourceDelegate {
                 if let levelScene = entity?.component(ofType: RenderComponent.self)?.node.scene as? RDOLevelScene {
                     levelScene.isSpeeding = true
                     if !GameplayLogic.sharedInstance().isFull{
-                        HapticUtility.playHapticsFile(named: "Sprint")
+                            if GCController.current != nil {
+                                HapticUtility.playHapticsFile(named: "Sprint")
+                            } else {
+//                                let haptic = UIImpactFeedbackGenerator(style: .light)
+//                                haptic.impactOccurred()
+                            }
+                    
                     }
                 }
             }else{

@@ -7,7 +7,7 @@
 
 import SpriteKit
 import GameplayKit
-
+import GameController
 
 class HeartReaper: Enemy {
     
@@ -139,7 +139,12 @@ class HeartReaper: Enemy {
         gameState.heartReaperHit += 1
         
         
-        HapticUtility.playHapticsFile(named: "DamageTaken")
+        if GCController.current != nil {
+            HapticUtility.playHapticsFile(named: "DamageTaken")
+        } else {
+            let haptic = UIImpactFeedbackGenerator(style: .light)
+            haptic.impactOccurred()
+        }
         gameState.loseSouls()
         // add scene.entities.remove(self) when seconds finish
         

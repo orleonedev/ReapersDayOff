@@ -815,7 +815,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_TEAM = SA4H49C4LT;
+				DEVELOPMENT_TEAM = BWUQ8K9QZU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ReapersDayOff/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -833,7 +833,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = tatsureraGames.ReapersDayOff;
+				PRODUCT_BUNDLE_IDENTIFIER = tatsureraGames.ReapersDayOff1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -848,7 +848,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_TEAM = SA4H49C4LT;
+				DEVELOPMENT_TEAM = BWUQ8K9QZU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ReapersDayOff/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -866,7 +866,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = tatsureraGames.ReapersDayOff;
+				PRODUCT_BUNDLE_IDENTIFIER = tatsureraGames.ReapersDayOff1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

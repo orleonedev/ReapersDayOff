@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import GameController
 
 class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate, ContactNotifiableType  /*, ResourceLoadableType */{
 
@@ -250,7 +251,12 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
             }
             
             shared.deposit(type: gate.name)
-            HapticUtility.playHapticsFile(named: "Oscillate")
+            if GCController.current != nil {
+                HapticUtility.playHapticsFile(named: "Oscillate")
+            } else {
+                let haptic = UIImpactFeedbackGenerator(style: .light)
+                haptic.impactOccurred()
+            }
 //            collectedSouls +=
         }
         
