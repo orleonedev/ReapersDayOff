@@ -8,10 +8,29 @@
 import Foundation
 import AVFoundation
 
+protocol SoundDelegate: AnyObject {
+    
+    func soundEnabled()
+}
+
 public class SoundClass {
     public var backgroundMusicPlayer: AVAudioPlayer?
     public var soundEffectPlayer: AVAudioPlayer?
     public var soundEffectPlayer2: AVAudioPlayer?
+    var delegate: SoundDelegate?
+    
+    public var enabled: Bool = true {
+        willSet {
+            if !newValue {
+                backgroundMusicPlayer?.stop()
+                soundEffectPlayer?.stop()
+                soundEffectPlayer2?.stop()
+            } else {
+                delegate?.soundEnabled()
+                
+            }
+        }
+    }
     
     public class func sharedInstance() -> SoundClass {
         return SoundClassInstance

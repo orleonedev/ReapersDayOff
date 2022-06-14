@@ -271,8 +271,10 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
             if GCController.current != nil {
                 HapticUtility.playHapticsFile(named: "Oscillate")
             } else {
-                let haptic = UIImpactFeedbackGenerator(style: .light)
-                haptic.impactOccurred()
+                let hap = UINotificationFeedbackGenerator()
+                hap.notificationOccurred(.success)
+//                let haptic = UIImpactFeedbackGenerator(style: .light)
+//                haptic.impactOccurred()
             }
 //            collectedSouls +=
         }

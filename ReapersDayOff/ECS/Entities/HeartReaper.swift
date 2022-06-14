@@ -145,8 +145,12 @@ class HeartReaper: Enemy {
         if GCController.current != nil {
             HapticUtility.playHapticsFile(named: "DamageTaken")
         } else {
-            let haptic = UIImpactFeedbackGenerator(style: .light)
-            haptic.impactOccurred()
+            let hap = UINotificationFeedbackGenerator()
+            hap.notificationOccurred(.error)
+//            let hap = UIImpactFeedbackGenerator(style: .heavy)
+//            hap.impactOccurred()
+//            let haptic = UIImpactFeedbackGenerator(style: .light)
+//            haptic.impactOccurred()
         }
         gameState.loseSouls()
         // add scene.entities.remove(self) when seconds finish

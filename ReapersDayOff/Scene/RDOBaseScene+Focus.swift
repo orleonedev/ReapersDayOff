@@ -54,7 +54,9 @@ extension RDOBaseScene {
             .tutorial,
             .credits,
             .scoreLeaderboard,
-            .leaderboards
+            .leaderboards,
+            .sound,
+            .haptics
         ]
     }
     

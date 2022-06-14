@@ -58,6 +58,20 @@ extension RDOBaseScene: ButtonNodeResponderType {
             
         case .leaderboards:
             GameCenterHelper.sharedInstance().showLeaderboards()
+        case .sound:
+            guard let scene = self as? RDOSettingsScene else {
+                fatalError("not Setting Scene")
+            }
+            if SoundClass.sharedInstance().enabled {
+                SoundClass.sharedInstance().enabled = false
+                scene.soundButton?.texture = SKTexture(imageNamed: "musicOff")
+            } else {
+                SoundClass.sharedInstance().enabled = true
+                scene.soundButton?.texture = SKTexture(imageNamed: "musicOn")
+            }
+            
+        case .haptics:
+            print("Haptics")
             
                 
             default:

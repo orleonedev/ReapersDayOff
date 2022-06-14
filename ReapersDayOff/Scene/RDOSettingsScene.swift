@@ -15,6 +15,10 @@ class RDOSettingsScene: RDOBaseScene {
         return childNode(withName: "backgroundNode") as? SKSpriteNode
     }
     
+    var settingsScreen: SKSpriteNode? {
+        return backgroundNode?.childNode(withName: "settingsScreen") as? SKSpriteNode
+    }
+    
     /// The Game button which allows the player to proceed to the first level.
     var HomeButton: RDOButtonNode? {
         return backgroundNode?.childNode(withName: ButtonIdentifier.home.rawValue) as? RDOButtonNode
@@ -29,11 +33,20 @@ class RDOSettingsScene: RDOBaseScene {
         return backgroundNode?.childNode(withName: "bg2") as? SKSpriteNode
     }
     
+    var soundButton: RDOButtonNode? {
+        return settingsScreen?.childNode(withName: ButtonIdentifier.sound.rawValue) as? RDOButtonNode
+    }
+    var hapticsButton: RDOButtonNode? {
+        return settingsScreen?.childNode(withName: ButtonIdentifier.haptics.rawValue) as? RDOButtonNode
+    }
     
     // MARK: Scene Life Cycle
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
+        if !SoundClass.sharedInstance().enabled {
+            soundButton?.texture = SKTexture(imageNamed: "musicOff")
+        }
         // Enable focus based navigation.
         focusChangesEnabled = true
         let seq1 = SKAction.sequence([

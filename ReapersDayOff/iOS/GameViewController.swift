@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 import GameKit
 
-class GameViewController: UIViewController, SceneManagerDelegate, GKGameCenterControllerDelegate {
+class GameViewController: UIViewController, SceneManagerDelegate, GKGameCenterControllerDelegate, SoundDelegate {
     
     
     var sceneManager: RDOSceneManager!
@@ -22,6 +22,7 @@ class GameViewController: UIViewController, SceneManagerDelegate, GKGameCenterCo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        soundInstance.delegate = self
         gamecenterHelper.viewDelegate = self
         gamecenterHelper.authenticateLocalPlayer()
         
@@ -66,7 +67,8 @@ class GameViewController: UIViewController, SceneManagerDelegate, GKGameCenterCo
     
     func sceneManager(_ sceneManager: RDOSceneManager, didTransitionTo scene: SKScene) {
         
-        if scene is RDOLevelScene {
+        if soundInstance.enabled {
+            if scene is RDOLevelScene {
             isinMenu = false
             soundInstance.playBackgroundMusic("life-of-a-wandering-wizard-15549.mp3")
         }
@@ -79,12 +81,17 @@ class GameViewController: UIViewController, SceneManagerDelegate, GKGameCenterCo
                 isinMenu = true
             }
         }
+            
+        }
     }
-    
     
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func soundEnabled() {
+        soundInstance.playBackgroundMusic("jazz-happy-110855.mp3")
     }
     
 }
