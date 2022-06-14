@@ -69,7 +69,6 @@ public class GameCenterHelper {
         
         let viewController = GKGameCenterViewController(state: .leaderboards)
         viewController.gameCenterDelegate = viewDelegate
-        
         viewDelegate?.present(viewController, animated: true, completion: nil)
     }
     

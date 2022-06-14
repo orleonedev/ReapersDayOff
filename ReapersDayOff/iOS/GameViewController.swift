@@ -40,8 +40,8 @@ class GameViewController: UIViewController, SceneManagerDelegate, GKGameCenterCo
             sceneManager.delegate = self
             sceneManager.transitionToScene(identifier: .launch)
             
-            view.showsFPS = true
-            view.showsNodeCount = true
+            view.showsFPS = false
+            view.showsNodeCount = false
             view.showsPhysics = false
         }
         

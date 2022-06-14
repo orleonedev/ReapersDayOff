@@ -42,6 +42,9 @@ class RDOMainScene: RDOBaseScene {
     var reaper: SKSpriteNode? {
         return backgroundNode?.childNode(withName: "//reaper") as? SKSpriteNode
     }
+    var donnie: SKSpriteNode? {
+        return backgroundNode?.childNode(withName: "//donnie") as? SKSpriteNode
+    }
     
     var bg : SKSpriteNode? {
         return backgroundNode?.childNode(withName: "bg") as? SKSpriteNode
@@ -74,6 +77,7 @@ class RDOMainScene: RDOBaseScene {
         
         centerCameraOnPoint(point: backgroundNode!.position)
         reaper?.run(SKAction.repeatForever(SKAction(named: "reaperRotation")!))
+        donnie?.run(SKAction.repeatForever(SKAction(named: "DonnieMainScreen")!))
         
         
     }

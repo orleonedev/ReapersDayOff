@@ -249,7 +249,24 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
                     }
                 }
             }
-            
+            if let scene = renderComponent.node.scene {
+                switch gate.name {
+                case "red":
+                    if let gem = scene.childNode(withName: "//redFloor") as? SKSpriteNode {
+                        gem.run(SKAction(named: "redGem")!)
+                    }
+                case "green":
+                    if let gem = scene.childNode(withName: "//greenFloor") as? SKSpriteNode {
+                        gem.run(SKAction(named: "greenGem")!)
+                    }
+                case "blue":
+                    if let gem = scene.childNode(withName: "//blueFloor") as? SKSpriteNode {
+                        gem.run(SKAction(named: "blueGem")!)
+                    }
+                default:
+                    fatalError("Unknown Gate type")
+                }
+            }
             shared.deposit(type: gate.name)
             if GCController.current != nil {
                 HapticUtility.playHapticsFile(named: "Oscillate")

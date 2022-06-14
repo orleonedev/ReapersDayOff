@@ -28,15 +28,7 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
     
     // MARK: Properties
     
-    
-//    func didSet() {
-//    let closestPointOnBadPath = closestPointOnPath(path: pathPoints)
-//    mandate = .returnToPositionOnPath(SIMD2<Float>(closestPointOnBadPath))
-//
-//    }
     var mandate: SoulMandate
-    
-    var pathPoints: [CGPoint]
     
     var behaviorForCurrentMandate: GKBehavior {
         // Return an empty behavior if this `TaskBot` is not yet in a `LevelScene`.
@@ -46,31 +38,23 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
 
         let agentBehavior: GKBehavior
         let radius: Float
-            
-        // `debugPathPoints`, `debugPathShouldCycle`, and `debugColor` are only used when debug drawing is enabled.
-//        let debugPathPoints: [CGPoint]
-//        var debugPathShouldCycle = false
-//        let debugColor: SKColor
         
         switch mandate {
             case .followPatrolPath:
-                let pathPoints = pathPoints
+            let pathPoints:[CGPoint] = []
                 radius = GameplayConfiguration.Soul.patrolPathRadius
             agentBehavior = SoulBehavior.behavior(forAgent: agent, fleeAgent: agent, patrollingPathWithPoints: pathPoints, pathRadius: radius, inScene: levelScene)
-//                debugPathPoints = pathPoints
-//                // Patrol paths are always closed loops, so the debug drawing of the path should cycle back round to the start.
-//                debugPathShouldCycle = true
-//                debugColor = isGood ? SKColor.green : SKColor.purple
+
             
             case let .fleeAgent(targetAgent):
                 radius = GameplayConfiguration.Soul.fleePathRadius
                 (agentBehavior, _ ) = SoulBehavior.behaviorAndPathPoints(forAgent: agent, fleeAgent: targetAgent, pathRadius: radius, inScene: levelScene)
-//                debugColor = SKColor.red
+
 
             case let .returnToPositionOnPath(position):
                 radius = GameplayConfiguration.Soul.returnToPatrolPathRadius
                 (agentBehavior, _ ) = SoulBehavior.behaviorAndPathPoints(forAgent: agent, returningToPoint: position, pathRadius: radius, inScene: levelScene)
-//                debugColor = SKColor.yellow
+
         case .wander:
             agentBehavior = SoulBehavior.behaviorWonder(forAgent: agent, inScene: levelScene)
         }
@@ -93,18 +77,30 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
     // MARK: Initializers
     
     override init() {
-//        agent = SoulAgent()
-//        agent.radius = GameplayConfiguration.PlayerBot.agentRadius
-        self.pathPoints = [CGPoint()]
+
         self.mandate = SoulMandate.wander
         self.soulColor = "red"
         super.init()
+        
+        let agent = SoulAgent()
+        agent.delegate = self
+        agent.maxSpeed = GameplayConfiguration.RedSoul.maximumSpeedRed
+        agent.maxAcceleration = GameplayConfiguration.RedSoul.maximumAccelerationRed
+        agent.mass = GameplayConfiguration.Soul.agentMass
+        agent.radius = GameplayConfiguration.Soul.agentRadius
+        agent.behavior = GKBehavior()
+        
+        /*
+            `GKAgent2D` is a `GKComponent` subclass.
+            Add it to the `TaskBot` entity's list of components so that it will be updated
+            on each component update cycle.
+        */
+        addComponent(agent)
     }
     
-    required init(pathPoints: [CGPoint], mandate: SoulMandate, color: String) {
-//        agent = SoulAgent()
-        self.pathPoints = pathPoints
-        self.mandate = mandate
+    init(color: String) {
+
+        self.mandate = SoulMandate.wander
         self.soulColor = color
     
         super.init()
@@ -127,7 +123,6 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
             fatalError("unknown color")
         }
         
-//        agent.maxAcceleration = GameplayConfiguration.Soul.maximumAcceleration
         agent.mass = GameplayConfiguration.Soul.agentMass
         agent.radius = GameplayConfiguration.Soul.agentRadius
         agent.behavior = GKBehavior()
@@ -208,6 +203,7 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
         return hypot(deltaX, deltaY)
     }
     
+    
     func distanceToPoint(otherPoint: SIMD2<Float>) -> Float {
         let deltaX = agent.position.x - otherPoint.x
         let deltaY = agent.position.y - otherPoint.y
@@ -269,5 +265,14 @@ class Soul: GKEntity,GKAgentDelegate, ContactNotifiableType {
         ColliderType.requestedContactNotifications[.Soul] = [
             .Reaper
         ]
+    }
+    
+    func removeSoul() {
+        
+        if let scene = renderComponent.node.scene as? RDOLevelScene {
+            scene.entities.remove(self)
+        }
+        renderComponent.node.removeFromParent()
+        GameplayLogic.sharedInstance().LOGremoveSoulOnStage(n: 1)
     }
 }

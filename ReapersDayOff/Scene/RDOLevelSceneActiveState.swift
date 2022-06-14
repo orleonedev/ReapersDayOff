@@ -81,7 +81,7 @@ class RDOLevelSceneActiveState: GKState {
             
             heartReapSpwan -= seconds
             
-            print("heartReapSpwan \(heartReapSpwan)")
+//            print("heartReapSpwan \(heartReapSpwan)")
             if heartReapSpwan < 0 {
                 heartReapSpwan = GameplayConfiguration.HeartReaper.enemySpawnRate
                 levelScene.spawnEnemy()
@@ -91,12 +91,19 @@ class RDOLevelSceneActiveState: GKState {
         }
         else {
             aliveTimer -= seconds
-            print("aliveTimer \(aliveTimer)")
+//            print("aliveTimer \(aliveTimer)")
             if aliveTimer < 0 {
                 aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate
-                levelScene.enemy?.removeHeartReaper()
-                print("REMOVE")
-                logic.enemyOnStage = false
+                if let intel = levelScene.enemy?.component(ofType: IntelligenceComponent.self) {
+                    intel.stateMachine.enter(HeartReaperDisappearState.self)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        self.levelScene.enemy?.removeHeartReaper()
+                        print("REMOVE")
+                        self.logic.enemyOnStage = false
+                    }
+                    
+                }
+                
             }
         }
         
@@ -112,16 +119,7 @@ class RDOLevelSceneActiveState: GKState {
         levelScene.bluecounter.text = String(logic.blueSouls)
         levelScene.redcounter.text = String(logic.redSouls)
         levelScene.greencounter.text = String(logic.greenSouls)
-//        levelScene.soulsContainer.size.height = CGFloat(logic.sumSoul) * (levelScene.soulsContainerTexture.size.height / 10)
-//
-//        
-//        if (logic.isFull){
-//            levelScene.soulsContainer.color = UIColor.orange
-//        }
-//        else
-//        {
-//            levelScene.soulsContainer.color = UIColor.yellow
-//        }
+
 
         if let movComp = levelScene.reaper.component(ofType: MovementComponent.self) {
             

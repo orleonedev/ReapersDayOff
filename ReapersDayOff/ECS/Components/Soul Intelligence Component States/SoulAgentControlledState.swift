@@ -19,6 +19,8 @@ class SoulAgentControlledState: GKState {
     /// The amount of time that has passed since the `TaskBot` last determined an appropriate behavior.
     var timeSinceBehaviorUpdate: TimeInterval = 0.0
     
+    var timeSpan: TimeInterval = 6.0
+    
     // MARK: Initializers
     
     required init(entity: Soul) {
@@ -37,14 +39,6 @@ class SoulAgentControlledState: GKState {
         // Ensure that the agent's behavior is the appropriate behavior for its current mandate.
         entity.agent.behavior = entity.behaviorForCurrentMandate
         
-        /*
-            `TaskBot`s recover to a full charge if they're hit with the beam but don't become "good".
-            If this `TaskBot` has any charge, restore it to the full amount.
-        */
-//        if let chargeComponent = entity.component(ofType: ChargeComponent.self), chargeComponent.hasCharge {
-//            let chargeToAdd = chargeComponent.maximumCharge - chargeComponent.charge
-//            chargeComponent.addCharge(chargeToAdd: chargeToAdd)
-//        }
     }
     
     override func update(deltaTime seconds: TimeInterval) {
@@ -53,46 +47,39 @@ class SoulAgentControlledState: GKState {
         // Update the "time since last behavior update" tracker.
         timeSinceBehaviorUpdate += seconds
         elapsedTime += seconds
+        timeSpan -= seconds
         
         // Check if enough time has passed since the last behavior update, and update the behavior if so.
         if timeSinceBehaviorUpdate >= GameplayConfiguration.Soul.behaviorUpdateWaitDuration {
-// add flee function somehow (control distance tra reaper e soul)
+            
             if let levelScene = entity.renderComponent.node.scene as? RDOLevelScene {
+                
                 let reaperAgent = levelScene.reaper.agent
                 if entity.distanceToAgent(otherAgent: reaperAgent) < 224{
                     entity.mandate = .fleeAgent(reaperAgent)
                     
-                }else {
-                    // When a `TaskBot` is returning to its path patrol start, and gets near enough, it should start to patrol.
-//                    if case let .returnToPositionOnPath(position) = entity.mandate, entity.distanceToPoint(otherPoint: position) <= GameplayConfiguration.Soul.thresholdProximityToPatrolPathStartPoint {
-//                        entity.mandate = .followPatrolPath
-//                    }
-//                    else {
-                        entity.mandate = .wander
-//                    }
+                }   else {
+                    entity.mandate = .wander
+                    if timeSpan < 0 {
+                        timeSpan = 6
+                        if let orComp = entity.component(ofType: OrientationComponent.self) {
+                            orComp.compassDirection = CompassDirection.allDirections.randomElement() ?? .southWest
+                        }
+                    }
+                    
                 }
                 
             }
             
-//
-            
-//
-//            // Ensure the agent's behavior is the appropriate behavior for its current mandate.
+
+            // Ensure the agent's behavior is the appropriate behavior for its current mandate.
             entity.agent.behavior = entity.behaviorForCurrentMandate
-//
-//            // Reset `timeSinceBehaviorUpdate`, to delay when the entity's behavior is next updated.
+
+            // Reset `timeSinceBehaviorUpdate`, to delay when the entity's behavior is next updated.
             timeSinceBehaviorUpdate = 0.0
-//        }
-    }
+
+        }
     
-//    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-//        switch stateClass {
-//            case is RedSoulPreAttackState.Type, is GroundBotRotateToAttackState.Type, is TaskBotZappedState.Type:
-//                return true
-//
-//            default:
-//                return false
-//        }
     }
     
     override func willExit(to nextState: GKState) {

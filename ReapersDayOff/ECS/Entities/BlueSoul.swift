@@ -18,8 +18,8 @@ class BlueSoul: Soul {
         return BlueSoul.soulAnimations!
     }
     
-    required init(pathPoints: [CGPoint], mandate: SoulMandate) {
-        super.init(pathPoints: pathPoints, mandate: mandate, color: "blue")
+    override init() {
+        super.init(color: "blue")
 
         // Create components that define how the entity looks and behaves.
         createRenderingComponents()
@@ -27,37 +27,17 @@ class BlueSoul: Soul {
         let orientationComponent = OrientationComponent()
         addComponent(orientationComponent)
 
-//        let shadowComponent = ShadowComponent(texture: FlyingBot.shadowTexture, size: FlyingBot.shadowSize, offset: FlyingBot.shadowOffset)
-//        addComponent(shadowComponent)
-
-
         let intelligenceComponent = IntelligenceComponent(states: [
             SoulAgentControlledState(entity: self)
-//            FlyingBotPreAttackState(entity: self),
-//            FlyingBotBlastState(entity: self),
-//            TaskBotZappedState(entity: self)
         ])
         addComponent(intelligenceComponent)
 
-        
-        
-//        let chargeComponent = ChargeComponent(charge: initialCharge, maximumCharge: GameplayConfiguration.RedSoul.maximumCharge)
-//        chargeComponent.delegate = self
-//        addComponent(chargeComponent)
-
-//        animationComponent.shadowNode = shadowComponent.node
-        
-        // Specify the offset for beam targeting.
-//        beamTargetOffset = GameplayConfiguration.RedSoul.beamTargetOffset
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    required init(pathPoints: [CGPoint], mandate: SoulMandate, color: String) {
-        fatalError("init(pathPoints:mandate:color:) has not been implemented")
-    }
     
     func createRenderingComponents(){
         
@@ -123,10 +103,7 @@ class BlueSoul: Soul {
         
         if !gameState.isFull{
             
-            if let scene = renderComponent.node.scene as? RDOLevelScene {
-                scene.entities.remove(self)
-            }
-            renderComponent.node.removeFromParent()
+            self.removeSoul()
             gameState.addSouls(type: "blue")
         }
         else {
