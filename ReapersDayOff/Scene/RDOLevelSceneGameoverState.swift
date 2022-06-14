@@ -12,6 +12,7 @@
 
 import SpriteKit
 import GameplayKit
+import GameController
 
 class RDOLevelSceneGameoverState: RDOLevelSceneOverlayState {
     // MARK: Properties
@@ -27,6 +28,10 @@ class RDOLevelSceneGameoverState: RDOLevelSceneOverlayState {
     override func didEnter(from previousState: GKState?) {
         super.didEnter(from: previousState)
 
+        if let controller = GCController.current {
+            controller.light?.color = GCColor.init(red: 1.0, green: 0.0, blue: 0.0)
+        }
+        
         if let inputComponent = levelScene.reaper.component(ofType: InputComponent.self) {
             inputComponent.isEnabled = false
         }

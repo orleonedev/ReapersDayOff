@@ -99,13 +99,14 @@ class InputComponent: GKComponent, ControlInputSourceDelegate {
                 if let levelScene = entity?.component(ofType: RenderComponent.self)?.node.scene as? RDOLevelScene {
                     levelScene.isSpeeding = true
                     if !GameplayLogic.sharedInstance().isFull{
+                        if HapticUtility.enabled {
                             if GCController.current != nil {
                                 HapticUtility.playHapticsFile(named: "Sprint")
                             } else {
-//                                let haptic = UIImpactFeedbackGenerator(style: .light)
-//                                haptic.impactOccurred()
+                                let haptic = UIImpactFeedbackGenerator(style: .light)
+                                haptic.impactOccurred()
                             }
-                    
+                        }
                     }
                 }
             }else{

@@ -22,6 +22,11 @@ extension RDOBaseScene: ButtonNodeResponderType {
     
     
     func buttonTriggered(button: RDOButtonNode) {
+        
+        if HapticUtility.enabled {
+            let hap = UISelectionFeedbackGenerator()
+            hap.selectionChanged()
+        }
         switch button.buttonIdentifier! {
             case .home:
                 sceneManager.transitionToScene(identifier: .main)
@@ -71,7 +76,16 @@ extension RDOBaseScene: ButtonNodeResponderType {
             }
             
         case .haptics:
-            print("Haptics")
+            guard let scene = self as? RDOSettingsScene else {
+                fatalError("not Setting Scene")
+            }
+            if HapticUtility.enabled {
+                HapticUtility.enabled = false
+                scene.hapticsButton?.texture = SKTexture(imageNamed: "hapticsOff")
+            }else {
+                HapticUtility.enabled = true
+                scene.hapticsButton?.texture = SKTexture(imageNamed: "hapticsOn")
+            }
             
                 
             default:

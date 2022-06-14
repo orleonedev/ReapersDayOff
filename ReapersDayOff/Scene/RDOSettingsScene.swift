@@ -47,6 +47,9 @@ class RDOSettingsScene: RDOBaseScene {
         if !SoundClass.sharedInstance().enabled {
             soundButton?.texture = SKTexture(imageNamed: "musicOff")
         }
+        if !HapticUtility.enabled {
+            hapticsButton?.texture = SKTexture(imageNamed: "hapticsOff")
+        }
         // Enable focus based navigation.
         focusChangesEnabled = true
         let seq1 = SKAction.sequence([

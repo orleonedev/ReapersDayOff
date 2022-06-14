@@ -10,7 +10,10 @@ import GameController
 import CoreHaptics
 
 class HapticUtility {
+    
+    static var enabled: Bool = true 
     static var engines: [GCController: CHHapticEngine] = [:]
+    
     
     // Initialize a new HapticUtility object.
     class func initHapticsFor(controller: GCController) {

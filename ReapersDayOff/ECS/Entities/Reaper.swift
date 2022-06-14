@@ -268,13 +268,15 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
                 }
             }
             shared.deposit(type: gate.name)
-            if GCController.current != nil {
-                HapticUtility.playHapticsFile(named: "Oscillate")
-            } else {
-                let hap = UINotificationFeedbackGenerator()
-                hap.notificationOccurred(.success)
-//                let haptic = UIImpactFeedbackGenerator(style: .light)
-//                haptic.impactOccurred()
+            if HapticUtility.enabled {
+                if GCController.current != nil {
+                    HapticUtility.playHapticsFile(named: "Oscillate")
+                } else {
+                    let hap = UINotificationFeedbackGenerator()
+                    hap.notificationOccurred(.success)
+    //                let haptic = UIImpactFeedbackGenerator(style: .light)
+    //                haptic.impactOccurred()
+                }
             }
 //            collectedSouls +=
         }
