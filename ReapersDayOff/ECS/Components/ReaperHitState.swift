@@ -7,8 +7,9 @@
 
 import SpriteKit
 import GameplayKit
+import GameController
 
-class ReaperFleeState: GKState {
+class ReaperHitState: GKState {
     // MARK: Properties
     
     unowned var entity: Reaper
@@ -35,9 +36,12 @@ class ReaperFleeState: GKState {
         
         // Reset the elapsed "hit" duration on entering this state.
         elapsedTime = 0.0
+        if let controller = GCController.current {
+            controller.light?.color = GCColor.init(red: 0.8, green: 0.8, blue: 0.0)
+        }
         
         // Request the "hit" animation for this `PlayerBot`.
-        animationComponent.requestedAnimationState = .flee
+        animationComponent.requestedAnimationState = .hit
     }
     
     override func update(deltaTime seconds: TimeInterval) {
@@ -48,18 +52,13 @@ class ReaperFleeState: GKState {
         
         // When the `PlayerBot` has been in this state for long enough, transition to the appropriate next state.
         if elapsedTime >= GameplayConfiguration.Reaper.hitStateDuration {
-            if entity.isPoweredDown {
-                stateMachine?.enter(ReaperRechargingState.self)
-            }
-            else {
                 stateMachine?.enter(ReaperPlayerControlledState.self)
-            }
         }
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         switch stateClass {
-            case is ReaperPlayerControlledState.Type, is ReaperRechargingState.Type:
+        case is ReaperPlayerControlledState.Type:
                 return true
             
             default:

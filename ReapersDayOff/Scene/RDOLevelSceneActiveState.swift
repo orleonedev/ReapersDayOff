@@ -41,9 +41,7 @@ class RDOLevelSceneActiveState: GKState {
     
     override func didEnter(from previousState: GKState?) {
         super.didEnter(from: previousState)
-        if let controller = GCController.current {
-            controller.light?.color = GCColor.init(red: 0.1, green: 1.0, blue: 0.0)
-        }
+        
         
         
     }

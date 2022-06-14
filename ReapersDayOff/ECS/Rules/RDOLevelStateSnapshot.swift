@@ -147,7 +147,7 @@ class EntitySnapshot {
             (if it is targetable) and the nearest "good" `TaskBot`.
         */
         for entityDistance in self.entityDistances {
-            if let target = entityDistance.target as? Reaper, reaperTarget == nil && target.isFleeable {
+            if let target = entityDistance.target as? Reaper, reaperTarget == nil  {
                 reaperTarget = (target: target, distance: entityDistance.distance)
             }
 //            else if let target = entityDistance.target as? TaskBot, nearestGoodTaskBotTarget == nil && target.isGood {

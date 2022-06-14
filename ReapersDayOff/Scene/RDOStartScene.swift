@@ -74,6 +74,9 @@ class RDOStartScene: RDOBaseScene {
         bg?.run(SKAction.repeatForever(seq1))
         bg2?.run(SKAction.repeatForever(seq2))
         
+        if let controller = GCController.current {
+            controller.light?.color = GCColor.init(red: 175/255, green: 82/255, blue: 222/255)
+        }
         if let tap = startButton?.childNode(withName: "//taptostart") as? SKLabelNode {
             if GCController.current != nil {
                 tap.text = "Press anything to continue"

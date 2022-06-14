@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import GameController
 
 class RDOMainScene: RDOBaseScene {
     // MARK: Properties
@@ -75,6 +76,9 @@ class RDOMainScene: RDOBaseScene {
         bg?.run(SKAction.repeatForever(seq1))
         bg2?.run(SKAction.repeatForever(seq2))
         
+        if let controller = GCController.current {
+            controller.light?.color = GCColor.init(red: 175/255, green: 82/255, blue: 222/255)
+        }
         centerCameraOnPoint(point: backgroundNode!.position)
         reaper?.run(SKAction.repeatForever(SKAction(named: "reaperRotation")!))
         donnie?.run(SKAction.repeatForever(SKAction(named: "DonnieMainScreen")!))

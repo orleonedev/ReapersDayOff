@@ -28,22 +28,8 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
     
     // MARK: Properties
     
-    var isPoweredDown = false
-    
     /// The agent used when pathfinding to the `PlayerBot`.
     let agent: GKAgent2D
-    
-    var isFleeable: Bool {
-        guard let currentState = component(ofType: IntelligenceComponent.self)?.stateMachine.currentState else { return false }
-
-        switch currentState {
-            case is ReaperPlayerControlledState, is ReaperFleeState:
-                return true
-
-            default:
-                return false
-        }
-    }
     
     var position: CGPoint
     
@@ -119,8 +105,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
         let intelligenceComponent = IntelligenceComponent(states: [
             ReaperAppearState(entity: self),
             ReaperPlayerControlledState(entity: self),
-            ReaperFleeState(entity: self),
-            ReaperRechargingState(entity: self)
+            ReaperHitState(entity: self)
         ])
         addComponent(intelligenceComponent)
     }

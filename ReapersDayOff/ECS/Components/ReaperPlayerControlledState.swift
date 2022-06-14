@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import GameController
 
 class ReaperPlayerControlledState: GKState {
     // MARK: Properties
@@ -47,6 +48,9 @@ class ReaperPlayerControlledState: GKState {
         
         // Turn on controller input for the `PlayerBot` when entering the player-controlled state.
         inputComponent.isEnabled = true
+        if let controller = GCController.current {
+            controller.light?.color = GCColor.init(red: 0.1, green: 1.0, blue: 0.0)
+        }
     }
     
     override func update(deltaTime seconds: TimeInterval) {
@@ -63,7 +67,7 @@ class ReaperPlayerControlledState: GKState {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         switch stateClass {
-            case is ReaperFleeState.Type, is ReaperRechargingState.Type:
+        case is ReaperHitState.Type:
                 return true
             
             default:
