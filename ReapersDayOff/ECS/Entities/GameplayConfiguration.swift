@@ -223,7 +223,7 @@ struct GameplayConfiguration {
         static let maximumContainer = 10.0
         
         /// The length of time for which the `PlayerBot` remains in its "hit" state.
-        static let hitStateDuration: TimeInterval = 0.75
+        static let hitStateDuration: TimeInterval = 1.05
         
         /// The length of time that it takes the `PlayerBot` to recharge when deactivated.
         static let rechargeDelayWhenInactive: TimeInterval = 2.0

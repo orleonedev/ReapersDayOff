@@ -512,6 +512,16 @@ class RDOLevelScene: RDOBaseScene, SKPhysicsContactDelegate {
                     soulsContainer.position.y = size.height / 2.0
                     soulsContainer.position.x = -size.width / 2.3
                     soulsContainer.position.y -= GameplayConfiguration.Timer.paddingSize*2 * GameplayConfiguration.Timer.fontSize*size.height
+                    // Constrain the position of the `chargeLevelNode`.
+                    let xRange = SKRange(constantValue: 0.0)
+                    let yRange = SKRange(constantValue: -soulsContainer.size.height)
+                    
+                    let constraint = SKConstraint.positionX(xRange, y: yRange)
+                    constraint.referenceNode = soulsContainer
+                    soulsContainer.soulsContainer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+                    soulsContainer.soulsContainer.constraints = [constraint]
+
+                    
                     camera!.addChild(soulsContainer)
                     
                     chargeBar.size = CGSize(width: size.width/2.05, height: size.height/32)

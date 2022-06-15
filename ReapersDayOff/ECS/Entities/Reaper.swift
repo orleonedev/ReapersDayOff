@@ -145,7 +145,8 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
             
             let ReaperAtlasNames = [
             "ReaperIdle",
-            "ReaperWalk"
+            "ReaperWalk",
+            "ReaperHit"
         ]
         
         /*
@@ -174,6 +175,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
             animations![.idle] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[0], withImageIdentifier: "reaperIdle", forAnimationState: .idle)
             animations![.walkForward] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[1], withImageIdentifier: "reaperWalk", forAnimationState: .walkForward)
             animations![.walkBackward] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[1], withImageIdentifier: "reaperWalk", forAnimationState: .walkBackward, playBackwards: true)
+            animations![.hit] = AnimationComponent.animationsFromAtlas(atlas: ReaperAtlases[2], withImageIdentifier: "reaperHit", forAnimationState: .hit)
 //            animations![.inactive] = AnimationComponent.animationsFromAtlas(atlas: playerBotAtlases[2], withImageIdentifier: "PlayerBotInactive", forAnimationState: .inactive)
 //            animations![.hit] = AnimationComponent.animationsFromAtlas(atlas: playerBotAtlases[3], withImageIdentifier: "PlayerBotHit", forAnimationState: .hit, repeatTexturesForever: false)
             
@@ -298,6 +300,9 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
 
                     }
                 }
+            }
+            if let intel = component(ofType: IntelligenceComponent.self) {
+                intel.stateMachine.enter(ReaperHitState.self)
             }
                 
         }
