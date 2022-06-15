@@ -77,6 +77,9 @@ class RDOLevelSceneActiveState: GKState {
                 aliveTimer = GameplayConfiguration.HeartReaper.enemySpawnRate
                 if let intel = levelScene.enemy?.component(ofType: IntelligenceComponent.self) {
                     intel.stateMachine.enter(HeartReaperDisappearState.self)
+                    if SoundClass.sharedInstance().enabled {
+                        SoundClass.sharedInstance().playSoundEffect2("donnieDisappear.mp3")
+                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         self.levelScene.enemy?.removeHeartReaper()
                         print("REMOVE")

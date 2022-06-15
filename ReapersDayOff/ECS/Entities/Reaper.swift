@@ -69,6 +69,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
 
         // `PhysicsComponent` provides the `PlayerBot`'s physics body and collision masks.
         let physicsComponent = PhysicsComponent(physicsBody: SKPhysicsBody(circleOfRadius: GameplayConfiguration.Reaper.physicsBodyRadius, center: GameplayConfiguration.Reaper.physicsBodyOffset), colliderType: .Reaper)
+        physicsComponent.physicsBody.allowsRotation = false
         addComponent(physicsComponent)
 
         // Connect the `PhysicsComponent` and the `RenderComponent`.
@@ -241,20 +242,30 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
                 case "red":
                     if let gem = scene.childNode(withName: "//redFloor") as? SKSpriteNode {
                         gem.run(SKAction(named: "redGem")!)
+                        if SoundClass.sharedInstance().enabled {
+                            SoundClass.sharedInstance().playSoundEffect3("Gate1.mp3")
+                        }
                     }
                 case "green":
                     if let gem = scene.childNode(withName: "//greenFloor") as? SKSpriteNode {
                         gem.run(SKAction(named: "greenGem")!)
+                        if SoundClass.sharedInstance().enabled {
+                            SoundClass.sharedInstance().playSoundEffect3("Gate2.mp3")
+                        }
                     }
                 case "blue":
                     if let gem = scene.childNode(withName: "//blueFloor") as? SKSpriteNode {
                         gem.run(SKAction(named: "blueGem")!)
+                        if SoundClass.sharedInstance().enabled {
+                            SoundClass.sharedInstance().playSoundEffect3("Gate3.mp3")
+                        }
                     }
                 default:
                     fatalError("Unknown Gate type")
                 }
             }
             shared.deposit(type: gate.name)
+            
             if HapticUtility.enabled {
                 if GCController.current != nil {
                     HapticUtility.playHapticsFile(named: "Oscillate")
@@ -301,8 +312,15 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
                     }
                 }
             }
+            let impulse = CGVector(dx: (renderComponent.node.position.x - (entity.component(ofType: RenderComponent.self)?.node.position.x)!)/4,
+                                   dy: (renderComponent.node.position.y - (entity.component(ofType: RenderComponent.self)?.node.position.y)!)/4)
+            
             if let intel = component(ofType: IntelligenceComponent.self) {
                 intel.stateMachine.enter(ReaperHitState.self)
+                renderComponent.node.physicsBody?.applyImpulse(impulse)
+            }
+            if SoundClass.sharedInstance().enabled {
+                SoundClass.sharedInstance().playSoundEffect2("donnieHit.mp3")
             }
                 
         }
@@ -317,6 +335,7 @@ class Reaper: GKEntity, ChargeComponentDelegate, SoulsContainerComponentDelegate
         if let containerComp = component(ofType: SoulsContainerComponent.self) {
             containerComp.addCharge(chargeToAdd: 1.0)
             }
+            
         }
         
         if entity is GreenSoul {

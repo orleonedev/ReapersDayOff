@@ -266,7 +266,7 @@ struct GameplayConfiguration {
         static let physicsBodyOffset = CGPoint(x: 0.0, y: -16.0)
 
         /// The radius (in points) of the agent associated with this `TaskBot` for steering.
-        static let agentRadius = Float(physicsBodyRadius)
+        static let agentRadius = Float(physicsBodyRadius/5)
         
         /// The offset of the agent's center from the `TaskBot`'s center.
         static let agentOffset = physicsBodyOffset

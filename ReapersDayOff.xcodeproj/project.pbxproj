@@ -91,6 +91,13 @@
 		51CEDAC5284F9CC60066C294 /* RDOSettingsScenePhone.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51CEDAC4284F9CC60066C294 /* RDOSettingsScenePhone.sks */; };
 		51CEDAC7284FAD640066C294 /* RDOCollectionScenePhone.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51CEDAC6284FAD640066C294 /* RDOCollectionScenePhone.sks */; };
 		51CEDAC92851E42E0066C294 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51CEDAC82851E42E0066C294 /* MyTileSet.sks */; };
+		51E95BC3285A18C900612238 /* Gate1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51E95BBC285A18C800612238 /* Gate1.mp3 */; };
+		51E95BC4285A18C900612238 /* donnieHit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51E95BBD285A18C900612238 /* donnieHit.mp3 */; };
+		51E95BC5285A18C900612238 /* Gate3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51E95BBE285A18C900612238 /* Gate3.mp3 */; };
+		51E95BC6285A18C900612238 /* DonnieAppear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51E95BBF285A18C900612238 /* DonnieAppear.mp3 */; };
+		51E95BC7285A18C900612238 /* Gate2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51E95BC0285A18C900612238 /* Gate2.mp3 */; };
+		51E95BC8285A18C900612238 /* soulSwell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51E95BC1285A18C900612238 /* soulSwell.mp3 */; };
+		51E95BC9285A18C900612238 /* donnieDisappear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51E95BC2285A18C900612238 /* donnieDisappear.mp3 */; };
 		6641E45728294FC600308AB3 /* RDOLevelSceneOverlayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45628294FC600308AB3 /* RDOLevelSceneOverlayState.swift */; };
 		6641E45928294FEB00308AB3 /* RDOLevelSceneActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */; };
 		6641E45B2829500500308AB3 /* RDOLevelScenePauseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641E45A2829500500308AB3 /* RDOLevelScenePauseState.swift */; };
@@ -198,6 +205,13 @@
 		51CEDAC4284F9CC60066C294 /* RDOSettingsScenePhone.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOSettingsScenePhone.sks; sourceTree = "<group>"; };
 		51CEDAC6284FAD640066C294 /* RDOCollectionScenePhone.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RDOCollectionScenePhone.sks; sourceTree = "<group>"; };
 		51CEDAC82851E42E0066C294 /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
+		51E95BBC285A18C800612238 /* Gate1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gate1.mp3; sourceTree = "<group>"; };
+		51E95BBD285A18C900612238 /* donnieHit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = donnieHit.mp3; sourceTree = "<group>"; };
+		51E95BBE285A18C900612238 /* Gate3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gate3.mp3; sourceTree = "<group>"; };
+		51E95BBF285A18C900612238 /* DonnieAppear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DonnieAppear.mp3; sourceTree = "<group>"; };
+		51E95BC0285A18C900612238 /* Gate2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gate2.mp3; sourceTree = "<group>"; };
+		51E95BC1285A18C900612238 /* soulSwell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = soulSwell.mp3; sourceTree = "<group>"; };
+		51E95BC2285A18C900612238 /* donnieDisappear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = donnieDisappear.mp3; sourceTree = "<group>"; };
 		6641E45628294FC600308AB3 /* RDOLevelSceneOverlayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneOverlayState.swift; sourceTree = "<group>"; };
 		6641E45828294FEB00308AB3 /* RDOLevelSceneActiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelSceneActiveState.swift; sourceTree = "<group>"; };
 		6641E45A2829500500308AB3 /* RDOLevelScenePauseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOLevelScenePauseState.swift; sourceTree = "<group>"; };
@@ -498,6 +512,13 @@
 			isa = PBXGroup;
 			children = (
 				51B3F46A284E0DEF00A15D43 /* jazz-happy-110855.mp3 */,
+				51E95BBF285A18C900612238 /* DonnieAppear.mp3 */,
+				51E95BC2285A18C900612238 /* donnieDisappear.mp3 */,
+				51E95BBD285A18C900612238 /* donnieHit.mp3 */,
+				51E95BBC285A18C800612238 /* Gate1.mp3 */,
+				51E95BC0285A18C900612238 /* Gate2.mp3 */,
+				51E95BBE285A18C900612238 /* Gate3.mp3 */,
+				51E95BC1285A18C900612238 /* soulSwell.mp3 */,
 				51B3F46E284E141A00A15D43 /* DrumRoll.mp3 */,
 				51B3F468284E0DD000A15D43 /* life-of-a-wandering-wizard-15549.mp3 */,
 				51B3F46C284E0E2800A15D43 /* SoundClass.swift */,
@@ -565,6 +586,7 @@
 			files = (
 				667C2E73282524CA00A5D13E /* RDOStartScene.sks in Resources */,
 				517F5C0028210F8600C39D21 /* Main.storyboard in Resources */,
+				51E95BC6285A18C900612238 /* DonnieAppear.mp3 in Resources */,
 				517F5C542822BBFD00C39D21 /* RDOStageOneScene.sks in Resources */,
 				51CEDAC5284F9CC60066C294 /* RDOSettingsScenePhone.sks in Resources */,
 				517F5C0228210F8900C39D21 /* Assets.xcassets in Resources */,
@@ -573,6 +595,7 @@
 				517844A6284E374C00F0C152 /* nokiafc22.ttf in Resources */,
 				517F5C0528210F8900C39D21 /* LaunchScreen.storyboard in Resources */,
 				667C2E7028250B6600A5D13E /* RDOAboutScene.sks in Resources */,
+				51E95BC4285A18C900612238 /* donnieHit.mp3 in Resources */,
 				51B3F469284E0DD000A15D43 /* life-of-a-wandering-wizard-15549.mp3 in Resources */,
 				51B3F462284A581500A15D43 /* Sprint.ahap in Resources */,
 				667C2E7228250FAC00A5D13E /* RDOCollectionScene.sks in Resources */,
@@ -580,14 +603,19 @@
 				51CEDAC3284F95D40066C294 /* RDOAboutScenePhone.sks in Resources */,
 				51CEDAC7284FAD640066C294 /* RDOCollectionScenePhone.sks in Resources */,
 				517F5C93282817D900C39D21 /* Soul.xcassets in Resources */,
+				51E95BC3285A18C900612238 /* Gate1.mp3 in Resources */,
 				6641E463282A49B800308AB3 /* RDOPauseScene.sks in Resources */,
 				51B3F460284A553500A15D43 /* DamageTaken.ahap in Resources */,
 				6646314928250A9200311BE3 /* RDOSettingsScene.sks in Resources */,
 				517F5BF928210F8600C39D21 /* Actions.sks in Resources */,
+				51E95BC5285A18C900612238 /* Gate3.mp3 in Resources */,
 				51B1450E283F7BA0005517A3 /* LaunchscreenScene.sks in Resources */,
+				51E95BC7285A18C900612238 /* Gate2.mp3 in Resources */,
 				6641E465282A4A3B00308AB3 /* RDOGameoverScene.sks in Resources */,
+				51E95BC8285A18C900612238 /* soulSwell.mp3 in Resources */,
 				51B3F464284A589D00A15D43 /* Oscillate.ahap in Resources */,
 				51CEDAC92851E42E0066C294 /* MyTileSet.sks in Resources */,
+				51E95BC9285A18C900612238 /* donnieDisappear.mp3 in Resources */,
 				66463147282506DB00311BE3 /* RDOMainScene.sks in Resources */,
 				669A612E284F649E00153CFA /* RDOTutorialScene.sks in Resources */,
 			);
@@ -818,7 +846,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SA4H49C4LT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ReapersDayOff/Info.plist;
@@ -851,7 +879,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SA4H49C4LT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ReapersDayOff/Info.plist;

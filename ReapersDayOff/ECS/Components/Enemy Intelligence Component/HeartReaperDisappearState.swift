@@ -61,8 +61,6 @@ class HeartReaperDisappearState: GKState {
         
         // Hide the animation component node until the `PlayerBot` exits this state.
         animationComponent.node.isHidden = true
-
-        
         
     }
     

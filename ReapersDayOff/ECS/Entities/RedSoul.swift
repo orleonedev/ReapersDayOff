@@ -108,7 +108,9 @@ class RedSoul: Soul {
             
             self.removeSoul()
             gameState.addSouls(type: "red")
-
+            if SoundClass.sharedInstance().enabled {
+                SoundClass.sharedInstance().playSoundEffect4("soulSwell.mp3")
+            }
         
 
         }

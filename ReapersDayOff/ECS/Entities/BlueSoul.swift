@@ -105,6 +105,9 @@ class BlueSoul: Soul {
             
             self.removeSoul()
             gameState.addSouls(type: "blue")
+            if SoundClass.sharedInstance().enabled {
+                SoundClass.sharedInstance().playSoundEffect4("soulSwell.mp3")
+            }
         }
         else {
             print("you can't take more souls")

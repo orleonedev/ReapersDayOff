@@ -37,7 +37,7 @@ class ReaperHitState: GKState {
         // Reset the elapsed "hit" duration on entering this state.
         elapsedTime = 0.0
         if let controller = GCController.current {
-            controller.light?.color = GCColor.init(red: 0.8, green: 0.8, blue: 0.0)
+            controller.light?.color = GCColor.init(red: 1.0, green: 0.6, blue: 0.0)
         }
         
         // Request the "hit" animation for this `PlayerBot`.
@@ -64,5 +64,10 @@ class ReaperHitState: GKState {
             default:
                 return false
         }
+    }
+    
+    override func willExit(to nextState: GKState) {
+        
+        entity.renderComponent.node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
     }
 }

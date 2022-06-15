@@ -62,6 +62,9 @@ class HeartReaperAppearState: GKState {
         // Hide the animation component node until the `PlayerBot` exits this state.
         animationComponent.node.isHidden = true
 
+        if SoundClass.sharedInstance().enabled {
+            SoundClass.sharedInstance().playSoundEffect2("DonnieAppear.mp3")
+        }
         
         
     }
