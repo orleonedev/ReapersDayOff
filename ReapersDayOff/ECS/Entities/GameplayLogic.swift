@@ -172,7 +172,7 @@ class GameplayLogic {
     }
     
     func loseSouls() {
-        soulStolen = Int((redSouls/2)+(greenSouls/2)+(blueSouls/2))
+        soulStolen += Int((redSouls/2)+(greenSouls/2)+(blueSouls/2))
         redSouls = redSouls/2
         greenSouls = greenSouls/2
         blueSouls = blueSouls/2

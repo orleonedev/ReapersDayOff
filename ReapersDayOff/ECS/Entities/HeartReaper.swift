@@ -160,7 +160,7 @@ class HeartReaper: Enemy {
         // move to another function
         if let intel = component(ofType: IntelligenceComponent.self) {
             intel.stateMachine.enter(HeartReaperDisappearState.self)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.removeHeartReaper()
             }
             

@@ -190,7 +190,7 @@ struct GameplayConfiguration {
     
     struct Reaper {
         /// The movement speed (in points per second) for the `PlayerBot`.
-        static let movementSpeed: CGFloat = 280.0
+        static let movementSpeed: CGFloat = 290.0
 
         /// The angular rotation speed (in radians per second) for the `PlayerBot`.
         static let angularSpeed = CGFloat.pi * 1.4
@@ -223,7 +223,7 @@ struct GameplayConfiguration {
         static let maximumContainer = 10.0
         
         /// The length of time for which the `PlayerBot` remains in its "hit" state.
-        static let hitStateDuration: TimeInterval = 1.05
+        static let hitStateDuration: TimeInterval = 1.55
         
         /// The length of time that it takes the `PlayerBot` to recharge when deactivated.
         static let rechargeDelayWhenInactive: TimeInterval = 2.0
@@ -246,7 +246,7 @@ struct GameplayConfiguration {
         static let thresholdProximityToPatrolPathStartPoint: Float = 50.0
 
         /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
-        static let maximumSpeed: Float = 420.0
+        static let maximumSpeed: Float = 500.0
 
 
         /*
@@ -301,7 +301,7 @@ struct GameplayConfiguration {
     struct HeartReaper {
         
         /// The maximum speed (in points per second) for the `TaskBot` when in its "bad" state.
-        static let maximumSpeedRed: Float = 420.0
+        static let maximumSpeedRed: Float = 500.0
         
         static let maximumAccelerationRed: Float = 300.0
         

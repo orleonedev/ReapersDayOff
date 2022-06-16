@@ -80,7 +80,7 @@ class RDOLevelSceneActiveState: GKState {
                     if SoundClass.sharedInstance().enabled {
                         SoundClass.sharedInstance().playSoundEffect2("donnieDisappear.mp3")
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.levelScene.enemy?.removeHeartReaper()
                         print("REMOVE")
                         self.logic.enemyOnStage = false
